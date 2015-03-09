@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\linespread{1.1}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont}
+
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+
+\setcounter{secnumdepth}{-1} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\ta}{\theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\ga}{\gamma}
+
+\begin{document}
+
+\title{\vskip-0.6in \Large Political Uncertainty}
+\author{Kristy Buzard}
+\date{\vskip-.1in \today}
+\maketitle
+
+On Feb. 12, Sebastian and I agreed to focus efforts on finding a base model to facilitate empirical identification. I am pursuing Groseclose $\&$ Snyder (1996), ``Buying Supermajorities,'' APSR
+\begin{itemize}
+	\item For each legislator $i$, $v(i) = u_i(x) - u_i(s)$, measured in money; call this the reservation price of $i$
+		\begin{itemize}
+			\item WLOG, label legislators so that $v(i)$ is a non-increasing function 
+			\item Note legislators only have preferences over how they vote, not over which alternative wins
+		\end{itemize}
+	\item There are two vote buyers; each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP
+		\begin{itemize}
+			\item $A$ prefers $x$; $W_A$ is $A$'s willingness to pay (WTP) for $x$ measured in money
+			\item $B$ prefers $s$; $W_B$ is $B$'s WTP for $s$
+		\end{itemize}
+	\item Bribe offer functions: $a(i)$ and $b(i)$ are $A$ and $B$'s offers to $i$. Legislators take these bribe offers as given and then vote for the alternative that maximizes their payoff
+	\item A moves first; $a(i)$ perfectly observable to $B$ when he moves.
+	\item Goal: characterize SPNE in pure strategies
+		\begin{itemize}
+			\item Assume unbribed legislators who are indifferent vote for $s$; all bribed legislators who are indifferent vote for whoever bribed them last
+		\end{itemize}
+	\item Assume continuum of legislators on $\left[-\frac{1}{2},\frac{1}{2}\right]$
+	\item Assume $W_A$ large enough that $x$ wins in equilibrium (no uncertainty case)
+	\item $m + \frac{1}{2}$ is the fraction of legislators who vote for $x$, the new policy (as opposed to the status quo, $s$)
+	\item Prop 1: three types of equilibria in which $x$ wins; depend on size of $W_B$
+	\item Prop 2: $m^*$ (the optimal coalition size) is unique, and provides three cases parameterizing its size in terms of $W_B$, $v(-\frac{1}{2})$ and $v(m^*)$
+	\item Prop 3/4: special case where $v(z) = \alpha - \beta v$
+\end{itemize}
+
+\vskip.2in
+\begin{itemize}
+	\item I think, without uncertainty, you would estimate $m^*$ as a function of the parameters of $v$ and WTP
+		\begin{itemize}
+			\item It's useful that $m^*$ is unique. Not clear it would extend to case of uncertainty
+		\end{itemize}
+	\item I'm pretty sure all this predicts that $B$ should never pay anything.
+		\begin{itemize}
+			\item Uncertainty should reverse this, right?
+			\item What is uncertainty? I think just make $v(z)$ stochastic
+		\end{itemize}
+\end{itemize}
+
+\end{document}
