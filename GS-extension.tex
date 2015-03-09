@@ -19,7 +19,7 @@ bookmarksopen=true]{hyperref}
 
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{cite}
-\usepackage{times, verbatim,bm,pifont}
+\usepackage{times, verbatim,bm,pifont,bbm}
 
 
 \usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
@@ -50,8 +50,9 @@ bookmarksopen=true]{hyperref}
 
 On Feb. 12, Sebastian and I agreed to focus efforts on finding a base model to facilitate empirical identification. I am pursuing Groseclose $\&$ Snyder (1996), ``Buying Supermajorities,'' APSR
 \begin{itemize}
-	\item For each legislator $i$, $v(i) = u_i(x) - u_i(s)$, measured in money; call this the reservation price of $i$
+	\item For each legislator $i$, $v(i) = u_i(x) - u_i(s)$, measured in money; this is the reservation price of $i$
 		\begin{itemize}
+			\item $x$ is an alternative policy proposal; $s$ is the status quo
 			\item WLOG, label legislators so that $v(i)$ is a non-increasing function 
 			\item Note legislators only have preferences over how they vote, not over which alternative wins
 		\end{itemize}
@@ -61,30 +62,83 @@ On Feb. 12, Sebastian and I agreed to focus efforts on finding a base model to f
 			\item $B$ prefers $s$; $W_B$ is $B$'s WTP for $s$
 		\end{itemize}
 	\item Bribe offer functions: $a(i)$ and $b(i)$ are $A$ and $B$'s offers to $i$. Legislators take these bribe offers as given and then vote for the alternative that maximizes their payoff
-	\item A moves first; $a(i)$ perfectly observable to $B$ when he moves.
+	\item A moves first; $a(i)$ is perfectly observable to $B$ when he moves
 	\item Goal: characterize SPNE in pure strategies
 		\begin{itemize}
 			\item Assume unbribed legislators who are indifferent vote for $s$; all bribed legislators who are indifferent vote for whoever bribed them last
 		\end{itemize}
 	\item Assume continuum of legislators on $\left[-\frac{1}{2},\frac{1}{2}\right]$
 	\item Assume $W_A$ large enough that $x$ wins in equilibrium (no uncertainty case)
-	\item $m + \frac{1}{2}$ is the fraction of legislators who vote for $x$, the new policy (as opposed to the status quo, $s$)
-	\item Prop 1: three types of equilibria in which $x$ wins; depend on size of $W_B$
-	\item Prop 2: $m^*$ (the optimal coalition size) is unique, and provides three cases parameterizing its size in terms of $W_B$, $v(-\frac{1}{2})$ and $v(m^*)$
-	\item Prop 3/4: special case where $v(z) = \alpha - \beta v$
+	\item $m + \frac{1}{2}$ is fraction of legislators who vote for $x$ as opposed to the status quo, $s$
+	\item Results
+	\begin{itemize}
+		\item Prop 1: three types of equilibria in which $x$ wins; depend on size of $W_B$
+		\item Prop 2: $m^*$ (the optimal coalition size) is unique, and provides three cases parameterizing its size in terms of $W_B$, $v(-\frac{1}{2})$ and $v(m^*)$
+		\item Prop 3/4: special case where $v(z) = \alpha - \beta v$
+	\end{itemize}
 \end{itemize}
 
-\vskip.2in
+\vskip.3in
+General thoughts on extension to uncertainty
 \begin{itemize}
 	\item I think, without uncertainty, you would estimate $m^*$ as a function of the parameters of $v$ and WTP
 		\begin{itemize}
-			\item It's useful that $m^*$ is unique. Not clear it would extend to case of uncertainty
+			\item It's useful that $m^*$ is unique. Not clear it would extend to case of uncertainty, but I think it's likely so I'm going to assume it for now
 		\end{itemize}
-	\item I'm pretty sure all this predicts that $B$ should never pay anything.
+	\item I'm pretty sure  this predicts that $B$ should never pay anything when there is no uncertainty, but I don't see where they say it explicitly (I should read more carefully to verify)
 		\begin{itemize}
 			\item Uncertainty should reverse this, right?
-			\item What is uncertainty? I think just make $v(z)$ stochastic
+			\item What is uncertainty? Make $v(z)$ stochastic is most natural
+				\begin{itemize}
+					\item I'm going to start with linear parameterization of $v(z)$ and add uncertainty:
+						\[
+						  v(z) = \alpha -\beta \cdot z + \ve_z
+						\]
+						we can decide later on the distributional assumptions for $\ve_z$, and whether / when we want to make the $\ve$ vary by legislator ($z$)
+				\end{itemize}
 		\end{itemize}
 \end{itemize}
+
+\vskip.3in
+Backward induction (legislature moves last; B makes last bribe; A makes first bribe)
+\begin{enumerate}
+	\item Legislature
+		\begin{itemize}
+			\item Each legislator $z$ will decide whether to vote for $x$ or $s$ given $\ve_z$, $a(z)$ and $b(z)$. Votes for $x$ if
+			  \[
+				  v(z) = \alpha -\beta \cdot z + \ve_z + a(z) + b(z) > 0
+				\]
+				(whether the inequality is weak or strict depends on tie-breaking rules set out in the paper)
+			\item Payoff for vote buyer A if $x$ wins is $U_A(x) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
+			\item Payoff for vote buyer A if $s$ wins is $U_A(s) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
+			\item I think the cleanest way to write the condition for whether $x$ wins is
+				\[
+				  \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[v(j) \geq 0 \right] dj \geq \frac{1}{2}
+				\]
+		\end{itemize}
+	\item Vote buyer B
+		\begin{itemize}
+			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''
+			\item This has to be adapted to passing his preferred policy in expectation? Do we do something like they each have $\frac{1}{2}$ probability of winning? (as long as WTP constraint is satisfied)
+			\item Groseclose and Snyder formulation would suggest something like
+				\[
+				  \min_{b(z)} \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \hskip.2in \text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq U_B(s) - U_B(x)
+				\]
+				\[
+				\text{and however we write the ``while passing his preferred policy'' constraint}
+				\]
+		
+			\begin{itemize}
+					\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
+					\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
+					\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+					\item Maybe it's a much simpler maximize probability of winning net of bribes?
+				\end{itemize}
+		\end{itemize}	
+	\item Vote buyer A
+		\begin{itemize}
+			\item Whatever we decide for vote buyer B will be the same for vote buyer A
+		\end{itemize}
+\end{enumerate}
 
 \end{document}
