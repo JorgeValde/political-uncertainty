@@ -137,7 +137,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 				\end{itemize}
 			\item Let's start with the simple maximize expected value of winning (WTP times probability of winning) net of bribes:
 						\begin{multline}
-							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) + b(j) \geq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) + b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
 							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
 						\end{multline}
 				\begin{itemize}
@@ -146,27 +146,28 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 						\begin{itemize}
 							\item Maximizing the total probability mass where $v(j) \geq 0$?
 							  \begin{multline}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) + b(j) \geq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) + b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
 									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
 								\end{multline}
 							\item Suppressing the constraint for now and using the fact that $J \sim N(j,\sigma_j)$, this can be re-written as
 								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) + b(j)}{\beta} \geq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) + b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
 								\end{equation}
 								or
 								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \geq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \leq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
 								\end{equation}
 								where $Z \sim N(0,1)$. \\
 							\item	So, this can be written as
 								\begin{equation}
-									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \cdot \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right) - b(j) \right] dj
+									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj
 								\end{equation}
 							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise.
 							\item The FOC for each $j$ is then
 								\begin{equation}
-								  W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
+								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
 								\end{equation}
+								Don't forget the constraint!
 						\end{itemize}
 				\end{itemize}
 		\end{itemize}	
