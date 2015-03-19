@@ -159,15 +159,21 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 								\end{equation}
 								where $Z \sim N(0,1)$. \\
 							\item	So, this can be written as
-								\begin{equation}
-									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj
-								\end{equation}
-							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise.
+								\begin{multline}
+									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
+									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
+								\end{multline}
+							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
 							\item The FOC for each $j$ is then
 								\begin{equation}
 								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
 								\end{equation}
-								Don't forget the constraint!
+								as long as the constraint is satisfied.
+									\begin{itemize}
+										\item I don't know how decisions are made if the constraint binds---how the rationing happens
+										\item If the constraint is not binding, vote buyer B will pay every single legislator (we could put in some kind of fixed cost of dealing with each legislator to short circuit this outcome)
+										\item Perhaps there's something in equilibrium I'm not seeing yet that will reduce the number of legislators that are paid
+									\end{itemize}
 						\end{itemize}
 				\end{itemize}
 		\end{itemize}	
@@ -176,5 +182,32 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Whatever we decide for vote buyer B will be the same for vote buyer A
 		\end{itemize}
 \end{enumerate}
+
+\newpage
+Notes from 3/19 Skype chat (Kristy and Sebastian)
+\begin{itemize}
+	\item We can use the data we have to horse-race this model against other hypotheses about how lobbyists distribute bribes
+		\begin{itemize}
+			\item Allocate equally among legislators
+			\item Groseclose Snyder with full information: only one side pays
+			\item Our model with one dimension
+				\begin{itemize}
+					\item Could we use the econometric model to benchmark to one where uncertainty disappears? Or, as it does theoretically, does the model have to change completely?
+				\end{itemize}
+			\item Our model with multiple dimensions
+		\end{itemize}
+	\item We can think of this as looking for the effect of uncertainty on prices---we'd be pricing uncertainty relative to a model with uncertainty
+		\begin{itemize}
+			\item ``a metric in dollars of uncertainty''
+			\item this is a model of vote buying under uncertainty
+		\end{itemize}
+	\item Given how different the environment with uncertainty is, Kristy should explore both the sequential model that parrots GS96 and a simultaneous model that is more like GH94 (menu auction)
+	\item When mapping to the data, we're going to want to know from the model whether/when total contributions represent WTP.
+		\begin{itemize}
+			\item It clearly doesn't in the case of certainty. One side pays nothing; the other pays either as much as is necessary to shut down its opponent, or nothing at all the necessary amount exceeds WTP
+			\item May be able to show it doesn't matter, that the proportion of total expenditures is a sufficient statistic
+		\end{itemize}
+	\item Finish writing the model, and then see if we can use the estimates we already have to write a first, very rough draft
+\end{itemize}
 
 \end{document}
