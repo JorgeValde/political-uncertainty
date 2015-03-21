@@ -90,11 +90,16 @@ General thoughts on extension to uncertainty
 			\item Uncertainty should reverse this, right?
 			\item What is uncertainty? Make $v(z)$ stochastic is most natural
 				\begin{itemize}
-					\item I'm going to start with linear parameterization of $v(z)$ and add uncertainty:
+					\item I'm going to start with linear parameterization of $v(z)$ and add uncertainty. For now, take same form for $v(z)$
 						\[
-						  v(z) = \alpha -\beta \cdot z + \ve_z
+						  v(z) = \alpha -\beta \cdot z
 						\]
-						we can decide later on the distributional assumptions for $\ve_z$, and whether / when we want to make the $\ve$ vary by legislator ($z$)
+						and take $z$ as a random variable distributed normally with mean $z$ and standard deviation $\sigma_z$. This is unfortunate nomenclature, since later we'll probably want to take this to a standard normal ``Z'' 
+							\begin{itemize}
+								\item This means that the legislators are ordered on the interval according to their ideal points, but there is acknowledged uncertainty surrounding their preferences 
+								\item What is the source of this uncertainty? We take it to vary by legislator and also possibly by issue area when we extend the model to account for that
+								\item Uncertainty comes from: log-rolling and cross-pressuring; length of voting record; electoral incentives that we can't control for
+							\end{itemize}
 				\end{itemize}
 		\end{itemize}
 \end{itemize}
@@ -184,6 +189,14 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 \end{enumerate}
 
 \newpage
+Notes from 3/16 Skype chat (Kristy and Sebastian)
+\begin{itemize}
+	\item Seems like FOC for lobby will boil down to each one buying votes until marginal benefit = marginal cost
+	\item May want to use some simplified rule / heuristic for lobby's decision: perhaps they reorder the legislators by their $\pm 2$ std. dev. and make some decision based on that ordering who to lobby
+	\item Will some kind of rule that looks like RMSE come out of the math? Is it possible to get anything closed-form at all?
+\end{itemize}
+
+\vskip.3in
 Notes from 3/19 Skype chat (Kristy and Sebastian)
 \begin{itemize}
 	\item We can use the data we have to horse-race this model against other hypotheses about how lobbyists distribute bribes
