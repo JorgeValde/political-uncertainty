@@ -144,7 +144,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Let's start with the simple maximize expected value of winning (WTP times probability of winning) net of bribes:
 						\begin{multline}
 							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
-							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
+							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
 						\end{multline}
 				\begin{itemize}
 					\item Problem is that the indicator function will never equal 1 when $J \sim N(j,\sigma_j)$
@@ -153,8 +153,12 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 							\item Maximizing the total probability mass where $v(j) \geq 0$?
 							  \begin{multline}
 									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
-									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
+									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
 								\end{multline}
+									\begin{itemize}
+										\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
+										\item Some legislators who are past FOC point will not be lobbied
+									\end{itemize}
 							\item Suppressing the constraint for now and using the fact that $J \sim N(j,\sigma_j)$, this can be re-written as
 								\begin{equation}
 									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) - b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
@@ -167,7 +171,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 							\item	So, this can be written as
 								\begin{multline}
 									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
-									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
+									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
 								\end{multline}
 							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
 							\item The FOC for each $j$ is then
