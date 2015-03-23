@@ -98,7 +98,7 @@ General thoughts on extension to uncertainty
 							\begin{itemize}
 								\item This means that the legislators are ordered on the interval according to their ideal points, but there is acknowledged uncertainty surrounding their preferences 
 								\item What is the source of this uncertainty? We take it to vary by legislator and also possibly by issue area when we extend the model to account for that
-								\item Uncertainty comes from: log-rolling and cross-pressuring; length of voting record; electoral incentives that we can't control for
+								\item Uncertainty comes from: \textbf{log-rolling and cross-pressuring; length of voting record; electoral incentives that we can't control for}
 							\end{itemize}
 				\end{itemize}
 		\end{itemize}
@@ -111,11 +111,12 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 		\begin{itemize}
 			\item Each legislator $z$ will decide whether to vote for $x$ or $s$ given $z$, $a(z)$ and $b(z)$. Votes for $x$ if
 			  \[
-				  v(z) = \alpha -\beta \cdot z + a(z) + b(z) > 0
+				  v(z) = \alpha -\beta \cdot z + a(z) - b(z) > 0
 				\]
 				(whether the inequality is weak or strict depends on tie-breaking rules set out in the paper)
 					\begin{itemize}
 						\item Let's start out by thinking of $z$ as being a random variable distributed $N(z,\sigma_z)$
+						\item Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive
 					\end{itemize}
 			\item Payoff for vote buyer A if $x$ wins is $U_A(x) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
 			\item Payoff for vote buyer A if $s$ wins is $U_A(s) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
@@ -142,7 +143,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 				\end{itemize}
 			\item Let's start with the simple maximize expected value of winning (WTP times probability of winning) net of bribes:
 						\begin{multline}
-							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) + b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
 							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
 						\end{multline}
 				\begin{itemize}
@@ -151,27 +152,27 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 						\begin{itemize}
 							\item Maximizing the total probability mass where $v(j) \geq 0$?
 							  \begin{multline}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) + b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
 									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
 								\end{multline}
 							\item Suppressing the constraint for now and using the fact that $J \sim N(j,\sigma_j)$, this can be re-written as
 								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) + b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) - b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
 								\end{equation}
 								or
 								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \leq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \leq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
 								\end{equation}
 								where $Z \sim N(0,1)$. \\
 							\item	So, this can be written as
 								\begin{multline}
-									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
+									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
 									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B
 								\end{multline}
 							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
 							\item The FOC for each $j$ is then
 								\begin{equation}
-								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) + b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
+								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
 								\end{equation}
 								as long as the constraint is satisfied.
 									\begin{itemize}
