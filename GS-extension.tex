@@ -195,6 +195,27 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 						\end{equation}
 							\begin{itemize}
 								\item This just says the pdf has to equal $\beta$ divided by the willingness to pay
+								\item Rearranging to solve for $b(j)$:
+									\begin{equation}
+							  		e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{\beta\sigma_j \sqrt{2\pi}}{W_B} 
+									\end{equation}
+									\begin{equation}
+							  		- \left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2 =2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)
+									\end{equation}
+								Since the log statement on the RHS will almost certainly be negative, I can take the negative sign to the right and take the square root without worrying about imaginary numbers
+								  \begin{equation}
+							  		\frac{\alpha + a(j) - b(j)}{\beta} - j = \sqrt{-2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
+									\end{equation}
+									\begin{equation}
+							  		\alpha + a(j) - b(j) = \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)} + j \beta
+									\end{equation}
+									\begin{equation}
+							  		b(j) = \alpha + a(j)  - j \beta - \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
+									\end{equation}
+									\begin{equation}
+							  		b(j) = \alpha + a(j)  - \beta j - \beta\sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
+									\end{equation}
+								\item This mostly make sense, except that $b(j)$ would be decreasing in $W_B$
 							\end{itemize}
 					\item How do we deal with this r.v. with continuous support when the range of ideal points is posited to be finite ($[-\frac{1}{2},\frac{1}{2}]$)?
 
