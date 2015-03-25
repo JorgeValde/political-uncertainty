@@ -172,6 +172,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 								\begin{multline}
 									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
 									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
+									\label{ex:objB}
 								\end{multline}
 							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
 							\item The FOC for each $j$ is then
@@ -217,6 +218,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 									\end{equation}
 									\begin{equation}
 							  		b(j) = \alpha + a(j)  - \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
+										\label{eq:focB}
 									\end{equation}
 								\item So, the bribe for legislator $j$ takes legislator j's preferences back to zero in expectation (the first three terms) and then relative to that, either adds or subtracts a term that involves WTP, variance and $\beta$
 									\begin{itemize}
@@ -234,8 +236,36 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 	\item Vote buyer A
 		\begin{itemize}
 			\item Whatever we decide for vote buyer B will be the same for vote buyer A
+			\item Adapting Expression~\ref{ex:objB} for Vote Buyer A
+				\begin{multline}
+					\max_{a(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_A \cdot \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right) - b(j) \right] dj \\
+						\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj \leq W_A  \hskip.2in \text{and} \hskip.2in a(j)\geq0 \ \forall j
+							\label{ex:objA}
+				\end{multline}
+					\begin{itemize}
+						\item Major problem if we solve this game sequentially: when substituting the FOC for Vote Buyer B (Equation~\ref{eq:focB}) into Vote Buyer A's objective function, the $a(j)$'s cancel out ($b(j)$ is linear in $a(j)$) so the benefit term is constant in $a(j)$
+					\end{itemize}
 		\end{itemize}
 \end{enumerate}
+
+\newpage
+Comparative statics
+\begin{itemize}
+	\item Vote buyer B (3/25/15)
+		\begin{itemize}
+			\item Those for $j$, $a(j)$ and $\alpha$ don't involve the root term, so don't differ depending on whether we take the plus or minus version
+				\[
+					\frac{\partial b(j)}{\partial j} = -\beta \hskip.2in \frac{\partial b(j)}{\partial a(j)} = 1 \hskip.2in \frac{\partial b(j)}{\partial \alpha} = 1
+				\]
+			\item Those for $\beta$ and $\sigma_j$ \textit{do} involve the root term. I will only display the version for the positive root; there is also a version with all the signs reversed
+				\[
+				  \frac{\partial b(j)}{\partial \beta} = -j + \sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\sigma_j}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+				\[
+				  \frac{\partial b(j)}{\partial \sigma_j} = \beta \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\beta}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+		\end{itemize}
+\end{itemize}
 
 \newpage
 Notes from 3/16 Skype chat (Kristy and Sebastian)
