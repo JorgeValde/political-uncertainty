@@ -269,6 +269,46 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 \end{enumerate}
 
 \newpage
+Discrete version (Conversation between Kristy and Frank, 3/27/15)
+\begin{itemize}
+	\item Purpose: try to understand what the right objective function is. Does maximizing total probability also maximize the probability of winning?
+		\begin{itemize}
+			\item Note that this model \textit{may} introduce interdependence between the bid functions that does not exist in the continuous model
+			\item What is not clear is whether this happens when the WTP constraint is not binding, which I'm going to assume from the start, and maybe impose later
+		\end{itemize}
+	\item Frank prefers to write
+	  \[
+		  v(z) = \alpha -\beta z + \ve_z + a(z) - b(z)
+		\]
+			\begin{itemize}
+				\item Note that, in a probit we will have to worry about separately identifying the parameters. So for now, will assume $\ve$ does not vary in $z$
+				\item Also going to ignore Vote Buyer A's choice for now, so we have
+			\end{itemize}
+	  \[
+		  v(z) = \alpha -\beta z + \ve - b(z)
+		\]
+	\item Then the probability that legislator $z$ votes against the new proposal is
+	  \[
+		  \Pr\left[v(z)\leq 0 \right] = \Pr\left[\alpha -\beta z + \ve - b(z) \leq 0 \right] 
+			                            = \Pr\left[\ve \leq \beta z - \alpha + b(z) \right] 
+		\]
+		Assuming $\ve \sim N(0,1)$, the probability that legislator $z$ votes ``no'' is $\Phi\left(\beta z - \alpha + b(z) \right)$
+	\item Take a model with three legislators with ideal points at $z=-\frac{1}{2}$, $z=0$ and $z=\frac{1}{2}$. Then the three probabilities are
+		\begin{itemize}
+			\item $\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)$, $\Phi\left(- \alpha + b(z) \right)$, and $\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right)$
+			\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
+				\[
+				  X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \Phi\left(\beta z - \alpha + b(z) \right)
+				\]
+			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
+			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
+			  \[
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} \Pr(X\left(-\frac{1}{2}\right)=1)\Pr(X\left(0\right)=1)\Pr(X\left(\frac{1}{2}\right)=0)  + ...
+				\]
+		\end{itemize}
+\end{itemize}
+
+\newpage
 Comparative statics
 \begin{itemize}
 	\item Vote buyer B (3/25/15) --- note these are not super useful yet --- they're comparative statics of the best response function, but not of the equilibrium
