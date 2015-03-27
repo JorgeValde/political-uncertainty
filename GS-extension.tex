@@ -256,13 +256,22 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 									\label{eq:focA3}
 							\end{equation}		
 					\end{itemize}
+				\item Plugging either one of the vote buyers' FOCs into the other just implies that $W_A = W_B$, but doesn't say anything about the level of bribes. Use some kind of pareto ranking to choose one?
+					\begin{itemize}
+						\item Note that to get a solution, I've taken both FOCs to have the same root (either both positive or both negative; Otherwise, we need a very special combination of parameters to get an equilibrium)
+						\item Intuition for this equilibrium: each vote buyer exactly brings legislator $j$ back to neutral (compensating both for inherent preference $\alpha - \beta \cdot j$) and the other vote buyer's bribe; they also each tack on a term related to WTP, $\beta$, and $\sigma_j$, but these terms cancel out as well as long as $W_A = W_B$. If $W_A \neq W_B$, then there is not such an interior equilibrium as far as I can tell. 
+							\begin{itemize}
+								\item Need to look for more equilibria, perhaps in mixed strategies.
+								\item Especially a way to get asymmetric pure strategies (I'm happy to have asymmetry between $W_A$ and $W_B$ if necessary)
+							\end{itemize}
+					\end{itemize}
 		\end{itemize}
 \end{enumerate}
 
 \newpage
 Comparative statics
 \begin{itemize}
-	\item Vote buyer B (3/25/15)
+	\item Vote buyer B (3/25/15) --- note these are not super useful yet --- they're comparative statics of the best response function, but not of the equilibrium
 		\begin{itemize}
 			\item Those for $j$, $a(j)$ and $\alpha$ don't involve the root term, so don't differ depending on whether we take the plus or minus version
 				\[
