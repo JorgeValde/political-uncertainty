@@ -193,6 +193,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 					\item It's easier for me to think of the CDF in terms of the non-standardized Normal distribution before taking the derivative. Then, if my math is right, the FOC becomes
 						\begin{equation}
 							  \frac{1}{\beta}\frac{1}{\sigma_j \sqrt{2\pi}} \: e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{1}{W_B} 
+								\label{eq:focB2}
 						\end{equation}
 							\begin{itemize}
 								\item This just says the pdf has to equal $\beta$ divided by the willingness to pay
@@ -238,12 +239,22 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Whatever we decide for vote buyer B will be the same for vote buyer A
 			\item Adapting Expression~\ref{ex:objB} for Vote Buyer A
 				\begin{multline}
-					\max_{a(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_A \cdot \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right) - b(j) \right] dj \\
+					\max_{a(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_A \cdot \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right) - a(j) \right] dj \\
 						\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj \leq W_A  \hskip.2in \text{and} \hskip.2in a(j)\geq0 \ \forall j
 							\label{ex:objA}
 				\end{multline}
 					\begin{itemize}
 						\item Major problem if we solve this game sequentially: when substituting the FOC for Vote Buyer B (Equation~\ref{eq:focB}) into Vote Buyer A's objective function, the $a(j)$'s cancel out ($b(j)$ is linear in $a(j)$) so the benefit term is constant in $a(j)$
+						\item Static best response
+						  \begin{equation}
+								  W_A \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial a(j)} = 1
+									\label{eq:focA}
+							\end{equation}
+						\item Math looks exactly the same as Eqn. \ref{eq:focB2} to \ref{eq:focB} except with $W_A$ replacing $W_B$ and all the opposite signs, so
+							\begin{equation}
+								a(j) = -\alpha + b(j)  + \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_A - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
+									\label{eq:focA3}
+							\end{equation}		
 					\end{itemize}
 		\end{itemize}
 \end{enumerate}
