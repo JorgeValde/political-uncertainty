@@ -150,7 +150,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 					\item Problem is that the indicator function will never equal 1 when $J \sim N(j,\sigma_j)$
 					\item So what's a reasonable objective function? 
 						\begin{itemize}
-							\item Maximizing the total probability mass where $v(j) \geq 0$?
+							\item Maximizing the total probability mass where $v(j) \leq 0$?
 							  \begin{multline}
 									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
 									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
