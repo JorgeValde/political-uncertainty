@@ -302,9 +302,21 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 				\]
 			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
 			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
-			  \[
-			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} \Pr(X\left(-\frac{1}{2}\right)=1)\Pr(X\left(0\right)=1)\Pr(X\left(\frac{1}{2}\right)=0)  + ...
-				\]
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(\frac{1}{2}\right)=0\right)  + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right)
+				\end{multline}
+			Substituting from the definition of $X$,
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\Phi\left(- \alpha + b(z) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right)\right)  + \\
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\left(1-\Phi\left(- \alpha + b(z) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right) + \\
+					\left(1-\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\right)\Phi\left(- \alpha + b(z) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right) + \\
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\Phi\left(- \alpha + b(z) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right)
+				\end{multline}
 		\end{itemize}
 \end{itemize}
 
