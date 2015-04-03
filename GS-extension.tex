@@ -312,11 +312,42 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 			Substituting from the definition of $X$,
 			  \begin{multline}
 			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
-					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\Phi\left(- \alpha + b(z) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right)\right)  + \\
-					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\left(1-\Phi\left(- \alpha + b(z) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right) + \\
-					\left(1-\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\right)\Phi\left(- \alpha + b(z) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right) + \\
-					\Phi\left(-\frac{\beta}{2} - \alpha + b(z) \right)\Phi\left(- \alpha + b(z) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(z) \right)
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
+					\left(1-\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)
 				\end{multline}
+			The FOC wrt to $b\left(-\frac{1}{2}\right)$ is
+				\begin{multline}
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) - \\
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+				\end{multline}
+			Simplifying:
+			  \begin{multline}
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)+ \\
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \\
+					- 2\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+				\end{multline}
+			Further:
+			  \begin{multline}
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \\ \left[ \Phi\left(- \alpha + b(0) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
+					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \right] = 0
+				\end{multline}
+			So I think we have three conditions:
+			\begin{equation}
+					\Phi\left(- \alpha + b(0) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
+					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+			\end{equation}
+			\begin{equation}
+					\Phi\left(- \alpha + b(0) \right)+  \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right) 
+					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right) = 0
+			\end{equation}
+			\begin{equation}
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
+					- 2 \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2})\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+			\end{equation}
 		\end{itemize}
 \end{itemize}
 
