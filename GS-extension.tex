@@ -304,50 +304,48 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
 			  \begin{multline}
 			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
-					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(\frac{1}{2}\right)=0\right)  + \\
+					W_B \biggl[ \Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(\frac{1}{2}\right)=0\right)  + \\
 					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
 					\Pr\left(X\left(-\frac{1}{2}\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
-					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right)
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
 				\end{multline}
 			Substituting from the definition of $X$,
 			  \begin{multline}
 			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
-					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
+					W_B \biggl[ \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
 					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
 					\left(1-\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
-					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)
+					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
 				\end{multline}
 			The FOC wrt to $b\left(-\frac{1}{2}\right)$ is
 				\begin{multline}
-					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
+					W_B \biggl[ \frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
 					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) - \\
 					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
-					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \biggr]  = 1
 				\end{multline}
 			Simplifying:
-			  \begin{multline}
-					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)+ \\
-					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \\
-					- 2\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
+			\begin{multline}
+					W_B \frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \biggl[ \Phi\left(- \alpha + b(0) \right)\left(1-\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\right)  + \\
+					\left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) - 
+					\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
+					\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \biggr]  = 1
 				\end{multline}
-			Further:
+			Simplifying further:
 			  \begin{multline}
-					\frac{1}{\sqrt{2\pi}} \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}\right)^2}{2}} \\ \left[ \Phi\left(- \alpha + b(0) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
-					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \right] = 0
+					\Phi\left(- \alpha + b(0) \right)+ \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
+					- 2\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \\ = \frac{\sqrt{2\pi}}{W_B \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\right)^2}{2}} }
 				\end{multline}
-			So I think we have three conditions:
-			\begin{equation}
-					\Phi\left(- \alpha + b(0) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
-					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
-			\end{equation}
-			\begin{equation}
+			
+			The two symmetric conditions would be:
+			\begin{multline}
 					\Phi\left(- \alpha + b(0) \right)+  \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right) 
-					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right) = 0
-			\end{equation}
-			\begin{equation}
+					- 2 \Phi\left(- \alpha + b(0) \right)\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right) \\ = \frac{\sqrt{2\pi}}{W_B \: e^{- \frac{\left(\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)\right)^2}{2}} }
+				\end{multline}
+			\begin{multline}
 					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)+  \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
-					- 2 \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2})\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) = 0
-			\end{equation}
+					- 2 \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2})\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\\ = \frac{\sqrt{2\pi}}{W_B \: e^{- \frac{\left( - \alpha + b\left(0\right)\right)^2}{2}} }
+				\end{multline}
 		\end{itemize}
 \end{itemize}
 
