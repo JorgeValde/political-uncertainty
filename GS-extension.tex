@@ -335,6 +335,7 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 			  \begin{multline}
 					\Phi\left(- \alpha + b(0) \right)+ \Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) 
 					- 2\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \\ = \frac{\sqrt{2\pi}}{W_B \: e^{- \frac{\left(-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\right)^2}{2}} }
+					\label{eq:firstfoc}
 				\end{multline}
 			
 			The two symmetric conditions would be:
@@ -347,6 +348,19 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 					- 2 \Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2})\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right)\\ = \frac{\sqrt{2\pi}}{W_B \: e^{- \frac{\left( - \alpha + b\left(0\right)\right)^2}{2}} }
 				\end{multline}
 		\end{itemize}
+	\item Some notes
+		\begin{itemize}
+			\item If we divide through by 2, the left side is the average minus the product
+			\item If that is set equal to zero, the only solutions (for just one equation) are at (0,0) and (1,1). The right hand side modifies that.
+			\item Need to check SOC at some point
+			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
+			\item First I'm going to try to get closed form answer / intuition by substituting logistic for normal CDF/PDF
+		\end{itemize}
+	\item Substituting logistic for normal in Equation~\ref{eq:firstfoc}
+		\begin{equation}
+					\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}} + \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)}}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}
+					- 2\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}}  \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }} = \frac{\left(1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)}\right)^2}{W_B \: e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)} }
+				\end{equation}
 \end{itemize}
 
 \newpage
