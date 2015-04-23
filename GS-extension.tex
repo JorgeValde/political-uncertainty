@@ -442,16 +442,28 @@ The math that follows from Equation \ref{eq:logistic}:
 		\[
 		  e^{X} = e^{Y+Z}
 		\]
-		\[
+		\begin{equation}
 		  X = Y+Z
-		\]
+			\label{eq:X}
+		\end{equation}
 		By symmetry, we also have
-		\[
+		\begin{equation}
 		  Y = X + Z
-		\]
-		\[
+			\label{eq:Y}
+		\end{equation}
+		\begin{equation}
 		  Z = X + Y
+			\label{eq:Z}
+		\end{equation}
+		Substituting Equation \ref{eq:Z} into Equation \ref{eq:X}
+		\[
+		  X = Y + X + Y = X = 2Y \Rightarrow Y = 0
 		\]
+		Substituting from $Y = 0$ into Equation \ref{eq:X}, we have $X = Z$. Substituting both into Equation \ref{eq:Y}, we have $0 = Z + Z$, which implies $Z = 0$. Likewise for $X$. Thus we must have
+		\[
+		  X = Y = Z = 0
+		\]
+		
 \end{itemize}		
 			
 		
