@@ -378,25 +378,6 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 \end{itemize}
 
 \newpage
-Comparative statics
-\begin{itemize}
-	\item Vote buyer B (3/25/15) --- note these are not super useful yet --- they're comparative statics of the best response function, but not of the equilibrium
-		\begin{itemize}
-			\item Those for $j$, $a(j)$ and $\alpha$ don't involve the root term, so don't differ depending on whether we take the plus or minus version
-				\[
-					\frac{\partial b(j)}{\partial j} = -\beta \hskip.2in \frac{\partial b(j)}{\partial a(j)} = 1 \hskip.2in \frac{\partial b(j)}{\partial \alpha} = 1
-				\]
-			\item Those for $\beta$ and $\sigma_j$ \textit{do} involve the root term. I will only display the version for the positive root; there is also a version with all the signs reversed
-				\[
-				  \frac{\partial b(j)}{\partial \beta} = -j + \sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\sigma_j}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
-				\]
-				\[
-				  \frac{\partial b(j)}{\partial \sigma_j} = \beta \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\beta}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
-				\]
-		\end{itemize}
-\end{itemize}
-
-\newpage
 The math that follows from Equation \ref{eq:logistic}:
 \begin{itemize}
 	\item Let
@@ -462,11 +443,29 @@ The math that follows from Equation \ref{eq:logistic}:
 		Substituting from $Y = 0$ into Equation \ref{eq:X}, we have $X = Z$. Substituting both into Equation \ref{eq:Y}, we have $0 = Z + Z$, which implies $Z = 0$. Likewise for $X$. Thus we must have
 		\[
 		  X = Y = Z = 0
-		\]
-		
+		\]		
 \end{itemize}		
 			
-		
+\newpage
+Comparative statics
+\begin{itemize}
+	\item Vote buyer B (3/25/15) --- note these are not super useful yet --- they're comparative statics of the best response function, but not of the equilibrium
+		\begin{itemize}
+			\item Those for $j$, $a(j)$ and $\alpha$ don't involve the root term, so don't differ depending on whether we take the plus or minus version
+				\[
+					\frac{\partial b(j)}{\partial j} = -\beta \hskip.2in \frac{\partial b(j)}{\partial a(j)} = 1 \hskip.2in \frac{\partial b(j)}{\partial \alpha} = 1
+				\]
+			\item Those for $\beta$ and $\sigma_j$ \textit{do} involve the root term. I will only display the version for the positive root; there is also a version with all the signs reversed
+				\[
+				  \frac{\partial b(j)}{\partial \beta} = -j + \sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\sigma_j}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+				\[
+				  \frac{\partial b(j)}{\partial \sigma_j} = \beta \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\beta}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+		\end{itemize}
+\end{itemize}
+
+
 				  
 		
 
