@@ -407,10 +407,51 @@ The math that follows from Equation \ref{eq:logistic}:
 		\end{enumerate}
 	\item Then Equation \ref{eq:logistic} is equivalent to:
 		\begin{equation}
-					\frac{e^{X}}{1+e^{X}} + \frac{e^{Y}}{1+e^{Y }}
-					- 2\frac{e^{X}}{1+e^{X}}  \frac{e^{Y }}{1+e^{Y }} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+			\frac{e^{X}}{1+e^{X}} + \frac{e^{Y}}{1+e^{Y }} - 2\frac{e^{X}}{1+e^{X}}  \frac{e^{Y }}{1+e^{Y }} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
 					\label{eq:logistic2}
-				\end{equation}
+		\end{equation}
+		\[
+			\frac{e^{X} + 2e^{X+Y} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} - 2\frac{e^{X+Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+		\]
+		\[
+			\frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+		\]
+		\begin{equation}
+			\frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} \frac{e^{Z}}{\left(1+e^{Z}\right)^2}= \frac{1}{W_B}
+		\end{equation}
+		Likewise, we have
+		\begin{equation}
+			\frac{e^{X} + e^{Z}}{\left(1+e^{X}\right)\left(1+e^{Z}\right)} \frac{e^{Y}}{\left(1+e^{Y}\right)^2}= \frac{1}{W_B}
+		\end{equation}
+		Setting the left-hand size of these two equations equal to each other,
+		\[
+		  \frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} \frac{e^{Z}}{\left(1+e^{Z}\right)^2}= \frac{e^{X} + e^{Z}}{\left(1+e^{X}\right)\left(1+e^{Z}\right)} \frac{e^{Y}}{\left(1+e^{Y}\right)^2}
+		\]
+		\[
+		  \frac{e^{X+Z} + e^{Y+Z}}{1+e^{Z}}= \frac{e^{X+Y} + e^{Y+Z}}{1+e^{Y}}
+		\]
+		\[
+		  e^{X+Z} + e^{Y+Z} + e^{X+Y+Z} +e^{2Y+Z}= e^{X+Y} + e^{Y+Z} + e^{X+Y+Z} +e^{Y+2Z}
+		\]
+		\[
+		  e^{X+Z} +e^{2Y+Z}= e^{X+Y} +e^{Y+2Z}
+		\]
+		\[
+		  e^{X}\left(e^{Z} - e^{Y} \right) = e^{Y+Z}\left(e^{Z} - e^{Y} \right)
+		\]
+		\[
+		  e^{X} = e^{Y+Z}
+		\]
+		\[
+		  X = Y+Z
+		\]
+		By symmetry, we also have
+		\[
+		  Y = X + Z
+		\]
+		\[
+		  Z = X + Y
+		\]
 \end{itemize}		
 			
 		
