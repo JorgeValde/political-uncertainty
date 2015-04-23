@@ -359,8 +359,22 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 	\item Substituting logistic for normal in Equation~\ref{eq:firstfoc}
 		\begin{equation}
 					\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}} + \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)}}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}
-					- 2\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}}  \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }} = \frac{\left(1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)}\right)^2}{W_B \: e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)} }
+					- 2\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}}  \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }} = \frac{\left(1+e^{-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)}\right)^2}{W_B \: e^{-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)} }
+					\label{eq:logistic}
 				\end{equation}
+		\begin{itemize}
+			\item A LOT of math (I will put it somewhere else) leads to three equations:
+				\[
+				  \left[ - \alpha + b(0) \right] = \left[ \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) \right] + \left[ -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) \right]
+				\]
+				\[
+				   \left[ \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) \right] =\left[ - \alpha + b(0) \right]+ \left[ -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) \right]
+				\]
+				\[
+				   \left[ -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) \right] = \left[ \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) \right] +\left[ - \alpha + b(0) \right]
+				\]
+			\item A little more math implies that all three quantities in brackets must equal zero.
+		\end{itemize}
 \end{itemize}
 
 \newpage
@@ -381,6 +395,27 @@ Comparative statics
 				\]
 		\end{itemize}
 \end{itemize}
+
+\newpage
+The math that follows from Equation \ref{eq:logistic}:
+\begin{itemize}
+	\item Let
+		\begin{enumerate}
+			\item $ X - \alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
+		\end{enumerate}
+	\item Then Equation \ref{eq:logistic} is equivalent to:
+		\begin{equation}
+					\frac{e^{X}}{1+e^{X}} + \frac{e^{Y}}{1+e^{Y }}
+					- 2\frac{e^{X}}{1+e^{X}}  \frac{e^{Y }}{1+e^{Y }} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+					\label{eq:logistic2}
+				\end{equation}
+\end{itemize}		
+			
+		
+				  
+		
 
 \newpage
 Notes from 3/16 Skype chat (Kristy and Sebastian)
