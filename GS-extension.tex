@@ -358,8 +358,8 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 		\end{itemize}
 	\item Substituting logistic for normal in Equation~\ref{eq:firstfoc}
 		\begin{equation}
-					\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}} + \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)}}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}
-					- 2\frac{e^{- \alpha + b(0)}}{1+e^{- \alpha + b(0)}}  \frac{e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }}{1+e^{\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right) }} = \frac{\left(1+e^{-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)}\right)^2}{W_B \: e^{-\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)} }
+					\frac{1}{1+e^{\alpha - b(0)}} + \frac{1}{1+e^{-\frac{\beta}{2} + \alpha - b\left(\frac{1}{2}\right) }}
+					- 2\frac{1}{1+e^{\alpha - b(0)}}  \frac{1}{1+e^{-\frac{\beta}{2} + \alpha - b\left(\frac{1}{2}\right) }} = \frac{\left(1+e^{\frac{\beta}{2} + \alpha - b\left(-\frac{1}{2}\right)}\right)^2}{W_B \: e^{\frac{\beta}{2} + \alpha - b\left(-\frac{1}{2}\right)} }
 					\label{eq:logistic}
 				\end{equation}
 		\begin{itemize}
@@ -395,69 +395,98 @@ The math that follows from Equation \ref{eq:logistic}:
 \begin{itemize}
 	\item Let
 		\begin{enumerate}
-			\item $ X - \alpha + b(0)$ 
+			\item $X = -\alpha + b(0)$ 
 			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
 			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
 		\end{enumerate}
 	\item Then Equation \ref{eq:logistic} is equivalent to:
 		\begin{equation}
-			\frac{e^{X}}{1+e^{X}} + \frac{e^{Y}}{1+e^{Y }} - 2\frac{e^{X}}{1+e^{X}}  \frac{e^{Y }}{1+e^{Y }} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+			\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z} }
 					\label{eq:logistic2}
 		\end{equation}
 		\[
-			\frac{e^{X} + 2e^{X+Y} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} - 2\frac{e^{X+Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+			\frac{2 + e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z}}
 		\]
 		\[
-			\frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} = \frac{\left(1+e^{Z}\right)^2}{W_B \: e^{Z} }
+			\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z}}
 		\]
 		\begin{equation}
-			\frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} \frac{e^{Z}}{\left(1+e^{Z}\right)^2}= \frac{1}{W_B}
+			\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}= \frac{1}{W_B}
 		\end{equation}
 		Likewise, we have
 		\begin{equation}
-			\frac{e^{X} + e^{Z}}{\left(1+e^{X}\right)\left(1+e^{Z}\right)} \frac{e^{Y}}{\left(1+e^{Y}\right)^2}= \frac{1}{W_B}
+			\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
 		\end{equation}
 		Setting the left-hand size of these two equations equal to each other,
 		\[
-		  \frac{e^{X} + e^{Y}}{\left(1+e^{X}\right)\left(1+e^{Y }\right)} \frac{e^{Z}}{\left(1+e^{Z}\right)^2}= \frac{e^{X} + e^{Z}}{\left(1+e^{X}\right)\left(1+e^{Z}\right)} \frac{e^{Y}}{\left(1+e^{Y}\right)^2}
+		  \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
 		\]
 		\[
-		  \frac{e^{X+Z} + e^{Y+Z}}{1+e^{Z}}= \frac{e^{X+Y} + e^{Y+Z}}{1+e^{Y}}
+		  \frac{e^{-X-Z} + e^{-Y-Z}}{1+e^{-Z}}= \frac{e^{-X-Y} + e^{-Y-Z}}{1+e^{-Y}}
 		\]
 		\[
-		  e^{X+Z} + e^{Y+Z} + e^{X+Y+Z} +e^{2Y+Z}= e^{X+Y} + e^{Y+Z} + e^{X+Y+Z} +e^{Y+2Z}
+		  e^{-X-Z} + e^{-Y-Z} + e^{-X-Y-Z} +e^{-2Y-Z}= e^{-X-Y} + e^{-Y-Z} + e^{-X-Y-Z} +e^{-Y-2Z}
 		\]
 		\[
-		  e^{X+Z} +e^{2Y+Z}= e^{X+Y} +e^{Y+2Z}
+		  e^{-X-Z} +e^{-2Y-Z}= e^{-X-Y} +e^{-Y-2Z}
 		\]
 		\[
-		  e^{X}\left(e^{Z} - e^{Y} \right) = e^{Y+Z}\left(e^{Z} - e^{Y} \right)
+		  e^{-X}\left(e^{-Z} - e^{-Y} \right) = e^{-Y-Z}\left(e^{-Z} - e^{-Y} \right)
 		\]
 		\[
-		  e^{X} = e^{Y+Z}
+		  e^{-X} = e^{-Y-Z}
 		\]
 		\begin{equation}
-		  X = Y+Z
+		  -X = -Y-Z
 			\label{eq:X}
 		\end{equation}
 		By symmetry, we also have
 		\begin{equation}
-		  Y = X + Z
+		  -Y = -X - Z
 			\label{eq:Y}
 		\end{equation}
 		\begin{equation}
-		  Z = X + Y
+		  -Z = -X - Y
 			\label{eq:Z}
 		\end{equation}
 		Substituting Equation \ref{eq:Z} into Equation \ref{eq:X}
 		\[
-		  X = Y + X + Y = X = 2Y \Rightarrow Y = 0
+		  - X = - Y - X - Y \Rightarrow 0 = 2Y \Rightarrow Y = 0
 		\]
 		Substituting from $Y = 0$ into Equation \ref{eq:X}, we have $X = Z$. Substituting both into Equation \ref{eq:Y}, we have $0 = Z + Z$, which implies $Z = 0$. Likewise for $X$. Thus we must have
 		\[
 		  X = Y = Z = 0
 		\]		
 \end{itemize}		
+
+\vskip1in
+Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
+\[
+  W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
+\]
+\[
+  W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1
+\]
+Now, the second derivative:
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} 2\left(1+e^{-Z}\right) e^{-Z}-\left(1+e^{-Z}\right)^2 e^{-Z}}{\left(1+e^{-Z}\right)^4} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} 2 e^{-Z}-\left(1+e^{-Z}\right) e^{-Z}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{2 e^{-Z}-\left(1+e^{-Z}\right) \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{2 e^{-Z}-1-e^{-Z} \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{e^{-Z}-1 \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z}}{\left(1+e^{-Z}\right)^3} \right] \left\{e^{-Z}-1 \right\}
+\]
+Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $z\leq0$ and negative when $z\geq0$. So this objective function appears to have an inflection point at $z=0$.
 			
 \newpage
 Comparative statics
