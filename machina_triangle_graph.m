@@ -15,15 +15,19 @@ WB = 3;
 
 obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
 
-obj2=obj;
+s0 = size(b0,2);
+s5 = size(bp5,2);
 
-bs = size(b0,2);
+obj2 = zeros(101);
 
-for j=1:bs
-     for i=1:bs
-        if i + j < 102
-        obj2(i,j) = 0;
+for j=1:101
+    j=50
+    i = 25
+     for i=1:101
+        if bnp5(i,j) ge 0
+            disp('test2')
         end
+     obj2(i,j) = obj(i,j)
 end
 
 
