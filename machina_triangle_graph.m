@@ -1,9 +1,9 @@
 %%parameters (beta = 1)
-WB = 5;
+WB = 15;
 al = .5;
 
-out = zeros(100,3,'double');
-for t = 0.01:.01:1;
+out = zeros(100,5,'double');
+for t = 0.01:.01:10;
     b0 = [0:.01*t:t];
     bp5 = [0:.01*t:t];
     [b0,bp5]=meshgrid(b0,bp5);
@@ -20,7 +20,7 @@ for t = 0.01:.01:1;
     [R,C] = ind2sub(size(obj2),location);
     prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
     t2 = round(t*100);
-    out(t2,:) = [t,prob,value];
+    out(t2,:) = [t,prob,value,R,C];
  end
 
 
