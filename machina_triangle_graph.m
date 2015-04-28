@@ -1,28 +1,25 @@
-t = 2
+%%parameters (beta = 1)
+WB = 5;
+al = .5;
+
+t = 1;
 b0 = [0:.01*t:t];
 bp5 = [0:.01*t:t];
 [b0,bp5]=meshgrid(b0,bp5);
-
 bnp5 = t - b0 - bp5;
-
-al = .5;
 
 X = -.5 - al + bnp5;
 Y = - al + b0;
 Z = .5 - al + bp5;
 
-WB = 5;
-
 obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
-
 obj2 = obj.*(bnp5>=0);
 
 [value, location] = max(obj2(:));
-prob = value/5
 [R,C] = ind2sub(size(obj2),location);
+prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
+out = [t,prob,value]
 
-%%Outer loop
-v = value - b0(R,C) - bp5(R,C) - bnp5(R,C)
 
 mesh(obj2);
 %% Create axes
