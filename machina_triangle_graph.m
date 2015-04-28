@@ -2,23 +2,26 @@
 WB = 5;
 al = .5;
 
-t = 1;
-b0 = [0:.01*t:t];
-bp5 = [0:.01*t:t];
-[b0,bp5]=meshgrid(b0,bp5);
-bnp5 = t - b0 - bp5;
+out = zeros(100,3,'double');
+for t = 0.01:.01:1;
+    b0 = [0:.01*t:t];
+    bp5 = [0:.01*t:t];
+    [b0,bp5]=meshgrid(b0,bp5);
+    bnp5 = t - b0 - bp5;
 
-X = -.5 - al + bnp5;
-Y = - al + b0;
-Z = .5 - al + bp5;
+    X = -.5 - al + bnp5;
+    Y = - al + b0;
+    Z = .5 - al + bp5;
 
-obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
-obj2 = obj.*(bnp5>=0);
+    obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
+    obj2 = obj.*(bnp5>=0);
 
-[value, location] = max(obj2(:));
-[R,C] = ind2sub(size(obj2),location);
-prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
-out = [t,prob,value]
+    [value, location] = max(obj2(:));
+    [R,C] = ind2sub(size(obj2),location);
+    prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
+    t2 = round(t*100);
+    out(t2,:) = [t,prob,value];
+ end
 
 
 mesh(obj2);
