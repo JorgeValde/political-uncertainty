@@ -3,7 +3,7 @@ WB = 15;
 al = .5;
 
 out = zeros(100,5,'double');
-for t = 0.01:.01:10;
+for t = 0.01:.01:WB;
     b0 = [0:.01*t:t];
     bp5 = [0:.01*t:t];
     [b0,bp5]=meshgrid(b0,bp5);
@@ -21,8 +21,12 @@ for t = 0.01:.01:10;
     prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
     t2 = round(t*100);
     out(t2,:) = [t,prob,value,R,C];
- end
+end
 
+     [v, l] = max(out(:,3));
+     bribe0 = out(l,5)*(l-1)/10000
+     bribep5 = out(l,4)*(l-1)/10000
+     bribenp5 = (l-1)/100 - bribe0 -bribep5
 
 mesh(obj2);
 %% Create axes
