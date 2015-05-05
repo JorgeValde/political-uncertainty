@@ -1,5 +1,5 @@
 %%parameters (beta = 1)
-WB = 15;
+WB = 10;
 al = .5;
 
 out = zeros(100,5,'double');
@@ -9,9 +9,9 @@ for t = 0.01:.01:WB;
     [b0,bp5]=meshgrid(b0,bp5);
     bnp5 = t - b0 - bp5;
 
-    X = -.5 - al + bnp5;
-    Y = - al + b0;
-    Z = .5 - al + bp5;
+    Z = -.5 - al + bnp5;
+    X = - al + b0;
+    Y = .5 - al + bp5;
 
     obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
     obj2 = obj.*(bnp5>=0);
@@ -24,10 +24,14 @@ for t = 0.01:.01:WB;
 end
 
      [v, l] = max(out(:,3));
-     bribe0 = out(l,5)*(l-1)/10000
-     bribep5 = out(l,4)*(l-1)/10000
-     bribenp5 = (l-1)/100 - bribe0 -bribep5
+     bribe0 = (out(l,5)-1)*l/10000
+     bribep5 = (out(l,4)-1)*l/10000
+     bribenp5 = l/100 - bribe0 -bribep5
 
+    z = -.5 - al + bribenp5
+    x = - al + bribe0
+    y = .5 - al + bribep5
+     
 mesh(obj2);
 %% Create axes
 axes1 = axes('Parent',figure1);
