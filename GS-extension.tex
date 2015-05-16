@@ -465,14 +465,14 @@ The math that follows from Equation \ref{eq:logistic}:
 \end{itemize}		
 
 \subsection{Second Order Condition}
-\vskip1in
 Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
-\[
+\begin{equation}
   W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
-\]
-\[
+\end{equation}
+\begin{equation}
   W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1
-\]
+	\label{eq:firstderiv}
+\end{equation}
 Now, the second derivative:
 \[
   W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} 2\left(1+e^{-Z}\right) e^{-Z}-\left(1+e^{-Z}\right)^2 e^{-Z}}{\left(1+e^{-Z}\right)^4} \right]
@@ -493,7 +493,39 @@ Now, the second derivative:
   W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z}}{\left(1+e^{-Z}\right)^3} \right] \left\{e^{-Z}-1 \right\}
 \]
 Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $z\leq0$ and negative when $z\geq0$. So this objective function appears to have an inflection point at $z=0$.
+\begin{itemize}
+	\item When $z < 0$ (as when this legislator is naturally against you and you don't bribe her), this expression is negative
+\end{itemize}
 
+\vskip1in
+We also need cross partials. Let's start with the first derivative for $b\left(\frac{1}{2}\right)$, analogous to Expression~\ref{eq:firstderiv} for $b\left(-\frac{1}{2}\right)$:
+\begin{equation}
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1
+\end{equation}
+
+Taking the derivative of this expression with respect to $b\left(0\right)$:
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)(-1)e^{-X} -\left(e^{-X}+ e^{-Z}\right)\left(-e^{-X}- e^{-X-Z}\right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(e^{-X}+ e^{-Z}\right)\left(e^{-X} + e^{-X-Z}\right) - \left(1+e^{-X}\right)\left(1+e^{-Z}\right)e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(e^{-2X} + e^{-2X-Z} + e^{-X-Z} + e^{-X-2Z}\right) - \left(1 +e^{-X} +e^{-Z}+ e^{-X-Z} \right)e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-2X} + e^{-2X-Z} + e^{-X-Z} + e^{-X-2Z} - e^{-X} - e^{-2X} - e^{-X-Z} - e^{-2X-Z}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X-2Z} - e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X}\left(e^{-2Z} - 1 \right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+
+
+
+\newpage
 \section{Some Comparative Statics}			
 Comparative statics
 \begin{itemize}
