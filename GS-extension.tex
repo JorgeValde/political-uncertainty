@@ -320,6 +320,7 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\left(1-\Phi\left(- \alpha + b(0) \right)\right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
 					\left(1-\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) + \\
 					\Phi\left(-\frac{\beta}{2} - \alpha + b(-\frac{1}{2}) \right)\Phi\left(- \alpha + b(0) \right)\Phi\left(\frac{\beta}{2} - \alpha + b(\frac{1}{2}) \right) \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+					\label{eq:obj}
 				\end{multline}
 			The FOC wrt to $b\left(-\frac{1}{2}\right)$ is
 				\begin{multline}
@@ -394,8 +395,34 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 		\end{itemize}
 \end{itemize}
 
-\subsection{Math for Discrete Model}
+\subsection{Adding Non-negativity Constraints for Bribes}
+The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
+
+The full set of FOCs (in logistic form) is then:
+\[
+    W_B\frac{e^{-X}}{\left(1+e^{-X}\right)^2}\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_X = 0
+\]
+\[
+    W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1 + \lambda_Y = 0 
+\]
+\[
+    W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_Z = 0
+\]
+\[
+  b\left(0\right) \geq0 \hskip.2in b\left(\frac{1}{2}\right) \geq0 \hskip.2in b\left(-\frac{1}{2}\right) \geq0 
+\]
+\[
+  \lambda_X \geq0 \hskip.2in \lambda_Y \geq0 \hskip.2in \lambda_Z \geq0 
+\]
+\[
+  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(-\frac{1}{2}\right) = 0 
+\]
+There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
+
+Note that the complementary slackness condition implies that either a bribe is zero, \un{or} its multiplier is zero (or both).
+
 \newpage
+\subsection{Math for Discrete Model}
 The math that follows from Equation \ref{eq:logistic}:
 \begin{itemize}
 	\item Let
