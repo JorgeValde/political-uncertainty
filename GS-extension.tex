@@ -417,9 +417,27 @@ The full set of FOCs (in logistic form) is then:
 \[
   \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(-\frac{1}{2}\right) = 0 
 \]
-There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
+There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = (b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
 
 Note that the complementary slackness condition implies that either a bribe is zero, \un{or} its multiplier is zero (or both).
+
+\vskip.5in
+Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left(\frac{1}{2}\right)$ are positive while $b\left(-\frac{1}{2}\right) = 0$.
+\begin{itemize}
+	\item Then $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = -\frac{\beta}{2} - \alpha $
+	\item $\lambda_Z$ is likely positive
+	\item $\lambda_X = \lambda_Y = 0$
+\end{itemize}
+So we'll have $-Z = -X-Y$
+\begin{itemize}
+	\item Which is
+		\[
+		  \frac{\beta}{2} + \alpha = \alpha - b(0) - \frac{\beta}{2} + \alpha - b\left(\frac{1}{2}\right)
+		\]
+		\[
+		  \beta = \alpha - \left(b(0) + b\left(\frac{1}{2}\right) \right)
+		\]
+\end{itemize}
 
 \newpage
 \subsection{Math for Discrete Model}
