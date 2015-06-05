@@ -16,6 +16,7 @@ for (t in v) {
   Bp5=meshgrid(b0,bp5)$Y
   Bnp5 = t - B0 - BP5
 
+<<<<<<< HEAD
   Z = -.5 - al + Bnp5
   X = - al + B0
   Y = .5 - al + Bp5
@@ -34,6 +35,23 @@ for (t in v) {
   out[t,5] = RC[t,2]
 }
 
+=======
+  bnp5 = t - b0 - bp5;
+
+  Z = -.5 - al + bnp5;
+  X = - al + b0;
+  Y = .5 - al + bp5;
+
+  obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
+  obj2 = obj.*(bnp5>=0);
+
+  [value, location] = max(obj2(:));
+  [R,C] = ind2sub(size(obj2),location);
+  prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
+  t2 = round(t*100);
+  out(t2,:) = [t,prob,value,R,C];
+end
+>>>>>>> more development of R version of machina_triangle_graph
 
 [v, l] = max(out(:,3));
 bribe0 = (out(l,5)-1)*l/10000
