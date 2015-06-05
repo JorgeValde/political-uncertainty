@@ -31,22 +31,11 @@ end
     z = -.5 - al + bribenp5
     x = - al + bribe0
     y = .5 - al + bribep5
+    
+    lhs_y = (exp(-x)+exp(-z))/((1+exp(-x))*(1+exp(-z)))*(exp(-y)/((1+exp(-y))^2))
+    lhs_x = (exp(-y)+exp(-z))/((1+exp(-y))*(1+exp(-z)))*(exp(-x)/((1+exp(-x))^2))
+    lhs_z = (exp(-y)+exp(-x))/((1+exp(-y))*(1+exp(-x)))*(exp(-z)/((1+exp(-z))^2))
+
+
      
 mesh(obj2);
-%% Create axes
-axes1 = axes('Parent',figure1);
-axis([0 .12 0 .0035]);
-%title(axes1,'Lobby''s Optimal Expenditure');
-xlabel(axes1,'Trade Agreement Tariff');
-ylabel(axes1,'Lobbying Expenditure');
-hold(axes1,'all');
- 
-
-
-
-%% Create plot
-plot2 = plot(TA,opt_C_13,'DisplayName','\theta \sim U[-.14,14]','Color',[0 0 1],'LineStyle','--','LineWidth',1,'Parent',axes1);
-legend1 = legend(axes1,{'\theta \sim U[-.01,01]','\theta \sim U[-.14,14]'},'Position',[0.1794 0.7725 0.1714 0.119]);
-
-
-saveas(gcf,'C:\Users\Kristy\Documents\Dropbox\Research\Separation_of_Powers\Work\lobby_br.jpg');
