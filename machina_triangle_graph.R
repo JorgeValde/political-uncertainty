@@ -1,38 +1,39 @@
-library("pracma", lib.loc="~/R/win-library/3.1")
+library("pracma")
 
-%%parameters (beta = 1)
+#parameters (beta = 1)
 WB = 10
 al = .5
 
-v = seq(0.01,WB,0.01)
+v = seq(0.01,WB,0.01) 
 out = matrix(0,100,5)
 
 
-for (t in v)
+for (t in v) {
   b0 = seq(0,t,.01*t)
   bp5 = seq(0,t,.01*t)
 
-  tmp=meshgrid(b0,bp5)
-  b0=tmp$b0
-  bp5=tmp$bp5
+  B0=meshgrid(b0,bp5)$X
+  Bp5=meshgrid(b0,bp5)$Y
+  Bnp5 = t - B0 - BP5
 
+  Z = -.5 - al + Bnp5
+  X = - al + B0
+  Y = .5 - al + Bp5
   
+  obj = WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))) - B0 - Bp5 - Bnp5
+  obj2 = obj*(Bnp5>=0)
+  
+  value[t] = max(obj2)
+  ind[t] = which.max(obj2)
+  RC = arrayInd(ind,c(dim(obj2),dim(obj2)))
+  
+  out[t,1] = t
+  out[t,2] = (value[t] + B0[RC[t,1],RC[t,2]] + Bp5[RC[t,1],RC[t,2]] + Bnp5[RC[t,1],RC[t,2]])/WB
+  out[t,3] = value[t]
+  out[t,4] = RC[t,1]
+  out[t,5] = RC[t,2]
+}
 
-  bnp5 = t - b0 - bp5;
-
-  Z = -.5 - al + bnp5;
-  X = - al + b0;
-  Y = .5 - al + bp5;
-
-  obj = WB.*((1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-Z))) + (1./(1+exp(-X))).*(1./(1+exp(-Z))).*(1-1./(1+exp(-Y))) + (1./(1+exp(-Z))).*(1./(1+exp(-Y))).*(1-1./(1+exp(-X))) + (1./(1+exp(-X))).*(1./(1+exp(-Y))).*(1./(1+exp(-Z)))) - b0 - bp5 - bnp5;
-  obj2 = obj.*(bnp5>=0);
-
-  [value, location] = max(obj2(:));
-  [R,C] = ind2sub(size(obj2),location);
-  prob = (value+b0(R,C) + bp5(R,C) + bnp5(R,C))/WB;
-  t2 = round(t*100);
-  out(t2,:) = [t,prob,value,R,C];
-end
 
 [v, l] = max(out(:,3));
 bribe0 = (out(l,5)-1)*l/10000
