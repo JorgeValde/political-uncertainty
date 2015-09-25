@@ -417,7 +417,7 @@ The full set of FOCs (in logistic form) is then:
 \[
   \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(-\frac{1}{2}\right) = 0 
 \]
-There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = (b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
+There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
 
 Note that the complementary slackness condition implies that either a bribe is zero, \un{or} its multiplier is zero (or both).
 
@@ -427,16 +427,6 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 	\item Then $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = -\frac{\beta}{2} - \alpha $
 	\item $\lambda_Z$ is likely positive
 	\item $\lambda_X = \lambda_Y = 0$
-\end{itemize}
-So we'll have $-Z = -X-Y$
-\begin{itemize}
-	\item Which is
-		\[
-		  \frac{\beta}{2} + \alpha = \alpha - b(0) - \frac{\beta}{2} + \alpha - b\left(\frac{1}{2}\right)
-		\]
-		\[
-		  \beta = \alpha - \left(b(0) + b\left(\frac{1}{2}\right) \right)
-		\]
 \end{itemize}
 
 \newpage
@@ -483,31 +473,7 @@ The math that follows from Equation \ref{eq:logistic}:
 		\[
 		  e^{-X}\left(e^{-Z} - e^{-Y} \right) = e^{-Y-Z}\left(e^{-Z} - e^{-Y} \right)
 		\]
-		\[
-		  e^{-X} = e^{-Y-Z}
-		\]
-		\begin{equation}
-		  -X = -Y-Z
-			\label{eq:X}
-		\end{equation}
-		By symmetry, we also have
-		\begin{equation}
-		  -Y = -X - Z
-			\label{eq:Y}
-		\end{equation}
-		\begin{equation}
-		  -Z = -X - Y
-			\label{eq:Z}
-		\end{equation}
-		Substituting Equation \ref{eq:Z} into Equation \ref{eq:X}
-		\[
-		  - X = - Y - X - Y \Rightarrow 0 = 2Y \Rightarrow Y = 0
-		\]
-		Substituting from $Y = 0$ into Equation \ref{eq:X}, we have $X = Z$. Substituting both into Equation \ref{eq:Y}, we have $0 = Z + Z$, which implies $Z = 0$. Likewise for $X$. Thus we must have
-		\[
-		  X = Y = Z = 0
-		\]		
-\end{itemize}		
+		
 
 \subsection{Second Order Condition}
 Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
