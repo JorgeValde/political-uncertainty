@@ -457,25 +457,45 @@ The math that follows from Equation \ref{eq:logistic}:
 		\begin{equation}
 			\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
 		\end{equation}
-		Setting the left-hand size of these two equations equal to each other,
+		and
+		\begin{equation}
+			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+		\end{equation}
+		Setting the left-hand size of these last two equations (the FOCs for the bribes for 0 and $\frac{1}{2}$ equal to each other,
 		\[
-		  \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
+		  \frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
 		\]
 		\[
-		  \frac{e^{-X-Z} + e^{-Y-Z}}{1+e^{-Z}}= \frac{e^{-X-Y} + e^{-Y-Z}}{1+e^{-Y}}
+		  \frac{e^{-X-Y} + e^{-X-Z}}{1+e^{-X}}= \frac{e^{-X-Y} + e^{-Y-Z}}{1+e^{-Y}}
 		\]
 		\[
-		  e^{-X-Z} + e^{-Y-Z} + e^{-X-Y-Z} +e^{-2Y-Z}= e^{-X-Y} + e^{-Y-Z} + e^{-X-Y-Z} +e^{-Y-2Z}
+		  e^{-X-Y} + e^{-X-Z} + e^{-X-2Y} +e^{-X-Y-Z}= e^{-X-Y} + e^{-Y-Z} + e^{-2X-Y} +e^{-X-Y-Z}
 		\]
 		\[
-		  e^{-X-Z} +e^{-2Y-Z}= e^{-X-Y} +e^{-Y-2Z}
+		  e^{-X-Z} +e^{-X-2Y}= e^{-Y-Z} +e^{-2X-Y}
 		\]
 		\[
-		  e^{-X}\left(e^{-Z} - e^{-Y} \right) = e^{-Y-Z}\left(e^{-Z} - e^{-Y} \right)
+		  e^{-Z} +e^{-2Y}= e^{X-Y-Z} +e^{-X-Y}
 		\]
-		
+		\begin{equation}
+		  e^{Y-Z} +e^{-Y}= e^{X-Z} +e^{-X}
+			\label{eq:twoways}
+		\end{equation}
+   Equation~\ref{eq:twoways} can be rearranged into two similar forms. First:
+		\[
+		  e^{Y-Z} - e^{X-Z}= e^{-X} - e^{-Y}
+		\]
+		\[
+		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
+		\]
+  	Second, multiplying through by zero:
+	  \[
+		  e^{X} - e^{Y}= e^Z\left(e^{-Y} - e^{-X}\right)
+		\]
+	\end{itemize}	
 
-\subsection{Second Order Condition}
+\newpage		
+\subsection{Second Order Conditions}
 Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
 \begin{equation}
   W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
