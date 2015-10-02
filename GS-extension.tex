@@ -485,14 +485,29 @@ The math that follows from Equation \ref{eq:logistic}:
 		\[
 		  e^{Y-Z} - e^{X-Z}= e^{-X} - e^{-Y}
 		\]
-		\[
+		\begin{equation}
 		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
-		\]
+			\label{eq:1}
+		\end{equation}
   	Second, multiplying through by zero:
-	  \[
+	  \begin{equation}
 		  e^{X} - e^{Y}= e^Z\left(e^{-Y} - e^{-X}\right)
-		\]
+			\label{eq:2}
+		\end{equation}
 	\end{itemize}	
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(-\frac{1}{2}\right)$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+	\begin{itemize}
+		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
+		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
+	\end{itemize}
+The second order conditions will pin down the solution in this case of two non-negative bribes.
+
+\begin{itemize}
+	\item SOCs imply that both $X$ and $Y$ are positive.
+\end{itemize}
+
+
+
 
 \newpage		
 \subsection{Second Order Conditions}
