@@ -577,7 +577,8 @@ The SOCs when one non-negativity constraint binds; bordered Hessian is 4x4. \\
 			$\frac{\partial g_1}{\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
 			$\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
 		\end{tabular} \\
-		
+
+\vskip.2in		
 Evaluating the constraint terms:\\
 \begin{tabular}{cccc}
 			0 & -1 & 0 & 0 \\
@@ -587,7 +588,55 @@ Evaluating the constraint terms:\\
 		\end{tabular}
 
 The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
+\begin{itemize}
+	\item First we need the determinant of the next-to-last principal minor, the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be positive. We can use the trick by which one copies the first two rows to the right of the matrix and then multiplies down the columns to the right and up the columns to the right (these terms get a negative sign). Then the determinant is
+	  \[
+		  0 + 0 + 0 - \left[0 + 0 + (-1)(-1)\frac{\partial^2 L}{\partial b(0)^2} \right] = - \frac{\partial^2 L}{\partial b(0)^2}
+		\]
+		Because we need this to be positive, we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$. This corresponds to the $X$ compositive variable, and happens only when $X$ is positive.
+	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
+		\[
+		  0 \cdot \left|\text{something} \right| - (-1)\cdot 
+			\left|\begin{array}{ccc}
+				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right| + 0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right|
+		\]
+		\[ 
+			=
+			\left|\begin{array}{ccc}
+				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left|\begin{array}{cc}
+			\frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left(
+			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
+		\]
+		\[
+		  = \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+		\]
 
+  We need this determinant to be negative, that is
+		\[
+		  = \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} > \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+		\]
+	  The right hand side is positive because it's a square. The left hand side must then be positive, and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $b(0)$ and $b\left(\frac{1}{2}\right)$ must be positive.
+\end{itemize}
+Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
+\[
+  2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
+\]		
+		
+		
 \newpage
 \section{Some Comparative Statics}			
 Comparative statics
