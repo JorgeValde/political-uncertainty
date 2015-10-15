@@ -1,4 +1,4 @@
-WB = 8.48 #willingness to pay parameter
+WB = 60 #willingness to pay parameter
 al = .5 #alpha
 
 #the objective function with a negative sign since optim in a minimizer
@@ -11,7 +11,7 @@ obj <- function(B) {
 
 #optim function minimizes 'obj'; c vector are starting values; lower is the
 #constraint; I choose a null gradient because it was easiest to get up and running
-optim(c(0.01,0.01,0.01),obj,gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
+opt <- optim(c(0.01,0.01,0.01),obj,gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
 
 X = - al + 1.905965        #these are shorthand variables for the exponents
 Y = .5 - al + 1.405956   #in the logistic CDFs; I don't use them in the function
