@@ -10,15 +10,19 @@ f <- function(B,WB,al) {
   -WB*((1/(1+exp(.5 - B0)))*(1/(1+exp(.5 - .5 - Bp5)))*(1-1/(1+exp(.5 + .5 - Bnp5))) + (1/(1+exp(.5 - B0)))*(1/(1+exp(.5 + .5 - Bnp5)))*(1-1/(1+exp(.5 - .5 - Bp5))) + (1/(1+exp(.5 + .5 - Bnp5)))*(1/(1+exp(.5 - .5 - Bp5)))*(1-1/(1+exp(.5 - B0))) + (1/(1+exp(.5 - B0)))*(1/(1+exp(.5 - .5 - Bp5)))*(1/(1+exp(.5 + .5 - Bnp5)))) + B0 + Bp5 + Bnp5
 }   
 
-o <- optim(c(0.01,0.01,0.01,2,.05),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
+o <- optim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
 
 X = - al + o$par[1]       #B0   these are shorthand variables for the exponents
 Y = .5 - al + o$par[2]    #Bp5  in the logistic CDFs; I don't use them in the function
 Z = -.5 - al + o$par[3]   #Bnp5 but I've pasted in values here to check
 
 pos <- c(X,Y,Z)
-bribes <- o$par
-out <- list(pos,bribes,WB,al)
+bribes <- c(o$par,-o$value)
+#out <- list(pos,bribes,-o$value)
+out <- t(bribes)
 }
 
-test = h(10,.5)
+range <- matrix(, nrow = 20, ncol = 6)
+for (j in 1:20) {
+  range[j,] = h(j,.5)
+}
