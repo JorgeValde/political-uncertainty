@@ -7,7 +7,7 @@ f <- function(B,WB,al) {
   B0 <- B[1]
   Bp5 <- B[2]
   Bnp5 <- B[3]
-  -WB*((1/(1+exp(.5 - B0)))*(1/(1+exp(.5 - .5 - Bp5)))*(1-1/(1+exp(.5 + .5 - Bnp5))) + (1/(1+exp(.5 - B0)))*(1/(1+exp(.5 + .5 - Bnp5)))*(1-1/(1+exp(.5 - .5 - Bp5))) + (1/(1+exp(.5 + .5 - Bnp5)))*(1/(1+exp(.5 - .5 - Bp5)))*(1-1/(1+exp(.5 - B0))) + (1/(1+exp(.5 - B0)))*(1/(1+exp(.5 - .5 - Bp5)))*(1/(1+exp(.5 + .5 - Bnp5)))) + B0 + Bp5 + Bnp5
+  -WB*((1/(1+exp(al - B0)))*(1/(1+exp(al - .5 - Bp5)))*(1-1/(1+exp(al + .5 - Bnp5))) + (1/(1+exp(al - B0)))*(1/(1+exp(al + .5 - Bnp5)))*(1-1/(1+exp(al - .5 - Bp5))) + (1/(1+exp(al + .5 - Bnp5)))*(1/(1+exp(al - .5 - Bp5)))*(1-1/(1+exp(al - B0))) + (1/(1+exp(al - B0)))*(1/(1+exp(al - .5 - Bp5)))*(1/(1+exp(al + .5 - Bnp5)))) + B0 + Bp5 + Bnp5
 }   
 
 o <- optim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
@@ -22,7 +22,7 @@ bribes <- c(o$par,-o$value)
 out <- t(bribes)
 }
 
-range <- matrix(, nrow = 20, ncol = 6)
-for (j in 1:20) {
-  range[j,] = h(j,.5)
+range7 <- matrix(nrow = 20, ncol = 6) #preallocate matrix for output
+for (j in 1:20) {                     #call function h for one value of alpha,
+  range7[j,] = h(j,.7)                #looping over values of WB
 }
