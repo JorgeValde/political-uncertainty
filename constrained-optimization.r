@@ -22,7 +22,14 @@ bribes <- c(o$par,-o$value)
 out <- t(bribes)
 }
 
-range7 <- matrix(nrow = 20, ncol = 6) #preallocate matrix for output
+range1 <- matrix(nrow = 20, ncol = 6) #preallocate matrix for output
 for (j in 1:20) {                     #call function h for one value of alpha,
-  range7[j,] = h(j,.7)                #looping over values of WB
+  range1[j,] = h(j,.1)                #looping over values of WB
 }
+
+
+a = seq(from = 1, to = 20)
+b = seq(from = .1, to = .9, by = .1)
+ab = expand.grid(a,b)
+
+test <- mapply(h,a,b)
