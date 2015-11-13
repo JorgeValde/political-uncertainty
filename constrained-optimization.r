@@ -18,18 +18,20 @@ Z = -.5 - al + o$par[3]   #Bnp5 but I've pasted in values here to check
 
 pos <- c(X,Y,Z)
 bribes <- c(o$par,-o$value)
-#out <- list(pos,bribes,-o$value)
-out <- t(bribes)
+out <- list("solns" = o$par[1:3], "objMax" = -o$value, "a" = al, "wb" = WB)
+return(out)
 }
 
-range1 <- matrix(nrow = 20, ncol = 6) #preallocate matrix for output
-for (j in 1:20) {                     #call function h for one value of alpha,
-  range1[j,] = h(j,.1)                #looping over values of WB
-}
+# Create a dataframe of parameter values
+wb_vector <- 1:20
+a_vector <- seq(0.1, 0.9, 0.1)
+params <- expand.grid("wb" = wb_vector, "a" = a_vector)
 
+# Use "Map" to evaluate the "h" function at each pair of parameter values
+results <- Map(h, al = params$a, WB = params$wb)
 
-a = seq(from = 1, to = 20)
-b = seq(from = .1, to = .9, by = .1)
-ab = expand.grid(a,b)
-
-test <- mapply(h,a,b)
+# Extract solutions *only* and bind to the parameter values
+solns <- lapply(seq_along(results), function(x) results[[x]]$solns)
+solns <- do.call("rbind", solns)
+colnames(solns) <- c("person1", "person2", "person3")
+solns <- cbind(params, solns)
