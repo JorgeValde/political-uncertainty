@@ -4,9 +4,9 @@
 h <- function(WB,al) {
   
 f <- function(B,WB,al) {
-  B0 <- B[1]
-  Bp5 <- B[2]
-  Bnp5 <- B[3]
+  Bnp5 <- B[1]
+  B0 <- B[2]
+  Bp5 <- B[3]
   -WB*((1/(1+exp(al - B0)))*(1/(1+exp(al - .5 - Bp5)))*(1-1/(1+exp(al + .5 - Bnp5))) + (1/(1+exp(al - B0)))*(1/(1+exp(al + .5 - Bnp5)))*(1-1/(1+exp(al - .5 - Bp5))) + (1/(1+exp(al + .5 - Bnp5)))*(1/(1+exp(al - .5 - Bp5)))*(1-1/(1+exp(al - B0))) + (1/(1+exp(al - B0)))*(1/(1+exp(al - .5 - Bp5)))*(1/(1+exp(al + .5 - Bnp5)))) + B0 + Bp5 + Bnp5
 }   
 
