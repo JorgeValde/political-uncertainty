@@ -12,9 +12,9 @@ f <- function(B,WB,al) {
 
 o <- optim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0))
 
-X = round(- al + o$par[1], digits = 1)       #B0   these are shorthand variables for the exponents
-Y = round(.5 - al + o$par[2], digits = 1)    #Bp5  in the logistic CDFs; I don't use them in the function
-Z = round(-.5 - al + o$par[3], digits=1)   #Bnp5 but I've pasted in values here to check
+X = round(- al + o$par[2], digits = 1)       #B0   these are shorthand variables for the exponents
+Y = round(.5 - al + o$par[3], digits = 1)    #Bp5  in the logistic CDFs; I don't use them in the function
+Z = round(-.5 - al + o$par[1], digits=1)   #Bnp5 but I've pasted in values here to check
 
 pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
@@ -32,7 +32,10 @@ results <- Map(h, al = params$a, WB = params$wb)
 
 # Extract positions and bind to the parameter values
 # WOULD LIKE TO HAVE BOTH SOLUTIONS AND POSITIONS IN OUTPUT VECTOR BUT DON'T KNOW HOW
-solns <- lapply(seq_along(results), function(x) results[[x]]$pos)
+solns <- lapply(seq_along(results), function(x) results[[x]]$solns)
+netpos <- lapply(seq_along(results), function(x) results[[x]]$pos)
 solns <- do.call("rbind", solns)
+netpos <- do.call("rbind", netpos)
 colnames(solns) <- c("person1", "person2", "person3")
-solns <- cbind(params, solns)
+colnames(netpos) <- c("Z", "X", "Y")
+solns <- cbind(params, solns,netpos)
