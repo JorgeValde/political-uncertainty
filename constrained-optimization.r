@@ -1,5 +1,6 @@
 #optim function minimizes 'f'; c vector are starting values; lower is the
 #constraint; I choose a null gradient because it was easiest to get up and running
+#note that here the beta parameter is hard coded in as equal to 1
 
 h <- function(WB,al) {
   
