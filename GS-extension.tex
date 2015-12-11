@@ -40,6 +40,7 @@ bookmarksopen=true]{hyperref}
 \newcommand{\ta}{\theta}
 \newcommand{\expect}{\mathbb{E}}
 \newcommand{\ga}{\gamma}
+\newcommand{\al}{\alpha}
 
 \begin{document}
 
@@ -635,6 +636,31 @@ Note that nothing useful seems to come out of trying to expand and then simplify
 \[
   2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
 \]		
+
+\newpage
+\subsection{Intuition}
+\begin{itemize}
+	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
+		\[
+		  v(z) = \al - \beta z + a(z) - b(z) > 0
+		\]
+	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
+		\[
+		  \al - \beta z - b(z) < 0
+		\]
+		
+		\begin{center}
+		or 
+		\end{center}
+		\[
+		  \beta z - \al + b(z) > 0
+		\]
+		\item If $\al > 0$, legislators on average are biased against B.
+			\begin{itemize}
+				\item If $\al < 0$, legislators on average are biased in favor of B.
+				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
+			\end{itemize}
+\end{itemize}
 		
 		
 \newpage
@@ -659,9 +685,8 @@ Comparative statics
 
 
 				  
-		
+\newpage		
 \section{Notes from March}
-\newpage
 Notes from 3/16 Skype chat (Kristy and Sebastian)
 \begin{itemize}
 	\item Seems like FOC for lobby will boil down to each one buying votes until marginal benefit = marginal cost
