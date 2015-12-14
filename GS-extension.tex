@@ -595,7 +595,7 @@ The second order condition is on the last two principal minors. The largest must
 	  \[
 		  0 + 0 + 0 - \left[0 + 0 + (-1)(-1)\frac{\partial^2 L}{\partial b(0)^2} \right] = - \frac{\partial^2 L}{\partial b(0)^2}
 		\]
-		Because we need this to be positive, we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$. This corresponds to the $X$ compositive variable, and happens only when $X$ is positive.
+		Because we need this to be positive, we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$. This corresponds to the $X$ compositive variable, and happens only when $X$ is non-negative
 	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
 		\[
 		  0 \cdot \left|\text{something} \right| - (-1)\cdot 
@@ -627,11 +627,13 @@ The second order condition is on the last two principal minors. The largest must
 		  = \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
 		\]
 
-  We need this determinant to be negative, that is
+  We need this determinant to be non-positive, that is
 		\[
-		  = \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} > \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
 		\]
-	  The right hand side is positive because it's a square. The left hand side must then be positive, and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $b(0)$ and $b\left(\frac{1}{2}\right)$ must be positive.
+	  The right hand side is positive because it's a square. Moreover, it is strictly positive because $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ is strictly positive: examine Equation~\ref{eq:xpartial}. Since $Z < 0$ in the case under examination, Equation~\ref{eq:xpartial} must be strictly positive. (This strengthens us from the negative semi-definite condition condition that supplies only a weak inequality).
+		
+		The left hand side must then be positive, and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
 \end{itemize}
 Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
 \[
