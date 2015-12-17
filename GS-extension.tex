@@ -672,6 +672,52 @@ Pattern more or less is to get the guy who is WHAT?
 \end{itemize}
 		
 \newpage
+\subsection{One Non-negative Bribe}
+When $\al = 0$ and $WB=8$, we find that $b\left(-\frac{1}{2}\right)$ and $b\left(\frac{1}{2}\right)$ are zero. Only $b(0)$ is positive.
+\begin{itemize}
+	\item Only the FOC for $X$ holds with equality (i.e. $\lambda_X = 0$)
+		\[
+			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+		\]
+	\item We know exactly what $Y$ and $Z$ will be since $b\left(-\frac{1}{2}\right)$ and $b\left(\frac{1}{2}\right)$ are zero. Given $WB$, we can solve for $X$ and then $b(0)$.
+	\item Looking at the SOC, when there are three inequality constraints and 2 bind, we only need a condition on the last principal minor of a suitably constructed bordered Hessian.
+		\begin{itemize}
+			\item It should be negative because $n=3$
+			\item It's a 5x5 matrix because there are two binding inequality constraints.
+		\end{itemize}
+		The SOCs when one non-negativity constraint binds; bordered Hessian is 5x5. \\
+		\begin{tabular}{ccccc}
+			0 & 0 & $\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_1}{\partial b\left(-0\right)}$ & $\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ \\
+			0 & 0 & $\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(-0\right)}$ & $\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$& $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			$\frac{\partial g_1}{\partial b\left(0\right)}$ & $\frac{\partial g_3}{\partial b\left(-0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular} \\
+
+\vskip.2in		
+Evaluating the constraint terms:\\
+\begin{tabular}{ccccc}
+			0 & 0 & -1 & 0 & 0 \\
+			0 & 0 & 0 & 0 & -1 \\
+			-1 & 0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			0 & 0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			0 & -1 &$\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular}
+
+		
+		Solving for the determinant of this matrix:
+		\[
+		  (-1)\cdot 
+			\left|\begin{array}{cccc}
+				0 & 0 & 0 & -1\\
+				- 1 & 0 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & 0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & -1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		\]
+	\end{itemize}
+		
+\newpage
 \subsection{Numerical Results}	
 For all of these, $\beta = 1$ and there are three legislators with $b\in\left\{-\frac{1}{2},0,\frac{1}{2}\right\}$.
 
