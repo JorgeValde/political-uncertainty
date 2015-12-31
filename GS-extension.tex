@@ -640,6 +640,25 @@ Note that nothing useful seems to come out of trying to expand and then simplify
   2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
 \]		
 
+\vskip1in
+In general
+\begin{itemize}
+	\item $n$ is the number of choice variables ($n=3$ in my case for the three bribes)
+	\item If there are $k$ inequality constraints ($k=3$ in my case, for 3 non-negativity constraints)
+	\item And $g_1$ through $g_b$ are binding (i.e. $b$ is the number of bribes that are zero)
+	\item $m$ is the number of equality constraints (0 in my case)
+	\item Then there are restrictions on the last ($n-b+m$) minors
+		\begin{itemize}
+			\item If one bribe is zero, then need the last two $3-1 =2$ minors to alternate in sign with the last being $(-1)^n = (-1)^3 = -1 <0$, i.e. negative
+			\item If no bribes are zero, there are restrictions on the last three minors, but the matrix is 3x3 (no constraint rows)
+			\item If two bribes are binding, there is only a restriction on the last minor, but it's a 5x5 matrix.
+				\begin{itemize}
+					\item But can't wipe out $\frac{1}{W_B}$ using two FOCs because only one holds with equality
+				\end{itemize}
+		\end{itemize}
+	\item If all three non-negativity constraints bind, we know all bribes are zero. No restriction on SOC?
+\end{itemize}
+
 \newpage
 \subsection{Intuition}
 \begin{itemize}
@@ -714,7 +733,33 @@ Evaluating the constraint terms:\\
 			0 & 0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
 			0 & -1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
 			\end{array} \right|
+		=
+						  (-1)\cdot (-1) \cdot (-1)
+			\left|\begin{array}{ccc}
+				- 1 & 0 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & 0 & \frac{\partial^2 L}{\partial b(0)^2}\\
+			0 & -1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}
+			\end{array} \right| =
 		\]
+		\[
+		  (-1) \cdot (-1)
+			\left|\begin{array}{cc}	
+			0 & \frac{\partial^2 L}{\partial b(0)^2}\\
+			-1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}
+			\end{array} \right| = 0 - (-1) \cdot \frac{\partial^2 L}{\partial b(0)^2} = \frac{\partial^2 L}{\partial b(0)^2}
+		\]
+		\item Thus we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$
+			\begin{itemize}
+				\item This boils down to $\left(e^{-X} - 1\right) < 0$
+				\item Implies $X > 0$
+				\item i.e. $-\al + b(0) > 0$ or $b(0) > \al$
+			\end{itemize}
+		\item \textbf{Why does $b(0)$ have to be such that $X=Y$ even though $b\left(\frac{1}{2}\right) =0$?}
+		\item Can write out SOC (just after equation 33) and FOC, sub together to get
+			\[
+			  \frac{1}{1 + e^{-X}} \left(e^{-Z} - 1\right) < 0
+			\]
+			Not sure what this means
 	\end{itemize}
 		
 \newpage
