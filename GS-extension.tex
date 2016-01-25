@@ -754,7 +754,10 @@ Evaluating the constraint terms:\\
 				\item Implies $X > 0$
 				\item i.e. $-\al + b(0) > 0$ or $b(0) > \al$
 			\end{itemize}
-		\item \textbf{Why does $b(0)$ have to be such that $X=Y$ even though $b\left(\frac{1}{2}\right) =0$?}
+		\item It is NOT the case that $b(0)$ has to be such that $X=Y$ even though $b\left(\frac{1}{2}\right) =0$. In fact, it seems in numerical examples that this does \textit{not} happen.
+			\begin{itemize}
+				\item However, I do see that this existence of the one non-negative bribe is not common. It exists for $\al = 0$ and WB = 8, but goes away as soon as $\al = 0.1$ or WB = 9.
+			\end{itemize}
 		\item Can write out SOC (just after equation 33) and FOC, sub together to get
 			\[
 			  \frac{1}{1 + e^{-X}} \left(e^{-Z} - 1\right) < 0
