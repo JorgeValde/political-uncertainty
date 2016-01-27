@@ -760,6 +760,11 @@ Evaluating the constraint terms:\\
 			\begin{itemize}
 				\item However, I do see that this existence of the one non-negative bribe (NNB) is not common. It exists for $\al = 0$ and WB = 8, but goes away as soon as $\al = 0.1$ or $W_B$ = 9.
 				\item In both cases, I can see that changing the parameter would push the value of $b(0)$ over $0.5$, making $X > Y$. This is when the solution switches to 2 NNB's.
+				\item {\color{blue} CONJECTURE}: Group B chooses 1 NNB until it would be large enough to make $X > Y$ (when $\al \approx 0$) or $Z > Y$ (when $\al$ large and negative), then switch to 2 NBB
+					\begin{itemize}
+						\item {\color{blue} This is not strictly true around $-0.7$}
+						\item When $\al$ is large and positive, go straight from 0 NNB to 2 NNB
+					\end{itemize}
 			\end{itemize}
 		\item Can write out SOC (just after equation 33) and FOC, sub together to get
 			\[
