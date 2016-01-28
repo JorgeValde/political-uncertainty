@@ -775,6 +775,34 @@ Evaluating the constraint terms:\\
 	\end{itemize}
 		
 \newpage
+\subsection{All Three Bribes are Non-negative}
+In many cases all three bribes are non-negative. Here are very loose results
+\begin{itemize}
+	\item I always observe that $X=Y=Z$. I think it's easy to show this analytically.
+	\item From the FOCs, when $X$ and $Y$ are non-negative, it can be shown that a set of inequalities just below Equations~\ref{eq:1} and \ref{eq:2} must hold.
+	\item The SOCs when 0 non-negativity constraints bind are on the 3x3 matrix of second derivatives. There are three conditions:
+		\[
+		  \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \left\{\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right\} \leq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \geq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \leq 0
+		\]
+		The last one says that $Y$ must be non-negative. The first and second together say that $Z$ must be non-negative.
+	\item $Y$ non-negative combined with the inequalities below Equations ~\ref{eq:1} and \ref{eq:2} tells us that $X=Y > 0$.
+	\item Similar logic that leads to those inequalities can be used to derive analagous inequalities for $X$ and $Z$ (or $Y$ and $Z$). Then $Z$ non-negative tells us $Z=Y>0$ so that $X=Y=Z >0$.
+\end{itemize}
+
+\vskip.3in
+Now as to when this case occurs
+\begin{itemize}
+	\item When $X=Z$ (the two left-most legislators), bribe to $\frac{1}{2}$ is added in before $X$ would move to the right of $Y$, i.e. when $X \rightarrow 0.5$.
+	\item This is NOT the case when $X$ and $Y$ are the two non-negative bribes. They can get very large before the left-most legislator is bribed.
+\end{itemize}
+
+\newpage
 \subsection{Numerical Results}	
 For all of these, $\beta = 1$ and there are three legislators with $b\in\left\{-\frac{1}{2},0,\frac{1}{2}\right\}$.
 \begin{itemize}
