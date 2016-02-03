@@ -20,13 +20,14 @@ Z = round(-.5 - al + o$par[1], digits=2)   #Bnp5 but I've pasted in values here 
 
 pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
-out <- list("solns" = o$par[1:3], "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB)
+win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))))
+out <- list("solns" = o$par[1:3], "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "winProb" = win)
 return(out)
 }
 
 # Create a dataframe of parameter values
-wb_vector <- 7:15 
-a_vector <- seq(-0.2, 0.2, 0.1)
+wb_vector <- 0:20 
+a_vector <- seq(0.0, 0.0, 0.1)
 params <- expand.grid("wb" = wb_vector, "a" = a_vector)
 
 # Use "Map" to evaluate the "h" function at each pair of parameter values
@@ -36,8 +37,14 @@ results <- Map(h, al = params$a, WB = params$wb)
 # WOULD LIKE TO HAVE BOTH SOLUTIONS AND POSITIONS IN OUTPUT VECTOR BUT DON'T KNOW HOW
 solns <- lapply(seq_along(results), function(x) results[[x]]$solns)
 netpos <- lapply(seq_along(results), function(x) results[[x]]$pos)
+val <- lapply(seq_along(results), function(x) results[[x]]$objMax)
+winProb <- lapply(seq_along(results), function(x) results[[x]]$winProb)
 solns <- do.call("rbind", solns)
 netpos <- do.call("rbind", netpos)
+val <- do.call("rbind", val)
+winProb <- do.call("rbind", winProb)
 colnames(solns) <- c("person1", "person2", "person3")
 colnames(netpos) <- c("Z", "X", "Y")
-solns <- cbind(params, solns,netpos)
+colnames(val) <- c("value")
+colnames(winProb) <- c("winProb")
+solns <- cbind(params, solns,netpos,val,winProb)
