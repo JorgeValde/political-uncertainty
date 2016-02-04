@@ -1,7 +1,8 @@
 #this code plots the three PDFs around the zero line, 
 #to the right of which the legislator votes for the status quo (B's favorite option)
+v0 <- seq(-1.5, 1.5, 0.1)
 
-s = -.0                          #scale parameter to shift each pdf; add negative to alpha value
+s = -.1                          #scale parameter to shift each pdf; add negative to alpha value
 lpdf0 <- dlogis(v0, location = 0+s, scale = 1, log = FALSE)      #middle / X
 lpdfnp5 <- dlogis(v0, location = -0.5+s, scale = 1, log = FALSE) #friend / left / Z
 lpdfp5 <- dlogis(v0, location = 0.5+s, scale = 1, log = FALSE)   #foe / right / Y
