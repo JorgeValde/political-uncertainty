@@ -696,14 +696,22 @@ In general
 		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,\frac{1}{2},$ or $-\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
 \end{itemize}
 
-\vskip.2in
+\vskip.1in
+Recall:
+		\begin{enumerate}
+			\item $X = -\alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\label{page:sh}$ 
+		\end{enumerate}
+
+\vskip.1in
 Pattern more or less is to get the guy who is WHAT?
 \begin{itemize}
 	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
 	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote)
 \end{itemize}
 		
-\vskip1in
+\vskip.1in
 The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
 \begin{itemize}
 	\item \textbf{What's the intuition for why they should be equal? Draw graph of the three PDFs in ideal point / net ideal point space}
