@@ -7,13 +7,13 @@ lpdf0 <- dlogis(v0, location = 0+s, scale = 1, log = FALSE)      #middle / X
 lpdfnp5 <- dlogis(v0, location = -0.5+s, scale = 1, log = FALSE) #foe / left / Z
 lpdfp5 <- dlogis(v0, location = 0.5+s, scale = 1, log = FALSE)   #friend / right / Y
 
-plot(v0,lpdf0,col=2, type="l",ylab="")   #col=2 is red for middle legislator
-par(new=T)                       #holds plot for next series
-plot(v0,lpdfnp5,col=3, type="l",yaxt="n",ylab="") #col=3 is green for most friendly legislator
+plot(v0,lpdf0,col=2, type="l",ylab="")            #col=2 is red for middle legislator
+par(new=T)                                        #holds plot for next series
+plot(v0,lpdfnp5,col=3, type="l",yaxt="n",ylab="") #col=3 is green for most opposed legislator
 par(new=T)
-plot(v0,lpdfp5,col=4, type="l",yaxt="n",ylab="")  #col=4 is blue for most opposed legislator
+plot(v0,lpdfp5,col=4, type="l",yaxt="n",ylab="")  #col=4 is blue for most friendly legislator
 par(new=T)
-abline(v=0)                      #draws vertical black line
+abline(v=0)                                       #draws vertical black line
 
 
 #Calculate potential bribe values for WB=8, al=-.3
