@@ -2,7 +2,7 @@
 #to the right of which the legislator votes for the status quo (B's favorite option)
 v0 <- seq(-1.5, 1.5, 0.1) #x-axis, preference-space
 
-s = .3                          #scale parameter to shift each pdf; this is negative of alpha value
+s = 1                          #scale parameter to shift each pdf; this is negative of alpha value
 lpdf0 <- dlogis(v0, location = 0+s, scale = 1, log = FALSE)      #middle / X
 lpdfnp5 <- dlogis(v0, location = -0.5+s, scale = 1, log = FALSE) #foe / left / Z
 lpdfp5 <- dlogis(v0, location = 0.5+s, scale = 1, log = FALSE)   #friend / right / Y
@@ -17,7 +17,7 @@ abline(v=0)                                       #draws vertical black line
 
 
 #Calculate potential bribe values for WB=8, al=-.3
-WB=8
+WB=13
 X=s
 Y=0.5 +s
 Z=-0.5+s
@@ -26,7 +26,7 @@ Z=-0.5+s
 fx <- function(x) ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/8
 x <-uniroot(fx, c(0,5))
 fz <- function(z) ((exp(-X)+exp(-Y))*exp(-z))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z))^2)-1/8
-z <-uniroot(fz, c(-0.1,.2))
+z <-uniroot(fz, c(-0,1))
 fy <- function(y) ((exp(-X)+exp(-Z))*exp(-y))/((1+exp(-X))*(1+exp(-Z))*(1+exp(-y))^2)-1/8
 y <-uniroot(fy, c(0,5))
 
@@ -37,3 +37,26 @@ valx <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*
 Y=y$root #redefine Y to be inclusive of optimal bribe
 #compute value when y is only NNB
 valy <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z))))- (X -s)
+
+rm(list = ls(all = TRUE)) #clear workspace for safety's sake
+
+#this code examines shape of first order condition and value function when we know
+#that two of the variables are zero
+s=1       #again, -alpha
+WB =13
+X=s
+Y=0.5 +s
+Z=-0.5+s
+
+#examine shape of optimal value function; remember to shift value of Z
+Z = seq(0,.5,.05)
+#valx <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z))))- (X -s)
+valz <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y))) + (1/(1+exp(-X)))*(1/(1+exp(-Z-.5))) + (1/(1+exp(-Z-.5)))*(1/(1+exp(-Y))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z-.5)))) - (Z +.5 -s)
+plot(Z,valz)
+
+#set z vector in neighborhood of guess for optimal value of z
+#z_foc is first order condition: will be zero at optimal value
+z = seq(0.2,.3,.05)
+#test = ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/8
+z_foc = ((exp(-X)+exp(-Y))*exp(-z-.5))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z-.5))^2) -1/13
+plot(z,test2)
