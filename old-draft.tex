@@ -1,0 +1,280 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\linespread{1.5}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+\usepackage[pdftex]{graphicx}
+%\usepackage{pdfpages}
+
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont,pdfsync}
+%\usepackage[hang,flushmargin]{footmisc}%unindents footnotes
+
+% disables chapter, section and subsection numbering
+%\setcounter{secnumdepth}{-1} 
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+\usepackage[hang,flushmargin]{footmisc} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\theta}
+\newcommand{\ta}{\theta}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\al}{\alpha}
+\newcommand{\Ta}{\Theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\Bt}{B(\bm{\tau^a})}
+\newcommand{\bta}{\bm{\tau^a}}
+\newcommand{\bte}{\bm{\tau^E}}
+\newcommand{\btn}{\bm{\tau^n}}
+\newcommand{\ga}{\gamma}
+
+
+\begin{document}
+\title{\vskip-0.6in LOBBYING AND LEGISLATIVE UNCERTAINTY}
+\author{Kristy Buzard\thanks{Syracuse University, Economics Department, 110 Eggers Hall, Syracuse, NY 13244. Ph: 315-443-4079. Fax: 315-443-3717. Email: kbuzard@syr.edu. http://faculty.maxwell.syr.edu/kbuzard.} \and Sebastian Saiegh\thanks{University of California, San Diego, Department of Political Science, Social Sciences Building 365, 9500 Gilman Drive, La Jolla, CA 92093. Ph: 858-534-7237. Fax: 858-534-7130. Email: ssaiegh@ucsd.edu. http://pages.ucsd.edu/~ssaiegh/.}} 
+\date{\vskip-.1in \today}
+\maketitle
+
+%\begin{center} {\bf Abstract} \end{center}
+
+%\begin{quote}
+%{\small This paper 
+
+%\textit{JEL classification:} D72, D80 \\
+%\textit{Keywords:} lobbying, political economy, legislatures, uncertainty}
+%\end{quote}
+
+\bigskip
+\section{Introduction}
+In democratic countries, legislatures are the authoritative source of statutory law. Saiegh (2011) identifies two major factors that shape lawmaking: the unpredictability of legislators' voting behavior, and whether buying legislative votes is a feasible option. The source of the uncertainty is the existence of cross-pressured legislators: in deciding how to vote, lawmakers consider a variety of influences, including their personal values, announced positions, the views of their constituents, and the preferences of their party leadership. Therefore, legislators' voting behavior can seldom be perfectly anticipated.
+
+Campaign contribution and lobbying data show that lobbies do not expend equal efforts to influence all legislators; instead, they strategically choose to engage with only some members of the legislature. The uncertainty surrounding legislator's decision-making is likely to be a key decision variable in this calculus. In order to study how uncertainty affects the incentives for lobbying and the associated prospects for the passage of legislative actions, we must first quantify this uncertainty. We turn to this task first, adapting a standard technique from the political science literature.
+
+This project will contribute to our understanding of a particular type of political uncertainty---that surrounding statutory lawmaking. We will introduce an innovative methodology for quantifying cross-industry political uncertainty, use these measures to deepen our understanding of lobbying behavior, and make the data available for future use in a wide range of applications. 
+
+\subsection{Related Literature}
+%The foundations of this work rest
+ 
+This work relates to the canonical studies on endogenous regulation (cf. Stigler (1975), Peltzman (1976), Becker (1983), Laffont and Tirole (1994)), as well as the literature on vote-buying and legislative behavior in political science (Groseclose and Snyder (1996), Dekel et. al. (2005), Dal Bo (2007)).	
+
+Also related is Le Breton and Salanie (2003), which studies lobbying when the lobby is uncertain about the preferences of a unitary decision maker. Le Breton and Zaporozhets (2007) go a step further and replace the unitary decision maker with a legislature with multiple actors. 
+
+%I will begin by ... Section~\ref{sec:main} then ... In Section~ \ref{sec:example}, ... Section~\ref{sec:dis} explores .... Several extensions of the model are explored in Section~\ref{sec:ext} and Section~\ref{sec:concl} concludes.
+
+
+\section{The Model}
+\label{sec:model}
+
+Formal model coming soon.
+
+%If we're going to do an empirical implementation of $\ga$ below, model needs to start with a basic understanding of uncertainty, run through lobbying response to it, up through aggregation into $\ga$ and how lobbying behavior turns into a ``yea'' vote total.
+
+\section{Estimating Legislative Uncertainty}
+\label{sec:main}
+
+To understand how the presence and magnitude of uncertainty faced by a special interest group affects its lobbying behavior and the policy outcomes it is able to achieve, we must first quantify the uncertainty inherent in statutory lawmaking as, to the best of our knowledge, no such measures exist at the interest-group level. In order to do so, we will construct measures adapted from a well-accepted methodology in political science.
+
+Recorded votes in legislatures (roll call data) are the most commonly used data source to measure politicians' spatial preferences. A well-established strategy is to use statistical techniques to represent patterns of legislative voting. The intuition behind these statistical models is that each roll call presents each legislator with a choice between a ``yea'' and a ``nay'' position. Legislators are presumed to vote for the position most similar to their own ideal policy position. As Clinton et al. (2004) note, it is possible to use Bayesian Markov chain simulation statistical methods to generate these preference estimates. This approach treats the unknown ideal points, bill parameters and legislators' utilities as random variables and condition upon the observed roll call data. The strategy is to impute values to these variables and estimate by regression the ideal points and bill parameters. The MCMC algorithm repeatedly performs these imputations and regressions and generates a large number of samples from the posterior density of the model parameters. Using this estimation procedure, we obtain summary statistics used for inference: legislators' mean and median ideal points as well as their 95$\%$ posterior confidence intervals. The latter are of particular interest to us, as we can use them to gauge the unpredictability of each legislator's voting behavior.
+
+Legislators' ideal points do not necessarily have to be estimated using all the recorded votes cast by a legislature. Instead, one can use subsets of roll calls to establish a legislator's stance vis-a-vis a particular policy issue (Poole 2005). We will thus use subsets of roll call votes to estimate how friendly or unfriendly each legislator is with respect to a certain industry, as well as the unpredictability of his/her voting behavior when matters affecting that industry are considered.
+
+These ``report cards'' will be built in the spirit of ADA scores. Americans for Democratic Action (ADA) identifies key policy issues, and tracks how members of Congress vote on these issues. Their annual report card gives each legislator a rating from 0, meaning complete disagreement with ADA policies (conservative), to 100, meaning complete agreement with ADA policies (liberal). To be consistent with the standard Bayesian methodology, our measures will label a legislator who is indifferent to a particular interest group as having an ideal point of 0, who opposes the interest group as having a negative ideal point, and who supports the group as having a positive ideal point.
+
+To identify the relevant subset of roll calls for each industry, we rely on bill position determinations from \url{http://maplight.org}. This is a list, for each interest group, of the bills and amendments it supported or opposed beginning with the 110th Congress and continuously updated to the present. The determinations are made from public records such as Congressional hearing testimony, news databases, and member organizations' websites.\footnote{See \url{http://maplight.org/us-congress/guide/data/support-opposition} for details.} Groups are classified according to the Center for Responsive Politics's ``Category Code'' (\textit{catcode} for short) \footnote{See \url{https://www.opensecrets.org/resources/ftm/ch12p1.php} and \url{https://www.opensecrets.org/downloads/crp/CRP_Categories.txt}.}.
+
+Voting data are for the U.S. House of Representatives for the 110th through 113th Congress and come from Vote View, a website maintained by Professor Keith Poole (\url{http://voteview.com}). Details on each legislative proposal are available electronically through Thomas (\url{http://thomas.loc.gov}) and the sites of the House and Senate registrars.
+
+We analyze these votes using the Bayesian technique of Clinton et al. (2004) to capture each legislator's proximity to each group's interests, and to recover measures of uncertainty (the standard deviation of the posterior distribution) for each of those given groups.
+
+We begin by estimating ideal points for all bills. Here we use uninformative priors and the standard identifying assumptions that ideal points have mean zero and unit variance.
+
+We then estimate ideal points for subsets of bills: one subset for each interest group that includes all those actions in the U.S. House of Representatives on which that interest group took a public position. Here, we maintain the identifying assumption that ideal points have mean zero and unit variance and the uninformative variance for the prior distribution. We specify the vector of means for each prior distribution to be the ideal points estimated for the entire sample of bills.\footnote{This approach dramatically improves efficiency of the estimating algorithm and is justified by the observation that, with uninformative priors, the correlations between full-sample means and interest-group means are in the neighborhood of 85-90$\%$.}
+
+This procedure produces an ideal point and standard deviation for each member of the House of Representatives for each special interest group. The ideal point can be interpreted as a measure of how supportive a particular politician is of the interest group's agenda \textit{on average}, while the standard deviation is an indication of how predictable his/her support or opposition is.
+
+Aggregating these individual measures across the 112th Congress will give us our central measure of political uncertainty by industry. We expect this data to have a wide array of applications beyond our own.
+
+\subsection{Alternative Measure of Uncertainty}
+[This is an aside, but I would very much like your thoughts on it.]
+
+This is a related, but alternative, measure of uncertainty that my co-author has proposed. We have not implemented it broadly yet, but it's from here that he got the idea to use the ideal points from the full sample as the priors for the interest-group samples. So in a sense, what we're doing now is a way to marry this alternative approach with the traditional Bayesian approach with completely uninformative priors.
+
+Here is the idea: one way of framing the uncertainty we want to measure is to ask how well a lobbyist would do when he/she tries to predict how someone would vote. So, instead of using the standard deviation of the estimated ideal points, we could do the following:
+
+\begin{enumerate}
+	\item Calculate each legislator's ideal point using the full sample of roll call votes.
+	\item Calculate each legislator's ideal point using the roll call votes on which an interest group took a position.
+	\item Regress the ``interest group'' ideal point on the ``general'' ideal point.
+\end{enumerate}
+
+If a legislator is predictable in a specific policy area, then the residual should be close to 0; otherwise, he/she is more unpredictable. Figure~\ref{fig:br} plots the residuals (in absolute value) in the y-axis, as a function of their "general" ideology for commercial banks. For commercial banks, the $R^2$ in this regression was $0.92$. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=4in, width=5in]{residuals.png}
+\end{center}
+\caption{``Residuals'' Approach\label{fig:br}}
+\end{figure}
+
+One advantage of this measure of uncertainty is that it is orthogonal to ideology. Note that the measure based on the standard errors of the estimates is not: it is clear that ideologically more extreme legislators have higher uncertainty (see Figure\ref{fig:six} below). These residuals seem to be uncorrelated with ideology.
+
+
+
+
+%\subsection{Break Decision}
+%\begin{figure}
+%\begin{center}
+%\includegraphics[height=4in, width=5in]{brprob2.jpg}
+%\end{center}
+%\caption{Probability Trade Agreement will be Broken\label{fig:br}}
+%\end{figure}
+
+\subsection{Uncertainty for Select Interest Groups}
+\label{sec:select}
+Do distinct interest groups face varying levels of uncertainty? Preliminary evidence shows that they do. Summary statistics for our measures of ideal points and the uncertainty surrounding them for six interest groups---manufacturing unions, commercial banks, the dairy industry, software firms, computer software firms, and the oil and gas industry---as well as the total docket of bills for the 112th Congress are given in the Appendix.
+
+The first pattern that emerges is the the mean level of uncertainty is strongly correlated with the number of bills on which a group took a position. For the full universe of bills in the 112th Congress---over 1600 bills---the mean uncertainty is 0.04. For the Oil and Gas industry, which took a position on 96 bills, mean uncertainty is 0.19. Manufucturing Unions took a position on 90 bills and had a mean uncertainty of 0.161, and from here the relationship becomes monotonic: Commercial Banks with 65 positions has mean uncertainty of 0.206; Computer Software with 44 positions has mean uncertainty of 0.22; Real Estate with 27 positions has mean uncertainty of 0.286; and the Dairy industry with 23 positions has mean uncertainty of 0.29.
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=5.5in, width=6.5in]{densities.png}
+\end{center}
+\caption{Distribution of Uncertainty by Industry\label{fig:den}}
+\end{figure}
+
+Figure~\ref{fig:den} helps to visualize the data underlying this pattern. We will generate estimates for several hundred more interest groups to see if this pattern holds up---or, rather, how strongly it holds as it seems unlikely to disappear altogether. The fundamental question is whether we should view the increase in aggregate uncertainty that comes with a reduction in the number of votes that are observed as purely a statistical phenomenon, purely a real phenomenon confronted by special interests in their decision making, or some mixture of the two.
+
+One interesting piece of initial evidence we have is that when we added the votes from the 110th and 111th Congress to the banking data, the range of standard deviations and the average did not change much. This is an exercise we will repeat, as we can take advantage of data from the 110th through the first half of the 113th Congresses to enlarge our sample size and in some cases in the later analysis break up the timing (perhaps, for instance, generating uncertainty measures from the first two Congresses and using them to predict contributions in the second two).
+
+What is clear from Figure~\ref{fig:six} is that the mean level of uncertainty hides differing underlying distributions: the majority of banking interests' uncertainty appears to come from its supporters, whereas for manufacturing unions, the opposition in more fickle.\footnote{Note that all ideal points are scaled so that legislators who generally support the interest group have positive ideal points, while those who generally oppose the group have negative ideal points. For the full set of bills, negative ideal points are associated with left/liberal/Democratic positions and positive ideal points are associated with right/conservative/Republican stances on bills.} Much more than just the first moment of the distribution is of interest.
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=6.5in, width=6.5in]{six.pdf}
+\end{center}
+\caption{Distribution of Uncertainty by Industry\label{fig:six}}
+\end{figure}
+ 
+
+
+\section{(Plans for) Statistical Analysis}
+\label{sec:dis}
+
+Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we next turn to efforts to understand how the uncertainty surrounding statutory lawmaking is related to political contributions and voting behavior of legislators. Our units of analysis are the same interest groups defined by the Center for Responsive Politics with those interest groups' positions on bills identified by \url{http://maplight.org} (as explained above).
+
+We will use political contributions data from the Center for Responsive Politics, as it uses the employment data that must be provided with all contributions over $\$$200 to classify contributions according to the donor's likely special interest affiliation. As these are the same codes used by Maplight to identify special interest groups' positions on bills, the contribution data cleanly matches the uncertainty measures derived from the positions these groups take on various pieces of legislation.
+
+We will use both standard parametric and non-parametric techniques such as density estimation to explore the relationships between lobbying behavior, contributions and uncertainty. We have shown above that interest groups face differing amounts of uncertainty; here, we ask how those patterns relate to the lobbying strategies they employ.
+
+Preliminary data analysis shows a very interesting relationship between uncertainty and lobbying expenditure across legislators at the aggregate level. That is, before the data is disaggregated by special interest group, we see an inverted U relationship between uncertainty and campaign contributions: legislators who are either very predictable or very unpredictable receive less, while those with an intermediate level of uncertainty are the target of the largest amounts of campaign contributions. We expect that additional important patterns will emerge when the data is disaggregated by industry.
+
+For the purposes of using this work to inform further studies of the policy-making process, we are interested in not only how interest groups target individuals, but also how a lobby's overall strategy interacts with the uncertainty it faces to translate into political support differentially across interest groups. Thus we want to predict the ``yea'' vote totals on each bill as a function of lobbying effort, uncertainty, and political and economic controls tailored to the industry.
+
+We will do this with a range of flexible parametric techniques in order to be reasonably confident that we have uncovered the true shape of this empirical implementation of the political support function. To address the potential simultaneity bias between vote totals and lobbying effort, we will instrument for lobbying effort using the total number of bills voted upon in the thirty days leading up to a bill's consideration. While a legislator's propensity to vote in favor of a particular bill should not be directly impacted by the number of bills considered in close succession, the level of legislative activity is likely to impact not only the cost of lobbying by changing the demand for lobbying services and therefore the rates that lobbying firms can charge, but also the benefits of lobbying through the amount of time and attention per bill legislators can pay to lobbying. \\
+
+
+
+\section{Conclusion}
+\label{sec:concl}
+
+			
+
+
+
+
+
+
+\section{Appendix}
+\begin{figure}
+%\begin{center}
+\includegraphics[height=9in, width=6.5in]{summary_stats.pdf}
+%\includegraphics{summary_stats.pdf}
+%\end{center}
+%\caption{Probability Trade Agreement will be Broken\label{fig:br}}
+\end{figure}
+
+			
+
+
+
+
+\newpage
+\section{References}
+
+\begin{list}{}{\setlength{\leftmargin}{0.3in}\setlength{\rightmargin}{0.0in}\setlength{\itemindent}{-0.3in}\setlength{\itemsep}{0.0in}}
+
+
+\item Ansolabehere, S., J. de Figueiredo, and J. Snyder Jr. (2003), ``Why Is There so Little Money in U.S. Politics?,'' {\em Journal of Economic Perspectives}, 17, 105-130.
+
+\item Becker, G., (1983) ``A Theory of Competition among Interest Groups for Political Influence.'' {\em Quarterly Journal of Economics} 98, 371-400.
+
+\item Bombardini, M. (2008), ``Firm Heterogeneity and Lobby Participation,'' {\em Journal of International Economics}, 75, 329-348.
+
+\item Bombardini, M., and F. Trebbi (2012): ``Competition and Political Organization: Together or Alone in Lobbying for Trade Policy?'' {\em Journal of International Economics}, 87, 18-26.
+
+\item Clinton, J., Jackman, S., and D. Rivers, (2004): ``The Statistical Analysis of Roll Call Data.'' {\em American Political Science Review}, 98, 355-370.
+
+\item Dal Bo, E. (2007): ``Bribing Voters.'' {\em American Journal of Political Science} 51, 789-803.
+
+\item Dekel, E., Jackson, M., Wolinsky, A. (2005): {\em Vote Buying.} Unpublished manuscript, Caltech.
+
+\item Gawande, K., P. Krishna and M. Robbins (2006): ``Foreign Lobbies and U.S. Trade Policy,'' {\em Review of Economics and Statistics}, 88, 563-571.
+
+\item Goldberg, P. and G. Maggi (1999): ``Protection for Sale: An Empirical Investigation,'' {\em American Economic Review}, 89, 1135-1155.
+
+\item Groseclose, T., Snyder, J. M. (1996): ``Buying Supermajorities.'' {\em American Political Science Review} 90, 303-315.
+
+\item Grossman, G. and E. Helpman (1994): ``Protection for Sale,'' {\em The American Economic Review}, 84, 833-850.
+
+\item Grossman, G. and E. Helpman (2005): ``A Protectionist Bias in Majoritarian Politics,'' {\em The Quarterly Journal of Economics}, 120, 1239-1282.
+
+\item Henisz, W. and E. Mansfield (2006), ``Votes and Vetoes: The Political Determinants of Commercial Openness,'' {\em International Studies Quarterly}, 50, 189-211.
+
+\item Kibris, A. (2012), ``Uncertainty and Ratification Failure,'' {\em Public Choice}, 150, 439-467.
+
+\item Laffont, J., Tirole, J. (1994): ``A Theory of Incentives in Procurement and Regulation.'' Cambridge: MIT Press.
+
+\item Laver, M. and K. Shepsle (1991), ``Divided Government: America is Not `Exceptional','' {\em Governance: An International Journal of Policy and Administration}, 4, 250-269.
+
+\item Le Breton, M. and F. Salanie (2003), ``Lobbying under political uncertainty,'' {\em Journal of Public Economics}, 87, 2589-2610.
+
+\item Le Breton, M. and V. Zaporozhets (2007), ``Legislative Lobbying under Political Uncertainty,'' Available at SSRN: \url{http://ssrn.com/abstract=1024686}.
+
+\item Peltzman, S. (1976), ``Toward a More General Theory of Regulation.'' {\em Journal of Law and Economics} 19, 211-248.
+
+\item Poole, K. T. (2005), ``Spatial Models of Parliamentary Voting.'' New York: Cambridge University Press.
+
+\item Saiegh, S. (2009), ``Political  Prowess or Lady Luck? Evaluating Chief Executives' Legislative Success Rates,'' {\em The Journal of Politics}, 71, 1342-1356.
+
+\item Saiegh, S. (2011) ``Ruling by Statute: How Uncertainty and Vote-Buying Shape Lawmaking.'' New York: Cambridge University Press.
+
+\item Stigler, G. (1975) ``The Citizen and the State: Essays on Regulation.'' Chicago: Chicago University Press.
+
+
+\end{list}
+
+\end{document}
