@@ -59,4 +59,4 @@ plot(Z,valz)
 z = seq(0.2,.3,.05)
 #test = ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/8
 z_foc = ((exp(-X)+exp(-Y))*exp(-z-.5))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z-.5))^2) -1/13
-plot(z,test2)
+plot(z,z_foc)
