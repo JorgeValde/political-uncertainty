@@ -8,6 +8,8 @@
 \setlength{\headheight}{0.0in}
 \setlength{\footskip}{.375in}
 \renewcommand{\baselinestretch}{1.0}
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
 \linespread{1.5}
 
 \usepackage[pdftex,
@@ -103,7 +105,7 @@ bookmarksopen=true]{hyperref}
 
 
 
-\section{Appendix}
+\section*{Appendix}
 
 			
 
@@ -111,7 +113,7 @@ bookmarksopen=true]{hyperref}
 
 
 \newpage
-\section{References}
+\section*{References}
 
 \begin{list}{}{\setlength{\leftmargin}{0.3in}\setlength{\rightmargin}{0.0in}\setlength{\itemindent}{-0.3in}\setlength{\itemsep}{0.0in}}
 
