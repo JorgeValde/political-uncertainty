@@ -23,12 +23,12 @@ Y=0.5 +s
 Z=-0.5+s
 
 #solve for net position if each legislator was the only one with a NNB
-fx <- function(x) ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/8
-x <-uniroot(fx, c(0,5))
-fz <- function(z) ((exp(-X)+exp(-Y))*exp(-z))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z))^2)-1/8
-z <-uniroot(fz, c(-0,1))
-fy <- function(y) ((exp(-X)+exp(-Z))*exp(-y))/((1+exp(-X))*(1+exp(-Z))*(1+exp(-y))^2)-1/8
-y <-uniroot(fy, c(0,5))
+fx <- function(x) ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/WB
+x <-uniroot(fx, c(0,1.5))
+fz <- function(z) ((exp(-X)+exp(-Y))*exp(-z))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z))^2)-1/WB
+z <-uniroot(fz, c(0,2))
+fy <- function(y) ((exp(-X)+exp(-Z))*exp(-y))/((1+exp(-X))*(1+exp(-Z))*(1+exp(-y))^2)-1/WB
+y <-uniroot(fy, c(0,2))
 
 X=x$root #redefine X to be inclusive of optimal bribe
 #compute value when x is only NNB
@@ -49,14 +49,20 @@ Y=0.5 +s
 Z=-0.5+s
 
 #examine shape of optimal value function; remember to shift value of Z
-Z = seq(0,.5,.05)
-#valx <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z))))- (X -s)
+Z = seq(0,1,.05)
 valz <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y))) + (1/(1+exp(-X)))*(1/(1+exp(-Z-.5))) + (1/(1+exp(-Z-.5)))*(1/(1+exp(-Y))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z-.5)))) - (Z +.5 -s)
 plot(Z,valz)
 
+X = seq(0,2,.05)
+valx <- WB*((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z))))- (X -s)
+plot(X,valx)
+
 #set z vector in neighborhood of guess for optimal value of z
 #z_foc is first order condition: will be zero at optimal value
-z = seq(0.2,.3,.05)
-#test = ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/8
-z_foc = ((exp(-X)+exp(-Y))*exp(-z-.5))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z-.5))^2) -1/13
+z = seq(0,1,.05)
+z_foc = ((exp(-X)+exp(-Y))*exp(-z-.5))/((1+exp(-X))*(1+exp(-Y))*(1+exp(-z-.5))^2) -1/WB
 plot(z,z_foc)
+
+x = seq(0,1,.05)
+x_foc = ((exp(-Z)+exp(-Y))*exp(-x))/((1+exp(-Z))*(1+exp(-Y))*(1+exp(-x))^2)-1/WB
+plot(x,x_foc)
