@@ -138,12 +138,12 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Take a model with three legislators with ideal points at $z=-\frac{1}{2}$, $z=0$ and $z=\frac{1}{2}$. For ease of notation, let
 				\begin{enumerate}
 					\item $X = -\alpha + b(0)$ 
-					\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
-					\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\label{page:sh}$ 
+					\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
+					\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)\label{page:sh}$ 
 				\end{enumerate}
 			\item Then the three probabilities are
 				\begin{itemize}
-					\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$
+					\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$
 					\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
 						\[
 							X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
@@ -182,10 +182,10 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} +
 					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-Z}} + \\
 					\frac{1}{1+e^{-Y}} \frac{1}{1+e^{-Z}} - 2	\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
-					\label{eq:obj}
+					\label{eq:objb}
 				\end{multline}
 				
-			The FOC wrt to $b\left(-\frac{1}{2}\right)$ is 
+			The FOC wrt to $b\left(\frac{1}{2}\right)$ is 
 				\begin{equation}
 					W_B \biggl[ \left( \frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2 \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \right) \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
 				\end{equation}
@@ -199,15 +199,30 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
 		\end{itemize}
 	\item Vote Buyer A
+		\begin{itemize}
+			\item Vote buyer A's objective function is identical in form to that of Vote Buyer B (Expression~\ref{eq:objb} 
+			  \begin{multline}
+			    \max_{a\left(-\frac{1}{2}\right), a\left(0\right), a\left(\frac{1}{2}\right)} 
+					W_A \biggl[ \frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Y}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-Z}} + \\
+					\frac{1}{1+e^{-Y}} \frac{1}{1+e^{-Z}} - 2	\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} a(j)
+					\label{eq:obja}
+				\end{multline}
+				where 
+				\begin{enumerate}
+					\item $X_A = \alpha - b(0,a(0)) + a(0)$ 
+					\item $Y_A = -\frac{\beta}{2} + \alpha - b\left(-\frac{1}{2},a\left(-\frac{1}{2}\right)\right)+ a\left(-\frac{1}{2}\right)$
+					\item $Z_A = \frac{\beta}{2} + \alpha - b\left(\frac{1}{2},a\left(\frac{1}{2}\right)\right)+ a\left(\frac{1}{2}\right)$
+				\end{enumerate}
+		\end{itemize}
 \end{enumerate}
-
 
 	
 
-
-
+\newpage
 \section{Adding Non-negativity Constraints for Bribes}
-The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
+\label{sec:nonneg}
+The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
 
 The full set of FOCs (in logistic form) is then:
 \[
