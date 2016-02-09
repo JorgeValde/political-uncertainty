@@ -119,157 +119,21 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 				\]
 				(whether the inequality is weak or strict depends on tie-breaking rules set out in the paper)
 					\begin{itemize}
-						\item Let's start out by thinking of $z$ as being a random variable distributed $N(z,\sigma_z)$
 						\item Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive
 					\end{itemize}
-			\item Payoff for vote buyer A if $x$ wins is $U_A(x) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
-			\item Payoff for vote buyer A if $s$ wins is $U_A(s) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
-			\item I think the cleanest way to write the condition for whether $x$ wins is
-				\[
-				  \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[v(j) \geq 0 \right] dj \geq \frac{1}{2}
-				\]
 		\end{itemize}
 	\item Vote buyer B
 		\begin{itemize}
 			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''
 			\item This has to be adapted to our situation with uncertainty
 				\begin{itemize}
-					\item Groseclose and Snyder formulation would suggest something like
-						\[
-							\min_{b(z)} \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \hskip.2in \text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq U_B(s) - U_B(x)
-						\]
-						\[
-							\text{and however we write the ``while passing his preferred policy'' constraint}
-						\]
 					\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
 					\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
 					\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
-				\end{itemize}
-			\item Let's start with the simple maximize expected value of winning (WTP times probability of winning) net of bribes:
-						\begin{multline}
-							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
-							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
-						\end{multline}
-				\begin{itemize}
-					\item Problem is that the indicator function will never equal 1 when $J \sim N(j,\sigma_j)$
-					\item So what's a reasonable objective function? 
-						\begin{itemize}
-							\item Maximizing the total probability mass where $v(j) \leq 0$?
-							  \begin{multline}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
-									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
-								\end{multline}
-									\begin{itemize}
-										\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
-										\item Some legislators who are past FOC point will not be lobbied
-									\end{itemize}
-							\item Suppressing the constraint for now and using the fact that $J \sim N(j,\sigma_j)$, this can be re-written as
-								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) - b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
-								\end{equation}
-								or
-								\begin{equation}
-									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \leq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
-								\end{equation}
-								where $Z \sim N(0,1)$. \\
-							\item	So, this can be written as
-								\begin{multline}
-									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
-									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
-									\label{ex:objB}
-								\end{multline}
-							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
-							\item The FOC for each $j$ is then
-								\begin{equation}
-								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
-									\label{eq:foc}
-								\end{equation}
-								as long as the constraint is satisfied.
-									\begin{itemize}
-										\item I don't know how decisions are made if the constraint binds---how the rationing happens
-										\item If the constraint is not binding, vote buyer B will pay all legislators (we could put in some kind of fixed cost of dealing with each legislator to short circuit this outcome) except those who are already so favorable to him that they are past the FOC point
-										\item Perhaps there's something in equilibrium I'm not seeing yet that will reduce further the number of legislators that are paid
-									\end{itemize}
-						\end{itemize}
-				\end{itemize}
-			\item Let's examine the FOC, assuming pointwise maximization is okay as in Equation~\ref{eq:foc}
-				\begin{itemize}
-					\item It's easier for me to think of the CDF in terms of the non-standardized Normal distribution before taking the derivative. Then, if my math is right, the FOC becomes
-						\begin{equation}
-							  \frac{1}{\beta}\frac{1}{\sigma_j \sqrt{2\pi}} \: e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{1}{W_B} 
-								\label{eq:focB2}
-						\end{equation}
-							\begin{itemize}
-								\item This just says the pdf has to equal $\beta$ divided by the willingness to pay
-								\item Rearranging to solve for $b(j)$:
-									\begin{equation}
-							  		e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{\beta\sigma_j \sqrt{2\pi}}{W_B} 
-									\end{equation}
-									\begin{equation}
-							  		- \left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2 =2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)
-									\end{equation}
-								Since the log statement on the RHS will almost certainly be negative, I can take the negative sign to the right and take the square root without worrying about imaginary numbers
-								  \begin{equation}
-							  		\frac{\alpha + a(j) - b(j)}{\beta} - j = \pm \sqrt{-2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
-									\end{equation}
-										\begin{itemize}
-											\item Notice there are two roots: could be to the left of the mode (less than 0.5 cumulative probability), or to the right (more than 0.5 cumulative probability)
-										\end{itemize}
-									\begin{equation}
-							  		\alpha + a(j) - b(j) = \pm \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)} + j \beta
-									\end{equation}
-									\begin{equation}
-							  		b(j) = \alpha + a(j)  - j \beta \pm \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
-									\end{equation}
-									\begin{equation}
-							  		b(j) = \alpha + a(j)  - \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
-										\label{eq:focB}
-									\end{equation}
-								\item So, the bribe for legislator $j$ takes legislator j's preferences back to zero in expectation (the first three terms) and then relative to that, either adds or subtracts a term that involves WTP, variance and $\beta$
-									\begin{itemize}
-										\item Do we have a way of distinguishing between the two? They have very different implications for the CDF, even though the same implications for the pdf
-										\item It makes more intuitive sense that the bribe would be increasing in $W_B$ (WTP)
-										\item Perhaps we derive the different implications and let the data speak
-										\item All the comparative statics will come out with same magnitude, both signs
-										\item SOC is obviously okay (essentially $-x e^{\frac{x^2}{2}}$)
-									\end{itemize}
-							\end{itemize}
-					\item How do we deal with this r.v. with continuous support when the range of ideal points is posited to be finite ($[-\frac{1}{2},\frac{1}{2}]$)?
-
+					\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
+					\item Some legislators who are past FOC point will not be lobbied
 				\end{itemize}
 		\end{itemize}	
-	\item Vote buyer A
-		\begin{itemize}
-			\item Whatever we decide for vote buyer B will be the same for vote buyer A
-			\item Adapting Expression~\ref{ex:objB} for Vote Buyer A
-				\begin{multline}
-					\max_{a(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_A \cdot \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right) - a(j) \right] dj \\
-						\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj \leq W_A  \hskip.2in \text{and} \hskip.2in a(j)\geq0 \ \forall j
-							\label{ex:objA}
-				\end{multline}
-					\begin{itemize}
-						\item Major problem if we solve this game sequentially: when substituting the FOC for Vote Buyer B (Equation~\ref{eq:focB}) into Vote Buyer A's objective function, the $a(j)$'s cancel out ($b(j)$ is linear in $a(j)$) so the benefit term is constant in $a(j)$
-						\item Static best response
-						  \begin{equation}
-								  W_A \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial a(j)} = 1
-									\label{eq:focA}
-							\end{equation}
-						\item Math looks exactly the same as Eqn. \ref{eq:focB2} to \ref{eq:focB} except with $W_A$ replacing $W_B$ and all the opposite signs, so
-							\begin{equation}
-								a(j) = -\alpha + b(j)  + \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_A - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
-									\label{eq:focA3}
-							\end{equation}		
-					\end{itemize}
-				\item Plugging either one of the vote buyers' FOCs into the other just implies that $W_A = W_B$, but doesn't say anything about the level of bribes. Use some kind of pareto ranking to choose one?
-					\begin{itemize}
-						\item Note that to get a solution, I've taken both FOCs to have the same root (either both positive or both negative; Otherwise, we need a very special combination of parameters to get an equilibrium)
-						\item Intuition for this equilibrium: each vote buyer exactly brings legislator $j$ back to neutral (compensating both for inherent preference $\alpha - \beta \cdot j$) and the other vote buyer's bribe; they also each tack on a term related to WTP, $\beta$, and $\sigma_j$, but these terms cancel out as well as long as $W_A = W_B$. If $W_A \neq W_B$, then there is not such an interior equilibrium as far as I can tell. 
-							\begin{itemize}
-								\item Need to look for more equilibria, perhaps in mixed strategies.
-								\item Especially a way to get asymmetric pure strategies (I'm happy to have asymmetry between $W_A$ and $W_B$ if necessary)
-							\end{itemize}
-					\end{itemize}
-		\end{itemize}
 \end{enumerate}
 
 \newpage
@@ -351,6 +215,8 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
 		\end{itemize}
 	\end{itemize}
+
+\subsection{Adding Vote Buyer A}
 
 \subsection{Adding Non-negativity Constraints for Bribes}
 The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
