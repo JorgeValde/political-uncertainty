@@ -107,8 +107,8 @@ General thoughts on extension to uncertainty
 		\end{itemize}
 \end{itemize}
 
-\subsection{Solving the Model}
 \vskip.3in
+\subsection{Solving the Model}
 Backward induction (legislature moves last; B makes last bribe; A makes first bribe)
 \begin{enumerate}
 	\item Legislature
@@ -329,6 +329,14 @@ Discrete version (Conversation between Kristy and Frank, 3/27/15)
 					\frac{1}{1+e^{-Z}} \left(1-\frac{1}{1+e^{-X}}\right) \frac{1}{1+e^{-Y}} + \\
 					\left(1-\frac{1}{1+e^{-Z}} \right) \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} + \\
 					\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+					\label{eq:obj}
+				\end{multline}
+			This can be simplified as 
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-Z}} + \\
+					\frac{1}{1+e^{-Y}} \frac{1}{1+e^{-Z}} - 2	\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
 					\label{eq:obj}
 				\end{multline}
 				
