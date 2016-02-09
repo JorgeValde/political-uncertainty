@@ -105,24 +105,53 @@ General thoughts on extension to uncertainty
 							\end{itemize}
 				\end{itemize}
 		\end{itemize}
+	\item Note that this model \textit{may} introduce interdependence between the bid functions that does not exist in the continuous model
+	\item What is not clear is whether this happens when the WTP constraint is not binding, which I'm going to assume from the start, and maybe impose later
 \end{itemize}
 
-\vskip.3in
-\subsection{Solving the Model}
+\newpage
+\section{Solving the Model}
+\label{sec:solve}
 Backward induction (legislature moves last; B makes last bribe; A makes first bribe)
 \begin{enumerate}
 	\item Legislature
 		\begin{itemize}
 			\item Each legislator $z$ will decide whether to vote for $x$ or $s$ given $z$, $a(z)$ and $b(z)$. Votes for $x$ if
 			  \[
-				  v(z) = \alpha -\beta \cdot z + a(z) - b(z) > 0
+				  v(z) = \alpha -\beta z + \ve_z + a(z) - b(z)
 				\]
 				(whether the inequality is weak or strict depends on tie-breaking rules set out in the paper)
 					\begin{itemize}
 						\item Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive
+						\item Note that we will have to worry about separately identifying the parameters. So for now, will assume $\ve$ does not vary in $z$
 					\end{itemize}
+			\item Also going to ignore Vote Buyer A's choice for now, so we have
+				\[
+					v(z) = \alpha -\beta z + \ve - b(z)
+				\]
+			\item Then the probability that legislator $z$ votes against the new proposal is
+				\[
+					\Pr\left[v(z)\leq 0 \right] = \Pr\left[\alpha -\beta z + \ve - b(z) \leq 0 \right] 
+			                            = \Pr\left[\ve \leq \beta z - \alpha + b(z) \right] 
+				\]
+				Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}$.
+			\item Take a model with three legislators with ideal points at $z=-\frac{1}{2}$, $z=0$ and $z=\frac{1}{2}$. For ease of notation, let
+				\begin{enumerate}
+					\item $X = -\alpha + b(0)$ 
+					\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+					\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\label{page:sh}$ 
+				\end{enumerate}
+			\item Then the three probabilities are
+				\begin{itemize}
+					\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$
+					\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
+						\[
+							X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
+						\]
+				\end{itemize}
 		\end{itemize}
-	\item Vote buyer B
+
+\item Vote buyer B
 		\begin{itemize}
 			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''
 			\item This has to be adapted to our situation with uncertainty
@@ -134,43 +163,8 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 					\item Some legislators who are past FOC point will not be lobbied
 				\end{itemize}
 		\end{itemize}	
-\end{enumerate}
-
-\newpage
-\section{Discrete Model}
-\begin{itemize}
-	\item Note that this model \textit{may} introduce interdependence between the bid functions that does not exist in the continuous model
-	\item What is not clear is whether this happens when the WTP constraint is not binding, which I'm going to assume from the start, and maybe impose later
-	\item We write
-	  \[
-		  v(z) = \alpha -\beta z + \ve_z + a(z) - b(z)
-		\]
-			\begin{itemize}
-				\item Note that we will have to worry about separately identifying the parameters. So for now, will assume $\ve$ does not vary in $z$
-				\item Also going to ignore Vote Buyer A's choice for now, so we have
-			\end{itemize}
-	  \[
-		  v(z) = \alpha -\beta z + \ve - b(z)
-		\]
-	\item Then the probability that legislator $z$ votes against the new proposal is
-	  \[
-		  \Pr\left[v(z)\leq 0 \right] = \Pr\left[\alpha -\beta z + \ve - b(z) \leq 0 \right] 
-			                            = \Pr\left[\ve \leq \beta z - \alpha + b(z) \right] 
-		\]
-		Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}$. 
-	\item Take a model with three legislators with ideal points at $z=-\frac{1}{2}$, $z=0$ and $z=\frac{1}{2}$. For ease of notation, let
-		\begin{enumerate}
-			\item $X = -\alpha + b(0)$ 
-			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
-			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\label{page:sh}$ 
-		\end{enumerate}
-	\item Then the three probabilities are
-		\begin{itemize}
-			\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$
-			\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
-				\[
-				  X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
-				\]
+		
+		
 			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
 			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
 			  \begin{multline}
@@ -208,17 +202,25 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 				\end{equation}
 			Further math related to this equation is on Page~\pageref{eq:logistic2}.
 			
-		\end{itemize}
+
 	\item Some notes
 		\begin{itemize}
 			\item If we divide through by 2, the left side is the average minus the product
 			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
 		\end{itemize}
-	\end{itemize}
 
-\subsection{Adding Vote Buyer A}
 
-\subsection{Adding Non-negativity Constraints for Bribes}
+	
+\end{enumerate}
+
+
+				
+	
+
+
+\section{Adding Vote Buyer A}
+
+\section{Adding Non-negativity Constraints for Bribes}
 The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
 
 The full set of FOCs (in logistic form) is then:
