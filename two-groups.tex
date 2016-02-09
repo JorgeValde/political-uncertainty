@@ -206,7 +206,6 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 
 
 
-
 \section{Adding Non-negativity Constraints for Bribes}
 The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
 
@@ -241,6 +240,55 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 	\item $\lambda_X = \lambda_Y = 0$
 \end{itemize}
 
+\newpage
+\section{Intuition}
+\begin{itemize}
+	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
+		\[
+		  v(z) = \al - \beta z + a(z) - b(z) > 0
+		\]
+	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
+		\[
+		  \al - \beta z - b(z) < 0
+		\]
+		
+		\begin{center}
+		or 
+		\end{center}
+		\[
+		  \beta z - \al + b(z) > 0
+		\]
+		\item If $\al > 0$, legislators on average are biased against B.
+			\begin{itemize}
+				\item If $\al < 0$, legislators on average are biased in favor of B.
+				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
+			\end{itemize}
+		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,\frac{1}{2},$ or $-\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
+\end{itemize}
+
+\vskip.1in
+Recall:
+		\begin{enumerate}
+			\item $X = -\alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$ 
+		\end{enumerate}
+
+\vskip.1in
+Pattern more or less is to get the guy who is WHAT?
+\begin{itemize}
+	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
+	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote)
+\end{itemize}
+		
+\vskip.1in
+The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
+\begin{itemize}
+	\item \textbf{What's the intuition for why they should be equal? Draw graph of the three PDFs in ideal point / net ideal point space}
+	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
+\end{itemize}
+		
+		
 \newpage
 \section{Math for Discrete Model}
 The math that follows from Equation \ref{eq:logistic}:
@@ -318,7 +366,7 @@ Once we know that both $X=Y>0$ (or $X=Z>0$), go back to one of the equations lik
 
 
 \newpage		
-\subsection{Second Order Conditions}
+\section{Second Order Conditions}
 Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
 \begin{equation}
   W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
@@ -466,57 +514,9 @@ In general
 	\item If all three non-negativity constraints bind, we know all bribes are zero. No restriction on SOC?
 \end{itemize}
 
-\newpage
-\subsection{Intuition}
-\begin{itemize}
-	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
-		\[
-		  v(z) = \al - \beta z + a(z) - b(z) > 0
-		\]
-	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
-		\[
-		  \al - \beta z - b(z) < 0
-		\]
-		
-		\begin{center}
-		or 
-		\end{center}
-		\[
-		  \beta z - \al + b(z) > 0
-		\]
-		\item If $\al > 0$, legislators on average are biased against B.
-			\begin{itemize}
-				\item If $\al < 0$, legislators on average are biased in favor of B.
-				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
-			\end{itemize}
-		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,\frac{1}{2},$ or $-\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
-\end{itemize}
 
-\vskip.1in
-Recall:
-		\begin{enumerate}
-			\item $X = -\alpha + b(0)$ 
-			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
-			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$ 
-		\end{enumerate}
-
-\vskip.1in
-Pattern more or less is to get the guy who is WHAT?
-\begin{itemize}
-	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
-	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote)
-\end{itemize}
-		
-\vskip.1in
-The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
-\begin{itemize}
-	\item \textbf{What's the intuition for why they should be equal? Draw graph of the three PDFs in ideal point / net ideal point space}
-	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
-\end{itemize}
-		
-		
 \newpage
-\subsection{One Non-negative Bribe}
+\section{One Non-negative Bribe}
 When $\al = 0$ and $WB=8$, we find that $b\left(-\frac{1}{2}\right)$ and $b\left(\frac{1}{2}\right)$ are zero. Only $b(0)$ is positive.
 \begin{itemize}
 	\item Only the FOC for $X$ holds with equality (i.e. $\lambda_X = 0$)
@@ -597,7 +597,7 @@ Evaluating the constraint terms:\\
 	\end{itemize}
 		
 \newpage
-\subsection{All Three Bribes are Non-negative}
+\section{All Three Bribes are Non-negative}
 In many cases all three bribes are non-negative. Here are very loose results
 \begin{itemize}
 	\item I always observe that $X=Y=Z$. I think it's easy to show this analytically.
@@ -625,7 +625,7 @@ Now as to when this case occurs
 \end{itemize}
 
 \newpage
-\subsection{Numerical Results}	
+\section{Numerical Results}	
 For all of these, $\beta = 1$ and there are three legislators with $b\in\left\{-\frac{1}{2},0,\frac{1}{2}\right\}$.
 \begin{itemize}
 	\item Below, the column headings are $v(z)$ before the bribe.
