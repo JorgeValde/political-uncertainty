@@ -1,0 +1,928 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\linespread{1.1}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont,bbm}
+
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+
+\setcounter{secnumdepth}{-1} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\ta}{\theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\ga}{\gamma}
+\newcommand{\al}{\alpha}
+
+\begin{document}
+
+\title{\vskip-0.6in \Large Political Uncertainty}
+\author{Kristy Buzard}
+\date{\vskip-.1in \today}
+\maketitle
+
+\section{Groseclose and Snyder 1996}
+On Feb. 12, Sebastian and I agreed to focus efforts on finding a base model to facilitate empirical identification. I am pursuing Groseclose $\&$ Snyder (1996), ``Buying Supermajorities,'' APSR
+\begin{itemize}
+	\item For each legislator $i$, $v(i) = u_i(x) - u_i(s)$, measured in money; this is the reservation price of $i$
+		\begin{itemize}
+			\item $x$ is an alternative policy proposal; $s$ is the status quo
+			\item WLOG, label legislators so that $v(i)$ is a non-increasing function 
+			\item Note legislators only have preferences over how they vote, not over which alternative wins
+		\end{itemize}
+	\item There are two vote buyers; each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP
+		\begin{itemize}
+			\item $A$ prefers $x$; $W_A$ is $A$'s willingness to pay (WTP) for $x$ measured in money
+			\item $B$ prefers $s$; $W_B$ is $B$'s WTP for $s$
+		\end{itemize}
+	\item Bribe offer functions: $a(i)$ and $b(i)$ are $A$ and $B$'s offers to $i$. Legislators take these bribe offers as given and then vote for the alternative that maximizes their payoff
+	\item A moves first; $a(i)$ is perfectly observable to $B$ when he moves
+	\item Goal: characterize SPNE in pure strategies
+		\begin{itemize}
+			\item Assume unbribed legislators who are indifferent vote for $s$; all bribed legislators who are indifferent vote for whoever bribed them last
+		\end{itemize}
+	\item Assume continuum of legislators on $\left[-\frac{1}{2},\frac{1}{2}\right]$
+	\item Assume $W_A$ large enough that $x$ wins in equilibrium (no uncertainty case)
+	\item $m + \frac{1}{2}$ is fraction of legislators who vote for $x$ as opposed to the status quo, $s$
+	\item Results
+	\begin{itemize}
+		\item Prop 1: three types of equilibria in which $x$ wins; depend on size of $W_B$
+		\item Prop 2: $m^*$ (the optimal coalition size) is unique, and provides three cases parameterizing its size in terms of $W_B$, $v(-\frac{1}{2})$ and $v(m^*)$
+		\item Prop 3/4: special case where $v(z) = \alpha - \beta z$
+	\end{itemize}
+\end{itemize}
+
+\vskip.3in
+\section{Our Extension to Uncertainty}
+General thoughts on extension to uncertainty
+\begin{itemize}
+	\item I think, without uncertainty, you would estimate $m^*$ as a function of the parameters of $v$ and WTP
+		\begin{itemize}
+			\item It's useful that $m^*$ is unique. Not clear it would extend to case of uncertainty, but I think it's likely so I'm going to assume it for now
+		\end{itemize}
+	\item I'm pretty sure  this predicts that $B$ should never pay anything when there is no uncertainty, but I don't see where they say it explicitly (I should read more carefully to verify)
+		\begin{itemize}
+			\item Uncertainty should reverse this, right?
+			\item What is uncertainty? Make $v(z)$ stochastic is most natural
+				\begin{itemize}
+					\item I'm going to start with linear parameterization of $v(z)$ and add uncertainty. For now, take same form for $v(z)$
+						\[
+						  v(z) = \alpha -\beta \cdot z
+						\]
+						and take $z$ as a random variable distributed normally with mean $z$ and standard deviation $\sigma_z$. This is unfortunate nomenclature, since later we'll probably want to take this to a standard normal ``Z'' 
+							\begin{itemize}
+								\item This means that the legislators are ordered on the interval according to their ideal points, but there is acknowledged uncertainty surrounding their preferences 
+								\item What is the source of this uncertainty? We take it to vary by legislator and also possibly by issue area when we extend the model to account for that
+								\item Uncertainty comes from: \textbf{log-rolling and cross-pressuring; length of voting record; electoral incentives that we can't control for}
+							\end{itemize}
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+
+\vskip.3in
+\subsection{Solving the Model}
+Backward induction (legislature moves last; B makes last bribe; A makes first bribe)
+\begin{enumerate}
+	\item Legislature
+		\begin{itemize}
+			\item Each legislator $z$ will decide whether to vote for $x$ or $s$ given $z$, $a(z)$ and $b(z)$. Votes for $x$ if
+			  \[
+				  v(z) = \alpha -\beta \cdot z + a(z) - b(z) > 0
+				\]
+				(whether the inequality is weak or strict depends on tie-breaking rules set out in the paper)
+					\begin{itemize}
+						\item Let's start out by thinking of $z$ as being a random variable distributed $N(z,\sigma_z)$
+						\item Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive
+					\end{itemize}
+			\item Payoff for vote buyer A if $x$ wins is $U_A(x) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
+			\item Payoff for vote buyer A if $s$ wins is $U_A(s) - \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj$
+			\item I think the cleanest way to write the condition for whether $x$ wins is
+				\[
+				  \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[v(j) \geq 0 \right] dj \geq \frac{1}{2}
+				\]
+		\end{itemize}
+	\item Vote buyer B
+		\begin{itemize}
+			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''
+			\item This has to be adapted to our situation with uncertainty
+				\begin{itemize}
+					\item Groseclose and Snyder formulation would suggest something like
+						\[
+							\min_{b(z)} \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \hskip.2in \text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq U_B(s) - U_B(x)
+						\]
+						\[
+							\text{and however we write the ``while passing his preferred policy'' constraint}
+						\]
+					\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
+					\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
+					\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+				\end{itemize}
+			\item Let's start with the simple maximize expected value of winning (WTP times probability of winning) net of bribes:
+						\begin{multline}
+							\max_{b(j)} \ W_B\left\{ \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \mathbbm{1}\left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right]\geq \frac{1}{2} \right\} - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+							\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
+						\end{multline}
+				\begin{itemize}
+					\item Problem is that the indicator function will never equal 1 when $J \sim N(j,\sigma_j)$
+					\item So what's a reasonable objective function? 
+						\begin{itemize}
+							\item Maximizing the total probability mass where $v(j) \leq 0$?
+							  \begin{multline}
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\alpha -\beta \cdot j + a(j) - b(j) \leq 0 \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \\
+									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
+								\end{multline}
+									\begin{itemize}
+										\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
+										\item Some legislators who are past FOC point will not be lobbied
+									\end{itemize}
+							\item Suppressing the constraint for now and using the fact that $J \sim N(j,\sigma_j)$, this can be re-written as
+								\begin{equation}
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\alpha + a(j) - b(j)}{\beta} \leq j \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+								\end{equation}
+								or
+								\begin{equation}
+									\max_{b(j)} \ W_B \left[ \int_{-\frac{1}{2}}^\frac{1}{2} \Pr \left[\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \leq z \right] dj \right] - \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj
+								\end{equation}
+								where $Z \sim N(0,1)$. \\
+							\item	So, this can be written as
+								\begin{multline}
+									\max_{b(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_B \left(1- \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)\right) - b(j) \right] dj \\
+									\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} b(j) dj \leq W_B  \hskip.2in \text{and} \hskip.2in b(j)\geq0 \ \forall j
+									\label{ex:objB}
+								\end{multline}
+							\item If the realizations of $Z$ are i.i.d. and the bribes are independent across legislators, (I believe) this can be maximized pointwise--except for the constraint
+							\item The FOC for each $j$ is then
+								\begin{equation}
+								  - W_B \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial b(j)} = 1
+									\label{eq:foc}
+								\end{equation}
+								as long as the constraint is satisfied.
+									\begin{itemize}
+										\item I don't know how decisions are made if the constraint binds---how the rationing happens
+										\item If the constraint is not binding, vote buyer B will pay all legislators (we could put in some kind of fixed cost of dealing with each legislator to short circuit this outcome) except those who are already so favorable to him that they are past the FOC point
+										\item Perhaps there's something in equilibrium I'm not seeing yet that will reduce further the number of legislators that are paid
+									\end{itemize}
+						\end{itemize}
+				\end{itemize}
+			\item Let's examine the FOC, assuming pointwise maximization is okay as in Equation~\ref{eq:foc}
+				\begin{itemize}
+					\item It's easier for me to think of the CDF in terms of the non-standardized Normal distribution before taking the derivative. Then, if my math is right, the FOC becomes
+						\begin{equation}
+							  \frac{1}{\beta}\frac{1}{\sigma_j \sqrt{2\pi}} \: e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{1}{W_B} 
+								\label{eq:focB2}
+						\end{equation}
+							\begin{itemize}
+								\item This just says the pdf has to equal $\beta$ divided by the willingness to pay
+								\item Rearranging to solve for $b(j)$:
+									\begin{equation}
+							  		e^{- \frac{\left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2}{2\sigma_j^2} }= \frac{\beta\sigma_j \sqrt{2\pi}}{W_B} 
+									\end{equation}
+									\begin{equation}
+							  		- \left(\frac{\alpha + a(j) - b(j)}{\beta} - j\right)^2 =2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)
+									\end{equation}
+								Since the log statement on the RHS will almost certainly be negative, I can take the negative sign to the right and take the square root without worrying about imaginary numbers
+								  \begin{equation}
+							  		\frac{\alpha + a(j) - b(j)}{\beta} - j = \pm \sqrt{-2\sigma_j^2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
+									\end{equation}
+										\begin{itemize}
+											\item Notice there are two roots: could be to the left of the mode (less than 0.5 cumulative probability), or to the right (more than 0.5 cumulative probability)
+										\end{itemize}
+									\begin{equation}
+							  		\alpha + a(j) - b(j) = \pm \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)} + j \beta
+									\end{equation}
+									\begin{equation}
+							  		b(j) = \alpha + a(j)  - j \beta \pm \beta\sigma_j \sqrt{-2 \ln\left(\frac{\beta\sigma_j \sqrt{2\pi}}{W_B} \right)}
+									\end{equation}
+									\begin{equation}
+							  		b(j) = \alpha + a(j)  - \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
+										\label{eq:focB}
+									\end{equation}
+								\item So, the bribe for legislator $j$ takes legislator j's preferences back to zero in expectation (the first three terms) and then relative to that, either adds or subtracts a term that involves WTP, variance and $\beta$
+									\begin{itemize}
+										\item Do we have a way of distinguishing between the two? They have very different implications for the CDF, even though the same implications for the pdf
+										\item It makes more intuitive sense that the bribe would be increasing in $W_B$ (WTP)
+										\item Perhaps we derive the different implications and let the data speak
+										\item All the comparative statics will come out with same magnitude, both signs
+										\item SOC is obviously okay (essentially $-x e^{\frac{x^2}{2}}$)
+									\end{itemize}
+							\end{itemize}
+					\item How do we deal with this r.v. with continuous support when the range of ideal points is posited to be finite ($[-\frac{1}{2},\frac{1}{2}]$)?
+
+				\end{itemize}
+		\end{itemize}	
+	\item Vote buyer A
+		\begin{itemize}
+			\item Whatever we decide for vote buyer B will be the same for vote buyer A
+			\item Adapting Expression~\ref{ex:objB} for Vote Buyer A
+				\begin{multline}
+					\max_{a(j)} \ \int_{-\frac{1}{2}}^\frac{1}{2} \left[ W_A \cdot \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right) - a(j) \right] dj \\
+						\text{subject to} \hskip.2in \int_{-\frac{1}{2}}^\frac{1}{2} a(j) dj \leq W_A  \hskip.2in \text{and} \hskip.2in a(j)\geq0 \ \forall j
+							\label{ex:objA}
+				\end{multline}
+					\begin{itemize}
+						\item Major problem if we solve this game sequentially: when substituting the FOC for Vote Buyer B (Equation~\ref{eq:focB}) into Vote Buyer A's objective function, the $a(j)$'s cancel out ($b(j)$ is linear in $a(j)$) so the benefit term is constant in $a(j)$
+						\item Static best response
+						  \begin{equation}
+								  W_A \cdot \frac{ \partial \Phi \left(\frac{\frac{\alpha + a(j) - b(j)}{\beta} - j}{\sigma_j} \right)}{\partial a(j)} = 1
+									\label{eq:focA}
+							\end{equation}
+						\item Math looks exactly the same as Eqn. \ref{eq:focB2} to \ref{eq:focB} except with $W_A$ replacing $W_B$ and all the opposite signs, so
+							\begin{equation}
+								a(j) = -\alpha + b(j)  + \beta j \pm \beta\sigma_j \sqrt{2 \left(\ln W_A - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}
+									\label{eq:focA3}
+							\end{equation}		
+					\end{itemize}
+				\item Plugging either one of the vote buyers' FOCs into the other just implies that $W_A = W_B$, but doesn't say anything about the level of bribes. Use some kind of pareto ranking to choose one?
+					\begin{itemize}
+						\item Note that to get a solution, I've taken both FOCs to have the same root (either both positive or both negative; Otherwise, we need a very special combination of parameters to get an equilibrium)
+						\item Intuition for this equilibrium: each vote buyer exactly brings legislator $j$ back to neutral (compensating both for inherent preference $\alpha - \beta \cdot j$) and the other vote buyer's bribe; they also each tack on a term related to WTP, $\beta$, and $\sigma_j$, but these terms cancel out as well as long as $W_A = W_B$. If $W_A \neq W_B$, then there is not such an interior equilibrium as far as I can tell. 
+							\begin{itemize}
+								\item Need to look for more equilibria, perhaps in mixed strategies.
+								\item Especially a way to get asymmetric pure strategies (I'm happy to have asymmetry between $W_A$ and $W_B$ if necessary)
+							\end{itemize}
+					\end{itemize}
+		\end{itemize}
+\end{enumerate}
+
+\newpage
+\section{Discrete Model}
+\begin{itemize}
+	\item Note that this model \textit{may} introduce interdependence between the bid functions that does not exist in the continuous model
+	\item What is not clear is whether this happens when the WTP constraint is not binding, which I'm going to assume from the start, and maybe impose later
+	\item We write
+	  \[
+		  v(z) = \alpha -\beta z + \ve_z + a(z) - b(z)
+		\]
+			\begin{itemize}
+				\item Note that we will have to worry about separately identifying the parameters. So for now, will assume $\ve$ does not vary in $z$
+				\item Also going to ignore Vote Buyer A's choice for now, so we have
+			\end{itemize}
+	  \[
+		  v(z) = \alpha -\beta z + \ve - b(z)
+		\]
+	\item Then the probability that legislator $z$ votes against the new proposal is
+	  \[
+		  \Pr\left[v(z)\leq 0 \right] = \Pr\left[\alpha -\beta z + \ve - b(z) \leq 0 \right] 
+			                            = \Pr\left[\ve \leq \beta z - \alpha + b(z) \right] 
+		\]
+		Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}$. 
+	\item Take a model with three legislators with ideal points at $z=-\frac{1}{2}$, $z=0$ and $z=\frac{1}{2}$. For ease of notation, let
+		\begin{enumerate}
+			\item $X = -\alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)\label{page:sh}$ 
+		\end{enumerate}
+	\item Then the three probabilities are
+		\begin{itemize}
+			\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$
+			\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
+				\[
+				  X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
+				\]
+			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
+			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(\frac{1}{2}\right)=0\right)  + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+			Substituting from the definition of $X$,
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \left(1-\frac{1}{1+e^{-Y}}\right)  + \\
+					\frac{1}{1+e^{-Z}} \left(1-\frac{1}{1+e^{-X}}\right) \frac{1}{1+e^{-Y}} + \\
+					\left(1-\frac{1}{1+e^{-Z}} \right) \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} + \\
+					\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+			This can be simplified as 
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-Z}} + \\
+					\frac{1}{1+e^{-Y}} \frac{1}{1+e^{-Z}} - 2	\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+					\label{eq:obj}
+				\end{multline}
+				
+			The FOC wrt to $b\left(-\frac{1}{2}\right)$ is 
+				\begin{equation}
+					W_B \biggl[ \left( \frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2 \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \right) \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+				\end{equation}
+			Simplifying:
+			\begin{equation}
+					W_B \biggl[ \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+					\label{eq:logistic}
+				\end{equation}
+			Further math related to this equation is on Page~\pageref{eq:logistic2}.
+			
+		\end{itemize}
+	\item Some notes
+		\begin{itemize}
+			\item If we divide through by 2, the left side is the average minus the product
+			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
+		\end{itemize}
+	\end{itemize}
+
+\subsection{Adding Non-negativity Constraints for Bribes}
+The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
+
+The full set of FOCs (in logistic form) is then:
+\[
+    W_B\frac{e^{-X}}{\left(1+e^{-X}\right)^2}\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_X = 0
+\]
+\[
+    W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1 + \lambda_Y = 0 
+\]
+\[
+    W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_Z = 0
+\]
+\[
+  b\left(0\right) \geq0 \hskip.2in b\left(\frac{1}{2}\right) \geq0 \hskip.2in b\left(-\frac{1}{2}\right) \geq0 
+\]
+\[
+  \lambda_X \geq0 \hskip.2in \lambda_Y \geq0 \hskip.2in \lambda_Z \geq0 
+\]
+\[
+  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(-\frac{1}{2}\right) = 0 
+\]
+There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
+
+Note that the complementary slackness condition implies that either a bribe is zero, \un{or} its multiplier is zero (or both).
+
+\vskip.5in
+Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left(\frac{1}{2}\right)$ are positive while $b\left(-\frac{1}{2}\right) = 0$.
+\begin{itemize}
+	\item Then $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = -\frac{\beta}{2} - \alpha $
+	\item $\lambda_Z$ is likely positive
+	\item $\lambda_X = \lambda_Y = 0$
+\end{itemize}
+
+\newpage
+\subsection{Math for Discrete Model}
+The math that follows from Equation \ref{eq:logistic}:
+\begin{itemize}
+	\item Then Equation \ref{eq:logistic} is equivalent to:
+		\begin{equation}
+			\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z} }
+					\label{eq:logistic2}
+		\end{equation}
+		\[
+			\frac{2 + e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z}}
+		\]
+		\[
+			\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} = \frac{\left(1+e^{-Z}\right)^2}{W_B \: e^{-Z}}
+		\]
+		\begin{equation}
+			\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}= \frac{1}{W_B}
+		\end{equation}
+		Likewise, we have
+		\begin{equation}
+			\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
+		\end{equation}
+		and
+		\begin{equation}
+			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+			\label{eq:base}
+		\end{equation}
+		Setting the left-hand size of these last two equations (the FOCs for the bribes for 0 and $\frac{1}{2}$ equal to each other,
+		\[
+		  \frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
+		\]
+		\[
+		  \frac{e^{-X-Y} + e^{-X-Z}}{1+e^{-X}}= \frac{e^{-X-Y} + e^{-Y-Z}}{1+e^{-Y}}
+		\]
+		\[
+		  e^{-X-Y} + e^{-X-Z} + e^{-X-2Y} +e^{-X-Y-Z}= e^{-X-Y} + e^{-Y-Z} + e^{-2X-Y} +e^{-X-Y-Z}
+		\]
+		\[
+		  e^{-X-Z} +e^{-X-2Y}= e^{-Y-Z} +e^{-2X-Y}
+		\]
+		\[
+		  e^{-Z} +e^{-2Y}= e^{X-Y-Z} +e^{-X-Y}
+		\]
+		\begin{equation}
+		  e^{Y-Z} +e^{-Y}= e^{X-Z} +e^{-X}
+			\label{eq:twoways}
+		\end{equation}
+   Equation~\ref{eq:twoways} can be rearranged into two similar forms. First:
+		\[
+		  e^{Y-Z} - e^{X-Z}= e^{-X} - e^{-Y}
+		\]
+		\begin{equation}
+		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
+			\label{eq:1}
+		\end{equation}
+  	Second, multiplying through by zero:
+	  \begin{equation}
+		  e^{X} - e^{Y}= e^Z\left(e^{-Y} - e^{-X}\right)
+			\label{eq:2}
+		\end{equation}
+	\end{itemize}	
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(-\frac{1}{2}\right)$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+	\begin{itemize}
+		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
+		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
+	\end{itemize}
+The second order conditions will pin down the solution in this case of two non-negative bribes.
+
+\begin{itemize}
+	\item SOCs imply that both $X$ and $Y$ are positive.
+\end{itemize}
+
+Once we know that both $X=Y>0$ (or $X=Z>0$), go back to one of the equations like \ref{eq:base} and substitute for one of the variables. Given that the third equals zero, for a particular value of $\left(\alpha,W_B\right)$, we can solve for the two relevant bribes.
+
+
+
+\newpage		
+\subsection{Second Order Conditions}
+Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
+\begin{equation}
+  W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
+\end{equation}
+\begin{equation}
+  W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1
+	\label{eq:firstderiv}
+\end{equation}
+Now, the second derivative:
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} 2\left(1+e^{-Z}\right) e^{-Z}-\left(1+e^{-Z}\right)^2 e^{-Z}}{\left(1+e^{-Z}\right)^4} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} 2 e^{-Z}-\left(1+e^{-Z}\right) e^{-Z}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{2 e^{-Z}-\left(1+e^{-Z}\right) \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{2 e^{-Z}-1-e^{-Z} \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z} \left\{e^{-Z}-1 \right\}}{\left(1+e^{-Z}\right)^3} \right]
+\]
+\[
+  W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z}}{\left(1+e^{-Z}\right)^3} \right] \left\{e^{-Z}-1 \right\}
+\]
+Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $z\leq0$ and negative when $z\geq0$. So this objective function appears to have an inflection point at $z=0$.
+\begin{itemize}
+	\item When $z < 0$ (as when this legislator is naturally against you and you don't bribe her), this expression is negative
+\end{itemize}
+
+\vskip1in
+We also need cross partials. Let's start with the first derivative for $b\left(\frac{1}{2}\right)$, analogous to Expression~\ref{eq:firstderiv} for $b\left(-\frac{1}{2}\right)$:
+\begin{equation}
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1
+\end{equation}
+
+Taking the derivative of this expression with respect to $b\left(0\right)$:
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)(-1)e^{-X} -\left(e^{-X}+ e^{-Z}\right)\left(-e^{-X}- e^{-X-Z}\right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(e^{-X}+ e^{-Z}\right)\left(e^{-X} + e^{-X-Z}\right) - \left(1+e^{-X}\right)\left(1+e^{-Z}\right)e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{\left(e^{-2X} + e^{-2X-Z} + e^{-X-Z} + e^{-X-2Z}\right) - \left(1 +e^{-X} +e^{-Z}+ e^{-X-Z} \right)e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-2X} + e^{-2X-Z} + e^{-X-Z} + e^{-X-2Z} - e^{-X} - e^{-2X} - e^{-X-Z} - e^{-2X-Z}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\[
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X-2Z} - e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+\]
+\begin{equation}
+  W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X}\left(e^{-2Z} - 1 \right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+	\label{eq:xpartial}
+\end{equation}
+
+\vskip.5in
+The SOCs when one non-negativity constraint binds; bordered Hessian is 4x4. \\
+		\begin{tabular}{cccc}
+			0 & $\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_1}{\partial b\left(-0\right)}$ & $\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			$\frac{\partial g_1}{\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular} \\
+
+\vskip.2in		
+Evaluating the constraint terms:\\
+\begin{tabular}{cccc}
+			0 & -1 & 0 & 0 \\
+			-1 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular}
+
+The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
+\begin{itemize}
+	\item First we need the determinant of the next-to-last principal minor, the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be positive. We can use the trick by which one copies the first two rows to the right of the matrix and then multiplies down the columns to the right and up the columns to the right (these terms get a negative sign). Then the determinant is
+	  \[
+		  0 + 0 + 0 - \left[0 + 0 + (-1)(-1)\frac{\partial^2 L}{\partial b(0)^2} \right] = - \frac{\partial^2 L}{\partial b(0)^2}
+		\]
+		Because we need this to be positive, we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$. This corresponds to the $X$ compositive variable, and happens only when $X$ is non-negative
+	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
+		\[
+		  0 \cdot \left|\text{something} \right| - (-1)\cdot 
+			\left|\begin{array}{ccc}
+				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right| + 0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right|
+		\]
+		\[ 
+			=
+			\left|\begin{array}{ccc}
+				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left|\begin{array}{cc}
+			\frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left(
+			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
+		\]
+		\[
+		  = \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+		\]
+
+  We need this determinant to be non-positive, that is
+		\[
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+		\]
+	  The right hand side is positive because it's a square. Moreover, it is strictly positive because $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ is strictly positive: examine Equation~\ref{eq:xpartial}. Since $Z < 0$ in the case under examination, Equation~\ref{eq:xpartial} must be strictly positive. (This strengthens us from the negative semi-definite condition condition that supplies only a weak inequality).
+		
+		The left hand side must then be positive, and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
+\end{itemize}
+Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
+\[
+  2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
+\]		
+
+\vskip1in
+In general
+\begin{itemize}
+	\item $n$ is the number of choice variables ($n=3$ in my case for the three bribes)
+	\item If there are $k$ inequality constraints ($k=3$ in my case, for 3 non-negativity constraints)
+	\item And $g_1$ through $g_b$ are binding (i.e. $b$ is the number of bribes that are zero)
+	\item $m$ is the number of equality constraints (0 in my case)
+	\item Then there are restrictions on the last ($n-b+m$) minors
+		\begin{itemize}
+			\item If one bribe is zero, then need the last two $3-1 =2$ minors to alternate in sign with the last being $(-1)^n = (-1)^3 = -1 <0$, i.e. negative
+			\item If no bribes are zero, there are restrictions on the last three minors, but the matrix is 3x3 (no constraint rows)
+			\item If two bribes are binding, there is only a restriction on the last minor, but it's a 5x5 matrix.
+				\begin{itemize}
+					\item But can't wipe out $\frac{1}{W_B}$ using two FOCs because only one holds with equality
+				\end{itemize}
+		\end{itemize}
+	\item If all three non-negativity constraints bind, we know all bribes are zero. No restriction on SOC?
+\end{itemize}
+
+\newpage
+\subsection{Intuition}
+\begin{itemize}
+	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
+		\[
+		  v(z) = \al - \beta z + a(z) - b(z) > 0
+		\]
+	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
+		\[
+		  \al - \beta z - b(z) < 0
+		\]
+		
+		\begin{center}
+		or 
+		\end{center}
+		\[
+		  \beta z - \al + b(z) > 0
+		\]
+		\item If $\al > 0$, legislators on average are biased against B.
+			\begin{itemize}
+				\item If $\al < 0$, legislators on average are biased in favor of B.
+				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
+			\end{itemize}
+		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,\frac{1}{2},$ or $-\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
+\end{itemize}
+
+\vskip.1in
+Recall:
+		\begin{enumerate}
+			\item $X = -\alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$ 
+		\end{enumerate}
+
+\vskip.1in
+Pattern more or less is to get the guy who is WHAT?
+\begin{itemize}
+	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
+	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote)
+\end{itemize}
+		
+\vskip.1in
+The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
+\begin{itemize}
+	\item \textbf{What's the intuition for why they should be equal? Draw graph of the three PDFs in ideal point / net ideal point space}
+	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
+\end{itemize}
+		
+		
+\newpage
+\subsection{One Non-negative Bribe}
+When $\al = 0$ and $WB=8$, we find that $b\left(-\frac{1}{2}\right)$ and $b\left(\frac{1}{2}\right)$ are zero. Only $b(0)$ is positive.
+\begin{itemize}
+	\item Only the FOC for $X$ holds with equality (i.e. $\lambda_X = 0$)
+		\[
+			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+		\]
+	\item We know exactly what $Y$ and $Z$ will be since $b\left(-\frac{1}{2}\right)$ and $b\left(\frac{1}{2}\right)$ are zero. Given $WB$, we can solve for $X$ and then $b(0)$.
+	\item Looking at the SOC, when there are three inequality constraints and 2 bind, we only need a condition on the last principal minor of a suitably constructed bordered Hessian.
+		\begin{itemize}
+			\item It should be negative because $n=3$
+			\item It's a 5x5 matrix because there are two binding inequality constraints.
+		\end{itemize}
+		The SOCs when one non-negativity constraint binds; bordered Hessian is 5x5. \\
+		\begin{tabular}{ccccc}
+			0 & 0 & $\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_1}{\partial b\left(-0\right)}$ & $\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ \\
+			0 & 0 & $\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(-0\right)}$ & $\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$& $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			$\frac{\partial g_1}{\partial b\left(0\right)}$ & $\frac{\partial g_3}{\partial b\left(-0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			$\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular} \\
+
+\vskip.2in		
+Evaluating the constraint terms:\\
+\begin{tabular}{ccccc}
+			0 & 0 & -1 & 0 & 0 \\
+			0 & 0 & 0 & 0 & -1 \\
+			-1 & 0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			0 & 0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			0 & -1 &$\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular}
+
+		
+		Solving for the determinant of this matrix:
+		\[
+		  (-1)\cdot 
+			\left|\begin{array}{cccc}
+				0 & 0 & 0 & -1\\
+				- 1 & 0 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & 0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
+			0 & -1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
+			\end{array} \right|
+		=
+						  (-1)\cdot (-1) \cdot (-1)
+			\left|\begin{array}{ccc}
+				- 1 & 0 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & 0 & \frac{\partial^2 L}{\partial b(0)^2}\\
+			0 & -1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}
+			\end{array} \right| =
+		\]
+		\[
+		  (-1) \cdot (-1)
+			\left|\begin{array}{cc}	
+			0 & \frac{\partial^2 L}{\partial b(0)^2}\\
+			-1 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}
+			\end{array} \right| = 0 - (-1) \cdot \frac{\partial^2 L}{\partial b(0)^2} = \frac{\partial^2 L}{\partial b(0)^2}
+		\]
+		\item Thus we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$
+			\begin{itemize}
+				\item This boils down to $\left(e^{-X} - 1\right) < 0$
+				\item Implies $X > 0$
+				\item i.e. $-\al + b(0) > 0$ or $b(0) > \al$
+			\end{itemize}
+		\item It is NOT the case that $b(0)$ has to be such that $X=Y$ even though $b\left(\frac{1}{2}\right) =0$. In fact, it seems in numerical examples that this does \textit{not} happen.
+			\begin{itemize}
+				\item However, I do see that this existence of the one non-negative bribe (NNB) is not common. It exists for $\al = 0$ and WB = 8, but goes away as soon as $\al = 0.1$ or $W_B$ = 9.
+				\item In both cases, I can see that changing the parameter would push the value of $b(0)$ over $0.5$, making $X > Y$. This is when the solution switches to 2 NNB's.
+				\item {\color{blue} CONJECTURE}: Group B chooses 1 NNB until it would be large enough to make $X > Y$ (when $\al \approx 0$) or $Z > Y$ (when $\al$ large and negative), then switch to 2 NBB
+					\begin{itemize}
+						\item This is not strictly true around $-0.7$: but I can see for $\al = .75,$ when $W_B=10$ it's only $X$, then for $W_B=11$ it's only $Z$. This is because the non-negativity constraint for $Z$ binds at $W_B =10$, as it does for $Y$. $X$ is the only variable there for which it does not bind, and it is worthwhile shifting the middle legislator just a bit.
+						\item When $\al$ is large and positive, go straight from 0 NNB to 2 NNB
+					\end{itemize}
+			\end{itemize}
+		\item Can write out SOC (just after equation 33) and FOC, sub together to get
+			\[
+			  \frac{1}{1 + e^{-X}} \left(e^{-Z} - 1\right) < 0
+			\]
+			Not sure what this means
+	\end{itemize}
+		
+\newpage
+\subsection{All Three Bribes are Non-negative}
+In many cases all three bribes are non-negative. Here are very loose results
+\begin{itemize}
+	\item I always observe that $X=Y=Z$. I think it's easy to show this analytically.
+	\item From the FOCs, when $X$ and $Y$ are non-negative, it can be shown that a set of inequalities just below Equations~\ref{eq:1} and \ref{eq:2} must hold.
+	\item The SOCs when 0 non-negativity constraints bind are on the 3x3 matrix of second derivatives. There are three conditions:
+		\[
+		  \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \left\{\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right\} \leq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \geq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \leq 0
+		\]
+		The last one says that $Y$ must be non-negative. The first and second together say that $Z$ must be non-negative.
+	\item $Y$ non-negative combined with the inequalities below Equations ~\ref{eq:1} and \ref{eq:2} tells us that $X=Y > 0$.
+	\item Similar logic that leads to those inequalities can be used to derive analagous inequalities for $X$ and $Z$ (or $Y$ and $Z$). Then $Z$ non-negative tells us $Z=Y>0$ so that $X=Y=Z >0$.
+\end{itemize}
+
+\vskip.3in
+Now as to when this case occurs
+\begin{itemize}
+	\item When $X=Z$ (the two left-most legislators), bribe to $\frac{1}{2}$ is added in before $X$ would move to the right of $Y$, i.e. when $X \rightarrow 0.5$.
+	\item This is NOT the case when $X$ and $Y$ are the two non-negative bribes. They can get very large before the left-most legislator is bribed.
+\end{itemize}
+
+\newpage
+\subsection{Numerical Results}	
+For all of these, $\beta = 1$ and there are three legislators with $b\in\left\{-\frac{1}{2},0,\frac{1}{2}\right\}$.
+\begin{itemize}
+	\item Below, the column headings are $v(z)$ before the bribe.
+	\item That is, from left to right, $-Z,-Y,-X$.
+\end{itemize}
+
+\vskip.2in
+For $\al = -1.5$	
+	\begin{tabular}{crrrrr}
+			            & -2 & -1.5 						& -1\\
+			up to WB=19	&	0	&		0					 &	0 \\		
+			only WB = 20   	&	0	&0	& just a little
+	\end{tabular}
+
+\vskip.2in
+For $\al = -1.3$	
+	\begin{tabular}{crrrrr}
+			            & -1.8 & -1.3 						& -0.8\\
+			up to WB=15	&	0	&		0					 &	0 \\		
+			WB = 16 to 20   	&	0	&0	& just a little
+	\end{tabular}
+
+\vskip.2in
+For $\al = -1.1$	
+	\begin{tabular}{crrrrr}
+			            & -1.6 & -1.1 						& -0.6\\
+			up to WB=13	&	0	&		0					 &	0 \\		
+			WB = 14 to 15  & 	0& 0 &	just a little	\\
+			WB = 16 to 20   &	0& some, always increasing &	some + .5	\\
+	\end{tabular}
+
+\vskip.2in
+For $\al = -0.9$	
+	\begin{tabular}{crrrrr}
+			            & -1.4 & -0.9 						& -0.4\\
+			up to WB=11	&	0	&		0					 &	0 \\		
+			WB = 12 to 13  & 	0& 0 &	just a little	\\
+			WB = 14 to 19   &	0& some, always increasing &	some + .5	\\
+			WB = 20 & some & some + .5 & some + 1
+	\end{tabular}
+
+\vskip.2in
+For $\al = -0.6$	
+	\begin{tabular}{crrrrr}
+			            & -1.1 & -0.6 						& -0.1\\
+			up to WB=8	&	0	&		0					 &	0 \\		
+			WB = 9 to 10  & 	0& some &	0	\\
+			WB = 11 to 14   &	0& some, always increasing &	some + .5	\\
+			WB = 15 to 20 & some & some + .5 & some + 1
+	\end{tabular}
+		
+	\vskip.2in	
+		$\al = -0.6$ pattern holds to $\al = -0.2$
+
+\vskip.2in
+For $\al = -0.1$	
+	\begin{tabular}{crrrrr}
+			            & -0.6 & -0.1 						& 0.4\\
+			up to WB=7	&	0	&		0					 &	0 \\		
+			WB = 8   & 	0& some &	0	\\
+			WB = 9   &	some& some + .5&	0	\\
+			WB = 15 to 20 & some & some + .5 & some + 1
+	\end{tabular}
+	
+	\vskip.2in	
+		$\al = -0.1$ pattern holds to $\al = 0.5$ at least
+		
+\vskip.2in
+For $\al = 0.5$	
+	\begin{tabular}{crrrrr}
+			            & 0.0 & 0.5 						& 1.0\\
+			up to WB=8	&	0	&		0					 &	0 \\		
+			WB = 9 to 11  & 	$>1$& $>1+.5$ &	0	\\
+			WB = 12 to 20 & significant & significant + .5 & significant + 1
+	\end{tabular}
+
+\vskip.2in
+For $\al = 1.1$	
+	\begin{tabular}{crrrrr}
+			            & 0.6 & 1.1 						& 1.6\\
+			up to WB=13	&	0	&		0					 &	0 \\		
+			WB = 9 to 20  & 	$>2$& $>2+.5$ &	0
+	\end{tabular}
+
+		\vskip.5in
+Going to explore in-depth case of $\al = 0.0$	\\
+	\begin{tabular}{crrrrr}
+			            & -0.5 & 0.0 						& 0.5\\
+			up to WB=7	&	0	&		0					 &	0 \\		
+			WB = 8    & 	0&  some &	0	\\
+			WB = 9   & 	some & some + .5 &	0	\\
+			WB = 10 to 20 & some & some + .5 & some + 1
+	\end{tabular}
+
+		
+		
+\newpage
+\section{Some Comparative Statics}			
+Comparative statics
+\begin{itemize}
+	\item Vote buyer B (3/25/15) --- note these are not super useful yet --- they're comparative statics of the best response function, but not of the equilibrium
+		\begin{itemize}
+			\item Those for $j$, $a(j)$ and $\alpha$ don't involve the root term, so don't differ depending on whether we take the plus or minus version
+				\[
+					\frac{\partial b(j)}{\partial j} = -\beta \hskip.2in \frac{\partial b(j)}{\partial a(j)} = 1 \hskip.2in \frac{\partial b(j)}{\partial \alpha} = 1
+				\]
+			\item Those for $\beta$ and $\sigma_j$ \textit{do} involve the root term. I will only display the version for the positive root; there is also a version with all the signs reversed
+				\[
+				  \frac{\partial b(j)}{\partial \beta} = -j + \sigma_j \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\sigma_j}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+				\[
+				  \frac{\partial b(j)}{\partial \sigma_j} = \beta \sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)} - \frac{\beta}{\sqrt{2 \left(\ln W_B - \ln \beta\sigma_j - \ln \sqrt{2\pi} \right)}}
+				\]
+		\end{itemize}
+\end{itemize}
+
+
+				  
+\newpage		
+\section{Notes from March}
+Notes from 3/16 Skype chat (Kristy and Sebastian)
+\begin{itemize}
+	\item Seems like FOC for lobby will boil down to each one buying votes until marginal benefit = marginal cost
+	\item May want to use some simplified rule / heuristic for lobby's decision: perhaps they reorder the legislators by their $\pm 2$ std. dev. and make some decision based on that ordering who to lobby
+	\item Will some kind of rule that looks like RMSE come out of the math? Is it possible to get anything closed-form at all?
+\end{itemize}
+
+\vskip.3in
+Notes from 3/19 Skype chat (Kristy and Sebastian)
+\begin{itemize}
+	\item We can use the data we have to horse-race this model against other hypotheses about how lobbyists distribute bribes
+		\begin{itemize}
+			\item Allocate equally among legislators
+			\item Groseclose Snyder with full information: only one side pays
+			\item Our model with one dimension
+				\begin{itemize}
+					\item Could we use the econometric model to benchmark to one where uncertainty disappears? Or, as it does theoretically, does the model have to change completely?
+				\end{itemize}
+			\item Our model with multiple dimensions
+		\end{itemize}
+	\item We can think of this as looking for the effect of uncertainty on prices---we'd be pricing uncertainty relative to a model with uncertainty
+		\begin{itemize}
+			\item ``a metric in dollars of uncertainty''
+			\item this is a model of vote buying under uncertainty
+		\end{itemize}
+	\item Given how different the environment with uncertainty is, Kristy should explore both the sequential model that parrots GS96 and a simultaneous model that is more like GH94 (menu auction)
+	\item When mapping to the data, we're going to want to know from the model whether/when total contributions represent WTP.
+		\begin{itemize}
+			\item It clearly doesn't in the case of certainty. One side pays nothing; the other pays either as much as is necessary to shut down its opponent, or nothing at all the necessary amount exceeds WTP
+			\item May be able to show it doesn't matter, that the proportion of total expenditures is a sufficient statistic
+		\end{itemize}
+	\item Finish writing the model, and then see if we can use the estimates we already have to write a first, very rough draft
+\end{itemize}
+
+\end{document}
