@@ -153,18 +153,12 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 
 \item Vote buyer B
 		\begin{itemize}
-			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''
-			\item This has to be adapted to our situation with uncertainty
-				\begin{itemize}
-					\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
-					\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
-					\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
-					\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
-					\item Some legislators who are past FOC point will not be lobbied
-				\end{itemize}
-		\end{itemize}	
-		
-		
+			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''; this has to be adapted to our situation with uncertainty
+			\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
+			\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
+			\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+			\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
+			\item Some legislators who are past FOC point will not be lobbied		
 			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
 			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
 			  \begin{multline}
@@ -196,29 +190,22 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 					W_B \biggl[ \left( \frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2 \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \right) \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
 				\end{equation}
 			Simplifying:
-			\begin{equation}
+				\begin{equation}
 					W_B \biggl[ \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
 					\label{eq:logistic}
 				\end{equation}
 			Further math related to this equation is on Page~\pageref{eq:logistic2}.
-			
-
-	\item Some notes
-		\begin{itemize}
 			\item If we divide through by 2, the left side is the average minus the product
 			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
 		\end{itemize}
-
-
-	
+	\item Vote Buyer A
 \end{enumerate}
 
 
-				
 	
 
 
-\section{Adding Vote Buyer A}
+
 
 \section{Adding Non-negativity Constraints for Bribes}
 The Lagrangian for the problem is the same as Expression~\ref{eq:obj}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
@@ -255,7 +242,7 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 \end{itemize}
 
 \newpage
-\subsection{Math for Discrete Model}
+\section{Math for Discrete Model}
 The math that follows from Equation \ref{eq:logistic}:
 \begin{itemize}
 	\item Then Equation \ref{eq:logistic} is equivalent to:
