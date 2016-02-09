@@ -222,7 +222,7 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 \newpage
 \section{Adding Non-negativity Constraints for Bribes}
 \label{sec:nonneg}
-The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(\frac{1}{2}\right) + \lambda_Z b\left(-\frac{1}{2}\right)$
+The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(-\frac{1}{2}\right) + \lambda_Z b\left(\frac{1}{2}\right)$
 
 The full set of FOCs (in logistic form) is then:
 \[
@@ -241,7 +241,7 @@ The full set of FOCs (in logistic form) is then:
   \lambda_X \geq0 \hskip.2in \lambda_Y \geq0 \hskip.2in \lambda_Z \geq0 
 \]
 \[
-  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(-\frac{1}{2}\right) = 0 
+  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(-\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(\frac{1}{2}\right) = 0 
 \]
 There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
 
@@ -250,9 +250,9 @@ Note that the complementary slackness condition implies that either a bribe is z
 \vskip.5in
 Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left(\frac{1}{2}\right)$ are positive while $b\left(-\frac{1}{2}\right) = 0$.
 \begin{itemize}
-	\item Then $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = -\frac{\beta}{2} - \alpha $
-	\item $\lambda_Z$ is likely positive
-	\item $\lambda_X = \lambda_Y = 0$
+	\item Then $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = \frac{\beta}{2} - \alpha $
+	\item $\lambda_Y$ is likely positive
+	\item $\lambda_X = \lambda_Z = 0$
 \end{itemize}
 
 \newpage
@@ -278,28 +278,32 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 				\item If $\al < 0$, legislators on average are biased in favor of B.
 				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
 			\end{itemize}
-		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,\frac{1}{2},$ or $-\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
+		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
 \end{itemize}
 
 \vskip.1in
 Recall:
 		\begin{enumerate}
 			\item $X = -\alpha + b(0)$ 
-			\item $Y = \frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$
-			\item $Z = -\frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$ 
 		\end{enumerate}
 
 \vskip.1in
 Pattern more or less is to get the guy who is WHAT?
 \begin{itemize}
 	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
-	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote)
+	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
+		\begin{itemize}
+			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
+		\end{itemize}
 \end{itemize}
 		
 \vskip.1in
 The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
 \begin{itemize}
-	\item \textbf{What's the intuition for why they should be equal? Draw graph of the three PDFs in ideal point / net ideal point space}
+	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
+	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
 	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
 \end{itemize}
 		
