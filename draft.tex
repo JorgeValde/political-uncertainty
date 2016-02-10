@@ -101,8 +101,47 @@ bookmarksopen=true]{hyperref}
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
 
+\textcolor{blue}{Recorded votes in legislatures (roll call data) are the most commonly used data source to measure politicians' spatial preferences. A well-established strategy is to use statistical techniques to represent patterns of legislative voting. The intuition behind these statistical models is that each roll call presents each legislator with a choice between a ``yea'' and a ``nay'' position. Legislators are presumed to vote for the position most similar to their own ideal policy position. As Clinton et al. (2004) note, it is possible to use Bayesian Markov chain simulation statistical methods to generate these preference estimates. This approach treats the unknown ideal points, bill parameters and legislators' utilities as random variables and condition upon the observed roll call data. The strategy is to impute values to these variables and estimate by regression the ideal points and bill parameters. The MCMC algorithm repeatedly performs these imputations and regressions and generates a large number of samples from the posterior density of the model parameters. Using this estimation procedure, we obtain summary statistics used for inference: legislators' mean and median ideal points as well as their 95$\%$ posterior confidence intervals. The latter are of particular interest to us, as we can use them to gauge the unpredictability of  legislators' voting behavior.}
+
+\textcolor{blue}{We are interested in unpredictability vis-a-vis particular policy issues. Poole (2005) suggests using subsets of roll calls to establish legislators' ideal points separately on each issue. Preliminary work with our data indicates that a more statistically-robust method is to use all roll call votes in a legislative session or group of sessions to estimate an ideal point that is multidimension---that is, with one dimension for each interest group---allowing the partial pooling of information across roll calls. Multilevel modeling techniques, of which the standard ideal point estimation is a basic case, are perfectly suited to this task.}
+
+\textcolor{blue}{We therefore estimate the model
+\begin{equation}
+  \Pr(y_{kj} = 1) = \text{logit}^{-1}\left( \sum_{g=1}^G \ga_k^{(g)}\left( \alpha_j^{(g)} - \beta_k^{(g)}\right) \right)
+	\label{eq:v2}
+\end{equation}
+with roll call votes numbered $k=1,\ldots,K$, legislators numbered $j=1,\dots,J$, and interest groups numbered $g=1,\dots,G$. $y_{jk}=1$ if legislator $j$ votes ``Yea'' on bill $k$; $y_{kj}=0$ if she votes ``Nay'' on bill $k$. Note that interest groups take positions on multiple roll call votes and different interest groups can take positions, often on opposing sides, on each vote.}
+		
+\textcolor{blue}{This is a logistic item response (Rasch) model as adapted by Bafumi, et. al. (2005) to the legislative context. $\alpha_j^{(g)}$ is the ideal point of legislator $j$ on issue $g$ and $\beta_k^{(g)}$ is the ideal point of a legislator who is indifferent on vote $k$ for issue $g$. $\gamma_k^{(g)}$, the discrimination parameter, is a measure of the informativeness of issue $g$ for the vote on bill $k$: a large $\ga$ indicates that legislators are very likely to vote according to their preferences, whereas a small $\ga$ means that even significant margins of preference do not contribute much to the probability that legislators will vote in favor of the bill.}
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=3in, width=6.5in]{NSF_combined_graph.pdf}
+\end{center}
+\caption{Uncertainty by Industry\label{fig:combined}}
+\end{figure}
+
+\textcolor{blue}{We `turn on' the parameters for interest groups for each vote according to the data from Maplight, which includes a listing of the votes for which each interest group took a position. This produces estimates for how ``friendly'' or ``unfriendly'' each legislator is with respect to each interest group, as well as the unpredictability of his/her voting behavior when matters affecting that group are considered. In a preliminary run of this model with just ten interest groups (out of over 450) in the 112th Congress displayed in Figure~\ref{fig:combined}, we find that the chemical industry has the lowest average uncertainty (sd = 0.229); this is lower than the total uncertainty measure that can be interpreted as the standard left-right measure in ideal point models (sd = 0.233). The median group in terms of uncertainty is manufacturing unions (sd = 0.253), while construction equipment faced the highest uncertainty (sd = 0.285).}
+
+\textcolor{blue}{We are experimenting with some of the more sophisticated measures of uncertainty that are possible with a rich model such as this one; for instance the group mean for $\ga$ and constructs that combine model parameters.}
+
+\textcolor{blue}{Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we will proceed to characterize this uncertainty across industries, as well as how it is related to lobbying, political contributions and voting behavior of legislators. First, we want to understand the patterns in these data in the context of the industry-relevant bills identified by Maplight (as explained above).} 
+
+\textcolor{blue}{We will use descriptive analysis as well as both standard parametric and non-parametric techniques such as density estimation to explore the relationships between the above variables of interest. We will begin with very basic questions such as whether distinct industries face varying levels of political uncertainty (see preliminary evidence in Figure~\ref{fig:combined}) and how those patterns may relate to the lobbying strategies they employ. From the data analysis that is represented above, we see a very interesting relationship between uncertainty and lobbying expenditure across legislators at the aggregate level in Figure~\ref{fig:br}, and we expect that additional important patterns will emerge when the data is disaggregated by industry.}
+
+
+
 \section{An Application to the U.S. House of Representatives}
 \label{sec:house}
+
+\subsection{Data}
+\textcolor{blue}{Voting data will be obtained from Vote View, a website maintained by Professor Keith Poole (\url{http://voteview.com}). Details on each legislative proposal are available electronically through Thomas (\url{http://thomas.loc.gov}) and the sites of the House and Senate registrars.}
+
+\textcolor{blue}{We will use Maplight's contributions data, which provides evidence on public declarations by special interest groups to determine the relevant PAC contributions for the bills under consideration. In a related effort to better connect special interest activity to the intent of that activity, we will use data made available pursuant to the U.S. Lobbying Disclosure Act of 1995 and the Honest Leadership and Open Government Act of 2007 via the U.S. Senate Office of Public Records and the Office of the Clerk of the U.S. House of Representatives. This data is particularly useful because lobbyists must declare the issue area on which they lobbied.}
+
+\textcolor{blue}{We will also explore whether there is a way to leverage the data and methodology of Lake and Millimet (2014b) that combine the contributions and lobbying data to improve precision, although there is a concern about the coarseness of the data that must be overcome.}
+
+\subsection{Evidence}
 
 \begin{figure}
 \centering
@@ -120,9 +159,9 @@ bookmarksopen=true]{hyperref}
 \end{minipage}
 \end{figure}
 
-\textcolor{blue}{Figure 1 displays the relationship between lobbying effort and legislators' support for KORUS. The vertical axis represents the predicted probability that a legislator would vote ``yes'' on the agreement, and the horizontal axis shows the monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. The solid vertical red line indicates the average net contribution in the sample, and the dashed lines a one-standard deviation increase/decrease from that sample mean. The data indicate that exporting industries are more likely to exert lobbying effort to enlist the support of additional legislators (extensive margin) rather than secure stronger support from a given set of legislators (intensive margin), as well as that there are decreasing returns to lobbying effort. To generate these results,  we regressed a legislator's vote on his/her estimated ideal point as well as partisanship using a probit specification. Then we fitted a second-order polynomial to the predicted probabilities generated by the probit regression. The contribution data for both this and the follow figure was obtained from Maplight.}
+\textcolor{blue}{Figure~\ref{fig:br} displays the relationship between lobbying effort and legislators' support for KORUS. The vertical axis represents the predicted probability that a legislator would vote ``yes'' on the agreement, and the horizontal axis shows the monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. The solid vertical red line indicates the average net contribution in the sample, and the dashed lines a one-standard deviation increase/decrease from that sample mean. The data indicate that exporting industries are more likely to exert lobbying effort to enlist the support of additional legislators (extensive margin) rather than secure stronger support from a given set of legislators (intensive margin), as well as that there are decreasing returns to lobbying effort. To generate these results,  we regressed a legislator's vote on his/her estimated ideal point as well as partisanship using a probit specification. Then we fitted a second-order polynomial to the predicted probabilities generated by the probit regression. The contribution data for both this and the follow figure was obtained from Maplight.}
 
-\textcolor{blue}{Figure 2 displays the relationship between the unpredictability of legislators' voting behavior and lobbying effort. The vertical axis represents the predicted net contributions to members of the U.S. House of Representatives in 2012, and the horizontal axis shows the unpredictability of legislator's voting behavior measured using the 95$\%$ posterior confidence intervals of their ideal points estimated using Bayesian Markov chain simulation to scale all roll call votes taken in the 112th Congress (more details on the methodology below). The solid vertical red line indicates the average uncertainty in the sample, and the vertical dashed red lines indicate increases/decreases of one-standard deviation from the average. The horizontal dashed green line indicates the predicted net payment in the sample. The data show a very strong relationship between uncertainty at the level of the individual legislator and campaign contributions. To generate these results, we fitted a second-order polynomial to the data, and used monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. While these data do not map perfectly onto our theoretical constructs, they indicate that there is strong preliminary support for our hypotheses making it highly likely that investment in data acquisition and analysis is worthwhile.}
+\textcolor{blue}{Figure~\ref{fig:g1} displays the relationship between the unpredictability of legislators' voting behavior and lobbying effort. The vertical axis represents the predicted net contributions to members of the U.S. House of Representatives in 2012, and the horizontal axis shows the unpredictability of legislator's voting behavior measured using the 95$\%$ posterior confidence intervals of their ideal points estimated using Bayesian Markov chain simulation to scale all roll call votes taken in the 112th Congress (more details on the methodology below). The solid vertical red line indicates the average uncertainty in the sample, and the vertical dashed red lines indicate increases/decreases of one-standard deviation from the average. The horizontal dashed green line indicates the predicted net payment in the sample. The data show a very strong relationship between uncertainty at the level of the individual legislator and campaign contributions. To generate these results, we fitted a second-order polynomial to the data, and used monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. While these data do not map perfectly onto our theoretical constructs, they indicate that there is strong preliminary support for our hypotheses making it highly likely that investment in data acquisition and analysis is worthwhile.}
 
 
 
@@ -135,7 +174,10 @@ bookmarksopen=true]{hyperref}
 \section{Conclusion}
 \label{sec:concl}
 
+\textcolor{blue}{an alternative characterization of the legislative process would be one in which (i) bills have a quality dimension (such as their technical merit, or their appropriateness for a given situation); and (ii) legislators have access to different pieces of information about the quality of these proposals. Given our own long-term research agenda, adding common values and decentralized information to the analysis of the ratification of trade agreements will be one of the next steps in this project. Given the important set of governance characteristics identified in Mansfield and Milner (2012), we also look forward to taking advantage of what seems a rich opportunity to integrate important institutional variations into this modeling framework of endogenous lobbying with uncertainty.}
 
+\vskip.3in
+\textcolor{blue}{We expect this data will have a wide array of applications, such as exploring the links between policy uncertainty, the business cycle, and stock market volatility.}
 
 \section*{Appendix}
 
