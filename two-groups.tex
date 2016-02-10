@@ -210,10 +210,18 @@ Backward induction (legislature moves last; B makes last bribe; A makes first br
 				\end{multline}
 				where 
 				\begin{enumerate}
-					\item $X_A = \alpha - b(0,a(0)) + a(0)$ 
-					\item $Y_A = -\frac{\beta}{2} + \alpha - b\left(-\frac{1}{2},a\left(-\frac{1}{2}\right)\right)+ a\left(-\frac{1}{2}\right)$
-					\item $Z_A = \frac{\beta}{2} + \alpha - b\left(\frac{1}{2},a\left(\frac{1}{2}\right)\right)+ a\left(\frac{1}{2}\right)$
+					\item $X_A = \alpha - b_0(\bm{a},W_B,\al,\beta) + a_0$ 
+					\item $Y_A = -\frac{\beta}{2} + \alpha - b_{-.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{-.5}$
+					\item $Z_A = \frac{\beta}{2} + \alpha - b_{.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{.5}$
 				\end{enumerate}
+				with $\bm a = \left(a_{-.5},a_0,a_{.5} \right)$
+			\item Vote Buyer A's first order condition with respect to $a_0$ is more complicated because of the dependencies on $\bm a$ (should probably double check this, but it makes sense)
+			 \begin{multline}
+					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
+					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
+					\frac{1}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
+					\label{eq:focA}
+				\end{multline}
 		\end{itemize}
 \end{enumerate}
 
