@@ -13,7 +13,6 @@ f <- function(B,WB,al,y0,z0,x0) {
 
 WB=8
 al = 0
-y0=-.5
 o <- optim(c(1,1,1,WB,al,x0,y0,z0),function(B) f(B,WB,al,x0,y0,z0),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
 #o <- constrOptim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "Nelder-Mead", ui = rbind(c(1,0,0),c(0,1,0),c(0,0,1)),ci=c(0,0,0))
 
@@ -30,10 +29,10 @@ return(out)
 
 # Create a dataframe of parameter values
 x_vector <- seq(0, 1.0, 0.1) 
-#y_vector <- seq(-1.0, 0.0, 0.1)
+y_vector <- seq(-1.0, 0.0, 0.1)
 z_vector <- seq(.5, 1.0, 0.1)
 #params <- expand.grid("wb" = wb_vector, "y" = y_vector)
-params <- expand.grid("x" = x_vector, "z" = z_vector)
+params <- expand.grid("x" = x_vector, "y" = y_vector, "z" = z_vector)
 
 # Use "Map" to evaluate the "h" function at each pair of parameter values
 #results <- Map(h, y = params$y, WB = params$wb)
