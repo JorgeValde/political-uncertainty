@@ -20,7 +20,7 @@ Z = round(-.5 - al + o$par[1], digits=2)   #Bp5 but I've pasted in values here t
 
 pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
-win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))))
+win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y))) + (1/(1+exp(-X)))*(1/(1+exp(-Z))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))))
 out <- list("solns" = o$par[1:3], "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "winProb" = win)
 return(out)
 }
