@@ -1,6 +1,7 @@
 #optim function minimizes 'f'; c vector are starting values; lower is the
 #constraint; I choose a null gradient because it was easiest to get up and running
 #note that here the beta parameter is hard coded in as equal to 1
+WA=8
 
 h <- function(WB,al,y0,z0,x0) {
   
@@ -11,7 +12,7 @@ f <- function(B,WB,al,y0,z0,x0) {
   -WB*((1/(1+exp(al +x0- B0)))*(1/(1+exp(al + y0 - Bnp5))) + (1/(1+exp(al +x0- B0)))*(1/(1+exp(al + z0 - Bp5))) + (1/(1+exp(al + z0 - Bp5)))*(1/(1+exp(al + y0 - Bnp5))) - 2*(1/(1+exp(al +x0 - B0)))*(1/(1+exp(al + y0 - Bnp5)))*(1/(1+exp(al + z0 - Bp5)))) + B0 + Bp5 + Bnp5
 }   
 
-WB=8
+WB=10
 al = 0
 o <- optim(c(1,1,1,WB,al,x0,y0,z0),function(B) f(B,WB,al,x0,y0,z0),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
 #o <- constrOptim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "Nelder-Mead", ui = rbind(c(1,0,0),c(0,1,0),c(0,0,1)),ci=c(0,0,0))
@@ -28,15 +29,15 @@ pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
 bribesA <- c(A0,Anp5,Ap5)
 win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-Z))) + (1/(1+exp(-X)))*(1/(1+exp(-Z)))*(1-1/(1+exp(-Y))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y)))*(1-1/(1+exp(-X))) + (1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))))
-ValA = 10*(1-win) - A0 - Ap5 - Anp5
+ValA = WA*(1-win) - A0 - Ap5 - Anp5
 out <- list("solns" = round(o$par[1:3],digits=3), "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "yInit" = y0, "zInit" = z0, "xInit" = x0, "winProb" = win,"bribesA"=c(A0,Anp5,Ap5,ValA))
 return(out)
 }
 
 # Create a dataframe of parameter values
-x_vector <- seq(0, 1, 0.1) 
-y_vector <- seq(-.5, 1.5, 0.1)
-z_vector <- seq(.5, 1.5, 0.1)
+x_vector <- seq(0, 2, 0.1) 
+y_vector <- seq(-.5, 2, 0.1)
+z_vector <- seq(.5, 2, 0.1)
 params <- expand.grid("x" = x_vector, "y" = y_vector, "z" = z_vector)
 
 # Use "Map" to evaluate the "h" function at each pair of parameter values
