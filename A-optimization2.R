@@ -1,10 +1,17 @@
 #optim function minimizes 'f'; c vector are starting values; lower is the
 #constraint; I choose a null gradient because it was easiest to get up and running
 #note that here the beta parameter is hard coded in as equal to 1
-WA=8
-WB=10
 al = 0
+WB=8
 
+v = seq(4,12)
+o <- matrix(0,length(v),18)
+colnames(o) <- c("al","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
+
+for (j in v[1]:v[length(v)]) {
+
+  WA = j
+  
 h <- function(x0,y0,z0) {
   
   f <- function(B,x0,y0,z0) {
@@ -60,6 +67,5 @@ val <- rbind(val)
 winProb <- rbind(winProb)
 params <- do.call("cbind",params)
 
-o <- matrix(0,length(1),18)
-colnames(o) <- c("al","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
-o[1,] <- cbind(al,WA,WB,params,solns,netpos,val,winProb,bA)
+o[j-v[1]+1,] <- cbind(al,WA,WB,params,solns,netpos,val,winProb,bA)
+}
