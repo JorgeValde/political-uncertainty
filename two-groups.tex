@@ -264,6 +264,18 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 \end{itemize}
 
 \newpage
+\section{Parameterizing uncertainty that varies by legislator}
+\label{sec:uncert}
+I'm going to start by changing the uncertainty for just one legislator when there is just one vote buyer (B). I will do this for the legislator at position $-0.5$, which corresponds to $Y$. The FOCs become, for $Z$ (similarly for $X$, and from Equation~\ref{eq:logistic})
+	\begin{equation}
+		W_B \biggl[ \frac{e^{-X} + e^{-\frac{Y}{s_{-.5}}}}{\left(1+e^{-X}\right)\left(1+e^{-\frac{Y}{s_{-.5}}}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+	\end{equation}
+	And for $Y$
+  \begin{equation}
+		W_B \biggl[ \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-\frac{Y}{s_{-.5}}}}{s_{-.5}\left[1+e^{-\frac{Y}{s_{-.5}}}\right]^2} \biggr]  = 1
+	\end{equation}
+
+\newpage
 \section{Intuition}
 \begin{itemize}
 	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
