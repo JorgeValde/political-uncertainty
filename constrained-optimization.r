@@ -4,13 +4,14 @@
 rm(list = ls())
 h <- function(WB,al) {
 
-sy=1.2
+sy=1
+sz=1
   
 f <- function(B,WB,al) {
   Bp5 <- B[1]
   B0 <- B[2]
   Bnp5 <- B[3]
-  -WB*((1/(1+exp(al - B0)))*(1/(1+exp((al - .5 - Bnp5)/sy))) + (1/(1+exp(al - B0)))*(1/(1+exp(al + .5 - Bp5))) + (1/(1+exp(al + .5 - Bp5)))*(1/(1+exp((al - .5 - Bnp5)/sy))) - 2*(1/(1+exp(al - B0)))*(1/(1+exp((al - .5 - Bnp5)/sy)))*(1/(1+exp(al + .5 - Bp5)))) + B0 + Bp5 + Bnp5
+  -WB*((1/(1+exp(al - B0)))*(1/(1+exp((al - .5 - Bnp5)/sy))) + (1/(1+exp(al - B0)))*(1/(1+exp((al + .5 - Bp5)/sz))) + (1/(1+exp((al + .5 - Bp5)/sz)))*(1/(1+exp((al - .5 - Bnp5)/sy))) - 2*(1/(1+exp(al - B0)))*(1/(1+exp((al - .5 - Bnp5)/sy)))*(1/(1+exp((al + .5 - Bp5)/sz)))) + B0 + Bp5 + Bnp5
 }   
 
 o <- optim(c(1,1,1,WB,al),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
@@ -22,7 +23,7 @@ Z = round(-.5 - al + o$par[1], digits=2)   #Bp5 but I've pasted in values here t
 
 pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
-win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y/sy))) + (1/(1+exp(-X)))*(1/(1+exp(-Z))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y/sy))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y/sy)))*(1/(1+exp(-Z)))))
+win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y/sy))) + (1/(1+exp(-X)))*(1/(1+exp(-Z/sz))) + (1/(1+exp(-Z/sz)))*(1/(1+exp(-Y/sy))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y/sy)))*(1/(1+exp(-Z/sz)))))
 out <- list("solns" = o$par[1:3], "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "winProb" = win)
 return(out)
 }
