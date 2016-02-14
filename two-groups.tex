@@ -275,6 +275,7 @@ I'm going to start by changing the uncertainty for just one legislator when ther
 		W_B \biggl[ \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-\frac{Y}{s_{-.5}}}}{s_{-.5}\left[1+e^{-\frac{Y}{s_{-.5}}}\right]^2} \biggr]  = 1
 	\end{equation}
 
+\vskip.2in
 The same thing can be done for the legislator at position $0.5$. The objective function when both vary is
 			  \begin{multline}
 			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
@@ -283,6 +284,33 @@ The same thing can be done for the legislator at position $0.5$. The objective f
 					\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} - 2	\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
 				\end{multline}
 
+\vskip.2in
+Now what impact does this have on Vote Buyer B's decisions (in the absence of bribes by Vote Buyer A)?
+\begin{itemize}
+	\item First, how does the probability that the legislator at $0.5$ (most unfriendly to $B$) votes with $B$ change when $s_{.5}$ goes from 1 to 2 (and there are no bribes)?
+		\begin{itemize}
+			\item When $s_{.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{1}}} = \frac{1}{1+e^{.5}} = 0.3775$
+			\item When $s_{.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{2}}} = \frac{1}{1+e^{.25}} = 0.4378$
+			\item That is, the probability that the least friendly legislator votes with $B$ \textit{rises}
+		\end{itemize}
+	\item Now, how does the probability that the legislator at $-0.5$ (most friendly to $B$) votes with $B$ change when $s_{-.5}$ goes from 1 to 2 (and there are no bribes)?
+		\begin{itemize}
+			\item When $s_{-.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{1}}} = \frac{1}{1+e^{-.5}} = 0.6225$
+			\item When $s_{-.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{2}}} = \frac{1}{1+e^{-.25}} = 0.5622$
+			\item That is, the probability that the least most legislator votes with $B$ \textit{falls}
+		\end{itemize}
+	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ stops bribing legislator $-0.5$ (most friendly) altogether.
+		\begin{itemize}
+			\item This is true even with $s_{-.5}$ as low as 1.2 (taking $s_{.5} = s_{0} = 1$)
+			\item For $1 < s_{-.5} < 1.2$, no bribe for $-0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Z$
+			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
+		\end{itemize}
+	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
+		\begin{itemize}
+			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
+			\item At $s_{.5} = .75$: ONLY Z for $W_B \in \left[6,8\right]$ (8 is usually where it's $X$ alone). Then $Z$ and $Y$ together but $Z$ further on net than $Y$. Eventually all three, with $X=Y$, $Z$ further
+		\end{itemize}
+\end{itemize}
 
 \newpage
 \section{Intuition}
