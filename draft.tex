@@ -93,12 +93,22 @@ bookmarksopen=true]{hyperref}
 \section{The Model}
 \label{sec:model}
 
-The model is based on that of Banks (2000)
+The model is based on Banks' (2000) model of vote buying in a legislature, which is in turn a discrete version of Groseclose and Snyder's (1996) model with a continuum of legislators. The major difference here is the addition of uncertainty about the legislator's ideal points.
+
+Each of three legislators faces a choice between the status quo, $x$ and a new policy proposal $s$. The utility function of legislator $i$ is given by $v(i) = u_i(x) - u_i(s)$, which is measured in money units. Note that legislators only have preferences about how they vote, not over which alternative wins.
+
+There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the expected value of his preferred policy net of the bribes he has to pay. $A$ prefers policy $x$ and has willingness to pay (WTP) $W_A$ for $x$ measured in money and values $s$ at zero. $B$ prefers $s$and has WTP $W_B$ for $s$. Each vote buyer would prefer to concede the issue rather than pay more than his WTP.
+
+Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$ and that all bribed legislators who are indifferent vote for whoever bribed them last.
+	
+(Remember that I've assumed a very specific functional form)	
 
 %If we're going to do an empirical implementation of $\ga$ below, model needs to start with a basic understanding of uncertainty, run through lobbying response to it, up through aggregation into $\ga$ and how lobbying behavior turns into a ``yea'' vote total.
 
 \section{Some Theoretical Results}
 \label{sec:res}
+
+Goal: characterize SPNE in pure strategies
 
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
