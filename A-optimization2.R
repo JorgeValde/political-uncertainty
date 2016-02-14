@@ -5,18 +5,17 @@ rm(list = ls())
 al = 0
 WB=8
 
-v = seq(5,7,.2)
-o <- matrix(0,length(v),18)
-colnames(o) <- c("al","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
+v = seq(5,9,.4)
+o <- matrix(0,length(v),20)
+colnames(o) <- c("al","sy","sz","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
 
 for (j in 1:length(v)) {
 
   WA = v[j]
+  sy=.9
+  sz=1.2
   
 h <- function(x0,y0,z0) {
-  
-  sy=1.1
-  sz=1
   
   f <- function(B,x0,y0,z0) {
     Bp5 <- B[1]
@@ -71,6 +70,6 @@ val <- rbind(val)
 winProb <- rbind(winProb)
 params <- do.call("cbind",params)
 
-o[j,] <- cbind(al,WA,WB,params,solns,netpos,val,winProb,bA)
+o[j,] <- cbind(al,sy,sz,WA,WB,params,solns,netpos,val,winProb,bA)
 }
 View(o)
