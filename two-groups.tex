@@ -264,7 +264,7 @@ Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left
 \end{itemize}
 
 \newpage
-\section{Parameterizing uncertainty that varies by legislator}
+\section{Parameterizing Uncertainty to Vary by Legislator}
 \label{sec:uncert}
 I'm going to start by changing the uncertainty for just one legislator when there is just one vote buyer (B). I will do this for the legislator at position $-0.5$, which corresponds to $Y$. The FOCs become, for $Z$ (similarly for $X$, and from Equation~\ref{eq:logistic})
 	\begin{equation}
@@ -274,6 +274,15 @@ I'm going to start by changing the uncertainty for just one legislator when ther
   \begin{equation}
 		W_B \biggl[ \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-\frac{Y}{s_{-.5}}}}{s_{-.5}\left[1+e^{-\frac{Y}{s_{-.5}}}\right]^2} \biggr]  = 1
 	\end{equation}
+
+The same thing can be done for the legislator at position $0.5$. The objective function when both vary is
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} + \\
+					\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} - 2	\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+
 
 \newpage
 \section{Intuition}
