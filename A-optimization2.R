@@ -14,11 +14,14 @@ for (j in v[1]:v[length(v)]) {
   
 h <- function(x0,y0,z0) {
   
+  sy=1
+  sz=1
+  
   f <- function(B,x0,y0,z0) {
     Bp5 <- B[1]
     B0 <- B[2]
     Bnp5 <- B[3]
-    -WB*((1/(1+exp(al +x0- B0)))*(1/(1+exp(al + y0 - Bnp5))) + (1/(1+exp(al +x0- B0)))*(1/(1+exp(al + z0 - Bp5))) + (1/(1+exp(al + z0 - Bp5)))*(1/(1+exp(al + y0 - Bnp5))) - 2*(1/(1+exp(al +x0 - B0)))*(1/(1+exp(al + y0 - Bnp5)))*(1/(1+exp(al + z0 - Bp5)))) + B0 + Bp5 + Bnp5
+    -WB*((1/(1+exp(al + x0- B0)))*(1/(1+exp((al + y0 - Bnp5)/sy))) + (1/(1+exp(al +x0- B0)))*(1/(1+exp((al + z0 - Bp5)/sz))) + (1/(1+exp((al + z0 - Bp5)/sz)))*(1/(1+exp((al + y0 - Bnp5)/sy))) - 2*(1/(1+exp(al +x0 - B0)))*(1/(1+exp((al + y0 - Bnp5)/sy)))*(1/(1+exp((al + z0 - Bp5)/sz)))) + B0 + Bp5 + Bnp5
   }   
   
   o <- optim(c(1,1,1,x0,y0,z0),function(B) f(B,x0,y0,z0),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
@@ -34,7 +37,7 @@ h <- function(x0,y0,z0) {
   pos <- c(Z,X,Y)
   bribes <- c(o$par,-o$value)
   bribesA <- c(A0,Anp5,Ap5)
-  win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y))) + (1/(1+exp(-X)))*(1/(1+exp(-Z))) + (1/(1+exp(-Z)))*(1/(1+exp(-Y))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y)))*(1/(1+exp(-Z)))))
+  win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y/sy))) + (1/(1+exp(-X)))*(1/(1+exp(-Z/sz))) + (1/(1+exp(-Z/sz)))*(1/(1+exp(-Y/sy))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y/sy)))*(1/(1+exp(-Z/sz)))))
   ValA = WA*(1-win) - A0 - Ap5 - Anp5
   out <- list("solns" = round(o$par[1:3],digits=3), "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "yInit" = y0, "zInit" = z0, "xInit" = x0, "winProb" = win,"bribesA"=c(A0,Anp5,Ap5,ValA))
   return(out)
