@@ -166,13 +166,6 @@ Vote buyer A's objective function is identical in form to that of Vote buyer B (
 
 However, strategically Vote Buyer A is more complex because of the dependence of Vote Buyer $B$'s bids on her own.
 				
-
-
-
-
-	
-
-
 \subsection{Non-negativity Constraints for Bribes}
 \label{sec:nonneg}
 It is not possible for a Vote Buyer to extract money from a legislator who is more favorably-inclined toward him than is optimal. This means that there are non-negativity constraints on all bribes. 
@@ -199,119 +192,28 @@ The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, with the
 
 
 
-\subsection{Parameterizing Uncertainty to Vary by Legislator}
+\subsection{Varying Uncertainty across Legislators}
 \label{sec:uncert}
-I'm going to start by changing the uncertainty for just one legislator when there is just one vote buyer (B). I will do this for the legislator at position $-0.5$, which corresponds to $Y$. The FOCs become, for $Z$ (similarly for $X$, and from Equation~\ref{eq:logistic})
-	\begin{equation}
-		W_B \biggl[ \frac{e^{-X} + e^{-\frac{Y}{s_{-.5}}}}{\left(1+e^{-X}\right)\left(1+e^{-\frac{Y}{s_{-.5}}}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
-	\end{equation}
-	And for $Y$
-  \begin{equation}
-		W_B \biggl[ \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-\frac{Y}{s_{-.5}}}}{s_{-.5}\left[1+e^{-\frac{Y}{s_{-.5}}}\right]^2} \biggr]  = 1
-	\end{equation}
+We allow the amount of uncertainty regarding each legislator's ideal point to vary across legislators by letting the scale parameter of the logistic distribution be different for each legislator. A larger scale parameter is associated with greater variance and thus more uncertainty as to the legislator's ideal point. The objective function for Vote Buyer $B$ becomes
+ \begin{multline}
+    \max_{b_{-\frac{1}{2}}, b_0, b_{\frac{1}{2}}} 
+					W_B \biggl[ \frac{1}{1+e^{-\frac{X}{s_0}}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} +
+					\frac{1}{1+e^{-\frac{X}{s_0}}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} + \\
+					\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} - 2	\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{X}{s_0}}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b_j
+	\end{multline}
 
-\vskip.2in
-The same thing can be done for the legislator at position $0.5$. The objective function when both vary is
-			  \begin{multline}
-			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
-					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} +
-					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} + \\
-					\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} - 2	\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
-				\end{multline}
+We will see that allowing for this asymmetric uncertainty changes the predictions of the model in important ways. To lay the groundwork for the results to coming in Section~\ref{sec:resunc}, let's look at how the cumulative probabilities change for the most extreme legislators when the mean of their ideal point distribution is fixed but the scale parameter increases.
 
-\vskip.2in
-Now what impact does this have on Vote Buyer B's decisions (in the absence of bribes by Vote Buyer A)?
-\begin{itemize}
-	\item First, how does the probability that the legislator at $0.5$ (most unfriendly to $B$) votes with $B$ change when $s_{.5}$ goes from 1 to 2 (and there are no bribes)?
-		\begin{itemize}
-			\item When $s_{.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{1}}} = \frac{1}{1+e^{.5}} = 0.3775$
-			\item When $s_{.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{2}}} = \frac{1}{1+e^{.25}} = 0.4378$
-			\item That is, the probability that the least friendly legislator votes with $B$ \textit{rises}
-		\end{itemize}
-	\item Now, how does the probability that the legislator at $-0.5$ (most friendly to $B$) votes with $B$ change when $s_{-.5}$ goes from 1 to 2 (and there are no bribes)?
-		\begin{itemize}
-			\item When $s_{-.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{1}}} = \frac{1}{1+e^{-.5}} = 0.6225$
-			\item When $s_{-.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{2}}} = \frac{1}{1+e^{-.25}} = 0.5622$
-			\item That is, the probability that the least most legislator votes with $B$ \textit{falls}
-		\end{itemize}
-	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ stops bribing legislator $-0.5$ (most friendly) altogether.
-		\begin{itemize}
-			\item This is true even with $s_{-.5}$ as low as 1.2 (taking $s_{.5} = s_{0} = 1$)
-			\item For $1 < s_{-.5} < 1.2$, no bribe for $-0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Z$
-			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
-		\end{itemize}
-	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
-		\begin{itemize}
-			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
-			\item At $s_{.5} = .75$: ONLY Z for $W_B \in \left[6,8\right]$ (8 is usually where it's $X$ alone). Then $Z$ and $Y$ together but $Z$ further on net than $Y$. Eventually all three, with $X=Y$, $Z$ further
-		\end{itemize}
-\end{itemize}
+First, how does the probability that the legislator at $0.5$ (the one who is most unfriendly to $B$) votes with $B$ change when $s_{.5}$ goes from 1 to 2 in the absence of bribes? When $s_{.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{1}}} = \frac{1}{1+e^{.5}} = 0.3775$. When $s_{.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{2}}} = \frac{1}{1+e^{.25}} = 0.4378$. That is, the probability that the least friendly legislator votes with $B$ \textit{rises} when the uncertainty surrounding her ideal point increases.
 
-\newpage
-\subsection{Intuition}
-\begin{itemize}
-	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
-		\[
-		  v(z) = \al - \beta z + a(z) - b(z) > 0
-		\]
-	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
-		\[
-		  \al - \beta z - b(z) < 0
-		\]
-		
-		\begin{center}
-		or 
-		\end{center}
-		\[
-		  \beta z - \al + b(z) > 0
-		\]
-		\item If $\al > 0$, legislators on average are biased against B.
-			\begin{itemize}
-				\item If $\al < 0$, legislators on average are biased in favor of B.
-				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
-			\end{itemize}
-		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
-\end{itemize}
+Now, how does the probability that the legislator at $-0.5$ (the one who is most friendly to $B$) votes with $B$ change when $s_{-.5}$ goes from 1 to 2? When $s_{-.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{1}}} = \frac{1}{1+e^{-.5}} = 0.6225$. When $s_{-.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{2}}} = \frac{1}{1+e^{-.25}} = 0.5622$. Here, the probability that the most friendly legislator votes with $B$ \textit{falls} when the uncertainty surrounding her ideal point increases.
 
-\vskip.1in
-Recall:
-		\begin{enumerate}
-			\item $X = -\alpha + b(0)$ 
-			\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
-			\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$ 
-		\end{enumerate}
 
-\vskip.1in
-Pattern more or less is to get the guy who is WHAT?
-\begin{itemize}
-	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
-	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
-		\begin{itemize}
-			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
-		\end{itemize}
-\end{itemize}
-		
-\vskip.1in
-The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
-\begin{itemize}
-	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
-	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
-	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
-\end{itemize}
-
-	
-	
-(Remember that I've assumed a very specific functional form)	
-\begin{itemize}
-	\item use $\al$ in prop:2NNB
-\end{itemize}
-
-%If we're going to do an empirical implementation of $\ga$ below, model needs to start with a basic understanding of uncertainty, run through lobbying response to it, up through aggregation into $\ga$ and how lobbying behavior turns into a ``yea'' vote total.
-
-Goal: characterize SPNE in pure strategies
 
 \section{Some Theoretical Results}
 \label{sec:res}
+
+Although uncertainty is present in the environment under consideration here, information about that uncertainty is symmetric. Therefore the appropriate equilibrium notion is subgame perfect Nash equilibrium.
 
 I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about ideal points is the same across legislators.
 
@@ -342,6 +244,49 @@ Vote Buyer A's first order condition with respect to $a_0$ is more complicated b
 					\label{eq:focA}
 				\end{multline}
 
+\subsection{Intuition}
+\begin{itemize}
+
+		\item If $\al > 0$, legislators on average are biased against B.
+			\begin{itemize}
+				\item If $\al < 0$, legislators on average are biased in favor of B.
+				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
+			\end{itemize}
+		\item If $X_B,Y_B,$ or $Z_B$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
+\end{itemize}
+
+
+\vskip.1in
+Pattern more or less is to get the guy who is WHAT?
+\begin{itemize}
+	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
+		\begin{itemize}
+			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
+		\end{itemize}
+\end{itemize}
+		
+\vskip.1in
+The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
+\begin{itemize}
+	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
+	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
+	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
+\end{itemize}
+
+\subsection{Varying Uncertainty across Legislators}
+\label{sec:resunc}
+Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
+		\begin{itemize}
+			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
+			\item At $s_{.5} = .75$: ONLY Z for $W_B \in \left[6,8\right]$ (8 is usually where it's $X$ alone). Then $Z$ and $Y$ together but $Z$ further on net than $Y$. Eventually all three, with $X=Y$, $Z$ further
+		\end{itemize}
+Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ stops bribing legislator $-0.5$ (most friendly) altogether.
+		\begin{itemize}
+			\item This is true even with $s_{-.5}$ as low as 1.2 (taking $s_{.5} = s_{0} = 1$)
+			\item For $1 < s_{-.5} < 1.2$, no bribe for $-0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Z$
+			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
+		\end{itemize}
+		
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
 
