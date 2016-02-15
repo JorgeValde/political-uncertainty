@@ -100,41 +100,33 @@ Each of three legislators faces a choice between the status quo, $x$ and a new p
 
 There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the expected value of his preferred policy net of the bribes he has to pay. $A$ prefers policy $x$ and has willingness to pay (WTP) $W_A$ for $x$ measured in money and values $s$ at zero. $B$ prefers $s$and has WTP $W_B$ for $s$. Each vote buyer would prefer to concede the issue rather than pay more than his WTP.
 
-Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$.
+Vote Buyer $A$ moves first, providing a bribe offer function $a_i$. $a_i$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b_i$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$.
 
 \subsection{Legislature}
-Let us look first at the legislature. Each legislator $i$ decides whether to vote for $x$ or $s$ given her preference $i$, $a(i)$ and $b(i)$. Although legislators are ordered on the interval according to their ideal points $i$, there is acknowledged uncertainty surrounding their preferences. We take this uncertainty to vary by legislator and also potentially by issue area when we extend the model to account for multi-dimensional voting and vote-buying.
+Let us look first at the legislature. Each legislator $i$ decides whether to vote for $x$ or $s$ given her preference $i$, $a_i$ and $b_i$. Although legislators are ordered on the interval according to their ideal points $i$, there is acknowledged uncertainty surrounding their preferences. We take this uncertainty to vary by legislator and also potentially by issue area when we extend the model to account for multi-dimensional voting and vote-buying.
 
 In order to keep the model tractable when introduing this uncertainty, we take the ideal point function to be linear in $i$. That is, legislator $i$'s ideal point is taken to be $\alpha -\beta i$. We model uncertainty by taking legislator $i$ to vote for $x$ if 
 			  \[
-				  v(i) = \alpha -\beta i + \ve_i + a(i) - b(i) > 0
+				  v(i) = \alpha -\beta i + \ve_i + a_i - b_i > 0
 				\]
 		
 Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive.	We will begin by taking $\ve$ to not vary in $i$ and will shortly generalize.
 
 Given these assumptions, the probability that legislator $i$ votes against the new proposal is
 	\[
-					\Pr\left[v(i)\leq 0 \right] = \Pr\left[\alpha -\beta i + \ve + a(i) - b(i) \leq 0 \right] = \Pr\left[\ve \leq \beta z - \alpha - a(i) + b(i) \right] 
+					\Pr\left[v(i)\leq 0 \right] = \Pr\left[\alpha -\beta i + \ve + a_i - b_i \leq 0 \right] = \Pr\left[\ve \leq \beta z - \alpha - a_i + b_i \right] 
 	\]
-Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta i - \alpha - a(i) + b(i) \right)}}$.	
+Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$.	Whether a legislator $i$ votes ``no'' is a random variable, denote it $Q(i)$, distributed Bernoulli with this probability:
+	\[
+		Q(i) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha -a_i+ b_i \right)}}
+	\]
 
-For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2} \right\}$. For ease of notation, let
-				\begin{enumerate}
-					\item $X = -\alpha + b(0)$ 
-					\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
-					\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)\label{page:sh}$ 
-				\end{enumerate}
+For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2} \right\}$. Then $Y_B = \frac{\beta}{2} - \alpha - a_{-\frac{1}{2}} + b_{-\frac{1}{2}}$, $X_B = -\alpha - a_0+ b_0$ and $Z_B = -\frac{\beta}{2} - \alpha - a_{\frac{1}{2}} + b_{\frac{1}{2}}\label{page:sh}$ represent the net ideal points in terms of $B$'s probability of winning the issue. We can then write the probability that each of the legislators, respectively, votes against the new proposal as $\frac{1}{1+e^{-Y_B}}$, $\frac{1}{1+e^{-X_B}}$ and $\frac{1}{1+e^{-Z_B}}$.
 
-\begin{itemize}	
-			\item Then the three probabilities are
-				\begin{itemize}
-					\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$
-					\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
-						\[
-							X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
-						\]
-				\end{itemize}
-		\end{itemize}
+Vote Buyer $A$ must take into account that Vote Buyer $B$ will react to her choice of bribes. So the net ideal points from her point of view---that is, in terms of her winning the issue---are $X_A = \alpha - b_0(\bm{a},W_B,\al,\beta) + a_0$, $Y_A = -\frac{\beta}{2} + \alpha - b_{-.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{-.5}$, and $Z_A = \frac{\beta}{2} + \alpha - b_{.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{.5}$. We can then write the probability that each of the legislators votes for the new proposal as $\frac{1}{1+e^{-Y_A}}$, $\frac{1}{1+e^{-X_A}}$ and $\frac{1}{1+e^{-Z_A}}$.
+				
+
+
 
 \begin{enumerate}
 \item Vote buyer B
@@ -180,7 +172,6 @@ For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2}
 					W_B \biggl[ \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
 					\label{eq:logistic}
 				\end{equation}
-			Further math related to this equation is on Page~\pageref{eq:logistic2}.
 			\item If we divide through by 2, the left side is the average minus the product
 			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
 		\end{itemize}
