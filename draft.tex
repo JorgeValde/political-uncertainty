@@ -290,20 +290,20 @@ Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ st
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
 
-\textcolor{blue}{Recorded votes in legislatures (roll call data) are the most commonly used data source to measure politicians' spatial preferences. A well-established strategy is to use statistical techniques to represent patterns of legislative voting. The intuition behind these statistical models is that each roll call presents each legislator with a choice between a ``yea'' and a ``nay'' position. Legislators are presumed to vote for the position most similar to their own ideal policy position. As Clinton et al. (2004) note, it is possible to use Bayesian Markov chain simulation statistical methods to generate these preference estimates. This approach treats the unknown ideal points, bill parameters and legislators' utilities as random variables and condition upon the observed roll call data. The strategy is to impute values to these variables and estimate by regression the ideal points and bill parameters. The MCMC algorithm repeatedly performs these imputations and regressions and generates a large number of samples from the posterior density of the model parameters. Using this estimation procedure, we obtain summary statistics used for inference: legislators' mean and median ideal points as well as their 95$\%$ posterior confidence intervals. The latter are of particular interest to us, as we can use them to gauge the unpredictability of  legislators' voting behavior.}
+Recorded votes in legislatures (roll call data) are the most commonly used data source to measure politicians' spatial preferences. A well-established strategy is to use statistical techniques to represent patterns of legislative voting. The intuition behind these statistical models is that each roll call presents each legislator with a choice between a ``yea'' and a ``nay'' position. Legislators are presumed to vote for the position most similar to their own ideal policy position. As Clinton et al. (2004) note, it is possible to use Bayesian Markov chain simulation statistical methods to generate these preference estimates. This approach treats the unknown ideal points, bill parameters and legislators' utilities as random variables and condition upon the observed roll call data. The strategy is to impute values to these variables and estimate by regression the ideal points and bill parameters. The MCMC algorithm repeatedly performs these imputations and regressions and generates a large number of samples from the posterior density of the model parameters. Using this estimation procedure, we obtain summary statistics used for inference: legislators' mean and median ideal points as well as their 95$\%$ posterior confidence intervals. The latter are of particular interest to us, as we can use them to gauge the unpredictability of  legislators' voting behavior.
 
-\textcolor{blue}{We are interested in unpredictability vis-a-vis particular policy issues. Poole (2005) suggests using subsets of roll calls to establish legislators' ideal points separately on each issue. Preliminary work with our data indicates that a more statistically-robust method is to use all roll call votes in a legislative session or group of sessions to estimate an ideal point that is multidimension---that is, with one dimension for each interest group---allowing the partial pooling of information across roll calls. Multilevel modeling techniques, of which the standard ideal point estimation is a basic case, are perfectly suited to this task.}
+We are interested in unpredictability vis-a-vis particular policy issues. Poole (2005) suggests using subsets of roll calls to establish legislators' ideal points separately on each issue. Preliminary work with our data indicates that a more statistically-robust method is to use all roll call votes in a legislative session or group of sessions to estimate an ideal point that is multidimensional---that is, with one dimension for each interest group---allowing the partial pooling of information across roll calls. Multilevel modeling techniques, of which the standard ideal point estimation is a basic case, are perfectly suited to this task.
 
-\textcolor{blue}{We therefore estimate the model
+We therefore estimate the model
 \begin{equation}
   \Pr(y_{kj} = 1) = \text{logit}^{-1}\left( \sum_{g=1}^G \ga_k^{(g)}\left( \alpha_j^{(g)} - \beta_k^{(g)}\right) \right)
 	\label{eq:v2}
 \end{equation}
-with roll call votes numbered $k=1,\ldots,K$, legislators numbered $j=1,\dots,J$, and interest groups numbered $g=1,\dots,G$. $y_{jk}=1$ if legislator $j$ votes ``Yea'' on bill $k$; $y_{kj}=0$ if she votes ``Nay'' on bill $k$. Note that interest groups take positions on multiple roll call votes and different interest groups can take positions, often on opposing sides, on each vote.}
+with roll call votes numbered $k=1,\ldots,K$, legislators numbered $j=1,\dots,J$, and interest groups numbered $g=1,\dots,G$. $y_{jk}=1$ if legislator $j$ votes ``Yea'' on bill $k$; $y_{kj}=0$ if she votes ``Nay'' on bill $k$. Note that interest groups take positions on multiple roll call votes and different interest groups can take positions, often on opposing sides, on each vote.
 		
-\textcolor{blue}{This is a logistic item response (Rasch) model as adapted by Bafumi, et. al. (2005) to the legislative context. $\alpha_j^{(g)}$ is the ideal point of legislator $j$ on issue $g$ and $\beta_k^{(g)}$ is the ideal point of a legislator who is indifferent on vote $k$ for issue $g$. $\gamma_k^{(g)}$, the discrimination parameter, is a measure of the informativeness of issue $g$ for the vote on bill $k$: a large $\ga$ indicates that legislators are very likely to vote according to their preferences, whereas a small $\ga$ means that even significant margins of preference do not contribute much to the probability that legislators will vote in favor of the bill.}
+This is a logistic item response (Rasch) model as adapted by Bafumi, et. al. (2005) to the legislative context. $\alpha_j^{(g)}$ is the ideal point of legislator $j$ on issue $g$ and $\beta_k^{(g)}$ is the ideal point of a legislator who is indifferent on vote $k$ for issue $g$. $\gamma_k^{(g)}$, the discrimination parameter, is a measure of the informativeness of issue $g$ for the vote on bill $k$: a large $\ga$ indicates that legislators are very likely to vote according to their preferences, whereas a small $\ga$ means that even significant margins of preference do not contribute much to the probability that legislators will vote in favor of the bill.
 
-\textcolor{blue}{We are experimenting with some of the more sophisticated measures of uncertainty that are possible with a rich model such as this one; for instance the group mean for $\ga$ and constructs that combine model parameters.}
+We are currently experimenting with some of the more sophisticated measures of uncertainty that are possible with a rich model such as this one; for instance the group mean for $\ga$ and constructs that combine model parameters.
 
 
 \section{An Application to the U.S. House of Representatives}
@@ -314,7 +314,7 @@ with roll call votes numbered $k=1,\ldots,K$, legislators numbered $j=1,\dots,J$
 
 \textcolor{blue}{We will use Maplight's contributions data, which provides evidence on public declarations by special interest groups to determine the relevant PAC contributions for the bills under consideration. In a related effort to better connect special interest activity to the intent of that activity, we will use data made available pursuant to the U.S. Lobbying Disclosure Act of 1995 and the Honest Leadership and Open Government Act of 2007 via the U.S. Senate Office of Public Records and the Office of the Clerk of the U.S. House of Representatives. This data is particularly useful because lobbyists must declare the issue area on which they lobbied.}
 
-\textcolor{blue}{We will also explore whether there is a way to leverage the data and methodology of Lake and Millimet (2014b) that combine the contributions and lobbying data to improve precision, although there is a concern about the coarseness of the data that must be overcome.}
+\textcolor{blue}{We will also explore whether there is a way to leverage the data and methodology of Lake (2015) that combine the contributions and lobbying data to improve precision, although there is a concern about the coarseness of the data that must be overcome.}
 
 \subsection{Evidence}
 
@@ -431,6 +431,8 @@ The second order conditions imply that both $X$ and $Y$ are positive, thus it mu
 
 \item Ansolabehere, S., J. de Figueiredo, and J. Snyder Jr. (2003), ``Why Is There so Little Money in U.S. Politics?,'' {\em Journal of Economic Perspectives}, 17, 105-130.
 
+\item Bafumi, J., Gelman, A., Park., D, Kaplan, N., 2005. Practical Issues in Implementing and Understanding Bayesian Ideal Point Estimation. Political Analysis 13, 171-187.
+	
 \item Banks, J. S., (2000), ``Buying Supermajorities in Finite Legislatures.'' {\em The American Political Science Review} 94, 677-681.
 
 \item Becker, G., (1983), ``A Theory of Competition among Interest Groups for Political Influence.'' {\em Quarterly Journal of Economics} 98, 371-400.
@@ -439,19 +441,29 @@ The second order conditions imply that both $X$ and $Y$ are positive, thus it mu
 
 \item Bombardini, M., and F. Trebbi (2012): ``Competition and Political Organization: Together or Alone in Lobbying for Trade Policy?'' {\em Journal of International Economics}, 87, 18-26.
 
+\begin{sloppypar}	
+	\item Buzard, K., 2014c. Trade Agreements in the Shadow of Lobbying. Available at: \url{https://kbuzard.expressions.syr.edu/wp-content/uploads/TradeAgreements_Shadow_Lobbying.pdf}.
+\end{sloppypar}
+
 \item Clinton, J., Jackman, S., and D. Rivers, (2004): ``The Statistical Analysis of Roll Call Data.'' {\em American Political Science Review}, 98, 355-370.
 
+\item Coates, D., Ludema, R., 2001. A Theory of Trade Policy Leadership. Journal of Development Economics 65, 1-29.
+	
 \item Dal Bo, E. (2007): ``Bribing Voters.'' {\em American Journal of Political Science} 51, 789-803.
 
 \item Dekel, E., Jackson, M., Wolinsky, A. (2005): {\em Vote Buying.} Unpublished manuscript, Caltech.
 
-\item Gawande, K., P. Krishna and M. Robbins (2006): ``Foreign Lobbies and U.S. Trade Policy,'' {\em Review of Economics and Statistics}, 88, 563-571.
+\item Gawande, K., Krishna, P., Olarreaga, M., 2009. What Governments Maximize and Why: The View from Trade. International Organization 63, 491-532.
 
 \item Goldberg, P. and G. Maggi (1999): ``Protection for Sale: An Empirical Investigation,'' {\em American Economic Review}, 89, 1135-1155.
 
 \item Groseclose, T., Snyder, J. M. (1996): ``Buying Supermajorities.'' {\em American Political Science Review} 90, 303-315.
 
 \item Grossman, G. and E. Helpman (1994): ``Protection for Sale,'' {\em The American Economic Review}, 84, 833-850.
+
+\item Grossman, G., Helpman, E., 1995a. The Politics of Free-Trade Agreements. The American Economic Review 85, 667-690.
+
+\item Grossman, G., Helpman, E., 1995b. Trade Wars and Trade Talks. The Journal of Political Economy 103, 675-708.
 
 \item Grossman, G. and E. Helpman (2005): ``A Protectionist Bias in Majoritarian Politics,'' {\em The Quarterly Journal of Economics}, 120, 1239-1282.
 
@@ -461,11 +473,15 @@ The second order conditions imply that both $X$ and $Y$ are positive, thus it mu
 
 \item Laffont, J., Tirole, J. (1994): ``A Theory of Incentives in Procurement and Regulation.'' Cambridge: MIT Press.
 
+\item Lake, J., 2015. Revisiting the link between PAC Contributions and Lobbying Expenditures. European Journal of Political Economy 37, 86-101.
+
 \item Laver, M. and K. Shepsle (1991), ``Divided Government: America is Not `Exceptional','' {\em Governance: An International Journal of Policy and Administration}, 4, 250-269.
 
 \item Le Breton, M. and F. Salanie (2003), ``Lobbying under political uncertainty,'' {\em Journal of Public Economics}, 87, 2589-2610.
 
 \item Le Breton, M. and V. Zaporozhets (2007), ``Legislative Lobbying under Political Uncertainty,'' Available at SSRN: \url{http://ssrn.com/abstract=1024686}.
+
+\item Mansfield, E., Milner, H., 2012. Votes, Vetoes, and the Political Economy of International Trade Agreements. Princeton and Oxford: Princeton  University Press.
 
 \item Peltzman, S. (1976), ``Toward a More General Theory of Regulation.'' {\em Journal of Law and Economics} 19, 211-248.
 
@@ -476,55 +492,6 @@ The second order conditions imply that both $X$ and $Y$ are positive, thus it mu
 \item Saiegh, S. (2011) ``Ruling by Statute: How Uncertainty and Vote-Buying Shape Lawmaking.'' New York: Cambridge University Press.
 
 \item Stigler, G. (1975) ``The Citizen and the State: Essays on Regulation.'' Chicago: Chicago University Press.
-
-
-
-\item Bafumi, J., Gelman, A., Park., D, Kaplan, N., 2005. Practical Issues in Implementing and Understanding Bayesian Ideal Point Estimation. Political Analysis 13, 171-187.
-	
-	
-
-	\item Buzard, K., 2014a. Endogenous Politics and the Design of Trade Agreements. Available at: \url{https://kbuzard.expressions.syr.edu/wp-content/uploads/Endogenous-Politics.pdf}.	
-		
-	\item Buzard, K., 2014b. Self-enforcing Trade Agreements, Dispute Settlement and Separation of Powers. Available at: \url{https://kbuzard.expressions.syr.edu/wp-content/uploads/2014/04/Self-enforcing-Trade_Agreements.pdf}.
-
-\begin{sloppypar}	
-	\item Buzard, K., 2014c. Trade Agreements in the Shadow of Lobbying. Available at: \url{https://kbuzard.expressions.syr.edu/wp-content/uploads/TradeAgreements_Shadow_Lobbying.pdf}.
-		\end{sloppypar}
-		
-
-	\item Coates, D., Ludema, R., 2001. A Theory of Trade Policy Leadership. Journal of Development Economics 65, 1-29.
-	
-	\item Conconi, P., Facchini, G., Steinhardt, M. F., Zanardi, M., 2012. The political economy of trade and migration: Evidence from the US Congress. HWWI Research Paper 136. Available at: \url{http://hdl.handle.net/10419/67944}.
-	
-	\item Dixit, A., Grossman, G., Helpman, E., 1997. Common Agency and Coordination: General Theory and Application to Government Policy Making. Journal of Political Economy 105, 752-769.
-
-	\item Feenstra, R., 1992. How Costly is Protectionism? Journal of Economic Perspectives 6, 159-178.
-
-	\item Gawande, K., Bandyopadhyay, U., 2000. Is Protection for Sale? Evidence on the Grossman-Helpman Theory of Endogenous Protection. The Review of Economics and Statistics 82, 139-152.
-
-	\item Gawande, K., Krishna, P., Olarreaga, M., 2009. What Governments Maximize and Why: The View from Trade. International Organization 63, 491-532.
-
-	\item Gawande, K., Krishna, P., Olarreaga, M., 2012. Lobbying Competition over Trade Policy. International Economic Review 53, 115-132.
-
-	\item Grossman, G., Helpman, E., 1995a. The Politics of Free-Trade Agreements. The American Economic Review 85, 667-690.
-
-	\item Grossman, G., Helpman, E., 1995b. Trade Wars and Trade Talks. The Journal of Political Economy 103, 675-708.
-
-	\item Iaryczower, M., Katz, G., Saiegh, S., 2013. Voting in the Bicameral Congress: Large Majorities as a Signal of Quality. Forthcoming in Journal of Law, Economics, and Organization.
-
-  \item Iida, K., 1996. Involuntary Defection in Two-Level Games. Public Choice 89, 283-303.
-  
-	\item Lake, J., Millimet, D., 2014a. An Empirical Analysis of Trade-Related Redistribution and the Political Viability of Free Trade. Available at: \url{http://people.smu.edu/jlake/pdfs/VotingFTAs.pdf}
-
-	\item Lake, J., Millimet, D., 2014b. Revisiting the link between PAC Contributions and Lobbying Expenditures. Available at: \url{http://people.smu.edu/jlake/pdfs/PACcontributionsLobbying.pdf}
-
-	\item Mansfield, E., Milner, H., 2012. Votes, Vetoes, and the Political Economy of International Trade Agreements. Princeton and Oxford: Princeton  University Press.
-
-	\item Milner, H., Rosendorff, B.P., 1997. Democratic Politics and International trade Negotiations: Elections and Divided Government as Constraints on Trade Liberalization. Journal of Conflict Resolution 41, 117-147.
-
-	\item Ornelas, E., 2005. Rent Destruction and the Political Viability of Free Trade Agreements. Quarterly Journal of Economics 120, 1475-1506.
-
-  
 
 \end{list}
 
