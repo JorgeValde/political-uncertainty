@@ -127,7 +127,7 @@ Vote Buyer $A$ must take into account that Vote Buyer $B$ will react to her choi
 				
 
 \subsection{Vote Buyer B}
-Groseclose and Snyder (1996) assume that the objective of each vote buyer is to ``minimize total bribes paid while passing his preferred policy.'' This has to be adapted out our environment with uncertainty about legislators' ideal points. The appropriate analog is that vote buyers maximize the expected value of winning the vote net of bribes that he/she must pay. Note that in order to maximize the probability of winning a majority in a three-seat legislature, one must maximize the probability of at least two legislators voting with you. The case of Vote Buyer $B$, this is the probability that at least two legislators vote in favor of the status quo: $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$.
+Groseclose and Snyder (1996) assume that the objective of each vote buyer is to ``minimize total bribes paid while passing his preferred policy.'' This has to be adapted out our environment with uncertainty about legislators' ideal points, as with any probability distribution with infinite support both players will necessarily have a positive probability of winning in equilibrium regardless of their strategies. The appropriate analog is that vote buyers maximize the expected value of winning the vote net of bribes that he/she must pay. Note that in order to maximize the probability of winning a majority in a three-seat legislature, one must maximize the probability of at least two legislators voting with you. The case of Vote Buyer $B$, this is the probability that at least two legislators vote in favor of the status quo: $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$.
 
 This means that the maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
 			  \begin{multline}
@@ -216,35 +216,40 @@ Now, how does the probability that the legislator at $-0.5$ (the one who is most
 Although uncertainty is present in the environment under consideration here, information about that uncertainty is symmetric. Therefore the appropriate equilibrium notion is subgame perfect Nash equilibrium.
 
 \subsection{Vote Buyer B}
+\label{sec:resB}
 
 I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about ideal points is the same across legislators.
 
 In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three legislators, two, one or none of the legislators. It is most instructive to begin with the case where he bribes two of the legislators.
 
 \begin{proposition}
-  When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that the two bribed legislators' ideal points net of the bribes are equalized. Which two voters are bribed depends on the bias parameter $\al$.
+  When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that the two bribed legislators' ideal points gross of bribes are equalized. Which two voters are bribed depends on the bias parameter $\al$.
 	\label{prop:2NNB}
 \end{proposition}
 
 All proofs are in the Appendix.
 
-\begin{itemize}
+\begin{proposition}
+  When Vote Buyer $B$ pays bribes to exactly one legislator, ... can be any one, not necessarily ideologically closest.
+	\label{prop:1NNB}
+\end{proposition}
+In contrast to models with no uncertainty about legislators' ideological positions, here we have an anti-result that the vote buyers do not necessarily bribe those who are ideologically most aligned with themselves. The non-negativity constraint often rules out bribing the most friendly legislator(s) because she/they don't contribute very much to the overall probability of winning the issue.
 
-			\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
-			\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+Figure~\ref{fig:br} shows an example of a vote in which the most money went to the ideologically moderate--not the most extreme in a `leveling' strategy.
+
+\begin{proposition}
+  When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
+	\label{prop:3NNB}
+\end{proposition}
+
+
+\begin{itemize}
 			\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
 			\item Some legislators who are past FOC point will not be lobbied		
 
 \end{itemize}
 
-\vskip.5in
-Vote Buyer A's first order condition with respect to $a_0$ is more complicated because of the dependencies on $\bm a$ (should probably double check this, but it makes sense)
-			 \begin{multline}
-					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
-					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
-					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
-					\label{eq:focA}
-				\end{multline}
+
 
 \subsection{Intuition}
 \begin{itemize}
@@ -272,11 +277,19 @@ The only intuition I see for why the next legislator is added in is that it's wh
 \begin{itemize}
 	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
 	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
-	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
 \end{itemize}
 
 \subsection{Varying Uncertainty across Legislators}
 \label{sec:resunc}
+
+The results of Section~\ref{sec:resB} in which bribed legislators have their ideal points `leveled' so that their positions gross of bribes are equalized evidently hinge on the symmetry in uncertainty assumed there.
+
+\begin{proposition}
+  test
+\end{proposition}
+Very low, very high uncertainty gets lowest payments, middle uncertainty gets most (Figure \ref{fig:g1}.
+
+\vskip.2in
 Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
 		\begin{itemize}
 			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
@@ -290,6 +303,25 @@ Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ st
 		\end{itemize}
 		
 \subsection{Two Vote Buyers}		
+Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+		
+		\vskip.5in
+Vote Buyer A's first order condition with respect to $a_0$ is more complicated because of the dependencies on $\bm a$ (should probably double check this, but it makes sense)
+			 \begin{multline}
+					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
+					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
+					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
+					\label{eq:focA}
+				\end{multline}
+		
+\begin{proposition}
+  It is possible for both vote buyers to bribe legislators on the same vote.
+\end{proposition}
+		
+\begin{proposition}
+  It is possible that neither vote buyer bribes any legislator on a given vote. This occurs when both vote buyers' willingness-to-pay parameters are small.
+\end{proposition}
+
 		
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
@@ -329,13 +361,13 @@ We will also explore whether there is a way to leverage the data and methodology
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=2.9in]{graph2.jpg}
-  \caption{\smallLobbying Effort and Support for KORUS
+  \caption{\small Lobbying Effort and Support for KORUS
 	\label{fig:br}}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=2.9in]{graph1.jpg}
-  \caption{\smallNet Campaign Contributions, KORUS
+  \caption{\small Net Campaign Contributions, KORUS
 	\label{fig:g1}}
 \end{minipage}
 \end{figure}
