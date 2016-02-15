@@ -103,6 +103,9 @@ There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the e
 Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$.
 	
 (Remember that I've assumed a very specific functional form)	
+\begin{itemize}
+	\item use $\al$ in prop:2NNB
+\end{itemize}
 
 %If we're going to do an empirical implementation of $\ga$ below, model needs to start with a basic understanding of uncertainty, run through lobbying response to it, up through aggregation into $\ga$ and how lobbying behavior turns into a ``yea'' vote total.
 
@@ -111,14 +114,16 @@ Goal: characterize SPNE in pure strategies
 \section{Some Theoretical Results}
 \label{sec:res}
 
-I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about each legislator's ideal point is the same.
+I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about ideal points is the same across legislators.
 
 In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three legislators, two, one or none of the legislators. It is most instructive to begin with the case where he bribes two of the legislators.
 
 \begin{proposition}
-  When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that their ideal points net of the bribes are equalized. Which two voters are bribed depends on the bias parameter $\al$.
+  When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that the two bribed legislators' ideal points net of the bribes are equalized. Which two voters are bribed depends on the bias parameter $\al$.
 	\label{prop:2NNB}
 \end{proposition}
+
+All proofs are in the Appendix.
 
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
@@ -201,9 +206,58 @@ with roll call votes numbered $k=1,\ldots,K$, legislators numbered $j=1,\dots,J$
 \textcolor{blue}{We expect this data will have a wide array of applications, such as exploring the links between policy uncertainty, the business cycle, and stock market volatility.}
 
 \section*{Appendix}
-
-			
-
+\label{sec:app}
+\noindent \textbf{\hypertarget{Pr_2NNB}{Proof of Proposition~\ref{prop:2NNB}}}: \\
+Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ and $0$ that are bribed. The first order conditions with respect to the bribes for these two legislators are
+	\begin{equation}
+		\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
+	\end{equation}
+	and
+	\begin{equation}
+		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+		\label{eq:base}
+	\end{equation}
+		
+		Setting the left-hand size of these two equations equal to each other and simplifying,
+		\[
+		  \frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
+		\]
+		\[
+		  \frac{e^{-X-Y} + e^{-X-Z}}{1+e^{-X}}= \frac{e^{-X-Y} + e^{-Y-Z}}{1+e^{-Y}}
+		\]
+		\[
+		  e^{-X-Y} + e^{-X-Z} + e^{-X-2Y} +e^{-X-Y-Z}= e^{-X-Y} + e^{-Y-Z} + e^{-2X-Y} +e^{-X-Y-Z}
+		\]
+		\[
+		  e^{-X-Z} +e^{-X-2Y}= e^{-Y-Z} +e^{-2X-Y}
+		\]
+		\[
+		  e^{-Z} +e^{-2Y}= e^{X-Y-Z} +e^{-X-Y}
+		\]
+		\begin{equation}
+		  e^{Y-Z} +e^{-Y}= e^{X-Z} +e^{-X}
+			\label{eq:twoways}
+		\end{equation}
+   Equation~\ref{eq:twoways} can be rearranged into two similar forms. First:
+		\[
+		  e^{Y-Z} - e^{X-Z}= e^{-X} - e^{-Y}
+		\]
+		\begin{equation}
+		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
+			\label{eq:1}
+		\end{equation}
+  	Second, multiplying through by zero:
+	  \begin{equation}
+		  e^{X} - e^{Y}= e^Z\left(e^{-Y} - e^{-X}\right)
+			\label{eq:2}
+		\end{equation}
+		
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(-\frac{1}{2}\right)$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+	\begin{itemize}
+		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
+		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
+	\end{itemize}
+The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$. Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
 
 
 
