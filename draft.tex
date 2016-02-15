@@ -101,6 +101,256 @@ Each of three legislators faces a choice between the status quo, $x$ and a new p
 There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the expected value of his preferred policy net of the bribes he has to pay. $A$ prefers policy $x$ and has willingness to pay (WTP) $W_A$ for $x$ measured in money and values $s$ at zero. $B$ prefers $s$and has WTP $W_B$ for $s$. Each vote buyer would prefer to concede the issue rather than pay more than his WTP.
 
 Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$.
+
+\subsection{Legislature}
+Let us look first at the legislature. Each legislator $i$ decides whether to vote for $x$ or $s$ given her preference $i$, $a(i)$ and $b(i)$. Although legislators are ordered on the interval according to their ideal points $i$, there is acknowledged uncertainty surrounding their preferences. We take this uncertainty to vary by legislator and also potentially by issue area when we extend the model to account for multi-dimensional voting and vote-buying.
+
+In order to keep the model tractable when introduing this uncertainty, we take the ideal point function to be linear in $i$. That is, legislator $i$'s ideal point is taken to be $\alpha -\beta i$. We model uncertainty by taking legislator $i$ to vote for $x$ if 
+			  \[
+				  v(i) = \alpha -\beta i + \ve_i + a(i) - b(i) > 0
+				\]
+		
+Notice that a bribe from $B$ is subtracted because it makes the alternative \textit{less} attractive.	We will begin by taking $\ve$ to not vary in $i$ and will shortly generalize.
+
+Given these assumptions, the probability that legislator $i$ votes against the new proposal is
+	\[
+					\Pr\left[v(i)\leq 0 \right] = \Pr\left[\alpha -\beta i + \ve + a(i) - b(i) \leq 0 \right] = \Pr\left[\ve \leq \beta z - \alpha - a(i) + b(i) \right] 
+	\]
+Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta i - \alpha - a(i) + b(i) \right)}}$.	
+
+For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2} \right\}$. For ease of notation, let
+				\begin{enumerate}
+					\item $X = -\alpha + b(0)$ 
+					\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
+					\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)\label{page:sh}$ 
+				\end{enumerate}
+
+\begin{itemize}	
+			\item Then the three probabilities are
+				\begin{itemize}
+					\item $\frac{1}{1+e^{-\left(- \alpha + b(0) \right)}} = \frac{1}{1+e^{-X}}$, $\frac{1}{1+e^{-\left(\frac{\beta}{2}- \alpha + b(\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Z}}$, $\frac{1}{1+e^{-\left(-\frac{\beta}{2}- \alpha + b(-\frac{1}{2}) \right)}} = \frac{1}{1+e^{-Y}}$
+					\item Whether a legislator $z$ votes ``no'' is a random variable, denote it $X(z)$, distributed Bernoulli with this probability:
+						\[
+							X(z) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha + b(z) \right)}}
+						\]
+				\end{itemize}
+		\end{itemize}
+
+\begin{enumerate}
+\item Vote buyer B
+		\begin{itemize}
+			\item GS assumption on vote buyers' objective is ``each prefers to minimize total bribes paid while passing his preferred policy, but each would prefer to concede the issue rather than pay more than his WTP''; this has to be adapted to our situation with uncertainty
+			\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
+			\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
+			\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
+			\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
+			\item Some legislators who are past FOC point will not be lobbied		
+			\item Need to max probability of at least two voting ``no'': $\Pr(S \geq 2)$ where $S = X\left(-\frac{1}{2}\right) + X\left(0\right) + X\left(\frac{1}{2}\right)$
+			\item Thus, maximization problem for Vote Buyer B (in absence of Vote Buyer A) is
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(\frac{1}{2}\right)=0\right)  + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) + \\
+					\Pr\left(X\left(-\frac{1}{2}\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(\frac{1}{2}\right)=1\right) \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+			Substituting from the definition of $X$,
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \left(1-\frac{1}{1+e^{-Y}}\right)  + \\
+					\frac{1}{1+e^{-Z}} \left(1-\frac{1}{1+e^{-X}}\right) \frac{1}{1+e^{-Y}} + \\
+					\left(1-\frac{1}{1+e^{-Z}} \right) \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} + \\
+					\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+			This can be simplified as 
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-Z}} + \\
+					\frac{1}{1+e^{-Y}} \frac{1}{1+e^{-Z}} - 2	\frac{1}{1+e^{-Z}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+					\label{eq:objb}
+				\end{multline}
+				
+			The FOC wrt to $b\left(\frac{1}{2}\right)$ is 
+				\begin{equation}
+					W_B \biggl[ \left( \frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2 \frac{1}{1+e^{-X}} \frac{1}{1+e^{-Y}} \right) \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+				\end{equation}
+			Simplifying:
+				\begin{equation}
+					W_B \biggl[ \frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+					\label{eq:logistic}
+				\end{equation}
+			Further math related to this equation is on Page~\pageref{eq:logistic2}.
+			\item If we divide through by 2, the left side is the average minus the product
+			\item Remember, I'm ignoring the constraints on WTP and non-negativity of bribes
+		\end{itemize}
+	\item Vote Buyer A
+		\begin{itemize}
+			\item Vote buyer A's objective function is identical in form to that of Vote buyer B (Expression~\ref{eq:objb}) 
+			  \begin{multline}
+			    \max_{a\left(-\frac{1}{2}\right), a\left(0\right), a\left(\frac{1}{2}\right)} 
+					W_A \biggl[ \frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Y_A}} +
+					\frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Z_A}} + \\
+					\frac{1}{1+e^{-Y_A}} \frac{1}{1+e^{-Z_A}} - 2	\frac{1}{1+e^{-Z_A}} \frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Y_A}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} a(j)
+					\label{eq:obja}
+				\end{multline}
+				where 
+				\begin{enumerate}
+					\item $X_A = \alpha - b_0(\bm{a},W_B,\al,\beta) + a_0$ 
+					\item $Y_A = -\frac{\beta}{2} + \alpha - b_{-.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{-.5}$
+					\item $Z_A = \frac{\beta}{2} + \alpha - b_{.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{.5}$
+				\end{enumerate}
+				with $\bm a = \left(a_{-.5},a_0,a_{.5} \right)$
+			\item Vote Buyer A's first order condition with respect to $a_0$ is more complicated because of the dependencies on $\bm a$ (should probably double check this, but it makes sense)
+			 \begin{multline}
+					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
+					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
+					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
+					\label{eq:focA}
+				\end{multline}
+		\end{itemize}
+\end{enumerate}
+
+	
+
+
+\subsection{Adding Non-negativity Constraints for Bribes}
+\label{sec:nonneg}
+The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, adding on $\lambda_X b\left(0\right) + \lambda_Y b\left(-\frac{1}{2}\right) + \lambda_Z b\left(\frac{1}{2}\right)$
+
+The full set of FOCs (in logistic form) is then:
+\[
+    W_B\frac{e^{-X}}{\left(1+e^{-X}\right)^2}\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_X = 0
+\]
+\[
+    W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1 + \lambda_Y = 0 
+\]
+\[
+    W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_Z = 0
+\]
+\[
+  b\left(0\right) \geq0 \hskip.2in b\left(\frac{1}{2}\right) \geq0 \hskip.2in b\left(-\frac{1}{2}\right) \geq0 
+\]
+\[
+  \lambda_X \geq0 \hskip.2in \lambda_Y \geq0 \hskip.2in \lambda_Z \geq0 
+\]
+\[
+  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(-\frac{1}{2}\right) = 0 \hskip.2in \lambda_Z \cdot b\left(\frac{1}{2}\right) = 0 
+\]
+There are 8 patterns of positive and zero components in the 3-dimensional vector of bribes, $b' = \left(b\left(0\right),b\left(\frac{1}{2}\right), b\left(-\frac{1}{2}\right)\right)$. \\
+
+Note that the complementary slackness condition implies that either a bribe is zero, \un{or} its multiplier is zero (or both).
+
+\vskip.5in
+Simulations show that for many sets of parameters, $b\left(0\right)$ and $b\left(\frac{1}{2}\right)$ are positive while $b\left(-\frac{1}{2}\right) = 0$.
+\begin{itemize}
+	\item Then $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right) = \frac{\beta}{2} - \alpha $
+	\item $\lambda_Y$ is likely positive
+	\item $\lambda_X = \lambda_Z = 0$
+\end{itemize}
+
+
+\subsection{Parameterizing Uncertainty to Vary by Legislator}
+\label{sec:uncert}
+I'm going to start by changing the uncertainty for just one legislator when there is just one vote buyer (B). I will do this for the legislator at position $-0.5$, which corresponds to $Y$. The FOCs become, for $Z$ (similarly for $X$, and from Equation~\ref{eq:logistic})
+	\begin{equation}
+		W_B \biggl[ \frac{e^{-X} + e^{-\frac{Y}{s_{-.5}}}}{\left(1+e^{-X}\right)\left(1+e^{-\frac{Y}{s_{-.5}}}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2} \biggr]  = 1
+	\end{equation}
+	And for $Y$
+  \begin{equation}
+		W_B \biggl[ \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-\frac{Y}{s_{-.5}}}}{s_{-.5}\left[1+e^{-\frac{Y}{s_{-.5}}}\right]^2} \biggr]  = 1
+	\end{equation}
+
+\vskip.2in
+The same thing can be done for the legislator at position $0.5$. The objective function when both vary is
+			  \begin{multline}
+			    \max_{b\left(-\frac{1}{2}\right), b\left(0\right), b\left(\frac{1}{2}\right)} 
+					W_B \biggl[ \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} +
+					\frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Z}{s_{.5}}}} + \\
+					\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} - 2	\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \frac{1}{1+e^{-X}} \frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} b(j)
+				\end{multline}
+
+\vskip.2in
+Now what impact does this have on Vote Buyer B's decisions (in the absence of bribes by Vote Buyer A)?
+\begin{itemize}
+	\item First, how does the probability that the legislator at $0.5$ (most unfriendly to $B$) votes with $B$ change when $s_{.5}$ goes from 1 to 2 (and there are no bribes)?
+		\begin{itemize}
+			\item When $s_{.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{1}}} = \frac{1}{1+e^{.5}} = 0.3775$
+			\item When $s_{.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Z}{s_{.5}}}} = \frac{1}{1+e^{-\frac{-.5}{2}}} = \frac{1}{1+e^{.25}} = 0.4378$
+			\item That is, the probability that the least friendly legislator votes with $B$ \textit{rises}
+		\end{itemize}
+	\item Now, how does the probability that the legislator at $-0.5$ (most friendly to $B$) votes with $B$ change when $s_{-.5}$ goes from 1 to 2 (and there are no bribes)?
+		\begin{itemize}
+			\item When $s_{-.5}$ is 1, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{1}}} = \frac{1}{1+e^{-.5}} = 0.6225$
+			\item When $s_{-.5}$ is 2, the probability is $\frac{1}{1+e^{-\frac{Y}{s_{-.5}}}} = \frac{1}{1+e^{-\frac{.5}{2}}} = \frac{1}{1+e^{-.25}} = 0.5622$
+			\item That is, the probability that the least most legislator votes with $B$ \textit{falls}
+		\end{itemize}
+	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ stops bribing legislator $-0.5$ (most friendly) altogether.
+		\begin{itemize}
+			\item This is true even with $s_{-.5}$ as low as 1.2 (taking $s_{.5} = s_{0} = 1$)
+			\item For $1 < s_{-.5} < 1.2$, no bribe for $-0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Z$
+			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
+		\end{itemize}
+	\item Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
+		\begin{itemize}
+			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
+			\item At $s_{.5} = .75$: ONLY Z for $W_B \in \left[6,8\right]$ (8 is usually where it's $X$ alone). Then $Z$ and $Y$ together but $Z$ further on net than $Y$. Eventually all three, with $X=Y$, $Z$ further
+		\end{itemize}
+\end{itemize}
+
+\newpage
+\subsection{Intuition}
+\begin{itemize}
+	\item A legislator votes for $x$ (A's preferred policy, against the status quo) if 
+		\[
+		  v(z) = \al - \beta z + a(z) - b(z) > 0
+		\]
+	\item B needs 2 ``no'' votes, or two legislators with $v(z) < 0$. When $a(z) = 0$, this is
+		\[
+		  \al - \beta z - b(z) < 0
+		\]
+		
+		\begin{center}
+		or 
+		\end{center}
+		\[
+		  \beta z - \al + b(z) > 0
+		\]
+		\item If $\al > 0$, legislators on average are biased against B.
+			\begin{itemize}
+				\item If $\al < 0$, legislators on average are biased in favor of B.
+				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
+			\end{itemize}
+		\item If $X,Y,$ or $Z$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
+\end{itemize}
+
+\vskip.1in
+Recall:
+		\begin{enumerate}
+			\item $X = -\alpha + b(0)$ 
+			\item $Y = \frac{\beta}{2} - \alpha + b\left(-\frac{1}{2}\right)$
+			\item $Z = -\frac{\beta}{2} - \alpha + b\left(\frac{1}{2}\right)$ 
+		\end{enumerate}
+
+\vskip.1in
+Pattern more or less is to get the guy who is WHAT?
+\begin{itemize}
+	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
+	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
+		\begin{itemize}
+			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
+		\end{itemize}
+\end{itemize}
+		
+\vskip.1in
+The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
+\begin{itemize}
+	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
+	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
+	\item \textbf{Next question: How general is this result? That is, how much asymmetry can I have in the logistic distribution, $\beta$s, and for how broad a class of distributions would it hold? My conjecture is that it leans on having an interior single mode}
+\end{itemize}
+
+	
 	
 (Remember that I've assumed a very specific functional form)	
 \begin{itemize}
