@@ -215,6 +215,8 @@ Now, how does the probability that the legislator at $-0.5$ (the one who is most
 
 Although uncertainty is present in the environment under consideration here, information about that uncertainty is symmetric. Therefore the appropriate equilibrium notion is subgame perfect Nash equilibrium.
 
+\subsection{Vote Buyer B}
+
 I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about ideal points is the same across legislators.
 
 In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three legislators, two, one or none of the legislators. It is most instructive to begin with the case where he bribes two of the legislators.
@@ -227,7 +229,7 @@ In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three
 All proofs are in the Appendix.
 
 \begin{itemize}
-				\item With asymmetric $v(z)$ or WTP parameters, it would be easy to get equilibria where only $A$ or $B$ buys votes. But we also have lots of outcomes where both buy votes.
+
 			\item They can easily both have positive probability of winning. But what do we need for this to be an equilibrium in this three stage game?
 			\item Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
 			\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
@@ -287,6 +289,8 @@ Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ st
 			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
 		\end{itemize}
 		
+\subsection{Two Vote Buyers}		
+		
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
 
@@ -308,13 +312,15 @@ We are currently experimenting with some of the more sophisticated measures of u
 
 \section{An Application to the U.S. House of Representatives}
 \label{sec:house}
+We look to voting patterns in the U.S. House of Representatives to see if the predictions of our model bear any resemblance to reality. We find suggestive preliminary evidence that adding uncertainty to a model of vote buying helps to understand observed patterns in the data and our next step is to pursue a better-identified model.
+
 
 \subsection{Data}
-\textcolor{blue}{Voting data will be obtained from Vote View, a website maintained by Professor Keith Poole (\url{http://voteview.com}). Details on each legislative proposal are available electronically through Thomas (\url{http://thomas.loc.gov}) and the sites of the House and Senate registrars.}
+Voting data will be obtained from Vote View, a website maintained by Professor Keith Poole (\url{http://voteview.com}). Details on each legislative proposal are available electronically through Thomas (\url{http://thomas.loc.gov}) and the sites of the House and Senate registrars.
 
-\textcolor{blue}{We will use Maplight's contributions data, which provides evidence on public declarations by special interest groups to determine the relevant PAC contributions for the bills under consideration. In a related effort to better connect special interest activity to the intent of that activity, we will use data made available pursuant to the U.S. Lobbying Disclosure Act of 1995 and the Honest Leadership and Open Government Act of 2007 via the U.S. Senate Office of Public Records and the Office of the Clerk of the U.S. House of Representatives. This data is particularly useful because lobbyists must declare the issue area on which they lobbied.}
+We will use Maplight's contributions data, which provides evidence on public declarations by special interest groups to determine the relevant PAC contributions for the bills under consideration. In a related effort to better connect special interest activity to the intent of that activity, we will use data made available pursuant to the U.S. Lobbying Disclosure Act of 1995 and the Honest Leadership and Open Government Act of 2007 via the U.S. Senate Office of Public Records and the Office of the Clerk of the U.S. House of Representatives. This data is particularly useful because lobbyists must declare the issue area on which they lobbied.
 
-\textcolor{blue}{We will also explore whether there is a way to leverage the data and methodology of Lake (2015) that combine the contributions and lobbying data to improve precision, although there is a concern about the coarseness of the data that must be overcome.}
+We will also explore whether there is a way to leverage the data and methodology of Lake (2015) that combine the contributions and lobbying data to improve precision, although there is a concern about the coarseness of the data that must be overcome.
 
 \subsection{Evidence}
 
@@ -323,20 +329,20 @@ We are currently experimenting with some of the more sophisticated measures of u
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=2.9in]{graph2.jpg}
-  \caption{Lobbying Effort and Support for KORUS
+  \caption{\smallLobbying Effort and Support for KORUS
 	\label{fig:br}}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=2.9in]{graph1.jpg}
-  \caption{Net Campaign Contributions, KORUS
+  \caption{\smallNet Campaign Contributions, KORUS
 	\label{fig:g1}}
 \end{minipage}
 \end{figure}
 
-\textcolor{blue}{Figure~\ref{fig:br} displays the relationship between lobbying effort and legislators' support for KORUS. The vertical axis represents the predicted probability that a legislator would vote ``yes'' on the agreement, and the horizontal axis shows the monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. The solid vertical red line indicates the average net contribution in the sample, and the dashed lines a one-standard deviation increase/decrease from that sample mean. The data indicate that exporting industries are more likely to exert lobbying effort to enlist the support of additional legislators (extensive margin) rather than secure stronger support from a given set of legislators (intensive margin), as well as that there are decreasing returns to lobbying effort. To generate these results,  we regressed a legislator's vote on his/her estimated ideal point as well as partisanship using a probit specification. Then we fitted a second-order polynomial to the predicted probabilities generated by the probit regression. The contribution data for both this and the follow figure was obtained from Maplight.}
+\textcolor{blue}{Figure~\ref{fig:br} displays the relationship between lobbying effort and legislators' support for one bill of interest, the Korea-U.S. Free Trade agreement, or KORUS. The vertical axis represents the predicted probability that a legislator would vote ``yes'' on the agreement, and the horizontal axis shows the monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. The solid vertical red line indicates the average net contribution in the sample, and the dashed lines a one-standard deviation increase/decrease from that sample mean. The data indicate that exporting industries are more likely to exert lobbying effort to enlist the support of additional legislators (extensive margin) rather than secure stronger support from a given set of legislators (intensive margin), as well as that there are decreasing returns to lobbying effort. To generate these results,  we regressed a legislator's vote on his/her estimated ideal point as well as partisanship using a probit specification. Then we fitted a second-order polynomial to the predicted probabilities generated by the probit regression. The contribution data for both this and the following figure was obtained from Maplight.}
 
-\textcolor{blue}{Figure~\ref{fig:g1} displays the relationship between the unpredictability of legislators' voting behavior and lobbying effort. The vertical axis represents the predicted net contributions to members of the U.S. House of Representatives in 2012, and the horizontal axis shows the unpredictability of legislator's voting behavior measured using the 95$\%$ posterior confidence intervals of their ideal points estimated using Bayesian Markov chain simulation to scale all roll call votes taken in the 112th Congress (more details on the methodology below). The solid vertical red line indicates the average uncertainty in the sample, and the vertical dashed red lines indicate increases/decreases of one-standard deviation from the average. The horizontal dashed green line indicates the predicted net payment in the sample. The data show a very strong relationship between uncertainty at the level of the individual legislator and campaign contributions. To generate these results, we fitted a second-order polynomial to the data, and used monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement. While these data do not map perfectly onto our theoretical constructs, they indicate that there is strong preliminary support for our hypotheses making it highly likely that investment in data acquisition and analysis is worthwhile.}
+\textcolor{blue}{Figure~\ref{fig:g1} displays the relationship between the unpredictability of legislators' voting behavior and lobbying effort. The vertical axis represents the predicted net contributions to members of the U.S. House of Representatives in 2012, and the horizontal axis shows the unpredictability of legislator's voting behavior measured using the 95$\%$ posterior confidence intervals of their ideal points estimated using Bayesian Markov chain simulation to scale all roll call votes taken in the 112th Congress (more details on the methodology below). The solid vertical red line indicates the average uncertainty in the sample, and the vertical dashed red lines indicate increases/decreases of one-standard deviation from the average. The horizontal dashed green line indicates the predicted net payment in the sample. The data show a very strong relationship between uncertainty at the level of the individual legislator and campaign contributions. To generate these results, we fitted a second-order polynomial to the data, and used monetary contributions to each legislator by lobbies who supported the passage of KORUS minus the contributions from lobbies opposing the agreement.}
 
 \begin{figure}
 \begin{center}
@@ -347,9 +353,7 @@ We are currently experimenting with some of the more sophisticated measures of u
 
 \textcolor{blue}{We `turn on' the parameters for interest groups for each vote according to the data from Maplight, which includes a listing of the votes for which each interest group took a position. This produces estimates for how ``friendly'' or ``unfriendly'' each legislator is with respect to each interest group, as well as the unpredictability of his/her voting behavior when matters affecting that group are considered. In a preliminary run of this model with just ten interest groups (out of over 450) in the 112th Congress displayed in Figure~\ref{fig:combined}, we find that the chemical industry has the lowest average uncertainty (sd = 0.229); this is lower than the total uncertainty measure that can be interpreted as the standard left-right measure in ideal point models (sd = 0.233). The median group in terms of uncertainty is manufacturing unions (sd = 0.253), while construction equipment faced the highest uncertainty (sd = 0.285).}
 
-\textcolor{blue}{Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we will proceed to characterize this uncertainty across industries, as well as how it is related to lobbying, political contributions and voting behavior of legislators. First, we want to understand the patterns in these data in the context of the industry-relevant bills identified by Maplight (as explained above).} 
 
-\textcolor{blue}{We will use descriptive analysis as well as both standard parametric and non-parametric techniques such as density estimation to explore the relationships between the above variables of interest. We will begin with very basic questions such as whether distinct industries face varying levels of political uncertainty (see preliminary evidence in Figure~\ref{fig:combined}) and how those patterns may relate to the lobbying strategies they employ. From the data analysis that is represented above, we see a very interesting relationship between uncertainty and lobbying expenditure across legislators at the aggregate level in Figure~\ref{fig:br}, and we expect that additional important patterns will emerge when the data is disaggregated by industry.}
 
 
 
@@ -366,6 +370,10 @@ We are currently experimenting with some of the more sophisticated measures of u
 
 \vskip.3in
 \textcolor{blue}{We expect this data will have a wide array of applications, such as exploring the links between policy uncertainty, the business cycle, and stock market volatility.}
+
+\textcolor{blue}{Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we will proceed to characterize this uncertainty across industries, as well as how it is related to lobbying, political contributions and voting behavior of legislators. First, we want to understand the patterns in these data in the context of the industry-relevant bills identified by Maplight (as explained above).} 
+
+\textcolor{blue}{We will use descriptive analysis as well as both standard parametric and non-parametric techniques such as density estimation to explore the relationships between the above variables of interest. We will begin with very basic questions such as whether distinct industries face varying levels of political uncertainty (see preliminary evidence in Figure~\ref{fig:combined}) and how those patterns may relate to the lobbying strategies they employ.}
 
 \section*{Appendix}
 \label{sec:app}
