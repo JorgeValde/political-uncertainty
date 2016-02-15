@@ -38,6 +38,7 @@ bookmarksopen=true]{hyperref}
 \newtheorem{assumption}{Assumption}
 \newtheorem{fact}{Fact}
 \newtheorem{result}{Result}
+\newtheorem{proposition}{Proposition}
 
 \newcommand{\ve}{\theta}
 \newcommand{\ta}{\theta}
@@ -99,16 +100,25 @@ Each of three legislators faces a choice between the status quo, $x$ and a new p
 
 There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the expected value of his preferred policy net of the bribes he has to pay. $A$ prefers policy $x$ and has willingness to pay (WTP) $W_A$ for $x$ measured in money and values $s$ at zero. $B$ prefers $s$and has WTP $W_B$ for $s$. Each vote buyer would prefer to concede the issue rather than pay more than his WTP.
 
-Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$ and that all bribed legislators who are indifferent vote for whoever bribed them last.
+Vote Buyer $A$ moves first, providing a bribe offer function $a(i)$. $a(i)$ is perfectly observable to Vote Buyer $B$ when he moves second and offers bribe offer function $b(i)$. Each legislator takes these bribe offers as given and then votes for the alternative that maximizes her payoff. I assume unbribed legislators who are indifferent vote for $s$.
 	
 (Remember that I've assumed a very specific functional form)	
 
 %If we're going to do an empirical implementation of $\ga$ below, model needs to start with a basic understanding of uncertainty, run through lobbying response to it, up through aggregation into $\ga$ and how lobbying behavior turns into a ``yea'' vote total.
 
+Goal: characterize SPNE in pure strategies
+
 \section{Some Theoretical Results}
 \label{sec:res}
 
-Goal: characterize SPNE in pure strategies
+I begin by examining the subgame that begins when Vote Buyer $B$ makes his offer. This not only serves to elucidate the basic logic of the model; it will also serve as a baseline from which to examine the incentives of Vote Buyer $A$. For now, assume that the uncertainty about each legislator's ideal point is the same.
+
+In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three legislators, two, one or none of the legislators. It is most instructive to begin with the case where he bribes two of the legislators.
+
+\begin{proposition}
+  When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that their ideal points net of the bribes are equalized. Which two voters are bribed depends on the bias parameter $\al$.
+	\label{prop:2NNB}
+\end{proposition}
 
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
