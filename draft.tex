@@ -63,7 +63,7 @@ bookmarksopen=true]{hyperref}
 \begin{center} {\bf Abstract} \end{center}
 
 \begin{quote}
-{This paper 
+{This paper seeks to understand how uncertainty affects the incentives for lobbying and the associated prospects for the passage of legislation. We introduce a model of vote buying in which there is uncertainty about the ideological positions of legislators with information about this uncertainty symmetric among all players. When legislators' voting behavior cannot be perfectly anticipated in this manner, the model is able to describe various realistic aspects of lobbying and voting behavior. For example, it predicts that lobbyists on both sides of an issue may be active at the same time, that moderate legislators and those about which there is average uncertainty receive more bribes than those that are ideologically extreme, and that ideal points gross of bribes need not be equalized. Estimating ideal points using a logistic item response model, we find support for these predictions in U.S. House of Representatives roll call data.
 
 \textit{JEL classification:} D72, D80, C72 \\
 \textit{Keywords:} lobbying, political economy, legislatures, uncertainty}
@@ -73,11 +73,23 @@ bookmarksopen=true]{hyperref}
 \section{Introduction}
 \label{sec:intro}
 
-\textcolor{blue}{In democratic countries, legislatures are the authoritative source of statutory law. The PFS model doesn't capture several general features of policymaking in this environment: (2) how uncertainty affects the incentives for lobbying and the associated prospects for ratification of trade agreements; and (3) how the voting intentions of multiple legislators, rather than a single agent, change in response to incentives.}
+In democratic countries, legislatures are the authoritative source of statutory law. This paper seeks to understand how uncertainty affects the incentives for lobbying and the associated prospects for the passage of legislation. Saiegh (2011) identifies two major factors that shape lawmaking: whether buying legislative votes is a feasible option and the unpredictability of legislators' voting behavior. The source of the uncertainty is the existence of cross-pressured legislators: in deciding how to vote, lawmakers consider a variety of influences, including their personal values, announced positions, the views of their constituents, and the preferences of their party leadership. Therefore, legislators' voting behavior can seldom be perfectly anticipated.
 
-\textcolor{blue}{In this vein, Saiegh (2011) identifies two major factors that shape lawmaking: the unpredictability of legislators' voting behavior, and whether buying legislative votes is a feasible option. The source of the uncertainty is the existence of cross-pressured legislators: in deciding how to vote, lawmakers consider a variety of influences, including their personal values, announced positions, the views of their constituents, and the preferences of their party leadership. Therefore, legislators' voting behavior can seldom be perfectly anticipated.}
+We solve a model of vote buying in which there is uncertainty about the ideological positions of legislators with information about this uncertainty symmetric among all players. This model is able to describe some realistic aspects of lobbying and voting behavior: for instance, it predicts that lobbyists on both sides of an issue may be active at the same time, that moderate legislators and those about which there is average uncertainty receive more bribes than those that are ideologically extreme, and that ideal points gross of bribes need not be equalized. We find support for these predictions in U.S. House of Representatives roll call data, from which we estimate ideal points using a logistic item response model.
 
-\textcolor{blue}{From an empirical standpoint, the project will contribute to our understanding of the political uncertainty that surrounds statutory lawmaking. We will introduce an innovative methodology for quantifying cross-industry political uncertainty, establish the relevance of the resulting measures for policy-making and make the data available for future use in a wide range of applications. For example, our measure could be used to study he impact of policy uncertainty on firm-level investment and employment.}
+In constructing the model, we follow Groseclose and Snyder (1996) and Banks (2000) in taking a policy proposal as given and studying the behavior of interest groups who may lobby legislators in an attempt to sway the outcome of the vote. In order to keep the model tractable, we study a three-person legislature in which two lobbyists---one for the new proposal and one against it---sequentially offer payments to the legislators.
+
+A payment to a legislator has the effect of shifting the legislator's ideal point, which we take to be known up to the mean and variance parameters of a given probability distribution. Thus bribing a legislator has the effect of changing the probability with which the legislator votes in the manner the vote buyer prefers. In this environment, the optimal vote-buying strategies are not immediately obvious.
+
+We find that the number of legislators a vote buyer chooses to lobby is increasing in the value he places on the policy. When a vote buyer's willingness-to-pay for his preferred policy is very low, he will bribe none of the legislators; if it is very high, he will bribe all of them. Buying one or two votes is also possible.
+
+Perhaps more interesting, and in contrast to results in a model without uncertainty, when only one or two legislators are bribed the legislator who remains unbribed is often the one who is most ideologically-aligned with the vote buyer. When the legislators are roughly unbiased on average, it is the moderate legislator who is bribed first. This corresponds well with the data that shows that more moderate legislators receive more campaign contributions.
+
+If uncertainty is taken to be the same for the ideal points of all the legislators, we find that the vote buyers use `leveling strategies' as in Groseclose and Snyder (1996) and Banks (2000). Allowing for asymmetric levels of uncertainty, on the other hand, provides a more realistic picture that accords well with our empirical findings that legislators with moderate levels of uncertainty are the target of the highest levels of lobbying, while those about whom there are very high levels of uncertainty most often remain unbribed.
+
+We find one more result that is appealing from an empirical point of view. In this model, it is possible to have both vote buyers paying positive bribes on the same issue. Because the results of the model accord well with these important patterns in the data, we believe this model will contribute to the understanding of the political uncertainty that surrounds statutory lawmaking.
+
+Below we introduce an innovative methodology for quantifying cross-industry political uncertainty; the model under consideration here is being adapted as a means to properly identify political uncertainty in this context. We plan to establish the relevance of the resulting measures for policy-making and will make the data available for future use in a wide range of applications.
 
 \subsection{Related Literature}
 \label{sec:lit}
@@ -105,7 +117,7 @@ Vote Buyer $A$ moves first, providing a bribe offer function $a_i$. $a_i$ is per
 \subsection{Legislature}
 Let us look first at the legislature. Each legislator $i$ decides whether to vote for $x$ or $s$ given her preference $i$, $a_i$ and $b_i$. Although legislators are ordered on the interval according to their ideal points $i$, there is acknowledged uncertainty surrounding their preferences. We take this uncertainty to vary by legislator and also potentially by issue area when we extend the model to account for multi-dimensional voting and vote-buying.
 
-In order to keep the model tractable when introduing this uncertainty, we take the ideal point function to be linear in $i$. That is, legislator $i$'s ideal point is taken to be $\alpha -\beta i$. We model uncertainty by taking legislator $i$ to vote for $x$ if 
+In order to keep the model tractable when introducing this uncertainty, we take the ideal point function to be linear in $i$. That is, legislator $i$'s ideal point is taken to be $\alpha -\beta i$. We model uncertainty by taking legislator $i$ to vote for $x$ if 
 			  \[
 				  v(i) = \alpha -\beta i + \ve_i + a_i - b_i > 0
 				\]
@@ -210,7 +222,7 @@ Now, how does the probability that the legislator at $-0.5$ (the one who is most
 
 
 
-\section{Some Theoretical Results}
+\section{Theoretical Results}
 \label{sec:res}
 
 Although uncertainty is present in the environment under consideration here, information about that uncertainty is symmetric. Therefore the appropriate equilibrium notion is subgame perfect Nash equilibrium.
@@ -229,105 +241,66 @@ In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three
 
 All proofs are in the Appendix.
 
-The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness to pay parameter increases, the non-negativity constraint becomes less binding until he finds himself in the following case.
+The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness to pay parameter increases, the non-negativity constraint becomes less binding. That is, when Vote Buyer $B$'s willingness to pay becomes high enough, the additional probability of winning gained by bribing the third legislator becomes worth the additional cost. When this happens, he finds himself in the following case.
 
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
 	\label{prop:3NNB}
 \end{proposition}
 
-This has the feel of Groseclose and Snyder (1996) and Banks (2000) but the logic is different. There, gross ideal points are equalized so that there is no wasted effort, as the second mover would ignore whichever voter was most expensive to him. Remember that this result is in the context of only one vote buyer; he equalizes gross positions because the probability density functions are unimodal and the marginal value of a bribe should be the same across all bribed legislators. 
+This has the feel of Groseclose and Snyder (1996) and Banks (2000) but the logic is different. There, gross ideal points are equalized so that there is no wasted expenditure, as the second mover would ignore whichever voter was most expensive to him. Remember that these results are in the context of only one lobby buying votes: it equalizes the legislators' gross positions because the probability density functions are unimodal and the marginal value of a bribe should be the same across all bribed legislators. If the ideal points are very close, it would not be optimal to continue moving one legislator and leave the other behind because the marginal increase will be greater for whichever legislator's ideal point is to the left once both have achieved a gross position greater than zero.
+
 
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to exactly one legislator, it may be any one of the three legislators depending on the bias parameter $\al$.
 	\label{prop:1NNB}
 \end{proposition}
-In contrast to models with no uncertainty about legislators' ideological positions, here we have an anti-result that the vote buyers do not necessarily bribe those who are ideologically most aligned with themselves. The non-negativity constraint often rules out bribing the most friendly legislator(s) because she/they don't contribute very much to the overall probability of winning the issue.
+In contrast to models with no uncertainty about legislators' ideological positions, here we have an anti-result that the vote buyers do not necessarily bribe those who are ideologically most aligned with themselves. The non-negativity constraint often rules out bribing the most friendly legislator(s) because she/they don't contribute very much to the overall probability of winning the issue. In fact, if it were possible, the vote buyer would often like to be paid by the most friendly legislator in exchange for her moving away from his position; that is, the most friendly legislator is often well past the point of optimality were the vote buyer to pay a bribe.
 
 Figure~\ref{fig:br} shows an example of a vote in which the most money went to the ideologically moderate--not the most extreme in a `leveling' strategy.
 
 
-
-\begin{itemize}
-			\item Note the non-negativity constraint means you can't extract money from a legislator who is past the FOC point in order to reallocate to another legislator
-			\item Some legislators who are past FOC point will not be lobbied		
-
-\end{itemize}
-
-
-
-\subsection{Intuition}
-\begin{itemize}
-
-		\item If $\al > 0$, legislators on average are biased against B.
-			\begin{itemize}
-				\item If $\al < 0$, legislators on average are biased in favor of B.
-				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
-			\end{itemize}
-		\item If $X_B,Y_B,$ or $Z_B$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
-\end{itemize}
-
-
-\vskip.1in
-Pattern more or less is to get the guy who is WHAT?
-\begin{itemize}
-	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
-		\begin{itemize}
-			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
-		\end{itemize}
-\end{itemize}
-		
-\vskip.1in
-The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
-\begin{itemize}
-	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
-	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
-\end{itemize}
-
 \subsection{Varying Uncertainty across Legislators}
 \label{sec:resunc}
 
-The results of Section~\ref{sec:resB} in which bribed legislators have their ideal points `leveled' so that their positions gross of bribes are equalized evidently hinge on the symmetry in uncertainty assumed there.
+The results of Section~\ref{sec:resB} in which bribed legislators have their ideal points `leveled' so that their positions gross of bribes are equalized evidently hinge on the symmetry in uncertainty assumed there. The results become more interesting and more realistic if we allow for asymmetry in the uncertainty surrounding legislators' ideal points.
 
 \begin{proposition}
-  When there is no bias in the positions of the legislators ($\al =0$), the bribes of legislators whose ideal points are at the median in terms of uncertainty receive the highest relative bribes. (conjecture)
+  When there is no bias in the positions of the legislators ($\al =0$), the bribes of legislators whose ideal points are at the median in terms of uncertainty receive the highest relative bribes. [conjecture]
 	\label{prop:asym}
 \end{proposition}
 In numerical examples, this pattern holds strongly. By `relative,' we mean that the bribes are scaled up relative to the equal gross position that occurs when uncertainty is symmetric. We also see that the bribes for legislators whose ideal points are more uncertain are scaled down while the bribes of legislators whose ideal points are less uncertain are scaled up, modulo relative position. That is, there is some effect of being more friendly versus less friendly, as the cumulative density that the legislator will vote in the vote buyer's favor changes in opposite directions when uncertainty rises depending on whether the legislator is friendly or unfriendly. This accords well with the finding in Figure \ref{fig:g1} that those legislators with very low and very high uncertainty gets the lowest payments, while those with more average levels of uncertainty receive the most.
 
-\vskip.2in
-Numerical example. Take $\al=0$ and ignore A. Take $s_{.5}$ from 1 to 1.5. $B$ stops bribing legislator $0.5$ (least friendly) altogether. Does better in welfare terms because the probability this guy votes in his favor shifts up
-		\begin{itemize}
-			\item For $s_{.5} = 1.1$, no bribe for $0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Y$
-			\item At $s_{.5} = .75$: ONLY Z for $W_B \in \left[6,8\right]$ (8 is usually where it's $X$ alone). Then $Z$ and $Y$ together but $Z$ further on net than $Y$. Eventually all three, with $X=Y$, $Z$ further
-		\end{itemize}
-Numerical example. Take $\al=0$ and ignore A. Take $s_{-.5}$ from 1 to 2. $B$ stops bribing legislator $-0.5$ (most friendly) altogether.
-		\begin{itemize}
-			\item This is true even with $s_{-.5}$ as low as 1.2 (taking $s_{.5} = s_{0} = 1$)
-			\item For $1 < s_{-.5} < 1.2$, no bribe for $-0.5$ guy until $W_B$ gets significantly higher, and then his net position is lower than $X=Z$
-			\item Reverse if $s_{-.5} < 1$: move $-0.5$ guy further left than $X=Z$ (but not further than $X$ when just these two); in some cases leave $0.5$ guy at zero
-		\end{itemize}
+We demonstrate via the following numerical example. Let the bias parameter $\al=0$ and ignore Vote Buyer A. When we increase the scale parameter $s_{.5}$ for the legislator at $0.5$---that is, the least friendly to Vote Buyer $B$---from 1 to 1.5, $B$ stops bribing the most friendly legislator altogether. Vote Buyer $B$ does better in welfare terms because the probability that this legislator votes in his favor shifts upward. In fact, For $s_{.5}$ must be much closer to $1$ in order for $B$ to bribe this legislator, and when he does, the gross ideal point is smaller in absolute value than that for the other two legislators.
+
+On the other hand, if $s_{.5}$ is reduced from 1 to $0.75$, for an intermediate range of $W_B$, the willingness to pay parameter, $B$ switches to \textit{only} bribing legislator $0.5$. As $W_B$ increases, eventually all three legislators are bribed again, but now this legislator receives a larger gross bribe.
+
+Recall that the effects are not necessarily entirely symmetric for the two extreme legislators because increasing uncertainty has an opposite effect on how much probability mass is above or below zero. However, there are strong similarities here. As $s_{-.5}$ is increased from 1 to 1.5 or larger, $B$ stops bribing this most friendly legislator and the asymmetry has to be reduced to below 1.2 in order for him to resume bribing legislator $-0.5$. When he does so, he will move this legislator less than the other two with lower uncertainty. If we instead reduce $-0.5$'s uncertainty, he moves him further
+		
 		
 \subsection{Two Vote Buyers}		
-Uncertainty buys us a lot: no longer this knife edge condition of $A$ pushing to the point that $B$ buys no votes
-		
-		\vskip.5in
-Vote Buyer A's first order condition with respect to $a_0$ is more complicated because of the dependencies on $\bm a$ (should probably double check this, but it makes sense)
+Now we consider the entire game by adding Vote Buyer $A$'s choice of bribes. Vote Buyer A's first order conditions are more complicated because of the dependencies on $\bm a$. Below is the first order condition with respect to $a_0$:
 			 \begin{multline}
 					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
 					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
 					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
 					\label{eq:focA}
 				\end{multline}
-		
-\begin{proposition}
-  It is possible for both vote buyers to bribe legislators on the same vote.
-\end{proposition}
+
+Unlike in models with no uncertainty, we do not have knife edge results in which Vote Buyer $A$ uses Vote Buyer $B$'s indifference condition to ensure that he buys no votes--there is no such indifference condition in the presence of uncertainty. However, it's possible that one or both vote buyers will not bribe any legislator because the non-negativity constraints bind for all three bribes. This requires that the willingness-to-pay parameter is sufficiently small.
 		
 \begin{proposition}
   It is possible that neither vote buyer bribes any legislator on a given vote. This occurs when both vote buyers' willingness-to-pay parameters are small.
 \end{proposition}
 
+In many cases, Vote Buyer $A$ \textit{will} still find it optimal to bribe the legislators in such a manner than Vote Buyer $B$ does not counter any bribes. That is, its often optimal to choose $\bm a$ so that the partial derivatives of $B$'s bribes with respect to $a_0$ in Equation~\ref{eq:focA} are zero. This is not always the case with uncertainty, and especially in the case where uncertainty is asymmetric.
+
+\begin{proposition}
+  It is possible for both vote buyers to bribe legislators on the same vote.
+\end{proposition}
+
+This result in particular adds significant realism to the model predictions and will help to match the empirical patterns.
+		
 		
 \section{Estimating Legislative Uncertainty}
 \label{sec:est}
