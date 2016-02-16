@@ -229,6 +229,15 @@ In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three
 
 All proofs are in the Appendix.
 
+The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness to pay parameter increases, the non-negativity constraint becomes less binding until he finds himself in the following case.
+
+\begin{proposition}
+  When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
+	\label{prop:3NNB}
+\end{proposition}
+
+This has the feel of Groseclose and Snyder (1996) and Banks (2000) but the logic is different. There, gross ideal points are equalized so that there is no wasted effort, as the second mover would ignore whichever voter was most expensive to him. Remember that this result is in the context of only one vote buyer; he equalizes gross positions because the probability density functions are unimodal and the marginal value of a bribe should be the same across all bribed legislators. 
+
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to exactly one legislator, it may be any one of the three legislators depending on the bias parameter $\al$.
 	\label{prop:1NNB}
@@ -237,10 +246,6 @@ In contrast to models with no uncertainty about legislators' ideological positio
 
 Figure~\ref{fig:br} shows an example of a vote in which the most money went to the ideologically moderate--not the most extreme in a `leveling' strategy.
 
-\begin{proposition}
-  When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
-	\label{prop:3NNB}
-\end{proposition}
 
 
 \begin{itemize}
@@ -399,14 +404,15 @@ Finally, we `turn on' the parameters for interest groups for each vote according
 \section{Conclusion}
 \label{sec:concl}
 
-\textcolor{blue}{an alternative characterization of the legislative process would be one in which (i) bills have a quality dimension (such as their technical merit, or their appropriateness for a given situation); and (ii) legislators have access to different pieces of information about the quality of these proposals. Given our own long-term research agenda, adding common values and decentralized information to the analysis of the ratification of trade agreements will be one of the next steps in this project. Given the important set of governance characteristics identified in Mansfield and Milner (2012), we also look forward to taking advantage of what seems a rich opportunity to integrate important institutional variations into this modeling framework of endogenous lobbying with uncertainty.}
+We have characterized a model of vote buying in which there is uncertainty about the ideological positions of those whose votes are being bought, with information about this uncertainty symmetric among all players. This model describes some realistic aspects of lobbying and voting behavior: for instance, that lobbyists on both sides of an issue may be active at the same time, that moderate legislators and those about which there is average uncertainty receive more bribes than those that are ideologically extreme, and that ideal points gross of bribes need not be equalized.
 
-\vskip.3in
-\textcolor{blue}{We expect this data will have a wide array of applications, such as exploring the links between policy uncertainty, the business cycle, and stock market volatility.}
+An alternative characterization of the legislative process would be one in which (i) bills have a quality dimension (such as their technical merit, or their appropriateness for a given situation); and (ii) legislators have access to different pieces of information about the quality of these proposals. Adding common values and decentralized information to the analysis of the ratification of trade agreements will be one of the next steps in this project. Given the important set of governance characteristics identified in Mansfield and Milner (2012), we also look forward to taking advantage of what seems a rich opportunity to integrate important institutional variations into this modeling framework of endogenous lobbying with uncertainty.
 
-\textcolor{blue}{Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we will proceed to characterize this uncertainty across industries, as well as how it is related to lobbying, political contributions and voting behavior of legislators. First, we want to understand the patterns in these data in the context of the industry-relevant bills identified by Maplight (as explained above).} 
+We are also in the process of using this model to develop well-identified measures of legislative uncertainty. We expect this data will have a wide array of applications, such as exploring the links between policy uncertainty, the business cycle, and stock market volatility.
 
-\textcolor{blue}{We will use descriptive analysis as well as both standard parametric and non-parametric techniques such as density estimation to explore the relationships between the above variables of interest. We will begin with very basic questions such as whether distinct industries face varying levels of political uncertainty (see preliminary evidence in Figure~\ref{fig:combined}) and how those patterns may relate to the lobbying strategies they employ.}
+Having created these measures of political uncertainty---which are entirely new to the best of our knowledge---we will proceed to characterize this uncertainty across industries, as well as how it is related to lobbying, political contributions and voting behavior of legislators. First, we want to understand the patterns in these data in the context of the industry-relevant bills identified by Maplight as explained above.
+
+We will use descriptive analysis as well as both standard parametric and non-parametric techniques such as density estimation to explore the relationships between the above variables of interest. We will begin with very basic questions such as whether distinct industries face varying levels of political uncertainty (see preliminary evidence in Figure~\ref{fig:combined}) and how those patterns may relate to the lobbying strategies they employ. The research agenda that is opened up by this modeling framework and the data to which it leads is extensive and provides for many exciting opportunities to better understand political and policy-making processes.
 
 \section*{Appendix}
 \label{sec:app}
@@ -460,11 +466,30 @@ In this case where the non-negativity constraint binds for the variable associat
 		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
 		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
 	\end{itemize}
-The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$. Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
+The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$. Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes. $\hfill\blacksquare$
+
+\vskip.3in
+\noindent \textbf{\hypertarget{Pr_1NNB}{Proof of Proposition~\ref{prop:3NNB}}}:
+	
+From the first order conditions, when $X$ and $Y$ are non-negative, it can be shown that the same set of inequalities as in the proof of Proposition~\ref{prop:2NNB} hold.
+
+The second order conditions when there are no non-negativity constraints binding is simply that the 3x3 matrix of second derivatives be negative semi-definite. There are three conditions:
+		\[
+		  \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \left\{\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right\} \leq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \geq 0
+		\]
+		\[
+		  \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \leq 0
+		\]
+		The last one says that $Y$ must be non-negative. The first and second together say that $Z$ must be non-negative.
+	
+	If we combine the requirement that $Y$ must be non-negative combined with the inequalities cited above, then we must have $X=Y > 0$. A similar logic can be used to show that we must have $X=Z > 0$. Combining these two expressions leads to the desired result: $X=Y=Z >0$. $\hfill\blacksquare$
 
 \vskip.3in
 \noindent \textbf{\hypertarget{Pr_1NNB}{Proof of Proposition~\ref{prop:1NNB}}}: \\
-When Vote Buyer B bribes just one legislator, two non-negativity constraints are binding and only one first order conditions holds with equality with the Lagrange multiplier equaling zero. We can easily solve this first order condition to find the value of the bribe. What determines which legislator is bribed is which legislator's ideal point distribution has the most mass near zero, as moving this individual has the greatest impact on total probability of winning the issue.
+When Vote Buyer B bribes just one legislator, two non-negativity constraints are binding and only one first order conditions holds with equality with the Lagrange multiplier equaling zero. We can easily solve this first order condition to find the value of the bribe. What determines which legislator is bribed is which legislator's ideal point distribution has the most mass near zero, as moving this individual has the greatest impact on total probability of winning the issue. $\hfill\blacksquare$
 
 \newpage
 \section*{References}
