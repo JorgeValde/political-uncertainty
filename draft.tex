@@ -241,14 +241,15 @@ In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three
 
 All proofs are in the Appendix.
 
-The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness to pay parameter increases, the non-negativity constraint becomes less binding until he finds himself in the following case.
+The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness to pay parameter increases, the non-negativity constraint becomes less binding. That is, when Vote Buyer $B$'s willingness to pay becomes high enough, the additional probability of winning gained by bribing the third legislator becomes worth the additional cost. When this happens, he finds himself in the following case.
 
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
 	\label{prop:3NNB}
 \end{proposition}
 
-This has the feel of Groseclose and Snyder (1996) and Banks (2000) but the logic is different. There, gross ideal points are equalized so that there is no wasted expenditure, as the second mover would ignore whichever voter was most expensive to him. Remember that these results are in the context of only one lobby buying votes: it equalizes the legislators' gross positions because the probability density functions are unimodal and the marginal value of a bribe should be the same across all bribed legislators. 
+This has the feel of Groseclose and Snyder (1996) and Banks (2000) but the logic is different. There, gross ideal points are equalized so that there is no wasted expenditure, as the second mover would ignore whichever voter was most expensive to him. Remember that these results are in the context of only one lobby buying votes: it equalizes the legislators' gross positions because the probability density functions are unimodal and the marginal value of a bribe should be the same across all bribed legislators. If the ideal points are very close, it would not be optimal to continue moving one legislator and leave the other behind because the marginal increase will be greater for whichever legislator's ideal point is to the left once both have achieved a gross position greater than zero.
+
 
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to exactly one legislator, it may be any one of the three legislators depending on the bias parameter $\al$.
@@ -258,34 +259,6 @@ In contrast to models with no uncertainty about legislators' ideological positio
 
 Figure~\ref{fig:br} shows an example of a vote in which the most money went to the ideologically moderate--not the most extreme in a `leveling' strategy.
 
-
-\subsection{Intuition}
-\begin{itemize}
-
-		\item If $\al > 0$, legislators on average are biased against B.
-			\begin{itemize}
-				\item If $\al < 0$, legislators on average are biased in favor of B.
-				\item If $\al$ is negative enough, bribe only legislator furthest to the left (most against B)
-			\end{itemize}
-		\item If $X_B,Y_B,$ or $Z_B$ is positive, it means the probability of legislator $0,-\frac{1}{2},$ or $\frac{1}{2}$ voting for the status quo / against the new proposal / with interest group B is greater than $0.5$.
-\end{itemize}
-
-
-\vskip.1in
-Pattern more or less is to get the guy who is WHAT?
-\begin{itemize}
-	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
-		\begin{itemize}
-			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
-		\end{itemize}
-\end{itemize}
-		
-\vskip.1in
-The only intuition I see for why the next legislator is added in is that it's when the additional expense is justified by the increase in winning probability, conditional on the rule that 2+ legislators have to have the same gross ideal point
-\begin{itemize}
-	\item I think it's actually that the next legislator is added when the non-negativity constraint stops binding; that is, when $W_B$ becomes high enough that the additional probability of winning is worth the additional cost
-	\item What's the intuition for why they should be equal? As far as I can tell, it's that the PDF is unimodal. If the ideal points are very close, you don't want to continue moving one and leave the other behind because the marginal increase will be greater for whichever is to the left.
-\end{itemize}
 
 \subsection{Varying Uncertainty across Legislators}
 \label{sec:resunc}
