@@ -457,7 +457,18 @@ In this case where the non-negativity constraint binds for the variable associat
 		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
 		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
 	\end{itemize}
-The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$. Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes. $\hfill\blacksquare$
+The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$ (see below). Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
+
+\vskip.2in
+\noindent \un{Second Order Conditions} \\
+When one non-negativity constraint binds, the bordered Hessian is 4x4.\\
+		$\left|\begin{tabular}{cccc}
+			0 & $\frac{\partial g_1}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial g_1}{\partial b_0}$ & $\frac{\partial g_1}{\partial b_{\frac{1}{2}}}$ \\
+			$\frac{\partial g_1}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}} \partial b_{-\frac{1}{2}}}$  \\
+			$\frac{\partial g_1}{\partial b_0}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}\partial b_0}$ \\
+			$\frac{\partial g_1}{\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}^2}$
+		\end{tabular} \right|\\$
+$\hfill\blacksquare$
 
 \vskip.3in
 \noindent \textbf{\hypertarget{Pr_3NNB}{Proof of Proposition~\ref{prop:3NNB}}}:
