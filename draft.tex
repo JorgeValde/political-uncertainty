@@ -291,7 +291,8 @@ On the other hand, if $s_{.5}$ is reduced from 1 to $0.75$, for an intermediate 
 Recall that the effects are not necessarily entirely symmetric for the two extreme legislators because increasing uncertainty has an opposite effect on how much probability mass is above or below zero. However, there are strong similarities here. As $s_{-.5}$ is increased from 1 to 1.5 or larger, $B$ stops bribing this most friendly legislator and the asymmetry has to be reduced to below 1.2 in order for him to resume bribing legislator $-0.5$. When he does so, he will move this legislator less than the other two legislators about whom there is less uncertainty. If we instead reduce $-0.5$'s uncertainty, Vote Buyer $B$ moves this legislator further than the other two.
 		
 		
-\subsection{Two Vote Buyers}		
+\subsection{Two Vote Buyers}
+\label{sec:two}
 Now we consider the entire game by adding Vote Buyer $A$'s choice of bribes. Vote Buyer A's first order conditions are more complicated than those of Vote Buyer $B$ because her choices $\bm a$ will impact those of Vote Buyer $B$.
 
 Below is the first order condition with respect to $a_0$, which can be compared to Equation~\ref{eq:focB} for Vote Buyer $B$:
@@ -312,7 +313,7 @@ In many cases, Vote Buyer $A$ \textit{will} still find it optimal to bribe the l
 
 \begin{proposition}
   It is possible for both vote buyers to bribe legislators on the same vote.
-	\label{res:bothbribe}
+	\label{prop:bothbribe}
 \end{proposition}
 
 This result in particular adds significant realism to the model predictions and will help to match the empirical patterns.
@@ -480,6 +481,14 @@ The second order conditions when there are no non-negativity constraints binding
 \vskip.3in
 \noindent \textbf{\hypertarget{Pr_1NNB}{Proof of Proposition~\ref{prop:1NNB}}}: \\
 When Vote Buyer B bribes just one legislator, two non-negativity constraints are binding and only one first order conditions holds with equality with the Lagrange multiplier equaling zero. We can easily solve this first order condition to find the value of the bribe. What determines which legislator is bribed is which legislator's ideal point distribution has the most mass near zero, as moving this individual has the greatest impact on total probability of winning the issue. $\hfill\blacksquare$
+
+
+\vskip.3in
+\noindent \textbf{\hypertarget{Pr_bothbribe}{Proof of Proposition~\ref{prop:bothbribe}}}: \\
+Take the following example. Let $\al=0$ so that the means of the ideal point distribution for the three legislators are $-\frac{1}{2}$, $0$ and $\frac{1}{2}$. Let the willingness-to-pay parameters be $W_A = 6$ and $W_B = 8$. And let the scale parameters for the legislators at $0$ and $\frac{1}{2}$ be 1 and $s_{-\frac{1}{2}} = 1.1$.
+
+In this example, the optimal bribe offer function for Vote Buyer $A$ is to offer nothing to the legislators at $0$ and $\frac{1}{2}$ and $a_{-\frac{1}{2}}=0.4$. Vote Buyer $B$ responds by offering nothing to the legislators at $-\frac{1}{2}$ and $\frac{1}{2}$ and $b_0 = 0.21$ to the legislator at zero. The final gross positions of the mean parameters for the three legislators are, from left to right, $\left\{ -0.1, -0.21, 0.5 \right\}$, with one legislator each being lobbied in each direction.
+
 
 \newpage
 \section*{References}
