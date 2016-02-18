@@ -183,15 +183,16 @@ However, strategically Vote Buyer A is more complex because of the dependence of
 It is not possible for a Vote Buyer to extract money from a legislator who is more favorably-inclined toward him than is optimal. This means that there are non-negativity constraints on all bribes. 
 
 The Lagrangian for the problem is the same as Expression~\ref{eq:objb}, with the addition of three terms for the non-negativity constraints: $\lambda_X b_0 + \lambda_Y b_{-\frac{1}{2}} + \lambda_Z b_{\frac{1}{2}}$. Thus the full set of first order conditions are
-\[
-    W_B\frac{e^{-X}}{\left(1+e^{-X}\right)^2}\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_X = 0
-\]
-\[
-    W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1 + \lambda_Y = 0 
-\]
-\[
-    W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] - 1 + \lambda_Z = 0
-\]
+\begin{equation}
+    \frac{e^{-X}}{\left(1+e^{-X}\right)^2}\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] = \frac{1 - \lambda_X}{W_B}
+		\label{eq:focB}
+\end{equation}
+\begin{equation}
+    \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] = \frac{1 - \lambda_Y}{W_B}
+\end{equation}
+\begin{equation}
+    \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] = \frac{1 - \lambda_Z}{W_B}
+\end{equation}
 \[
   b\left(0\right) \geq0 \hskip.2in b\left(\frac{1}{2}\right) \geq0 \hskip.2in b\left(-\frac{1}{2}\right) \geq0 
 \]
@@ -291,15 +292,17 @@ Recall that the effects are not necessarily entirely symmetric for the two extre
 		
 		
 \subsection{Two Vote Buyers}		
-Now we consider the entire game by adding Vote Buyer $A$'s choice of bribes. Vote Buyer A's first order conditions are more complicated because of the dependencies on $\bm a$. Below is the first order condition with respect to $a_0$:
+Now we consider the entire game by adding Vote Buyer $A$'s choice of bribes. Vote Buyer A's first order conditions are more complicated than those of Vote Buyer $B$ because her choices $\bm a$ will impact those of Vote Buyer $B$.
+
+Below is the first order condition with respect to $a_0$, which can be compared to Equation~\ref{eq:focB} for Vote Buyer $B$:
 			 \begin{multline}
 					 \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left[1+e^{-Y}\right]^2} \frac{\partial b_{-.5}}{\partial a_0} + \\ 
 					\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \frac{e^{-Z}}{\left[1+e^{-Z}\right]^2}\frac{\partial b_{.5}}{\partial a_0} + \\
-					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1}{W_A}
+					\frac{2+e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left[1+e^{-X}\right]^2}\left[1 - \frac{\partial b_0}{\partial a_0} \right] = \frac{1 - \lambda_{XB}}{W_A}
 					\label{eq:focA}
 				\end{multline}
 
-Unlike in models with no uncertainty, we do not have knife edge results in which Vote Buyer $A$ uses Vote Buyer $B$'s indifference condition to ensure that he buys no votes--there is no such indifference condition in the presence of uncertainty. However, it's possible that one or both vote buyers will not bribe any legislator because the non-negativity constraints bind for all three bribes. This requires that the willingness-to-pay parameter is sufficiently small.
+Unlike in models with no uncertainty, we do not have knife edge results in which Vote Buyer $A$ uses Vote Buyer $B$'s indifference condition to ensure that he buys no votes---there is no such indifference condition in the presence of uncertainty. However, it's possible that one or both vote buyers will not bribe any legislator because the non-negativity constraints bind for all three bribes. This requires that the willingness-to-pay parameters are sufficiently small for both vote buyers.
 		
 \begin{proposition}
   It is possible that neither vote buyer bribes any legislator on a given vote. This occurs when both vote buyers' willingness-to-pay parameters are small.
@@ -309,6 +312,7 @@ In many cases, Vote Buyer $A$ \textit{will} still find it optimal to bribe the l
 
 \begin{proposition}
   It is possible for both vote buyers to bribe legislators on the same vote.
+	\label{res:bothbribe}
 \end{proposition}
 
 This result in particular adds significant realism to the model predictions and will help to match the empirical patterns.
