@@ -352,7 +352,7 @@ Pattern more or less is to get the guy who is WHAT?
 	\item Frank: Imagine a see-saw; these guys are weights on the see-saw.
 	\item From looking at overlaided graphs of the pdfs (pdf-graph.R), it appears that the legislator who is chosen first is the one who has the most probability mass just to the left of 0 (it's probability mass to the right of zero that counts for winning the vote).
 		\begin{itemize}
-			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$.
+			\item But this is not quite right: sometimes the non-negativity constraint binds on the PDF of that variables (as in the case of $\al=-0.3$ and $W_B = 8$).
 		\end{itemize}
 \end{itemize}
 		
@@ -426,7 +426,7 @@ The math that follows from Equation \ref{eq:logistic}:
 			\label{eq:2}
 		\end{equation}
 	\end{itemize}	
-In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(-\frac{1}{2}\right)$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, we know that $Z < 0$ (not true because we can have $\alpha < -.5$). Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
 	\begin{itemize}
 		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
 		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
@@ -443,7 +443,7 @@ Once we know that both $X=Y>0$ (or $X=Z>0$), go back to one of the equations lik
 
 \newpage		
 \section{Second Order Conditions}
-Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(-\frac{1}{2})$ is (in logistic form)
+Perhaps more importantly, let's look at the second order condition (using the same substitutions at the top of the previous page). The first derivative of the objective function w.r.t. $b(\frac{1}{2})$ is
 \begin{equation}
   W_B\frac{e^{-Z}}{\left(1+e^{-Z}\right)^2}\left[\frac{1}{1+e^{-X}} + \frac{1}{1+e^{-Y}} - 2\frac{1}{1+e^{-X}}  \frac{1}{1+e^{-Y}} \right] - 1
 \end{equation}
@@ -470,13 +470,13 @@ Now, the second derivative:
 \[
   W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z}}{\left(1+e^{-Z}\right)^3} \right] \left\{e^{-Z}-1 \right\}
 \]
-Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $z\leq0$ and negative when $z\geq0$. So this objective function appears to have an inflection point at $z=0$.
+Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $Z<0$ and negative when $Z>0$. So this objective function appears to have an inflection point at $Z=0$.
 \begin{itemize}
-	\item When $z < 0$ (as when this legislator is naturally against you and you don't bribe her), this expression is negative
+	\item When $Z > 0$ (as is the case as long as $\al > -0.5$), this expression is negative
 \end{itemize}
 
-\vskip1in
-We also need cross partials. Let's start with the first derivative for $b\left(\frac{1}{2}\right)$, analogous to Expression~\ref{eq:firstderiv} for $b\left(-\frac{1}{2}\right)$:
+\vskip.3in
+We also need cross partials. Let's start with the first derivative for $b\left(-\frac{1}{2}\right)$, analogous to Expression~\ref{eq:firstderiv} for $b\left(\frac{1}{2}\right)$:
 \begin{equation}
   W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] - 1
 \end{equation}
@@ -505,12 +505,66 @@ Taking the derivative of this expression with respect to $b\left(0\right)$:
 \vskip.5in
 The SOCs when one non-negativity constraint binds; bordered Hessian is 4x4. \\
 		\begin{tabular}{cccc}
-			0 & $\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_1}{\partial b\left(-0\right)}$ & $\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ \\
-			$\frac{\partial g_1}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
-			$\frac{\partial g_1}{\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
-			$\frac{\partial g_1}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+			0 & $\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial g_3}{\partial b\left(-0\right)}$ & $\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ \\
+			$\frac{\partial g_3}{\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			$\frac{\partial g_3}{\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			$\frac{\partial g_3}{\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
 		\end{tabular} \\
 
+Evaluating the constraint terms:\\
+\begin{tabular}{cccc}
+			0 & 0 & 0 & -1 \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			-1 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular}
+
+\vskip.3in
+The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
+\begin{itemize}
+	\item First we need the determinant of the next-to-last principal minor, the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be non-negative. It's actually equal to zero because of the row / column of zeros, so gives no further conditions (note that this is NOT the case when either of the other two bribes are the single non-negative bribe).
+	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
+		\[
+		  0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right| + 0 \cdot \left|\text{something} \right| - (-1)\cdot 
+			\left|\begin{array}{ccc}
+				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
+			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
+			\end{array} \right| 
+		\]
+		\[ 
+			=
+			\left|\begin{array}{ccc}
+				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
+			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
+			\end{array} \right| 
+		\]
+		\[
+		  = - 1 \cdot \left|\begin{array}{cc}
+			\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} \\
+			\frac{\partial^2 L}{\partial b(0) \partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b(0)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left(
+			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
+		\]
+		\[
+		  = \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}
+		\]
+
+  We need this determinant to be non-positive, that is
+		\[
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+		\]
+	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. , and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
+\end{itemize}
+Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
+\[
+  2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
+\]		
+\begin{comment}
 \vskip.2in		
 Evaluating the constraint terms:\\
 \begin{tabular}{cccc}
@@ -520,6 +574,7 @@ Evaluating the constraint terms:\\
 			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
 		\end{tabular}
 
+\vskip.3in
 The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
 \begin{itemize}
 	\item First we need the determinant of the next-to-last principal minor, the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be positive. We can use the trick by which one copies the first two rows to the right of the matrix and then multiplies down the columns to the right and up the columns to the right (these terms get a negative sign). Then the determinant is
@@ -570,6 +625,7 @@ Note that nothing useful seems to come out of trying to expand and then simplify
 \[
   2e^{-X}e^{-Y} + 2 > e^{-2Z} + e^{-X}e^{-2Z} + e^{-Y}e^{-2Z} + e^{-X}e^{-Y}e^{-2Z}
 \]		
+\end{comment}
 
 \vskip1in
 In general
