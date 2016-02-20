@@ -426,15 +426,18 @@ The math that follows from Equation \ref{eq:logistic}:
 			\label{eq:2}
 		\end{equation}
 	\end{itemize}	
-In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, we know that $Z < 0$ (not true because we can have $\alpha < -.5$). Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, there are two possibilities. If $Z < 0$, $e^Z < 1$. In this case,
 	\begin{itemize}
-		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
-		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
+		\item Equation~\ref{eq:1} is consistent with $X\geq Y\geq 0$, $X\geq 0 \geq Y$, or $0 \geq X \geq Y$.
+		\item Equation~\ref{eq:2} is consistent with $Y \geq X \geq 0$, $Y \geq 0 \geq X$, or $0 \geq Y \geq X$.
 	\end{itemize}
+	
+If $Z > 0$, $e^Z < 1$. In this case, ...
+	
 The second order conditions will pin down the solution in this case of two non-negative bribes.
 
 \begin{itemize}
-	\item SOCs imply that both $X$ and $Y$ are positive.
+	\item SOCs imply that $X$ and $Y$ are either both positive, both negative, or one zero and the other unrestricted. But we can use these inequalities to get rid of the last case [finish this]
 \end{itemize}
 
 Once we know that both $X=Y>0$ (or $X=Z>0$), go back to one of the equations like \ref{eq:base} and substitute for one of the variables. Given that the third equals zero, for a particular value of $\left(\alpha,W_B\right)$, we can solve for the two relevant bribes.
