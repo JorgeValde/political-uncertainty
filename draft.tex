@@ -12,11 +12,6 @@
 \renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 \linespread{1.5}
 
-\usepackage[pdftex,
-bookmarks=true,
-bookmarksnumbered=false,
-pdfview=fitH,
-bookmarksopen=true]{hyperref}
 \usepackage[pdftex]{graphicx}
 %\usepackage{pdfpages}
 
@@ -30,6 +25,12 @@ bookmarksopen=true]{hyperref}
 
 \usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
 \usepackage[hang,flushmargin]{footmisc} 
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
 
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
@@ -413,6 +414,7 @@ We will use descriptive analysis as well as both standard parametric and non-par
 Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ and $0$ that are bribed. The first order conditions with respect to the bribes for these two legislators are
 	\begin{equation}
 		\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
+		\label{eq:baseY}
 	\end{equation}
 	and
 	\begin{equation}
@@ -420,6 +422,83 @@ Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ 
 		\label{eq:base}
 	\end{equation}
 		
+		\vskip.2in
+The second derivative, for instance with respect to $b_0$ is
+\begin{equation}
+  \frac{\partial^2 L}{\partial b(0)^2} = W_B\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-X}}{\left(1+e^{-X}\right)^3} \right] \left\{e^{-X}-1 \right\}
+	\label{eq:secderiv}
+\end{equation}
+Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $X<0$ and negative when $X>0$. It is zero when $X=0$. Analogous expressions hold for the second derivatives with respect to $b_{-.5}$ and $b_{.5}$.
+
+\vskip.2in
+The cross partials are of the form 
+\begin{equation}
+  \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} = W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X}\left(e^{-2Z} - 1 \right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+	\label{eq:xpartial}
+\end{equation}
+The sign of this expression is the same as the sign of $e^{-2Z} - 1$. It's 0 when $Z=0$, positive when $Z < 0$ and negative when $Z > 0$.
+
+When one non-negativity constraint binds, the bordered Hessian is 4x4. \\
+		$\left|\begin{tabular}{cccc}
+			0 & $\frac{\partial g_3}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial g_3}{\partial b_{\frac{1}{2}}}$ \\
+			$\frac{\partial g_3}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}} \partial b_{-\frac{1}{2}}}$  \\
+			$\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}\partial b_0}$ \\
+			$\frac{\partial g_3}{\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}^2}$
+		\end{tabular} \right|\\$
+
+Evaluating the constraint terms, we have\\
+\begin{tabular}{cccc}
+			0 & 0 & 0 & -1 \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
+			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
+			-1 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
+		\end{tabular}
+
+\vskip.2in
+The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
+
+The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be non-negative but is identically equal to zero because of the first row of zeros. This therefore provides no restrictions on the problem.\footnote{In the case where it is the non-negativity constraint on either $b_0$ or $b_{-.5}$ that binds, this condition \textit{does} imply an extra constraint. When $b_0 = 0$, the extra constraint is that $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq0$, i.e. $Y\leq 0$. When $b_{-.5}=0$, the extra condition is that $X\leq 0$.}
+\begin{itemize}
+	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
+		\[
+		  0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right| + 0 \cdot \left|\text{something} \right| - (-1)\cdot 
+			\left|\begin{array}{ccc}
+				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
+			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
+			\end{array} \right| 
+		\]
+		\[ 
+			=
+			\left|\begin{array}{ccc}
+				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
+			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
+			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
+			\end{array} \right| 
+		\]
+		\[
+		  = - 1 \cdot \left|\begin{array}{cc}
+			\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} \\
+			\frac{\partial^2 L}{\partial b(0) \partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b(0)^2}
+			\end{array} \right|
+		\]
+		\[
+		  = - 1 \cdot \left(
+			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
+		\]
+		\[
+		  = \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}
+		\]
+
+  We need this determinant to be non-positive, that is
+		\begin{equation}
+		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+			\label{eq:soc}
+		\end{equation}
+	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. 
+\end{itemize}
+
+\vskip.5in
 		Setting the left-hand size of these two equations equal to each other and simplifying,
 		\[
 		  \frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
@@ -441,9 +520,6 @@ Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ 
 			\label{eq:twoways}
 		\end{equation}
    Equation~\ref{eq:twoways} can be rearranged into two similar forms. First:
-		\[
-		  e^{Y-Z} - e^{X-Z}= e^{-X} - e^{-Y}
-		\]
 		\begin{equation}
 		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
 			\label{eq:1}
@@ -461,79 +537,6 @@ In this case where the non-negativity constraint binds for the variable associat
 	\end{itemize}
 The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$ (see below). Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
 
-\begin{comment}
-\vskip.2in
-\noindent \un{Second Order Conditions} \\
-When one non-negativity constraint binds, the bordered Hessian is 4x4.\\
-		$\left|\begin{tabular}{cccc}
-			0 & $\frac{\partial g_1}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial g_1}{\partial b_0}$ & $\frac{\partial g_1}{\partial b_{\frac{1}{2}}}$ \\
-			$\frac{\partial g_1}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}} \partial b_{-\frac{1}{2}}}$  \\
-			$\frac{\partial g_1}{\partial b_0}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}\partial b_0}$ \\
-			$\frac{\partial g_1}{\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}^2}$
-		\end{tabular} \right|\\$
-		
-		\vskip.2in		
-\noindent Evaluating the constraint terms, we have:\\
-\begin{tabular}{cccc}
-			0 & 0 & 0 & -1 \\
-			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
-			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
-			-1 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
-		\end{tabular}
-
-\vskip.2in
-The second order condition is on the last two principal minors. The last must be negative. The next to last should then be positive.
-
-Let's begin with the next-to-last principle minor, which is the determinant of the 3x3 matrix that is the upper-lefthand corner of this matrix. This is
-	\[
-	  0 + 0 + 0 - \left[0 + 0 + (-1)(-1)\frac{\partial^2 L}{\partial b(0)^2} \right] = - \frac{\partial^2 L}{\partial b(0)^2}
-	\]
-\begin{itemize}
-	\item First we need the determinant of the next-to-last principal minor, the . This determinant should be positive. We can use the trick by which one copies the first two rows to the right of the matrix and then multiplies down the columns to the right and up the columns to the right (these terms get a negative sign). Then the determinant is
-	  \[
-		  0 + 0 + 0 - \left[0 + 0 + (-1)(-1)\frac{\partial^2 L}{\partial b(0)^2} \right] = - \frac{\partial^2 L}{\partial b(0)^2}
-		\]
-		Because we need this to be positive, we need $\frac{\partial^2 L}{\partial b(0)^2} < 0$. This corresponds to the $X$ compositive variable, and happens only when $X$ is non-negative
-	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
-		\[
-		  0 \cdot \left|\text{something} \right| - (-1)\cdot 
-			\left|\begin{array}{ccc}
-				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
-			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
-			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
-			\end{array} \right| + 0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right|
-		\]
-		\[ 
-			=
-			\left|\begin{array}{ccc}
-				- 1 & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}  \\
-			0 & \frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
-			0 & \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
-			\end{array} \right|
-		\]
-		\[
-		  = - 1 \cdot \left|\begin{array}{cc}
-			\frac{\partial^2 L}{\partial b(0)^2} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)} \\
-			\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
-			\end{array} \right|
-		\]
-		\[
-		  = - 1 \cdot \left(
-			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
-		\]
-		\[
-		  = \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}
-		\]
-
-  We need this determinant to be non-positive, that is
-		\[
-		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
-		\]
-	  The right hand side is positive because it's a square. Moreover, it is strictly positive because $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ is strictly positive: examine Equation~\ref{eq:xpartial}. Since $Z < 0$ in the case under examination, Equation~\ref{eq:xpartial} must be strictly positive. (This strengthens us from the negative semi-definite condition condition that supplies only a weak inequality).
-		
-		The left hand side must then be positive, and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
-\end{itemize}
-\end{comment}		
 		
 		
 $\hfill\blacksquare$
