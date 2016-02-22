@@ -485,9 +485,6 @@ Now, the second derivative:
   W_B\left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-Z}}{\left(1+e^{-Z}\right)^3} \right] \left\{e^{-Z}-1 \right\}
 \]
 Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $Z<0$ and negative when $Z>0$. So this objective function appears to have an inflection point at $Z=0$.
-\begin{itemize}
-	\item When $Z > 0$ (as is the case as long as $\al > -0.5$), this expression is negative
-\end{itemize}
 
 \vskip.3in
 We also need cross partials. Let's start with the first derivative for $b\left(-\frac{1}{2}\right)$, analogous to Expression~\ref{eq:firstderiv} for $b\left(\frac{1}{2}\right)$:
@@ -515,6 +512,8 @@ Taking the derivative of this expression with respect to $b\left(0\right)$:
   W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X}\left(e^{-2Z} - 1 \right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
 	\label{eq:xpartial}
 \end{equation}
+The sign of this expression is the same as the sign of $e^{-2Z} - 1$. It's 0 when $Z=0$, positive when $Z < 0$ and negative when $Z > 0$.
+
 
 \vskip.5in
 The SOCs when one non-negativity constraint binds; bordered Hessian is 4x4. \\
@@ -573,7 +572,7 @@ The second order condition is on the last two principal minors. The largest must
 		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
 			\label{eq:soc}
 		\end{equation}
-	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. , and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
+	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. 
 \end{itemize}
 Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
 \[
