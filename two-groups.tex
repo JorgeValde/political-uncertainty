@@ -426,21 +426,32 @@ The math that follows from Equation \ref{eq:logistic}:
 			\label{eq:2}
 		\end{equation}
 	\end{itemize}	
-In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, there are two possibilities. If $Z < 0$, $e^Z < 1$. In this case,
-	\begin{itemize}
-		\item Equation~\ref{eq:1} is consistent with $X\geq Y\geq 0$, $X\geq 0 \geq Y$, or $0 \geq X \geq Y$.
-		\item Equation~\ref{eq:2} is consistent with $Y \geq X \geq 0$, $Y \geq 0 \geq X$, or $0 \geq Y \geq X$.
-	\end{itemize}
-	
-If $Z > 0$, $e^Z < 1$. In this case, ...
-	
-The second order conditions will pin down the solution in this case of two non-negative bribes.
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, there are three possibilities, $Z=0$, $Z>0$ and $Z<0$. I will take each in turn.
+\begin{enumerate}
+	\item When $Z = 0$, $e^Z = 1$. Then the only values of $X$ and $Y$ with which both Equation~\ref{eq:1} and \ref{eq:2} are consistent are $X=Y$.
+		\begin{itemize}
+			\item Note that this is the only case in which $e^{-2Z} =1$, i.e. $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} = 0$. In the other two cases, the right hand side of \ref{eq:soc} is positive so that the two second derivatives on the left hand side must be either both positive or both negative. This means that $X$ and $Y$ must be either both positive or both negative.
+		\end{itemize}
 
-\begin{itemize}
-	\item SOCs imply that $X$ and $Y$ are either both positive, both negative, or one zero and the other unrestricted. But we can use these inequalities to get rid of the last case [finish this]
-\end{itemize}
+	\item When $Z > 0$, $e^Z > 1$. In this case, $X$ and $Y$ must be positive since they are greater than $Z$.
+		\begin{itemize}
+			\item Equation~\ref{eq:1} is consistent with $Y\geq X\geq 0$.
+			\item Equation~\ref{eq:2} is consistent with $X \geq Y \geq 0$.
+			\item Since both equations must hold, we have $X=Y \geq 0$
+		\end{itemize}
+			
+	\item When $Z < 0$, $e^Z < 1$. In this case,
+			\begin{itemize}
+				\item Equation~\ref{eq:1} is consistent with $X\geq Y\geq 0$ or $0 \geq Y \geq X$.
+				\item Equation~\ref{eq:2} is consistent with $Y \geq X \geq 0$ or $0 \geq X \geq Y$.
+				\item Since both equations must hold, we have either $X=Y \geq 0$ or $X=Y \leq 0$
+		\end{itemize}
+	
 
-Once we know that both $X=Y>0$ (or $X=Z>0$), go back to one of the equations like \ref{eq:base} and substitute for one of the variables. Given that the third equals zero, for a particular value of $\left(\alpha,W_B\right)$, we can solve for the two relevant bribes.
+	
+\end{enumerate}
+
+Once we know that both $X=Y$ (or $X=Z$), go back to one of the equations like \ref{eq:base} and substitute for one of the variables. Given that the third equals zero, for a particular value of $\left(\alpha,W_B\right)$, we can solve for the two relevant bribes.
 
 
 
@@ -558,9 +569,10 @@ The second order condition is on the last two principal minors. The largest must
 		\]
 
   We need this determinant to be non-positive, that is
-		\[
+		\begin{equation}
 		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
-		\]
+			\label{eq:soc}
+		\end{equation}
 	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. , and since we know that one term is positive from the previous principal minor result, the other must be positive as well. Thus both $X$ and $Y$ must be positive.
 \end{itemize}
 Note that nothing useful seems to come out of trying to expand and then simplify this expression. I get:
