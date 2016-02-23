@@ -511,13 +511,25 @@ The determinant of the last principal minor, which is the whole 4x4 matrix, must
 			\label{eq:2}
 		\end{equation}
 		
-In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b_{-\frac{1}{2}}$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
-	\begin{itemize}
-		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
-		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
-	\end{itemize}
-The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$ (see below). Note that once this is known, one can go back to, for instance, Equations~\ref{eq:baseX} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
-
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(\frac{1}{2}\right)$, there are three possibilities, $Z=0$, $Z>0$ and $Z<0$. I will take each in turn.
+\begin{enumerate}
+	\item When $Z = 0$, $e^Z = 1$. Then the only values of $X$ and $Y$ with which both Equation~\ref{eq:1} and \ref{eq:2} are consistent are $X=Y$.
+		\begin{itemize}
+			\item Note that this is the only case in which $e^{-2Z} =1$, i.e. $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} = 0$. In the other two cases, the right hand side of \ref{eq:soc} is positive so that the two second derivatives on the left hand side must be either both positive or both negative. This means that $X$ and $Y$ must be either both positive or both negative.
+		\end{itemize}
+	\item When $Z > 0$, $e^Z > 1$. In this case, $X$ and $Y$ must be positive since they are greater than $Z$.
+		\begin{itemize}
+			\item Equation~\ref{eq:1} is consistent with $Y\geq X\geq 0$.
+			\item Equation~\ref{eq:2} is consistent with $X \geq Y \geq 0$.
+			\item Since both equations must hold, we have $X=Y \geq 0$
+		\end{itemize}
+	\item When $Z < 0$, $e^Z < 1$. In this case,
+			\begin{itemize}
+				\item Equation~\ref{eq:1} is consistent with $X\geq Y\geq 0$ or $0 \geq Y \geq X$.
+				\item Equation~\ref{eq:2} is consistent with $Y \geq X \geq 0$ or $0 \geq X \geq Y$.
+				\item Since both equations must hold, we have either $X=Y \geq 0$ or $X=Y \leq 0$
+		\end{itemize}
+\end{enumerate}
 		
 		
 $\hfill\blacksquare$
