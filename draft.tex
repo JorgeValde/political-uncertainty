@@ -421,7 +421,7 @@ Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ 
 	and
 	\begin{equation}
 		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
-		\label{eq:base}
+		\label{eq:baseX}
 	\end{equation}
 		
 		\vskip.2in
@@ -457,51 +457,33 @@ $\left|\begin{tabular}{cccc}
 		\end{tabular} \right|$
 
 \vskip.2in
-The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
+The second order condition is on the last two principal minors. The largest must be non-positive. The next to last should then be non-negative.
 
 The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be non-negative but is identically equal to zero because of the first row of zeros. This therefore provides no restrictions on the problem.\footnote{In the case where it is the non-negativity constraint on either $b_0$ or $b_{-.5}$ that binds, this condition \textit{does} imply an extra constraint. When $b_0 = 0$, the extra constraint is that $\frac{\partial^2 L}{\partial b_{-.5}^2} \geq0$, i.e. $Y\leq 0$. When $b_{-.5}=0$, the extra condition is that $X\leq 0$.}
-\begin{itemize}
-	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
+
+The determinant of the last principal minor, which is the whole 4x4 matrix, must be non-positive. Because of the three zeros in the first row, this determinant can be simplified as follows:
 		\[
-		  0 \cdot \left|\text{something} \right| - 0 \cdot \left|\text{something} \right| + 0 \cdot \left|\text{something} \right| - (-1)\cdot 
+		  0 - 0 + 0 - (-1)\cdot 
 			\left|\begin{array}{ccc}
-				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
-			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
-			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
-			\end{array} \right| 
-		\]
-		\[ 
-			=
-			\left|\begin{array}{ccc}
-				0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}  \\
-			0 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} & \frac{\partial^2 L}{\partial b(0)^2} \\
-			-1 & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}& \frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)} 
-			\end{array} \right| 
-		\]
-		\[
-		  = - 1 \cdot \left|\begin{array}{cc}
-			\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} & \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} \\
-			\frac{\partial^2 L}{\partial b(0) \partial b\left(-\frac{1}{2}\right)} & \frac{\partial^2 L}{\partial b(0)^2}
+				0 & \frac{\partial^2 L}{\partial b_{-.5}^2} & \frac{\partial^2 L}{\partial b_0\partial b_{-.5}}  \\
+			0 & \frac{\partial^2 L}{\partial b_{-.5} \partial b_0} & \frac{\partial^2 L}{\partial b_0^2} \\
+			-1 & \frac{\partial^2 L}{\partial b_{-.5}\partial b_{.5}} & \frac{\partial^2 L}{\partial b_0 \partial b_{.5}} 
+			\end{array} \right| =	
+			- 1 \cdot \left|\begin{array}{cc}
+			\frac{\partial^2 L}{\partial b_{-.5}^2} & \frac{\partial^2 L}{\partial b_0\partial b_{-.5}}  \\
+			\frac{\partial^2 L}{\partial b_{-.5} \partial b_0} & \frac{\partial^2 L}{\partial b_0^2}
 			\end{array} \right|
-		\]
+		\]		
 		\[
 		  = - 1 \cdot \left(
-			\frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} - \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 \right)
+			\frac{\partial^2 L}{\partial b_{-.5}^2} \frac{\partial^2 L}{\partial b_0^2} - \left[\frac{\partial^2 L}{\partial b_0\partial b_{-.5}}\right]^2 \right) \leq 0
 		\]
-		\[
-		  = \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 - \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}
-		\]
-
-  We need this determinant to be non-positive, that is
+	Therefore we must have 
 		\begin{equation}
-		  \frac{\partial^2 L}{\partial b(0)^2} \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq \left[\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}\right]^2 
+		  \frac{\partial^2 L}{\partial b_{-.5}^2} \frac{\partial^2 L}{\partial b_0^2} \geq \left[\frac{\partial^2 L}{\partial b_0\partial b_{-.5}}\right]^2 
 			\label{eq:soc}
 		\end{equation}
-	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. 
-\end{itemize}
-
-\vskip.5in
-		Setting the left-hand size of these two equations equal to each other and simplifying,
+	  The right hand side is non-negative because it's a square. The left hand side must then be non-negative. With this result in hand, we can proceed to an analysis of the first order conditions. Combining the left-hand side of Equations~\ref{eq:baseY} and \ref{eq:baseX} and simplifying, we have
 		\[
 		  \frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}
 		\]
@@ -514,9 +496,6 @@ The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand co
 		\[
 		  e^{-X-Z} +e^{-X-2Y}= e^{-Y-Z} +e^{-2X-Y}
 		\]
-		\[
-		  e^{-Z} +e^{-2Y}= e^{X-Y-Z} +e^{-X-Y}
-		\]
 		\begin{equation}
 		  e^{Y-Z} +e^{-Y}= e^{X-Z} +e^{-X}
 			\label{eq:twoways}
@@ -526,18 +505,18 @@ The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand co
 		  e^{Y} - e^{X}= e^Z\left(e^{-X} - e^{-Y}\right)
 			\label{eq:1}
 		\end{equation}
-  	Second, multiplying through by zero:
+  	Second:
 	  \begin{equation}
 		  e^{X} - e^{Y}= e^Z\left(e^{-Y} - e^{-X}\right)
 			\label{eq:2}
 		\end{equation}
 		
-In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b\left(-\frac{1}{2}\right)$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
+In this case where the non-negativity constraint binds for the variable associated with $Z$, that is $b_{-\frac{1}{2}}$, we know that $Z < 0$. Note that this is due to the construction of the problem. This means $e^Z < 1$. In this case,
 	\begin{itemize}
 		\item Equation~\ref{eq:1} is consistent with $X>Y>0$, $X>0>Y$, or $0>X>Y$.
 		\item Equation~\ref{eq:2} is consistent with $Y>X>0$, $Y>0>X$, or $0>Y>X$.
 	\end{itemize}
-The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$ (see below). Note that once this is known, one can go back to, for instance, Equations~\ref{eq:base} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
+The second order conditions imply that both $X$ and $Y$ are positive, thus it must be that $X = Y > 0$ (see below). Note that once this is known, one can go back to, for instance, Equations~\ref{eq:baseX} and substitute for one of the variables. Given that $Z=0$, with a particular value of $\left(\alpha,W_B\right)$, the solution gives the values of the two relevant bribes.
 
 		
 		
