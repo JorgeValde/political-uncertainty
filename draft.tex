@@ -248,7 +248,9 @@ In a legislature with three voters, Vote Buyer $B$ can choose to bribe all three
 
 All proofs are in the Appendix.
 
-The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal. If $B$'s willingness-to-pay parameter increases, the non-negativity constraint becomes less binding. That is, when Vote Buyer $B$'s willingness to pay becomes high enough, the additional probability of winning gained by bribing the third legislator becomes worth the additional cost. When this happens, he finds himself in the following case.
+The first part of this result is similar in spirit to Groseclose and Snyder (1996) and Banks (2000) in that a `leveling' strategy is employed. But the non-negativity constraint here binds for the third, and which legislator is this third, un-bribed legislator depends on where the three ideal points are relative to the zero point at which a legislator has a 50$\%$ probability of voting for either the status quo or the new proposal.
+
+If $B$'s willingness-to-pay parameter increases, the non-negativity constraint becomes less binding. That is, when Vote Buyer $B$'s willingness to pay becomes high enough, the additional probability of winning gained by bribing the third legislator becomes worth the additional cost. When this happens, he finds himself in the following case.
 
 \begin{proposition}
   When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
@@ -425,7 +427,7 @@ Without loss of generality, assume that it is the legislators at $-\frac{1}{2}$ 
 		\vskip.2in
 The second derivative, for instance with respect to $b_0$ is
 \begin{equation}
-  \frac{\partial^2 L}{\partial b(0)^2} = W_B\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-X}}{\left(1+e^{-X}\right)^3} \right] \left\{e^{-X}-1 \right\}
+  \frac{\partial^2 L}{\partial b_0^2} = W_B\left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] \left[ \frac{e^{-X}}{\left(1+e^{-X}\right)^3} \right] \left\{e^{-X}-1 \right\}
 	\label{eq:secderiv}
 \end{equation}
 Everything except for the expression in the curly braces is positive. The expression in the curly braces is positive when $X<0$ and negative when $X>0$. It is zero when $X=0$. Analogous expressions hold for the second derivatives with respect to $b_{-.5}$ and $b_{.5}$.
@@ -433,31 +435,31 @@ Everything except for the expression in the curly braces is positive. The expres
 \vskip.2in
 The cross partials are of the form 
 \begin{equation}
-  \frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)} = W_B\frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}\left[\frac{e^{-X}\left(e^{-2Z} - 1 \right)}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right]
+  \frac{\partial^2 L}{\partial b_{-.5} \partial b_0} = W_B\left[\frac{e^{-X}}{\left(1+e^{-X}\right)^2\left(1+e^{-Z}\right)^2} \right] \left[ \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2} \right] \left\{e^{-2Z} - 1 \right\}
 	\label{eq:xpartial}
 \end{equation}
 The sign of this expression is the same as the sign of $e^{-2Z} - 1$. It's 0 when $Z=0$, positive when $Z < 0$ and negative when $Z > 0$.
 
-When one non-negativity constraint binds, the bordered Hessian is 4x4. \\
+When one non-negativity constraint binds, the bordered Hessian is 4x4: \\
 		$\left|\begin{tabular}{cccc}
-			0 & $\frac{\partial g_3}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial g_3}{\partial b_{\frac{1}{2}}}$ \\
-			$\frac{\partial g_3}{\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}} \partial b_{-\frac{1}{2}}}$  \\
-			$\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}\partial b_0}$ \\
-			$\frac{\partial g_3}{\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{-\frac{1}{2}}\partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{\frac{1}{2}}}$ & $\frac{\partial^2 L}{\partial b_{\frac{1}{2}}^2}$
+			0 & $\frac{\partial g_3}{\partial b_{-.5}}$ & $\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial g_3}{\partial b_{.5}}$ \\
+			$\frac{\partial g_3}{\partial b_{-.5}}$ & $\frac{\partial^2 L}{\partial b_{-.5}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-.5}}$ & $\frac{\partial^2 L}{\partial b_{.5} \partial b_{-.5}}$  \\
+			$\frac{\partial g_3}{\partial b_0}$ & $\frac{\partial^2 L}{\partial b_{-.5} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{.5}\partial b_0}$ \\
+			$\frac{\partial g_3}{\partial b_{.5}}$ & $\frac{\partial^2 L}{\partial b_{-.5}\partial b_{.5}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{.5}}$ & $\frac{\partial^2 L}{\partial b_{.5}^2}$
 		\end{tabular} \right|\\$
 
 Evaluating the constraint terms, we have\\
-\begin{tabular}{cccc}
+$\left|\begin{tabular}{cccc}
 			0 & 0 & 0 & -1 \\
-			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2}$ & $\frac{\partial^2 L}{\partial b(0)\partial b\left(-\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(-\frac{1}{2}\right)}$  \\
-			0 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(0\right)}$ & $\frac{\partial^2 L}{\partial b(0)^2}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)\partial b\left(0\right)}$ \\
-			-1 & $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)\partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b(0) \partial b\left(\frac{1}{2}\right)}$ & $\frac{\partial^2 L}{\partial b\left(\frac{1}{2}\right)^2}$
-		\end{tabular}
+			0 & $\frac{\partial^2 L}{\partial b_{-.5}^2}$ & $\frac{\partial^2 L}{\partial b_0\partial b_{-.5}}$ & $\frac{\partial^2 L}{\partial b_{.5} \partial b_{-.5}}$  \\
+			0 & $\frac{\partial^2 L}{\partial b_{-.5} \partial b_0}$ & $\frac{\partial^2 L}{\partial b_0^2}$ & $\frac{\partial^2 L}{\partial b_{.5}\partial b_0}$ \\
+			-1 & $\frac{\partial^2 L}{\partial b_{-.5}\partial b_{.5}}$ & $\frac{\partial^2 L}{\partial b_0 \partial b_{.5}}$ & $\frac{\partial^2 L}{\partial b_{.5}^2}$
+		\end{tabular} \right|$
 
 \vskip.2in
 The second order condition is on the last two principal minors. The largest must be negative. The next to last should then be positive.
 
-The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be non-negative but is identically equal to zero because of the first row of zeros. This therefore provides no restrictions on the problem.\footnote{In the case where it is the non-negativity constraint on either $b_0$ or $b_{-.5}$ that binds, this condition \textit{does} imply an extra constraint. When $b_0 = 0$, the extra constraint is that $\frac{\partial^2 L}{\partial b\left(-\frac{1}{2}\right)^2} \geq0$, i.e. $Y\leq 0$. When $b_{-.5}=0$, the extra condition is that $X\leq 0$.}
+The next-to-last principal minor is the 3x3 matrix that is the upper-lefthand corner of this matrix. This determinant should be non-negative but is identically equal to zero because of the first row of zeros. This therefore provides no restrictions on the problem.\footnote{In the case where it is the non-negativity constraint on either $b_0$ or $b_{-.5}$ that binds, this condition \textit{does} imply an extra constraint. When $b_0 = 0$, the extra constraint is that $\frac{\partial^2 L}{\partial b_{-.5}^2} \geq0$, i.e. $Y\leq 0$. When $b_{-.5}=0$, the extra condition is that $X\leq 0$.}
 \begin{itemize}
 	\item Second, we need the determinant of the last principal minor, which is the whole 4x4 matrix. This determinant can be simplified as follows:
 		\[
