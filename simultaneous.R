@@ -67,5 +67,20 @@ o <- cbind(t(params),solns,netpos,val,winProb,bA)
 colnames(o) <- c("x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
 View(o)
 
+#to use this, need to figure out how to pad out parameters to be same length as other vectors
 #o <- cbind(al,sy,sz,WA,WB,params,solns,netpos,val,winProb,bA)
 #colnames(o) <- c("al","sy","sz","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
+
+
+#Code for when all six bribes are non-negative, just to solve for b0 and a0.
+a=.2
+WA=8
+WB=8
+
+fx <- function(B,a,WA,WB) {
+  a0 <- B[1]
+  b0 <- B[2]
+  exp(-a+b0-a0)+exp(a-b0+a0) - sqrt(2)*((8*8)^.25)+2
+}   
+
+x <- optim(c(2,.2),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
