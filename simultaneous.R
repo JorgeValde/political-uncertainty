@@ -83,4 +83,7 @@ fx <- function(B,a,WA,WB) {
   exp(-a+b0-a0)+exp(a-b0+a0) - sqrt(2)*((WA*WB)^.25)+2
 }   
 
-x <- optim(c(1,1),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0), control = list(maxit=100000))
+x <- optim(c(.1,1),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0), control = list(maxit=100000))
+
+xb = -a+x$par[2]-x$par[1]
+xa = a-x$par[2]+x$par[1]
