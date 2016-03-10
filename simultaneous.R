@@ -80,7 +80,7 @@ WB=8
 fx <- function(B,a,WA,WB) {
   a0 <- B[1]
   b0 <- B[2]
-  exp(-a+b0-a0)+exp(a-b0+a0) - sqrt(2)*((8*8)^.25)+2
+  exp(-a+b0-a0)+exp(a-b0+a0) - sqrt(2)*((WA*WB)^.25)+2
 }   
 
-x <- optim(c(2,.2),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
+x <- optim(c(1,1),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0), control = list(maxit=100000))
