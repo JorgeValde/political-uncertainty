@@ -73,9 +73,9 @@ View(o)
 
 
 #Code for when all six bribes are non-negative, just to solve for b0 and a0.
-a=.2
+a=0.0
 WA=8
-WB=8
+WB=10
 
 fx <- function(B,a,WA,WB) {
   a0 <- B[1]
@@ -83,7 +83,13 @@ fx <- function(B,a,WA,WB) {
   exp(-a+b0-a0)+exp(a-b0+a0) - sqrt(2)*((WA*WB)^.25)+2
 }   
 
-x <- optim(c(.1,1),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0), control = list(maxit=100000))
+x <- optim(c(.1,.1),function(B) fx(B,a,WA,WB),gr=NULL,method = "L-BFGS-B", lower = c(0,0), control = list(maxit=100000))
 
 xb = -a+x$par[2]-x$par[1]
 xa = a-x$par[2]+x$par[1]
+
+#Below verifies (with constrained-optimization.r) that the approach is generally correct.
+#However, optim is not actually minimizing the objective function to zero when WA ^= WB above.
+#e.g. WA=8, WB=10 ==> XA = .475, but the above function gives XA = 0 with value ^= 0
+fx <- function(x) (2*exp(-2*x))/((1+exp(-x))^4)-1/10
+x <-uniroot(fx, c(0,1.5))
