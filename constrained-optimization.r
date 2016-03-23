@@ -2,9 +2,10 @@
 #constraint; I choose a null gradient because it was easiest to get up and running
 #note that here the beta parameter is hard coded in as equal to 1
 rm(list = ls())
-a0 = .67
-anp5 = 1.17
-ap5 = .17
+ap5 = 1.5
+a0 = ap5 + .5
+anp5 = ap5 + 1
+
 
 h <- function(WB,al) {
 
