@@ -6,9 +6,9 @@ rm(list = ls())
 #b0 = bp5 + .5
 #bnp5 = bp5 + 1
 
-bp5 = 0
+bp5 = 2.36
 b0 = 0
-bnp5 = 0
+bnp5 = 1.36
 
 h <- function(WB,al) {
 
@@ -25,9 +25,9 @@ f <- function(B,WB,al) {
 o <- optim(c(1,1,1,WB,al),function(B) f(B,WB,al),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
 #o <- constrOptim(c(0.01,0.01,0.01,WB,al),function(B) f(B,WB,al),gr=NULL,method = "Nelder-Mead", ui = rbind(c(1,0,0),c(0,1,0),c(0,0,1)),ci=c(0,0,0))
 
-X = round(al +b0 - o$par[2], digits = 2)       #A0   these are shorthand variables for the exponents
-Y = round(-.5 + al +bnp5 - o$par[3], digits = 2)    #Anp5  in the logistic CDFs; I don't use them in the function
-Z = round(.5 + al + bp5 - o$par[1], digits=2)   #Ap5 but I've pasted in values here to check
+X = round(al -b0 + o$par[2], digits = 2)       #A0   these are shorthand variables for the exponents
+Y = round(-.5 + al -bnp5 + o$par[3], digits = 2)    #Anp5  in the logistic CDFs; I don't use them in the function
+Z = round(.5 + al - bp5 + o$par[1], digits=2)   #Ap5 but I've pasted in values here to check
 
 pos <- c(Z,X,Y)
 bribes <- c(o$par,-o$value)
@@ -38,7 +38,7 @@ return(out)
 }
 
 # Create a dataframe of parameter values
-wb_vector <- 9:20 
+wb_vector <- 9:10 
 a_vector <- seq(0.0, 0.0, 0.0)
 params <- expand.grid("wb" = wb_vector, "a" = a_vector)
 
