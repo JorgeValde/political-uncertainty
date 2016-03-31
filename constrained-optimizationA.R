@@ -2,13 +2,13 @@
 #constraint; I choose a null gradient because it was easiest to get up and running
 #note that here the beta parameter is hard coded in as equal to 1
 rm(list = ls())
-#bp5 = 1.5
-#b0 = bp5 + .5
-#bnp5 = bp5 + 1
+#bnp5 = .175
+#bp5 = bnp5 + 1
+#b0 = bnp5 + .5
 
-bp5 = 2.36
-b0 = 0
-bnp5 = 1.36
+bp5 = 1.1
+b0 = .6
+bnp5 = .1
 
 h <- function(WB,al) {
 
@@ -38,7 +38,7 @@ return(out)
 }
 
 # Create a dataframe of parameter values
-wb_vector <- 9:10 
+wb_vector <- 5:10 
 a_vector <- seq(0.0, 0.0, 0.0)
 params <- expand.grid("wb" = wb_vector, "a" = a_vector)
 
