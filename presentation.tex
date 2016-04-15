@@ -201,70 +201,54 @@ Two vote buyers, $A$ and $B$
 
 \subsection{The Players}
 
-\begin{frame}{D}
+\begin{frame}{Legislators}
 \pause
-  Objective function:
-\pause
-\[
-  W = \mathit{CS}_X(\tau) + \ga(s,e) \pi_X(\tau) + \mathit{CS}_Y(\tau^*) + \pi_Y(\tau^*) + \mathit{TR}(\tau)
-\]
-\vskip-.1in
+Take ideal point to be linear: $\alpha - \beta i$
 \pause
 \begin{itemize}[<+->]
-	\item S
+	\item Leg $i$ votes for $s$ if $v(i) = \alpha -\beta i + \ta_i + a_i - b_i \leq 0$
 		\begin{itemize}
-			\item $s$: 
-			\item $e$: 
+			\item Probability $i$ votes for $s$ is $\Pr\left[\alpha -\beta i + \ta_i + a_i - b_i \leq 0 \right] = \Pr\left[\ta_i \leq \beta i - \alpha - a_i + b_i \right] $
+			\item Assuming $\ta \sim \text{Logistic} \ (0,1)$, it's $\frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$ 
 		\end{itemize}
-	\item Optimal 
-		\begin{itemize}
-			\item Ignores 
-			\item Takes 
-		\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Vote Buyer B}
+\pause
+Assume vote buyers maximize expected value of winning net of bribes paid  
+\begin{itemize}[<+->]
+	\item Assume bribes must be non-negative
+	\item Vote buyer won't spend more than his willingness to pay, $W_B$
+	\item In three-seat legislature, max probability that $\geq 2$ legislators vote for $s$
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Vote Buyer B's Objective Function}
+\pause
+Let $X(i) = 1$ denote legislator $i$ votes for the status quo
+\begin{multline*}
+			    \max_{b_{-.5}, b_0, b_{.5}} 
+					W_B \biggl[ \Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(.5\right)=0\right)  + \\
+					\Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(.5\right)=1\right) + \\
+					\Pr\left(X\left(-.5\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(.5\right)=1\right) + \\
+					\Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(.5\right)=1\right) \biggr] - \sum_{j\in \left\{-.5, 0,.5\right\}} b_j
+				\end{multline*}
+\end{frame}
 
-\begin{frame}{D}
+
+\begin{frame}{Vote Buyer A}
 \pause
-  Objective function:
-\pause
-\[
-  W = \mathit{CS}_X(\tau) + \ga(s,e) \pi_X(\tau) + \mathit{CS}_Y(\tau^*) + \pi_Y(\tau^*) + \mathit{TR}(\tau)
-\]
-\vskip-.1in
-\pause
+Vote Buyer A is just like Vote Buyer B \textit{except}
 \begin{itemize}[<+->]
-	\item S
-		\begin{itemize}
-			\item $s$: 
-			\item $e$: 
-		\end{itemize}
-	\item Optimal 
-		\begin{itemize}
-			\item Ignores 
-			\item Takes 
-		\end{itemize}
+	\item She gets to move first
+	\item She wants $x$ to win instead of $s$
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}
-\frametitle{Political Pressure}
-Two potential sources
-\pause
-\begin{enumerate}[<+->]
-	\item Endogenous effort choice of lobby, $e$
-		\begin{itemize}[<+->]
-			\item Lobby chooses effort to maximize profits, $\pi(\cdot)$, net of lobbying effort, $e$
-			\item Call lobby's optimal effort choice $e^L$
-						\[
-						  e^L = \max_e \pi(\tau(\ga(e))) - e
-						\]
-		\end{itemize}
-\end{enumerate}
-
-\end{frame}
 
 
 
@@ -353,24 +337,24 @@ Now
 
 \section{Conclusion}
 
-\begin{frame}{Future Work}
+\begin{frame}{Next Steps}
 \pause
 \begin{itemize}[<+->]
-	\item A
-	\item I
-	\item C
+	\item Modify model so that both legislators can lobby the \textit{same} legislator in equilibrium
+	\item Derive tight identification of empirical estimates from structural model
+	\item Provide micro-founded explanations for the variation in uncertainty that lobbies face
 \end{itemize}
 
 \end{frame}
 
 
 \begin{frame}{Conclusion}
-Taking into account
+Taking into account uncertainty about the preferences of legislators brings vote buying models closer to capturing important stylized facts
 \pause
 \begin{itemize}[<+->]
-		\item provides 
-		\item demonstrates 
-		\item helps 
+		\item helps in understanding lobbying strategies
+		\item may shed light on why some lobbies are more successful than others
+		\item will help in the identification of measures of uncertainty that can be used in many applications
 \end{itemize}
 
 \end{frame}
