@@ -63,45 +63,58 @@
 
 
 \section{Overview}
-\subsection{Preview}
+\subsection{Overview}
 \begin{frame}{The Questions}
 
 \pause
 \begin{enumerate}[<+->]
-\item When 
+\item How does uncertainty about legislators' preferences impact 
 	\begin{itemize}
-		\item E
+		\item lobbying strategies (e.g. who to lobby, how much to `pay')
+		\item probability a bill passes
 	\end{itemize}
 	\vskip.1in
-\item Can
+\item Can we distentangle fundamental uncertainty about preferences from equilibrium and modeling uncertainty?
 	\begin{itemize}
-		\item G
+		\item[$\Rightarrow$] Build a structural model to take to U.S. House data
 	\end{itemize}
+	\vskip.1in
+\item Ultimately, want to identify cross-industry measures of legislative uncertainty
 \end{enumerate}
 
 \end{frame}
 
 
-\begin{frame}{Some Data}
+\begin{frame}{Some Stylized Facts}
 
 \pause
 \begin{enumerate}[<+->]
-\item When 
-	\begin{itemize}
-		\item E
-	\end{itemize}
-	\vskip.1in
-\item Can
-	\begin{itemize}
-		\item G
-	\end{itemize}
+	\item In the U.S., about $\$ 4$ billion / yr spent on lobbying and campaign contributions
+	\item There is usually lobbying on both sides of a given issue
+	\item Moderate legislators receive more contributions than those that are ideologically extreme
+	\item Legislators about whom there is a moderate level of uncertainty are lobbied the most
 \end{enumerate}
 
+\pause
+\vskip.2in
+Adding uncertainty to standard model captures (2) --- (4)
 \end{frame}
 
-\begin{frame}
-\includegraphics[height=2.75in, width=4.25in]{graph2.jpg}
-\end{frame}
+\begin{frame}{Literature}
+\pause
+\begin{itemize}[<+->]
+	\item \textbf{Vote Buying in Legislatures}: Groseclose $\&$ Snyder 1996, Banks 2000, Dal Bo 2007
+	\item \textbf{Lobbying with Uncertainty}: Coates $\&$ Ludema 2001, Le Breton $\&$ Salanie 2003, Le Breton $\&$ Zaphorozhets (2007)
+	\item \textbf{Probabilistic Voting with Policy Motivation}: Roemer 1994, 1997, Duggan $\&$ Fey 2011
+	%\item \textbf{Uncertainty}: 
+\end{itemize}
+\end{frame} 
+
+
+
+%\begin{frame}
+%\includegraphics[height=2.75in, width=4.25in]{graph2.jpg}
+%\end{frame}
 
 
 \begin{frame}
@@ -110,46 +123,24 @@
 
 
 \begin{frame}{Preview}
-\frametitle{P}
+\frametitle{Context}
 \pause
-With . I:
+U.S. House of Representative 
 \pause
 \begin{itemize}[<+->]
-	\item e
-	\item c
-		\begin{itemize}[<+->]
-			\item b
-			\item t
-		\end{itemize}
-	\item e
+	\item All roll call votes, 2005 through present
+	\item Interest group lobbying on each vote
+	\item PAC contributions, LDA lobbying data
 \end{itemize}
+
+\vskip.2in
+\pause
+Use multi-dimensional ideal-point estimation to identify measures of uncertainty
 \end{frame}
 
-
-\begin{frame}{Preview}
-\frametitle{Results}
-
-\pause
-\begin{itemize}[<+->]
-	\item S
-	\item F
-	\item D
-		\begin{itemize}
-			\item P
-			\item M
-		\end{itemize}
-\end{itemize}
+\begin{frame}
+\includegraphics[height=2.75in, width=4.25in]{NSF_combined_graph.pdf}
 \end{frame}
-
- 
-\begin{frame}{Literature}
-\pause
-\begin{itemize}[<+->]
-	\item \textbf{Vote Buying in Legislatures}: 
-	\item \textbf{Stochastic Voting}: 
-	\item \textbf{Uncertainty}: 
-\end{itemize}
-\end{frame} 
 
 
 
@@ -160,14 +151,21 @@ With . I:
 \begin{frame}{Policy and Politics}
 
 \pause
-T
+Three legislators
 \pause
 \begin{itemize}
-	\item A
-	\pause
-	\item B
+	\item Identified by location in linear preference space: $i \in \left\{-0.5,0,.5\right\}$
+	\item Each will vote for status quo $\bm{s}$ or new proposal $\bm{x}$
+	\item Decision made by majority vote
 \end{itemize}
 
+\pause
+\vskip.2in
+Two vote buyers, $A$ and $B$
+\pause
+\begin{itemize}
+	\item A prefers $x$, $B$ prefers $s$
+\end{itemize}
 
 \end{frame}
 
@@ -176,24 +174,26 @@ T
 \begin{frame}{Timeline}
 \pause
 \begin{enumerate}[<+->]
-	\item {\bfseries Who}
+	\item {\bfseries Vote Buyer A}
 		\begin{enumerate}[i.]
 			%\pause
-			\item Governments 
+			\item Chooses bribes $\un{a} = \left(a_{-.5},a_0,a_{.5}\right)$
 		\end{enumerate}
 	%\pause
-	\item \textbf{Then}
+	\item \textbf{Vote Buyer B}
 		\begin{enumerate}[i.]
 			%\pause
-			\item A
+			\item Observes $\un{a}$
 			%\pause
-			\item B
+			\item Chooses bribes $\un{b} = \left(b_{-.5},b_0,b_{.5}\right)$
 		\end{enumerate}
 	%\pause
-	\item \textbf{What}
+	\item \textbf{Legislature}
 	%\pause
 		\begin{enumerate}[i.]
-			\item If
+			\item All legislators observe $\un{a},\un{b}$
+			\item Uncertainty about preferences realized: $\un{\ta} = \left(\ta_{-.5},\ta_0,\ta_{.5}\right)$
+			\item Each legislator votes for her preferred policy 
 		\end{enumerate}
 \end{enumerate}
 \end{frame}
@@ -223,6 +223,31 @@ T
 		\end{itemize}
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{D}
+\pause
+  Objective function:
+\pause
+\[
+  W = \mathit{CS}_X(\tau) + \ga(s,e) \pi_X(\tau) + \mathit{CS}_Y(\tau^*) + \pi_Y(\tau^*) + \mathit{TR}(\tau)
+\]
+\vskip-.1in
+\pause
+\begin{itemize}[<+->]
+	\item S
+		\begin{itemize}
+			\item $s$: 
+			\item $e$: 
+		\end{itemize}
+	\item Optimal 
+		\begin{itemize}
+			\item Ignores 
+			\item Takes 
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Political Pressure}
