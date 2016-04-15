@@ -255,50 +255,44 @@ Vote Buyer A is just like Vote Buyer B \textit{except}
 
 \section{Results}
 \subsection{One Vote Buyer}
-\begin{frame}{}
+\begin{frame}{Two Non-Negative Bribes}
 
 \pause
-When :
-
+Let $X$ and $Y$ and $Z$ be the gross positions of each of the three legislators. Then the FOCs are
 \pause
-\begin{itemize}[<+->]
-	\item T
-	\item I
-	\item C
-\end{itemize}
-
+	\begin{equation}
+		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+	\end{equation}
+	\begin{equation}
+		\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1}{W_B}
+	\end{equation}
+	
 \pause
-\vskip.2in
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\vskip.1in
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Two non-negative bribes}
     When Vote Buyer $B$ pays bribes to exactly two legislators, the bribes are such that the two bribed legislators' ideal points gross of bribes are equalized. Which two legislators are bribed depends on the bias parameter $\al$.
 \end{beamerboxesrounded}
 
 \end{frame}
 
 
-\begin{frame}{When ...}
-Now 
+\begin{frame}{Three Non-Negative Bribes}
+Similar intuition for the case where all three legislators are bribed
 \pause
-\begin{itemize}[<+->]
-	\item Want 
-	\item But 
-\end{itemize}
-
-\pause
-\vskip.2in
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\vskip.4in
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Three Non-Negative Bribes}
     When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
 \end{beamerboxesrounded}
 \end{frame}
 
-\begin{frame}
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\begin{frame}{The Rest of the Story...}
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{One Non-Negative Bribe}
       When Vote Buyer $B$ pays bribes to exactly one legislator, it may be any one of the three legislators depending on the bias parameter $\al$.
 \end{beamerboxesrounded}
 
 \pause
 \vskip.2in
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{No Non-Negative Bribes}
   When Vote Buyer $B$ has a low willingness to pay, he does not bribe any legislator.
 \end{beamerboxesrounded}
 
@@ -306,11 +300,10 @@ Now
 
 
 \begin{frame}{Varying Uncertainty Across Legislators}
-Now 
+Now let the scale of uncertainty differ across legislators 
 \pause
 \begin{itemize}[<+->]
-	\item Want 
-	\item But 
+	\item To be precise: the scale parameters in the three logit distributions are not equal
 \end{itemize}
 
 \pause
@@ -320,14 +313,14 @@ Now
 \end{frame}
 
 \subsection{Two Vote Buyers}
-\begin{frame}
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\begin{frame}{Two Vote Buyers}
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{No Bribes}
   It is possible that neither vote buyer bribes any legislator on a given vote. This occurs when both vote buyers' willingness-to-pay parameters are small.
 \end{beamerboxesrounded}
 
 \pause
 \vskip.2in
-\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Result...}
+\begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Both Vote Buyers Bribe}
   It is possible for both vote buyers to bribe legislators on the same vote.
 \end{beamerboxesrounded}
 
