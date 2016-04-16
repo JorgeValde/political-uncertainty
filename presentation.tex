@@ -1,5 +1,5 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} 
+\documentclass{beamer} 
+%\documentclass[handout]{beamer} 
 \usetheme{Ilmenau}
 \usepackage{graphicx,verbatim,hyperref}
 \usepackage{textpos}
@@ -103,9 +103,9 @@ Adding uncertainty to standard model captures (2) --- (4)
 \begin{frame}{Literature}
 \pause
 \begin{itemize}[<+->]
-	\item \textbf{Vote Buying in Legislatures}: Groseclose $\&$ Snyder 1996, Banks 2000, Dal Bo 2007
-	\item \textbf{Lobbying with Uncertainty}: Coates $\&$ Ludema 2001, Le Breton $\&$ Salanie 2003, Le Breton $\&$ Zaphorozhets (2007)
 	\item \textbf{Probabilistic Voting with Policy Motivation}: Roemer 1994, 1997, Duggan $\&$ Fey 2011
+	\item \textbf{Lobbying with Uncertainty}: Coates $\&$ Ludema 2001, Le Breton $\&$ Salanie 2003, Le Breton $\&$ Zaphorozhets (2007)
+	\item \textbf{Vote Buying in Legislatures}: Groseclose $\&$ Snyder 1996, Banks 2000, Dal Bo 2007
 	%\item \textbf{Uncertainty}: 
 \end{itemize}
 \end{frame} 
@@ -153,7 +153,7 @@ Use multi-dimensional ideal-point estimation to identify measures of uncertainty
 \pause
 Three legislators
 \pause
-\begin{itemize}
+\begin{itemize}[<+->]
 	\item Identified by location in linear preference space: $i \in \left\{-0.5,0,.5\right\}$
 	\item Each will vote for status quo $\bm{s}$ or new proposal $\bm{x}$
 	\item Decision made by majority vote
@@ -220,6 +220,7 @@ Take ideal point to be linear: $\alpha - \beta i$
 \begin{frame}{Vote Buyer B}
 \pause
 Assume vote buyers maximize expected value of winning net of bribes paid  
+\pause
 \begin{itemize}[<+->]
 	\item Assume bribes must be non-negative
 	\item Vote buyer won't spend more than his willingness to pay, $W_B$
@@ -230,6 +231,7 @@ Assume vote buyers maximize expected value of winning net of bribes paid
 \begin{frame}{Vote Buyer B's Objective Function}
 \pause
 Let $X(i) = 1$ denote legislator $i$ votes for the status quo
+\pause
 \begin{multline*}
 			    \max_{b_{-.5}, b_0, b_{.5}} 
 					W_B \biggl[ \Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(.5\right)=0\right)  + \\
@@ -243,6 +245,7 @@ Let $X(i) = 1$ denote legislator $i$ votes for the status quo
 \begin{frame}{Vote Buyer A}
 \pause
 Vote Buyer A is just like Vote Buyer B \textit{except}
+\pause
 \begin{itemize}[<+->]
 	\item She gets to move first
 	\item She wants $x$ to win instead of $s$
