@@ -136,9 +136,9 @@ Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$
 		Q(i) \sim \text{Bernoulli}(p(z)) \hskip.2in \text{where} \hskip.2in p(z) = \frac{1}{1+e^{-\left(\beta z - \alpha -a_i+ b_i \right)}}
 	\]
 
-For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2} \right\}$. Then $Y_B = \frac{\beta}{2} - \alpha - a_{-\frac{1}{2}} + b_{-\frac{1}{2}}$, $X_B = -\alpha - a_0+ b_0$ and $Z_B = -\frac{\beta}{2} - \alpha - a_{\frac{1}{2}} + b_{\frac{1}{2}}\label{page:sh}$ represent the net ideal points in terms of $B$'s probability of winning the issue. We can then write the probability that each of the legislators, respectively, votes against the new proposal as $\frac{1}{1+e^{-Y_B}}$, $\frac{1}{1+e^{-X_B}}$ and $\frac{1}{1+e^{-Z_B}}$.
+For ease of exposition, for now take $i \in \left\{ -\frac{1}{2}, 0, \frac{1}{2} \right\}$. Let $Y_B = \frac{\beta}{2} - \alpha - a_{-\frac{1}{2}} + b_{-\frac{1}{2}}$, $X_B = -\alpha - a_0+ b_0$ and $Z_B = -\frac{\beta}{2} - \alpha - a_{\frac{1}{2}} + b_{\frac{1}{2}}\label{page:sh}$ represent the net ideal points in terms of $B$'s probability of winning the issue. We can then write the probability that each of the legislators, respectively, votes against the new proposal as $\frac{1}{1+e^{-Y_B}}$, $\frac{1}{1+e^{-X_B}}$ and $\frac{1}{1+e^{-Z_B}}$.
 
-Vote Buyer $A$ must take into account that Vote Buyer $B$ will react to her choice of bribes. So the net ideal points from her point of view---that is, in terms of her winning the issue---are $X_A = \alpha - b_0(\bm{a},W_B,\al,\beta) + a_0$, $Y_A = -\frac{\beta}{2} + \alpha - b_{-.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{-.5}$, and $Z_A = \frac{\beta}{2} + \alpha - b_{.5}\left(\bm{a},W_B,\al,\beta\right)+ a_{.5}$ with $\bm a = \left(a_{-.5},a_0,a_{.5} \right)$. We can then write the probability that each of the legislators votes for the new proposal as $\frac{1}{1+e^{-Y_A}}$, $\frac{1}{1+e^{-X_A}}$ and $\frac{1}{1+e^{-Z_A}}$.
+We would also like to write the probabilities that the legislators vote in line with Vote Buyer A. The probability that a legislator votes for the new proposal is the complement of the probability that she votes for the status quo. Since Vote Buyer $A$ must take into account that Vote Buyer $B$ will react to her choice of bribes, we write these probabilities as $\frac{e^{-Y_B(\bm{a})}}{1+e^{-Y_B(\bm{a})}}$, $\frac{e^{-X_B(\bm{a})}}{1+e^{-X_B(\bm{a})}}$ and $\frac{e^{-Z_B(\bm{a})}}{1+e^{-Z_B(\bm{a})}}$ with $\bm a = \left(a_{-.5},a_0,a_{.5} \right)$.
 				
 
 \subsection{Vote Buyer B}
@@ -170,14 +170,16 @@ This means that the maximization problem for Vote Buyer B (in absence of Vote Bu
 				\end{multline}
 		
 \subsection{Vote Buyer A}
-Vote buyer A's objective function is identical in form to that of Vote buyer B (Expression~\ref{eq:objb}) 
+Vote buyer A's objective function is similar in form to that of Vote buyer B (Expression~\ref{eq:objb}) 
 			  \begin{multline}
 			    \max_{a_{-\frac{1}{2}}, a_0, a_{\frac{1}{2}}} 
-					W_A \biggl[ \frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Y_A}} +
-					\frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Z_A}} + \\
-					\frac{1}{1+e^{-Y_A}} \frac{1}{1+e^{-Z_A}} - 2	\frac{1}{1+e^{-Z_A}} \frac{1}{1+e^{-X_A}} \frac{1}{1+e^{-Y_A}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} a_j .
+					W_A \biggl[ \frac{e^{-X_B(\bm{a})}}{1+e^{-X_B(\bm{a})}} \frac{e^{-Y_B(\bm{a})}}{1+e^{-Y_B(\bm{a})}} +
+					\frac{e^{-X_B(\bm{a})}}{1+e^{-X_B(\bm{a})}} \frac{e^{-Z_B(\bm{a})}}{1+e^{-Z_B(\bm{a})}} + \\
+					\frac{e^{-Y_B(\bm{a})}}{1+e^{-Y_B(\bm{a})}} \frac{e^{-Z_B(\bm{a})}}{1+e^{-Z_B(\bm{a})}} - 2	\frac{e^{-Z_B(\bm{a})}}{1+e^{-Z_B(\bm{a})}} \frac{e^{-X_B(\bm{a})}}{1+e^{-X_B(\bm{a})}} \frac{e^{-Y_B(\bm{a})}}{1+e^{-Y_B(\bm{a})}} \biggr] - \sum_{j\in \left\{-\frac{1}{2}, 0,\frac{1}{2}\right\}} a_j .
 					\label{eq:obja}
 				\end{multline}
+
+
 
 However, strategically Vote Buyer A is more complex because of the dependence of Vote Buyer $B$'s bids on her own.
 				
