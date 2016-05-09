@@ -111,7 +111,7 @@ I will introduce the structural model in Section~\ref{sec:model} and discuss the
 
 The model borrows much from Banks' (2000) model of vote buying in a legislature, which is in turn a discrete version of Groseclose and Snyder's (1996) model with a continuum of legislators. The major difference here is the addition of uncertainty about the legislators' ideal points.
 
-There are five players in the model. Each of three legislators faces a choice between the status quo, $x$ and a new policy proposal $s$. The utility function of legislator $i$ is given by $v(i) = u_i(x) - u_i(s)$, which is measured in money units. Note that legislators only have preferences about how they vote, not over which alternative wins.
+There are five players in the model. Each of three legislators faces a choice between the status quo, $s$ and a new policy proposal $x$. The utility function of legislator $i$ is given by $v(i) = u_i(x) - u_i(s)$, which is measured in money units. Note that legislators only have preferences about how they vote, not over which alternative wins.
 
 There are two vote buyers labeled $A$ and $B$ who each prefers to maximize the expected value of his preferred policy net of the bribes he has to pay; each chooses a vector of three non-negative bribes. $A$ prefers policy $x$ and has willingness to pay (WTP) $W_A$ for $x$ measured in money and values $s$ at zero. $B$ prefers $s$ and has WTP $W_B$ for $s$ and values $x$ at zero.
 
@@ -129,7 +129,7 @@ Notice that a bribe from $B$ is subtracted because it makes the alternative \tex
 
 Given these assumptions, the probability that legislator $i$ votes against the new proposal is
 	\[
-					\Pr\left[v(i)\leq 0 \right] = \Pr\left[\alpha -\beta i + \ve + a_i - b_i \leq 0 \right] = \Pr\left[\ve \leq \beta z - \alpha - a_i + b_i \right] 
+					\Pr\left[v(i)\leq 0 \right] = \Pr\left[\alpha -\beta i + \ve + a_i - b_i \leq 0 \right] = \Pr\left[\ve \leq \beta i - \alpha - a_i + b_i \right] 
 	\]
 Assuming $\ve \sim \text{Logistic} \ (0,1)$, the probability that legislator $z$ votes ``no'' is $\frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$.	Whether a legislator $i$ votes ``no'' is a random variable, denote it $Q(i)$, distributed Bernoulli with this probability:
 	\[
