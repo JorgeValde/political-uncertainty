@@ -5,15 +5,15 @@ rm(list = ls())
 al = 0
 WB=8
 
-v = seq(5,9,.4)
+v = seq(6,8,.4)
 o <- matrix(0,length(v),20)
 colnames(o) <- c("al","sy","sz","WA","WB","x", "y", "z","foe", "middle", "friend","Z", "X", "Y","value","wProbB","X_a", "Y_a", "Z_a","ValA")
 
 for (j in 1:length(v)) {
 
   WA = v[j]
-  sy=.9
-  sz=1.2
+  sy=1.1
+  sz=1
   
 h <- function(x0,y0,z0) {
   
@@ -26,9 +26,9 @@ h <- function(x0,y0,z0) {
   
   o <- optim(c(1,1,1,x0,y0,z0),function(B) f(B,x0,y0,z0),gr=NULL,method = "L-BFGS-B", lower = c(0,0,0), control = list(maxit=100000))
   
-  X = round(-x0 - al + o$par[2], digits = 3)       #B0   these are shorthand variables for the exponents
-  Y = round(-y0 - al + o$par[3], digits = 3)    #Bnp5  in the logistic CDFs; I don't use them in the function
-  Z = round(-z0 - al + o$par[1], digits=3)   #Bp5 but I've pasted in values here to check
+  X = round(-x0 - al + o$par[2], digits = 3)   #B0   these are shorthand variables for the exponents
+  Y = round(-y0 - al + o$par[3], digits = 3)   #Bnp5  in the logistic CDFs; I don't use them in the function
+  Z = round(-z0 - al + o$par[1], digits = 3)   #Bp5 but I've pasted in values here to check
   
   A0 = x0 
   Ap5 = z0 - .5
@@ -37,8 +37,8 @@ h <- function(x0,y0,z0) {
   pos <- c(Z,X,Y)
   bribes <- c(o$par,-o$value)
   bribesA <- c(A0,Anp5,Ap5)
-  win <- c(((1/(1+exp(-X)))*(1/(1+exp(-Y/sy))) + (1/(1+exp(-X)))*(1/(1+exp(-Z/sz))) + (1/(1+exp(-Z/sz)))*(1/(1+exp(-Y/sy))) - 2*(1/(1+exp(-X)))*(1/(1+exp(-Y/sy)))*(1/(1+exp(-Z/sz)))))
-  ValA = WA*(1-win) - A0 - Ap5 - Anp5
+  win <- c(((exp(-X)/(1+exp(-X)))*(exp(-Y/sy)/(1+exp(-Y/sy))) + (exp(-X)/(1+exp(-X)))*(exp(-Z/sz)/(1+exp(-Z/sz))) + (exp(-Z/sz)/(1+exp(-Z/sz)))*(exp(-Y/sy)/(1+exp(-Y/sy))) - 2*(exp(-X)/(1+exp(-X)))*(exp(-Y/sy)/(1+exp(-Y/sy)))*(exp(-Z/sz)/(1+exp(-Z/sz)))))
+  ValA = WA*win - A0 - Ap5 - Anp5
   out <- list("solns" = round(o$par[1:3],digits=3), "pos" = pos, "objMax" = -o$value, "a" = al, "wb" = WB, "yInit" = y0, "zInit" = z0, "xInit" = x0, "winProb" = win,"bribesA"=c(A0,Anp5,Ap5,ValA))
   return(out)
 }
