@@ -52,8 +52,10 @@
 
 
 \title[Lobbying and Legislative Uncertainty\hspace{2.95in}\insertframenumber/\inserttotalframenumber]{Lobbying and Legislative Uncertainty}
-%\author[Kristy Buzard]{Kristy Buzard \\ Syracuse University and The Wallis Institute \\ kbuzard@syr.edu}
-\author[Kristy Buzard]{\texorpdfstring{Kristy Buzard\newline Syracuse University and The Wallis Institute  \newline\url{kbuzard@syr.edu}}{Kristy Buzard}}
+%\author[Kristy Buzard]{\texorpdfstring{Kristy Buzard\newline Syracuse University and The Wallis Institute  
+%\newline\url{kbuzard@syr.edu}}{Kristy Buzard}}
+\author[Buzard, DiTraglia and Saiegh \hspace{2.7in} \url{kbuzard@syr.edu}]{Kristy Buzard \inst{1} \and Frank DiTraglia \inst{2} \and Sebastian Saiegh \inst{3}}
+\institute{\inst{1} Syracuse University and The Wallis Institute \and \inst{2} University of Pennsylvania \and \inst{3} UC San Diego}
 \date{April 16, 2016}
 \begin{document}
 \maketitle
@@ -230,14 +232,14 @@ Assume vote buyers maximize expected value of winning net of bribes paid
 
 \begin{frame}{Vote Buyer B's Objective Function}
 \pause
-Let $X(i) = 1$ denote legislator $i$ votes for the status quo
+Let $S(i) = 1$ denote legislator $i$ votes for the status quo
 \pause
 \begin{multline*}
 			    \max_{b_{-.5}, b_0, b_{.5}} 
-					W_B \biggl[ \Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=1\right)\left(X\left(.5\right)=0\right)  + \\
-					\Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=0\right)\Pr\left(X\left(.5\right)=1\right) + \\
-					\Pr\left(X\left(-.5\right)=0\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(.5\right)=1\right) + \\
-					\Pr\left(X\left(-.5\right)=1\right)\Pr\left(X\left(0\right)=1\right)\Pr\left(X\left(.5\right)=1\right) \biggr] - \sum_{j\in \left\{-.5, 0,.5\right\}} b_j
+					W_B \biggl[ \Pr\left(S\left(-.5\right)=1\right)\Pr\left(S\left(0\right)=1\right)\left(S\left(.5\right)=0\right)  + \\
+					\Pr\left(S\left(-.5\right)=1\right)\Pr\left(S\left(0\right)=0\right)\Pr\left(S\left(.5\right)=1\right) + \\
+					\Pr\left(S\left(-.5\right)=0\right)\Pr\left(S\left(0\right)=1\right)\Pr\left(S\left(.5\right)=1\right) + \\
+					\Pr\left(S\left(-.5\right)=1\right)\Pr\left(S\left(0\right)=1\right)\Pr\left(S\left(.5\right)=1\right) \biggr] - \sum_{j\in \left\{-.5, 0,.5\right\}} b_j
 				\end{multline*}
 \end{frame}
 
