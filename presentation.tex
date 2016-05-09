@@ -1,5 +1,5 @@
-\documentclass{beamer} 
-%\documentclass[handout]{beamer} 
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} 
 \usetheme{Ilmenau}
 \usepackage{graphicx,verbatim,hyperref}
 \usepackage{textpos}
@@ -54,7 +54,7 @@
 \title[Lobbying and Legislative Uncertainty\hspace{2.95in}\insertframenumber/\inserttotalframenumber]{Lobbying and Legislative Uncertainty}
 %\author[Kristy Buzard]{Kristy Buzard \\ Syracuse University and The Wallis Institute \\ kbuzard@syr.edu}
 \author[Kristy Buzard]{\texorpdfstring{Kristy Buzard\newline Syracuse University and The Wallis Institute  \newline\url{kbuzard@syr.edu}}{Kristy Buzard}}
-\date{April 16, 2016}
+\date{May 10, 2016}
 \begin{document}
 \maketitle
 %\insertpresentationendpage removed b/c of appendix
@@ -76,10 +76,13 @@
 	\vskip.1in
 \item Can we distentangle fundamental uncertainty about preferences from equilibrium and modeling uncertainty?
 	\begin{itemize}
-		\item[$\Rightarrow$] Build a structural model to take to U.S. House data
+		\item[$\Rightarrow$] build a structural model to take to U.S. House data
 	\end{itemize}
 	\vskip.1in
 \item Ultimately, want to identify cross-industry measures of legislative uncertainty
+	\begin{itemize}
+		\item but for today, unidimensional model
+	\end{itemize}
 \end{enumerate}
 
 \end{frame}
@@ -88,9 +91,9 @@
 \pause
 \begin{itemize}[<+->]
 	\item \textbf{Probabilistic Voting with Policy Motivation}: Roemer 1994, 1997, Duggan $\&$ Fey 2011
-	\item \textbf{Lobbying with Uncertainty}: Coates $\&$ Ludema 2001, Le Breton $\&$ Salanie 2003, Le Breton $\&$ Zaphorozhets (2007)
+	\item \textbf{Lobbying with Uncertainty}: Coates $\&$ Ludema 2001, Le Breton $\&$ Salanie 2003, Le Breton $\&$ Zaphorozhets 2007
 	\item \textbf{Vote Buying in Legislatures}: Groseclose $\&$ Snyder 1996, Banks 2000, Dal Bo 2007
-	%\item \textbf{Uncertainty}: 
+	\item \textbf{Influence w/out Vote Buying}: Fox $\&$ Rothenberg 2011
 \end{itemize}
 \end{frame} 
 
@@ -135,7 +138,7 @@ U.S. House of Representative
 
 \vskip.2in
 \pause
-Use multi-dimensional ideal-point estimation to identify measures of uncertainty
+Goal: use multi-dimensional ideal-point estimation to identify measures of uncertainty
 \end{frame}
 
 \begin{frame}
@@ -151,21 +154,25 @@ Use multi-dimensional ideal-point estimation to identify measures of uncertainty
 \begin{frame}{Policy and Politics}
 
 \pause
-Three legislators
-\pause
-\begin{itemize}[<+->]
-	\item Identified by location in linear preference space: $i \in \left\{-0.5,0,.5\right\}$
-	\item Each will vote for status quo $\bm{s}$ or new proposal $\bm{x}$
-	\item Decision made by majority vote
-\end{itemize}
-
-\pause
-\vskip.2in
 Two vote buyers, $A$ and $B$
 \pause
 \begin{itemize}
 	\item A prefers $x$, $B$ prefers $s$
 \end{itemize}
+
+\pause
+\vskip.2in
+Three legislators
+\pause
+\begin{itemize}[<+->]
+	\item Each will vote for status quo $\bm{s}$ or new proposal $\bm{x}$
+	\item Decision made by majority vote
+	\item Identified by location in linear preference space: $i \in \left\{-0.5,0,0.5\right\}$
+		\begin{itemize}
+			\item Take ideal point to be linear: $\alpha - \beta i$
+		\end{itemize}
+\end{itemize}
+
 
 \end{frame}
 
@@ -202,16 +209,20 @@ Two vote buyers, $A$ and $B$
 \subsection{The Players}
 
 \begin{frame}{Legislators}
+
 \pause
-Take ideal point to be linear: $\alpha - \beta i$
-\pause
-\begin{itemize}[<+->]
-	\item Leg $i$ votes for $s$ if $v(i) = \alpha -\beta i + \ta_i + a_i - b_i \leq 0$
-		\begin{itemize}
-			\item Probability $i$ votes for $s$ is $\Pr\left[\alpha -\beta i + \ta_i + a_i - b_i \leq 0 \right] = \Pr\left[\ta_i \leq \beta i - \alpha - a_i + b_i \right] $
-			\item Assuming $\ta \sim \text{Logistic} \ (0,1)$, it's $\frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$ 
-		\end{itemize}
-\end{itemize}
+Leg $i$ votes for $s$ if $v(i) = \alpha -\beta i + \ta_i + a_i - b_i \leq 0$
+	\begin{itemize}[<+->]
+		\item Probability $i$ votes for $s$ is
+			\[ 
+				\Pr\left[\alpha -\beta i + \ta_i + a_i - b_i \leq 0 \right]
+			\]
+			\[
+				= \Pr\left[\ta_i \leq \beta i - \alpha - a_i + b_i \right]
+			\]
+		\item Assuming $\ta_i \text{ i.i.d.} \sim \text{Logistic} \ (0,1): \ = \frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$ 
+	\end{itemize}
+
 
 
 \end{frame}
@@ -224,7 +235,7 @@ Assume vote buyers maximize expected value of winning net of bribes paid
 \begin{itemize}[<+->]
 	\item Assume bribes must be non-negative
 	\item Vote buyer won't spend more than his willingness to pay, $W_B$
-	\item In three-seat legislature, max probability that $\geq 2$ legislators vote for $s \times W_B -$ bribes
+	\item In three-seat legislature, maximize $[$ probability $\geq 2$ legislators vote for $s ]$ $\times W_B -$ bribes
 \end{itemize}
 \end{frame}
 
@@ -249,6 +260,7 @@ Vote Buyer A is just like Vote Buyer B \textit{except}
 \begin{itemize}[<+->]
 	\item She gets to move first
 	\item She wants $x$ to win instead of $s$
+	\item Willingness-to-pay parameter $W_A$
 \end{itemize}
 \end{frame}
 
