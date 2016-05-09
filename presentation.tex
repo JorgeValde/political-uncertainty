@@ -52,8 +52,9 @@
 
 
 \title[Lobbying and Legislative Uncertainty\hspace{2.95in}\insertframenumber/\inserttotalframenumber]{Lobbying and Legislative Uncertainty}
-\author[Buzard and Saiegh \hspace{2.7in} \url{kbuzard@syr.edu}]{Kristy Buzard \inst{1} \and Sebastian Saiegh \inst{2}}
-\institute{\inst{1} Syracuse University and The Wallis Institute \and \inst{2} UC San Diego}
+\author[Buzard and Saiegh \hspace{3in} \url{kbuzard@syr.edu}]{Kristy Buzard\inst{1} \and Sebastian Saiegh\inst{2}}
+\institute{\inst{1}Syracuse University and The Wallis Institute \and 
+\inst{2}UC San Diego}
 \date{May 10, 2016}
 \begin{document}
 \maketitle
@@ -190,7 +191,7 @@ Three legislators
 	\item \textbf{Vote Buyer B}
 		\begin{enumerate}[i.]
 			%\pause
-			\item Observes $\un{a}$
+			\item Observes $\un{a}$ (in sequential model)
 			%\pause
 			\item Chooses bribes $\un{b} = \left(b_{-.5},b_0,b_{.5}\right)$
 		\end{enumerate}
@@ -258,7 +259,7 @@ Let $S(i) = 1$ denote legislator $i$ votes for the status quo
 Vote Buyer A is just like Vote Buyer B \textit{except}
 \pause
 \begin{itemize}[<+->]
-	\item She gets to move first
+	\item She gets to move first (in sequential model)
 	\item She wants $x$ to win instead of $s$
 	\item Willingness-to-pay parameter $W_A$
 \end{itemize}
@@ -268,8 +269,8 @@ Vote Buyer A is just like Vote Buyer B \textit{except}
 
 
 
-\section{Results}
-\subsection{One Vote Buyer}
+\section{One Vote Buyer}
+\subsection{}
 \begin{frame}{Two Non-Negative Bribes}
 
 \pause
@@ -327,8 +328,9 @@ Now let the scale of uncertainty differ across legislators
  When there is no bias in the positions of the legislators ($\al =0$), the bribes of legislators whose ideal points are at the median in terms of uncertainty receive the highest relative bribes.\end{beamerboxesrounded}
 \end{frame}
 
-\subsection{Two Vote Buyers}
-\begin{frame}{Two Vote Buyers}
+\section{Two Vote Buyers}
+\subsection{Sequential Model}
+\begin{frame}{Some Possibilities...}
 \begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{No Bribes}
   It is possible that neither vote buyer bribes any legislator on a given vote. This occurs when both vote buyers' willingness-to-pay parameters are small.
 \end{beamerboxesrounded}
@@ -341,6 +343,22 @@ Now let the scale of uncertainty differ across legislators
 
 \end{frame}
 
+
+\subsection{Simultaneous Model}
+\begin{frame}{Some Possibilities...}
+What I know...
+\begin{itemize}
+	\item FOCs look the same as for one vote buyer, e.g.
+		\begin{equation*}
+			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+		\end{equation*}
+			\begin{itemize}
+				\item Two roots, only larger one satisfies SOC
+			\end{itemize}
+\end{itemize}
+
+
+\end{frame}
 
 
 \section{Conclusion}
