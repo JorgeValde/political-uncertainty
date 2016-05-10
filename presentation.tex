@@ -15,7 +15,7 @@
 \usefonttheme{serif} %should allow ccfonts to take effect
 
 \usepackage{cite}
-\usepackage{times, verbatim,xcolor,bm}
+\usepackage{times,xcolor,bm}
 %\usepackage[usenames,dvipsnames]{color}
 \usepackage{amsbsy,amssymb, amsmath, amsthm}
 \usepackage{booktabs}
@@ -52,8 +52,8 @@
 
 
 \title[Lobbying and Legislative Uncertainty\hspace{2.95in}\insertframenumber/\inserttotalframenumber]{Lobbying and Legislative Uncertainty}
-\author[Buzard and Saiegh \hspace{3in} \url{kbuzard@syr.edu}]{Kristy Buzard\inst{1} \and Sebastian Saiegh\inst{2}}
-\institute{\inst{1}Syracuse University and The Wallis Institute \and 
+\author[Buzard and Saiegh]{Kristy Buzard\inst{1} \and Sebastian Saiegh\inst{2}}
+\institute{\inst{1}Syracuse University and The Wallis Institute \\ \url{kbuzard@syr.edu} \and 
 \inst{2}UC San Diego}
 \date{May 10, 2016}
 \begin{document}
@@ -251,6 +251,31 @@ Let $S(i) = 1$ denote legislator $i$ votes for the status quo
 					\Pr\left(S\left(-.5\right)=0\right)\Pr\left(S\left(0\right)=1\right)\Pr\left(S\left(.5\right)=1\right) + \\
 					\Pr\left(S\left(-.5\right)=1\right)\Pr\left(S\left(0\right)=1\right)\Pr\left(S\left(.5\right)=1\right) \biggr] - \sum_{j\in \left\{-.5, 0,.5\right\}} b_j
 				\end{multline*}
+\end{frame}
+
+
+\begin{frame}{Vote Buyer B's Full Program}
+\pause
+\begin{equation}
+    \left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1 - \lambda_X}{W_B}
+		\label{eq:focB}
+\end{equation}
+\begin{equation}
+    \left[\frac{e^{-X} + e^{-Z}}{\left(1+e^{-X}\right)\left(1+e^{-Z}\right)} \right] \frac{e^{-Y}}{\left(1+e^{-Y}\right)^2}= \frac{1 - \lambda_Y}{W_B}
+\end{equation}
+\begin{equation}
+    \left[\frac{e^{-X} + e^{-Y}}{\left(1+e^{-X}\right)\left(1+e^{-Y}\right)} \right] \frac{e^{-Z}}{\left(1+e^{-Z}\right)^2} = \frac{1 - \lambda_Z}{W_B}
+\end{equation}
+\[
+  b\left(0\right) \geq0 \hskip.2in b\left(-.5\right) \geq0 \hskip.2in b\left(.5\right) \geq0 
+\]
+\[
+  \lambda_X \geq0 \hskip.2in \lambda_Y \geq0 \hskip.2in \lambda_Z \geq0 
+\]
+\[
+  \lambda_X \cdot b\left(0\right) = 0 \hskip.2in \lambda_Y \cdot b\left(-.5\right) = 0 \hskip.2in \lambda_Z \cdot b\left(.5\right) = 0 
+\]
+
 \end{frame}
 
 
