@@ -1,5 +1,5 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} 
+\documentclass{beamer} 
+%\documentclass[handout]{beamer} 
 \usetheme{Ilmenau}
 \usepackage{graphicx,verbatim,hyperref}
 \usepackage{textpos}
@@ -213,19 +213,20 @@ Three legislators
 
 \pause
 Leg $i$ votes for $s$ if $v(i) = \alpha -\beta i + \ta_i + a_i - b_i \leq 0$
+\pause
 	\begin{itemize}[<+->]
 		\item Probability $i$ votes for $s$ is
+		\pause
 			\[ 
 				\Pr\left[\alpha -\beta i + \ta_i + a_i - b_i \leq 0 \right]
 			\]
+		\pause
 			\[
 				= \Pr\left[\ta_i \leq \beta i - \alpha - a_i + b_i \right]
 			\]
+		\pause
 		\item Assuming $\ta_i \text{ i.i.d.} \sim \text{Logistic} \ (0,1): \ = \frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}$ 
 	\end{itemize}
-
-
-
 \end{frame}
 
 
@@ -256,6 +257,8 @@ Let $S(i) = 1$ denote legislator $i$ votes for the status quo
 
 \begin{frame}{Vote Buyer B's Full Program}
 \pause
+Let $X$, $Y$, $Z$ be the gross positions of the legislators
+\pause
 \begin{equation}
     \left[\frac{e^{-Z} + e^{-Y}}{\left(1+e^{-Z}\right)\left(1+e^{-Y}\right)} \right] \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1 - \lambda_X}{W_B}
 		\label{eq:focB}
@@ -285,8 +288,15 @@ Vote Buyer A is just like Vote Buyer B \textit{except}
 \pause
 \begin{itemize}[<+->]
 	\item She gets to move first (in sequential model)
-	\item She wants $x$ to win instead of $s$
 	\item Willingness-to-pay parameter $W_A$
+	\item She wants $x$ to win instead of $s$
+		\begin{itemize}
+			\item Leg $i$ votes for $x$ w/probability
+				\[
+					1 - \frac{1}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}} = \frac{e^{-\left(\beta i - \alpha - a_i + b_i \right)}}{1+e^{-\left(\beta i - \alpha - a_i + b_i \right)}}
+				\]
+		\end{itemize}
+	
 \end{itemize}
 \end{frame}
 
@@ -299,7 +309,7 @@ Vote Buyer A is just like Vote Buyer B \textit{except}
 \begin{frame}{Two Non-Negative Bribes}
 
 \pause
-Let $X$ and $Y$ and $Z$ be the gross positions of each of the three legislators. Then the FOCs are
+The FOCs are
 \pause
 	\begin{equation}
 		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
@@ -318,13 +328,14 @@ Let $X$ and $Y$ and $Z$ be the gross positions of each of the three legislators.
 
 
 \begin{frame}{Three Non-Negative Bribes}
-Similar intuition for the case where all three legislators are bribed
+Similar intuition for the case where all three legislators are bribed:
 \pause
 \vskip.4in
 \begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{Three Non-Negative Bribes}
     When Vote Buyer $B$ pays bribes to all three legislators, the bribes are such that the legislators' ideal points gross of bribes are equalized.
 \end{beamerboxesrounded}
 \end{frame}
+
 
 \begin{frame}{The Rest of the Story...}
 \begin{beamerboxesrounded}[upper=palette tertiary, shadow=true]{One Non-Negative Bribe}
@@ -370,17 +381,33 @@ Now let the scale of uncertainty differ across legislators
 
 
 \subsection{Simultaneous Model}
-\begin{frame}{Some Possibilities...}
-What I know...
-\begin{itemize}
-	\item FOCs look the same as for one vote buyer, e.g.
-		\begin{equation*}
-			\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
-		\end{equation*}
-			\begin{itemize}
-				\item Two roots, only larger one satisfies SOC
-			\end{itemize}
-\end{itemize}
+\begin{frame}{What I know...}
+\pause
+FOCs look the same for Vote Buyer B, e.g.
+\pause
+	\[
+		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
+	\]
+	\vskip-.15in
+	\pause
+		\begin{itemize}
+			\item Either one root at zero, or
+			\pause
+			\item Two roots and only larger one (at $X_B>0$?) satisfies SOC
+		\end{itemize}
+
+\vskip.1in
+\pause
+For Vote Buyer A,
+\pause
+	\[
+		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{1}{\left(1+e^{-X}\right)^2}= \frac{1}{W_A}
+	\]
+	\vskip-.15in
+	\pause
+		\begin{itemize}
+			\item One root: zero or $X_B<0$
+		\end{itemize}
 
 
 \end{frame}
