@@ -1,5 +1,5 @@
-\documentclass{beamer} 
-%\documentclass[handout]{beamer} 
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} 
 \usetheme{Ilmenau}
 \usepackage{graphicx,verbatim,hyperref}
 \usepackage{textpos}
@@ -383,7 +383,7 @@ Now let the scale of uncertainty differ across legislators
 \subsection{Simultaneous Model}
 \begin{frame}{What I know...}
 \pause
-FOCs look the same for Vote Buyer B, e.g.
+FOC look the same for Vote Buyer B, e.g. for $b(0)$:
 \pause
 	\[
 		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_B}
@@ -398,15 +398,15 @@ FOCs look the same for Vote Buyer B, e.g.
 
 \vskip.1in
 \pause
-For Vote Buyer A,
+For Vote Buyer A, FOC for $a(0)$:
 \pause
 	\[
-		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{1}{\left(1+e^{-X}\right)^2}= \frac{1}{W_A}
+		\frac{e^{-Y} + e^{-Z}}{\left(1+e^{-Y}\right)\left(1+e^{-Z}\right)} \frac{e^{-X}}{\left(1+e^{-X}\right)^2}= \frac{1}{W_A}
 	\]
 	\vskip-.15in
 	\pause
 		\begin{itemize}
-			\item One root: zero or $X<0$
+			\item Similar to $B$, except only smaller root satisfies SOC
 		\end{itemize}
 
 
@@ -418,7 +418,7 @@ For Vote Buyer A,
 \begin{frame}{Next Steps}
 \pause
 \begin{itemize}[<+->]
-	\item Modify model so that both legislators can lobby the \textit{same} legislator in equilibrium
+	\item Modify model so that both vote buyers can lobby the \textit{same} legislator in equilibrium
 	\item Derive tight identification of empirical estimates from structural model
 	\item Provide micro-founded explanations for the variation in uncertainty that lobbies face
 \end{itemize}
