@@ -1,15 +1,29 @@
+#*****************************************************************************************
+#	PURPOSE OF THIS FILE: (description comes from original "Order of the files.docx" )
+#		This is the R script we run. Differently from the previous model, 
+#		we ask R to keep only every tenth of the iteration due to the size concerns.
+#*****************************************************************************************
+
+# Load a few libraries 
 library(rstan)
 library(coda)
 library(ggmcmc)
 
-/////////////////LAPTOP
-votes<- read.csv("C:/Users/yusuf/Desktop/kristy/data_7_19.csv", header=TRUE)
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+# get the dirctory of this source file in order to use relative paths
+source.dir <- dirname(sys.frame(1)$ofile)  # returns the path of the current script file
+setwd(paste(source.dir))  # set current dir as the working dir 
+
+# read data files (use relative path for general use in any computer)
+votes<- read.csv("../../build/output/data_7_19.csv", header=TRUE)
 attach(votes)
-groups<- read.csv("C:/Users/yusuf/Desktop/kristy/11_groups_dummy.csv", header=TRUE)
+groups<- read.csv("../../build/output/11_groups_dummy.csv", header=TRUE)
 attach(groups)
 
-////////////// MODEL WITH GROUP IND
-votes_code<- '
+#////////////// MODEL WITH GROUP IND
+votes_code<- "
 data {
   int<lower=1> J;              // number of legislators
   int<lower=1> K;              // number of votes
@@ -29,11 +43,11 @@ parameters {
   real<lower=0> sigma_beta;
   matrix<lower=0>[K,G] gamma;
   real mu_gamma;
-  real<lower=0> sigma_gamma;}
+  real<lower=0> sigma_gamma;
+}
 
 
-transformed parameters 
-{ 
+transformed parameters { 
 //  real total[N]; 
   vector[N] total; 
 
@@ -51,34 +65,34 @@ transformed parameters
 } 
 
 
-model 
-{
+model {
 
-for (g in 1:G)
-alpha[g]~ normal(0,1);         
+ for (g in 1:G)
+	alpha[g]~ normal(0,1);         
+ 
+ for (g in 1:G)
+	beta[g] ~ normal(mu_beta, sigma_beta);
+	mu_beta~ normal(0, 3);
+	sigma_beta ~ cauchy(0,3);
+ 
+ for (g in 1:G)
+	gamma[g] ~ lognormal(mu_gamma, sigma_gamma);
+	mu_gamma ~ normal(0, 3);
+	sigma_gamma ~ cauchy(0,3);
+ 
+ for (n in 1:N)
+	y[n] ~ bernoulli_logit(total[n]); 
+}"
 
-for (g in 1:G)
-beta[g] ~ normal(mu_beta, sigma_beta);
-mu_beta~ normal(0, 3);
-sigma_beta ~ cauchy(0,3);
 
-for (g in 1:G)
-gamma[g] ~ lognormal(mu_gamma, sigma_gamma);
-mu_gamma ~ normal(0, 3);
-sigma_gamma ~ cauchy(0,3);
+# create a list of data to fit the model
+votes_dat<-list(N=66281, J=445, K=159, G=11, jj=politician_id_numeric, kk=action_id_numeric, y=vote_1, x=matrix(group, nrow=66281))
+fit6<-stan(model_code=votes_code, data=votes_dat, iter=5000, warmup=1000, chains=1, verbose=TRUE)
 
-for (n in 1:N)
-y[n] ~ bernoulli_logit(total[n]); 
-}
-'
-
-votes_dat<-list(N=66281, J=445, K=159, G=7, jj=politician_id_numeric, kk=action_id_numeric, y=vote_1, x=matrix(group, nrow=66281))
-fit6<-stan(model_code=votes_code, data=votes_dat, iter=5000, warmup=1000, chains=1)
-
-//////////GRAPHING/EXPORTING
-
-s <- extract(fit6, inc_warmup=FALSE) 
+# GRAPHING & EXPORTING
+# ggmcmc requires Tidyr, which has a naming overlap with extract, so call rstan::extract explicitly
+s <- rstan::extract(fit6, inc_warmup=FALSE)  
 s <- mcmc.list(lapply(1:ncol(fit6), function(x) mcmc(as.array(fit6)[,x,])))
 S <- ggs(s)
 library(foreign)
-write.dta(S, file="C:/Users/yusuf/Desktop/kristy/output.dta")
+write.dta(S, file = "../output/output.dta")
