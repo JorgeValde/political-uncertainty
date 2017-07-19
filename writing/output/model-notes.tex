@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\linespread{1.1}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont}
+
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+
+\setcounter{secnumdepth}{-1} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\ta}{\theta}
+\newcommand{\al}{\alpha}
+\newcommand{\Ta}{\Theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\Bt}{B(\bm{\tau^a})}
+\newcommand{\bta}{\bm{\tau^a}}
+\newcommand{\btn}{\bm{\tau^n}}
+\newcommand{\ga}{\gamma}
+
+\begin{document}
+
+\title{\vskip-0.6in \Large Lobbying and Legislative Uncertainty}
+\author{Kristy Buzard}
+\date{\vskip-.1in \today}
+\maketitle
+
+\un{April 29, 2014} \\
+
+Note the working title I came up with when I threw the draft together earlier this month is ``Lobbying and Legislative Uncertainty.'' I'm sure we can come up with something better...
+
+\vskip.3in
+Initial modeling thoughts, starting at the level of individual legislators.
+\begin{itemize}
+	\item I wanted to ground this in the Optimal Classification methodology, so I went back to Clinton, Jackman $\&$ Rivers (2004)---hereafter CJR.
+	\item Their setup:
+		\begin{itemize}
+			\item Roll call votes are numbered $j=1,\ldots,m$
+			\item Legislators are numbered $i=1,\dots,n$
+			\item ``Yea'' position on bill $j$ is denoted $\zeta_j$
+			\item ``Nay'' position on bill $j$ is denoted $\varphi_j$
+				\begin{itemize}
+					\item $\zeta_j$ and $\varphi_j$ are assumed to have $d$ dimensions; I will take $d=1$ for simplicity for now
+				\end{itemize}
+			\item $y_{ij}=1$ if legislator $i$ votes ``Yea'' on bill $j$; $y_{ij}=0$ if she votes ``Nay'' on bill $j$
+			\item Utility functions are quadratic:
+				\begin{itemize}
+					\item $U_i(\zeta_j) = - \left( x_i - \zeta_j \right)^2 + \eta_{ij}$
+					\item $U_i(\varphi_j) = - \left( x_i - \varphi_j \right)^2 + \nu_{ij}$ \\
+					where $x_i$ is the ideal point of legislator $i$ and $\eta_{ij}$ and $\nu_{ij}$ are the errors or stochastic elements of utility
+				\end{itemize}
+			\item Utility maximization implies $y_{ij} = 1$ if 
+				\begin{equation}
+					U_i(\zeta_j) > U_i(\varphi_j),
+				\label{eq:yesvote}
+				\end{equation}
+				0 otherwise
+			\item CJR assume are jointly normal with equal means and var($\nu_{ij} - \varphi_{ij}$) $= \sigma_j^2$
+		\end{itemize}
+\end{itemize}
+
+\newpage
+One simple way to take account of lobbying effort
+\begin{itemize}
+	\item Let $e_i$ be lobbying effort exerted on legislator $i$. If we want it to be specific to bill $j$, then change notation to $e_{ij}$
+	\item Without lobbying effort, legislator $i$ votes in favor of bill $j$ if (according to Expression~\ref{eq:yesvote})
+		\[
+		  - \left( x_i - \zeta_j \right)^2 + \eta_{ij} > - \left( x_i - \varphi_j \right)^2 + \nu_{ij}
+		\]
+	\item Now add the lobby. If the lobby is in favor of bill $j$ (this notation doesn't work if lobby is against bill $j$---$e_i$ would need to be negative, or we would need to switch ideal points around):
+		\begin{itemize}
+			\item just let lobbying effort shift the ideal point:
+		\end{itemize}
+		\[
+		  - \left( x_i + e_i - \zeta_j \right)^2 + \eta_{ij} > - \left( x_i + e_i - \varphi_j \right)^2 + \nu_{ij}
+		\]
+    Then the probability that legislator $i$ votes yes on bill $j$ is given by
+		\begin{equation}
+		  P\left(y_{ij}=1\right) = P\left(U_i(\zeta_j) > U_i(\varphi_j)\right) = P\left(\nu_{ij} - \eta_{ij} <  \left( x_i + e_i - \varphi_j \right)^2 - \left( x_i + e_i - \zeta_j \right)^2\right)
+		\label{eq:yeswe}
+		\end{equation}
+\end{itemize}
+
+\vskip.3in
+Expression~\ref{eq:yeswe} is what the lobby targets to change behavior. 
+\begin{itemize}
+	\item We don't know exactly what their rule is. But they must want to increase enough individual $P(y_{ij}=1)$'s so that $\sum_i y_{ij} > 218$ (in the U.S. House).
+	\item We also don't know exactly what the benefit of bill passage is. May have to set a dummy value.
+		\begin{itemize}
+			\item If errors are normally distributed as we assume, this can't be achieved with certainty
+			\item Maybe they target something like two standard deviations?
+			\item Is it equivalent to model them as just targeting the total expected number of votes (as if votes were divisible)?
+			\item Will there be some kind of marginal condition---extra increase in probability of voting ``yea'' should be the same for all legislators? Or no because these votes are actually indivisible? Maybe something more like expected probability of voting ``yea'' should be the same for all legislators the lobby engages with
+		\end{itemize}
+	\item Of course, they want to do this at minimal cost
+	\item They may also want a sufficient margin --- lobbies might have different risk preferences
+	\item Let's abstract from opposing lobbies for now
+\end{itemize}
+
+\newpage
+Going back to Expression~\ref{eq:yeswe},
+\begin{itemize}
+	\item We estimate the $x_i$'s
+	\item If we assume the errors are normally distributed and mean zero, we also estimate the variance of $\nu_{ij} - \eta_{ij}$ for each $i$---or something like it; it's actually a cross-interest-group measure;
+		\begin{itemize}
+			\item Need to figure out exactly how this standard deviation measure we create is connected to the theoretical underpinnings
+			\item I think what we need to assume is that the $\nu_{ij}$ and $\eta_{ij}$ are iid within interest group votes (as well as that the ideal point doesn't vary for bills within interest groupings)
+		\end{itemize}
+	\item We will have to make assumptions about the locations of $\zeta_j$ and $\varphi_j$
+\end{itemize}
+
+\vskip.5in
+For commercial banks, I tried looking at some of the voting records to see if I could get some intuition for the pattern of ideal points and standard deviations. It's not too hard to pull the votes out and match the legislator code in the results file to the voting record. The problem I ran into was that in my list of banking votes, I only came up with 46 from the 112th Congress, whereas your output says there were 65 votes.
+\begin{itemize}
+	\item I want to figure out what's going on here, especially because one of the things I'm looking at is two legislators with the same ideal point but drastically different standard deviations (Crenshaw and Adams both have ideal points for Commercial Banks of 1.32, but Crenshaw's std.dev. is double that of Adams). Their voting records are identical across the 46 bills I'm looking at except they took opposite positions on one amendment. I'm not sure if I need to make sense of that, or if I need to find 19 missing bills.
+\end{itemize}
+
+\newpage
+Conversation on May 9, 2014
+\begin{itemize}
+	\item Clinton has another paper that may be helpful for me to look at
+	\item I need to read about hyper-prior more carefully (Bafumi et al paper)
+	\item Sebastian's brainstorm: take the utility function I have above
+	  \[
+		  - \left( x_i + e_i - \zeta_j \right)^2 + \eta_{ij} 
+		\]
+		and morph it into the discrimination parameter form:
+		\[
+		  \ga_k \left( x_i + e_i - \zeta_k \right) + \eta_{ik} 
+		\]
+		Does this make sense?
+	\item He found that running a lot more simulations doesn't bring down the standard errors
+		\begin{itemize}
+			\item Okay empirically; my question is: what about theoretically?
+		\end{itemize}
+	\item In Bafumi's terminology, outliers are those who are misclasified
+	\item We can look at the 20 guys around the cut-point (instead of median as we did before). This is going to depend on $\ga_k$, so subject to all our discussions about $\ga_k$ changing depending on sample of bills
+	\item What does it mean to use whether you were lobbied or not as a prior?
+	\item Correlate lobbying \textit{by bill} with $\ga_k$ (this is the discrimination parameter, not my $\ga$) --- not across bills, across industry, within bill	
+\end{itemize}
+
+
+\newpage
+Conversation on June 4, 2014
+\begin{itemize}
+	\item What we really have is an n-dimensional policy space, but it's not clear what we should set the ``dimension'' variable in the Jackman code to (or if we can use the Jackman code)
+		\begin{itemize}
+			\item I need to dig into the Gelman and Hill book
+		\end{itemize}
+	\item I still need to look at James Lakes' data
+	\item We will need to decide list of interest groups
+		\begin{itemize}
+			\item Either I need to compile number of bills per catcode, or instruct Yusuf to do it
+		\end{itemize}
+	\item Rjags is the package Sebastian uses. He sent me master code in an email today at 5:29pm (response to my ``Gelman and Hill Book'' email)
+		\begin{itemize}
+			\item In an earlier email, he sent three files: a BUGS program, an R program, and a PDF file that is Jackman's documentation for the R code
+		\end{itemize}
+\end{itemize}
+
+\vskip.2in
+Work on 6/9/14
+\begin{itemize}
+	\item Crespin $\&$ Rohde: divide votes into each appropriation category and run separate W-NOMINATE procedures on each (just like we were going to do)
+	\item Clinton et al: Ex. 4 on page 9-12, party inducements.
+		\[
+		  y_{ij}^* = x_i \beta_j  - \alpha_j + \delta_j D_i  + \varepsilon_{ij}
+		\]
+		legislators are $i$, bills are $j$
+\end{itemize}
+
+\vskip1in
+Possible modeling elements
+\begin{itemize}
+	\item Roll call votes are numbered $k=1,\ldots,K$
+		\begin{itemize}
+			\item Which groups $g$ take a position on it
+		\end{itemize}
+	\item Legislators are numbered $j=1,\dots,J$. Each is identified by
+	\begin{itemize}
+		\item State
+		\item District
+		\item Party
+		\item Whether he/she is lobbied by a group $g$
+		\item Committee assignments
+	\end{itemize}
+	\item Interest groups are numbered $g=1,\dots,G$
+\end{itemize}
+
+\vskip.2in
+Want to model
+\begin{itemize}
+	\item How $j$ votes
+	\item How vote total on $k$ is determined
+	\item How lobby group $g$'s political uncertainty is determined
+		\begin{itemize}
+			\item Overall success rate?
+			\item As function of lobbying effort?
+			\item Economic distribution across districts?
+			\item Committee chairs?
+		\end{itemize}
+\end{itemize}
+\end{document}

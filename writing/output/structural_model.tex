@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\linespread{1.1}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont}
+
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+
+\setcounter{secnumdepth}{-1} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\ta}{\theta}
+\newcommand{\al}{\alpha}
+\newcommand{\Ta}{\Theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\Bt}{B(\bm{\tau^a})}
+\newcommand{\bta}{\bm{\tau^a}}
+\newcommand{\btn}{\bm{\tau^n}}
+\newcommand{\ga}{\gamma}
+
+\begin{document}
+
+\title{\vskip-0.6in \Large Lobbying and Legislative Uncertainty}
+\author{Kristy Buzard}
+\date{\vskip-.1in October 20, 2014}
+\maketitle
+
+Model notes
+\begin{itemize}
+	\item Bills come from some distribution of bills (dist'n can vary by issue area?)
+	\item Assume errors are Type I extreme value in order to derive logit (Train p.45 of PDF)
+	\item 3 legislators
+		\begin{itemize}
+			\item quadratic utility? (random utility model)
+			\item the three have different ideal points; they all get variance from the same distribution
+		\end{itemize}
+	\item will eventually do two special interest groups (SIGs); start with one
+		\begin{itemize}
+			\item Assume they get a benefit $B$?
+			\item with or without budget constraint?
+		\end{itemize}
+\end{itemize}
+
+\vskip.2in
+\begin{itemize}
+	\item Write down equilibrium (variation across issue areas) to identify model
+	\item Get relationship between variance parameters, mean parameters, bill locations, ideal points
+\end{itemize}
+
+\vskip.5in
+\begin{itemize}
+	\item Roll call votes are numbered $k=1,\ldots,K$
+	\item Legislators are numbered $j=1,\dots,J$
+	\item Interest groups are numbered $g=1,\dots,G$
+		\begin{itemize}
+			\item Interest groups take positions on multiple roll call votes; multiple interest groups can take positions (on both sides) on each vote
+		\end{itemize}
+	\item $y_{i}=1$ if legislator $j(i)$ votes ``Yea'' on bill $k(i)$; $y_{i}=0$ if she votes ``Nay'' on bill $k(i)$
+\end{itemize}
+
+\vskip.2in
+Following CJR(2004):
+\begin{itemize}
+	\item Value to legislator $j$ from voting ``Yea'' on bill $k$: $U_j(\zeta_k) = - \left\| \bm{x}_j - \bm{\zeta}_k \right\|^2 + \eta_{jk}$
+	\item Value to legislator $j$ from voting ``Nay'' on bill $k$: $U_j(\varphi_k) = - \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2 + \nu_{jk}$
+	\item Then $\Pr\left(y_{jk} = 1\right) = \Pr\left(U_j(\zeta_k) > U_j(\varphi_k) \right)$, that is
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left(- \left\| \bm{x}_j - \bm{\zeta}_k \right\|^2 + \eta_{jk} > - \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2 + \nu_{jk} \right)
+		\]
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left( \nu_{jk} - \eta_{jk} < - \left\| \bm{x}_j - \bm{\zeta}_k \right\|^2 + \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2  \right)
+		\]
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left( \nu_{jk} - \eta_{jk} < 2 \left(\bm{\zeta}_k - \bm{\varphi}_k  \right)'\bm{x}_j + \bm{\varphi}_k' \bm{\varphi}_k  - \bm{\zeta}_k' \bm{\zeta}_k \right)
+		\]
+\end{itemize}
+CJR assume that the errors $\nu_{jk}$ and $\eta_{jk}$ have a joint extreme value distribution with $\expect\left[\nu_{jk}\right] = \expect\left[\eta_{jk}\right], \ \text{var}(\eta_{jk} - \nu_{jk}) = \sigma^2$ and the errors are independent across both legislators and roll calls. \\
+
+Thus this model corresponds to a logit model with an unobserved regressor $\bm{x_j}$ where $\bm{\beta_j} = \frac{2 \left(\bm{\zeta}_k - \bm{\varphi}_k  \right)}{\sigma_j}$ and $\alpha_j = \frac{\bm{\zeta}_k' \bm{\zeta}_k - \bm{\varphi}_k' \bm{\varphi}_k}{\sigma_j}$.
+    \[
+		  \Pr\left(y_{jk} = 1\right) = \text{logit}^{-1}\left( \bm{\beta_j}'\bm{x}_j -\alpha_j \right)
+		\]
+
+\vskip.2in
+\un{Lobbying} \\
+Adding lobbying effort to CJR(2004), let $e_{j}$ be a vector of lobbying contributions (note that they go into the utility function as negative or positive depending on how the lobby wants to shift the legislator's preferences, but the lobby pays the absolute value)
+\begin{itemize}
+	\item Value to legislator $j$ from voting ``Yea'' on bill $k$ with inducement $\bm{e_j}$ from lobbies: $U_j(\zeta_k) = - \left\| \bm{x}_j + \bm{e_j} - \bm{\zeta}_k \right\|^2 + \eta_{jk}$
+	\item Value to legislator $j$ from voting ``Nay'' on bill $k$: $U_j(\varphi_k) = - \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2 + \nu_{jk}$
+	\item Then $\Pr\left(y_{jk} = 1\right) = \Pr\left(U_j(\zeta_k) > U_j(\varphi_k) \right)$, that is
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left(- \left\| \bm{x}_j + \bm{e_j} - \bm{\zeta}_k \right\|^2 + \eta_{jk} > - \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2 + \nu_{jk} \right)
+		\]
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left( \nu_{jk} - \eta_{jk} < - \left\| \bm{x}_j + \bm{e_j}- \bm{\zeta}_k \right\|^2 + \left\| \bm{x}_j - \bm{\varphi}_k \right\|^2  \right)
+		\]
+		\[
+		  \Pr\left(y_{jk} = 1\right) = \Pr\left( \nu_{jk} - \eta_{jk} < 2 \left(\bm{\zeta}_k - \bm{\varphi}_k  \right)'\bm{x}_j + \bm{\varphi}_k' \bm{\varphi}_k  - \bm{\zeta}_k' \bm{\zeta}_k + \underline{2 \bm{\zeta}_k'\bm{e_j} - \bm{e_j}'\bm{e_j} - 2 \bm{e_j} \bm{x_j}}\right)
+		\]
+\end{itemize}
+
+
+%\vskip.2in
+\newpage
+The most basic ideal point model (following notation of Bafumi, Gelman, Park and Kaplan, \url{doi:10.1093/pan/mpi010}) adapted from the logistic item-response model (a.k.a. Rasch model) used in education/testing research) is:
+\[
+  \Pr(y_i = 1) = \text{logit}^{-1}\left( \alpha_{j(i)} - \beta_{k(i)}\right)
+\]
+where $\alpha_{j(i)}$ is the ideal point of legislator $j$ on item $i$ and $\beta_{k(i)}$ is the ideal point of a legislator who is indifferent on vote $k$. A standard set of priors is $\alpha_j \sim N(0,\sigma_\alpha^2), \ \beta_k \sim N(\mu_\beta,\sigma_\beta^2)$.\\
+
+One common enhancement is the discrimination parameter, $\ga$. It's interpreted as a measure of the informativeness of vote $k$, and will become very useful below
+\begin{equation}
+  \Pr(y_i = 1) = \text{logit}^{-1}\left( \ga_{k(i)}\left( \alpha_{j(i)} - \beta_{k(i)}\right) \right)
+	\label{eq:disc}
+\end{equation}
+Now we need to do something like $\alpha_j \sim N(0,1)$ to resolve the indeterminancy introduced by $\ga$, which we give the standard normal prior. \\
+
+An essential piece of which we need to take account is lobbying by group $g$ (either on bill $k$ or in general) toward legislator $j$, but I'm going to leave this aside for now. \\
+
+The most complete way of integrating the interest groups into the analysis may be to consider the $G$ groups as lobbying on $G$ distinct \un{dimensions}. This differs from a standard multidimensional OC model because we \textit{know} what the dimensions are and which bills are relevant to each dimension. \\
+
+In place of one base ideal point for each legislator with a shifter for each group as I had been thinking, we want one ideal point with $G$ dimensions. Likewise, the indifference point $\beta_k$ for each bill should be $G$-dimensional (and, we will see, we can get a discrimination parameter for each dimension). \\
+
+Consider the following very simple example, where there are three bills and two interest groups, and g1 and g2 are indicator variables for whether each interest group lobbies on a particular bill.
+\begin{center}
+\begin{tabular}{|  c| c | c |}
+ \hline  & g1 & g2 \\ \hline
+	k=1& 1 & 1 \\ \hline
+	k=2& 1 & 0\\ \hline
+	k=3& 0 & 1\\ \hline
+ %\multicolumn{3}{c} {\textit{Figure 1: Example: interest group lobbying by 2 groups on 3 bills}}
+\end{tabular}
+\end{center}
+
+In this case, assuming a multidimensional model that is additive (see Gelman $\&$ Hill, page 319), for a representative legislator $j$, it would seem reasonable to model the probability that legislator $j$ votes in favor of bills 1, 2 and 3 as
+\begin{gather}
+  \Pr(y_{j1} = 1) = \text{logit}^{-1}\left( \ga_{1}^{(1)}\left( \alpha_{j}^{(1)} - \beta_{1}^{(1)}\right) + \ga_{1}^{(2)}\left( \alpha_{j}^{(2)} - \beta_{1}^{(2)}\right) \right) \\
+  \Pr(y_{j2} = 1) = \text{logit}^{-1}\left( \ga_{2}^{(1)}\left( \alpha_{j}^{(1)} - \beta_{2}^{(1)}\right) \right) \\
+	\Pr(y_{j3} = 1) = \text{logit}^{-1}\left( \ga_{3}^{(2)}\left( \alpha_{j}^{(2)} - \beta_{3}^{(2)}\right) \right) 
+\end{gather}
+where superscripts in parentheses represent dimensions / groups. \\
+
+I think the way to implement this is by interacting each of the parameters in Equation~\ref{eq:disc} with the group indicator variables. This just zeroes out the additive term for all the dimensions on each bill on which an interest group did not exert pressure, leaving expressions like Equations 2-4. \\
+
+One way to write this is
+\begin{equation}
+  \Pr(y_i = 1) = \text{logit}^{-1}\left( \sum_{g=1}^G \ga_{k(i)}^{(g)}\left( \alpha_{j(i)}^{(g)} - \beta_{k(i)}^{(g)}\right) \right)
+\end{equation}
+
+The result will be a $G$-dimensional ideal point for each legislator, a $G$-dimensional indifference point for each bill, and $G$ discrimination parameters that give the importance of each dimension in determining the outcome of the vote. \\
+
+I haven't quite figured out how to write down the priors on these three sets of parameters to take account of the clustering by group, but I'll keep working on that.
+
+\end{document}

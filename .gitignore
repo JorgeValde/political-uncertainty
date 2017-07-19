@@ -108,3 +108,9 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# system generated
+.scf
+
+# R histroy
+.rhistory

@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\linespread{1.1}
+
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true]{hyperref}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{cite}
+\usepackage{times, verbatim,bm,pifont}
+
+
+\usepackage{amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding}
+
+\setcounter{secnumdepth}{-1} 
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+\newcommand{\ta}{\theta}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\ga}{\gamma}
+
+\begin{document}
+
+\title{\vskip-0.6in \Large Political Uncertainty}
+\author{Kristy Buzard}
+\date{\vskip-.1in \today}
+\maketitle
+
+\un{Skype with Sebastian, Feb. 12, 2015} \\
+We agreed to focus efforts for now on finding a base model to facilitate empirical identification. Our candidates:
+		\begin{enumerate}
+			\item Groseclose $\&$ Snyder (1996)
+				\begin{itemize}
+					\item Perhaps add, as in Sebastian's book, that legislators are constrained by voters?
+					\item I think this is the most promising of the three (GS1996, Dal Bo, Fox and Rothenberg), so have created a separate document, GS-extension.tex
+				\end{itemize}
+			\item Dal Bo, Bribing Voters
+				\begin{itemize}
+					\item Adds uncertainty to Groseclose/Snyder. What kind?
+					\item Pivotal bribes allow for costless influence
+						\begin{itemize}
+							\item Not clear how this could be reconciled to our data since there are almost always supermajorities; not clear how lobbies can implement pivotal bribecs
+						\end{itemize}
+					\item Assume commitment even though it's a one-shot game (footnote 11)
+					\item A more demanding majority rule raises the price of capture if offers are restricted, e.g. can't be fully contingent, such as on pivotality
+					\item Section on vote-related costs: leg. loses $\eta > 0$ if vote yet on bad project in addition to $\theta > 0$ if bad project passes
+					\item Extension: probability $p$ that each member is corruptible (I think this is the uncertainty that Sebastian was talking about). Then there is updating on moral type of all members if bad project passes and voting is secret
+						\begin{itemize}
+							\item For our purposes: I don't think we care that much ``how corruptible'' legislators are, not in a binary sense. Maybe, if we're getting really fancy, we care about how persuadable they are in a continuous sense, but I don't think we want to deal with the machinery of updating in a second stage of voting about whether to keep legislators in office or not
+						\end{itemize}
+					\item Dal Bo shows that political parties can facilitate cooperation among legislators to overcome prisoners dilemma/costless capture or at least set optimal price for capture
+				\end{itemize}
+			\item Justin Fox and Larry Rothenberg, ``Influence without Bribes: A Noncontracting Model of Campaign
+Giving and Policymaking,'' Political Analysis (2011)
+				\begin{itemize}
+					\item This is a model where no contracting is possible [someday I'd love to write a model that isn't perfect contracting or no contracting---but that shows how this quasi-enforcement that we end up with comes about, but I think we're better off with a contracting model for now]
+					\item Uncertainty is about the politician's policy preferences; there are two periods of policy choice with an election in between, and the interest group uses the first policy choice to learn about preferences before making campaign donation (PBE is soln. concept)
+					\item Politician's types are private info; drawn from independent density functions $f_i$ (incumbent) and $f_c$ (challenger)
+				  \item Election winner chooses preferred policy in second period
+					\item There is one interest group (they say results extend to more), and it never donates to more than one of the two politicians
+					\item There are only two politicians with unitary decision making depending on who's in office; this contrasts with our legislative data, so I think it would be hard to adapt to our context
+				\end{itemize}
+			\item A variant of Grossman and Helpman I've been working on
+				\begin{itemize}
+					\item It's based on the CJR model, so aims to fit the specification underlying the data work
+				\end{itemize}
+		\end{enumerate}
+
+
+\vskip.3in
+Questions
+\begin{enumerate}
+	\item What kinds of results do we want to produce?
+\end{enumerate}
+
+
+\end{document}
