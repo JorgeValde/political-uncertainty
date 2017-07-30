@@ -104,9 +104,10 @@ votes_dat <- list(
 fit6 <- stan(
  model_code = votes_code,                # Stan model
  data = votes_dat,                       # named list of data
- iter = 500,                            # total number of iterations per chain
- warmup = 200,                          # number of warmup iterations per chain
- chains = 1,                             # number of Markov chains
+ iter = 2000,                            # total number of iterations per chain
+ warmup = 1000,                          # number of warmup iterations per chain
+ chains = 4,                             # number of Markov chains
+ seed = 1234,                            # set seed for replication
  verbose = TRUE                          # print intemediate output from stan
 )
 
