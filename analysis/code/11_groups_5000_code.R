@@ -75,21 +75,17 @@ transformed parameters {
 } 
 
 model {
- for (g in 1:G)
-	alpha[g]~ normal(0,1);         
+ to_vector(alpha) ~ normal(0,1);         
  
- for (g in 1:G)
-	beta[g] ~ normal(mu_beta, sigma_beta);
-	mu_beta~ normal(0, 3);
-	sigma_beta ~ cauchy(0,3);
+ to_vector(beta) ~ normal(mu_beta, sigma_beta);
+ mu_beta~ normal(0, 3);
+ sigma_beta ~ cauchy(0,3);
  
- for (g in 1:G)
-	gamma[g] ~ lognormal(mu_gamma, sigma_gamma);
-	mu_gamma ~ normal(0, 3);
-	sigma_gamma ~ cauchy(0,3);
+ to_vector(gamma) ~ lognormal(mu_gamma, sigma_gamma);
+ mu_gamma ~ normal(0, 3);
+ sigma_gamma ~ cauchy(0,3);
  
- for (n in 1:N)
-	y[n] ~ bernoulli_logit(total[n]); 
+ y ~ bernoulli_logit(total);
 }"
 
 # assemble a list of data to fit the model, get all the values from the data
@@ -97,7 +93,7 @@ votes_dat <- list(
  N = nrow(votes),                        # number of observations
  J = max(votes$politician_id_numeric),   # number of legislators
  K = max(votes$action_id_numeric),       # number of votes
- G = 11,                                 # number of groups ???
+ G = length(unique(groups$j)),           # number of groups ???
  jj = politician_id_numeric,             # legislator vector
  kk = action_id_numeric,                 # vote vector
  y = vote_1,                             # position vector
@@ -108,8 +104,8 @@ votes_dat <- list(
 fit6 <- stan(
  model_code = votes_code,                # Stan model
  data = votes_dat,                       # named list of data
- iter = 5000,                            # total number of iterations per chain
- warmup = 1000,                          # number of warmup iterations per chain
+ iter = 500,                            # total number of iterations per chain
+ warmup = 200,                          # number of warmup iterations per chain
  chains = 1,                             # number of Markov chains
  verbose = TRUE                          # print intemediate output from stan
 )
