@@ -86,7 +86,7 @@ export delimited using "${ROOT}\groups.csv", replace
 
 sort Parameter 
 egen newid = group( Parameter )
-/* drop those irrelevant parameteters ((159+159+445)*11=8393+4=8397)
+/* drop those irrelevant parameteters ((159+159+445)*11=8393+4=8397) */
 drop if newid>8397
 save "${ROOT}\output_8_13_without_total.dta", replace
 clear
