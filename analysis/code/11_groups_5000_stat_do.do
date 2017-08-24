@@ -25,7 +25,7 @@ local input_data "mcmc_output.dta"
 /* Directory for output */
 local outputdir "`work_dir'\output"
 /* Output file */
-local output "11_groups_5000_stat" /* ENTER the same name as this do file's name */
+local output "11_groups_5000_stat" 
 local output_log "`output'.log"
 local output_data "`output'.dta"
 

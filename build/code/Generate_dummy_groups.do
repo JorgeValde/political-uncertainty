@@ -1,7 +1,6 @@
 global ROOT "\\stu05-fsrv.ad.syr.edu\ykbagir$\Downloads"
 
 /* GROUP DUMMIES */
-
 use "${ROOT}\maplight_bill_position.dta", clear
 keep if legislative_session==112
 drop if strpos( bill_number , "S")!=0
@@ -9,8 +8,8 @@ drop if strpos( motion , "Passed Senate")!=0
 drop if strpos( motion , "On Passage of the Bill")!=0
 drop if strpos( motion , "On the Conference Report H.R.")!=0
 drop if strpos( motion , "Received in the Senate")!=0
-/* Generate dummies for each catcode */
 
+/* Generate dummies for each catcode */
 gen manuf=0
 replace manuf=1 if OS_catcode=="LM100"
 gen dairy=0
@@ -35,26 +34,24 @@ order action_id OS_catcode
 sort action_id OS_catcode
 duplicates drop (action_id OS_catcode), force
 sort OS_catcode action_id
-/* to have a relevant join across two data sets I drop some unnecessary variables  */
 
+/* to have a relevant join across two data sets I drop some unnecessary variables  */
 drop bill_topic bill_description motion vote_roll date sector industry maplight_url
 drop legislative_session
 drop org_name bill_number
 sort action_id OS_catcode
-/* Use joinby command to combine two data sets */
 
+/* Use joinby command to combine two data sets */
 joinby using "${ROOT}\kristy\raw_votes.dta"
 sort action_id politician_id OS_catcode
 order action_id politician_id OS_catcode
-/*Joinby command adds everything all together. This is good because we do not loose any observation 
-however it generates too many unrelevant duplicated rows. Here, I delete duplicated rows
-across interest action_id politician_id manuf banks dairy computer estate oil */
 
+/*Joinby command adds everything all together. This is good because we do not loose any observation, however it generates too many unrelevant duplicated rows. Here, I delete duplicated rows across interest action_id politician_id manuf banks dairy computer estate oil */
 duplicates drop ( action_id politician_id manuf dairy computer oil chem agr_chem stone cons_eq ind_eq com_banks), force
+
 /* I still have duplicated rows for those votes at least two interest groups take position on.
 I assign the max value of a dummy (which is 1 if a gorup takes position) to all duplicated 
 rows in order not to loose information */
-
 bys action_id : egen group2 = max( dairy )
 bys action_id : egen group3 = max( computer )
 bys action_id : egen group4 = max( oil )
@@ -67,10 +64,9 @@ bys action_id : egen group10 = max( ind_eq )
 bys action_id : egen group11 = max( com_banks )
 
 
-/* Now, I drop all these duplicated rows to get the final results for group dummies
-duplicates drop ( action_id politician_id ), force I generate a new dummy variable
-which takes the value of one across all observations. */
-
+/* Now, I drop all these duplicated rows to get the final results for group dummies */
+duplicates drop ( action_id politician_id ), force
+/* I generate a new dummy variable which takes the value of one across all observations. */
 gen group1=1
 order group1
 gen i= _n
@@ -134,10 +130,9 @@ clear
 
 use "${ROOT}\stat_5000_8_13.dta"
 /* drop the one outlier from manufacturing */
-
 drop if sd>2.5 in 1781/2225
-/*because the order numbers have changed by "1" due to drop command, I reorganized the numbers */
 
+/*because the order numbers have changed by "1" due to drop command, I reorganized the numbers */
 twoway (scatter sd mean in 2225/2669, sort), ytitle(Uncertainty (Std. Dev.)) xscale(range(-5 5)) yscale(range(0 2.5) titlegap(1)) xtitle(Legislator's Ideal Point) title(Chemicals ) name(chemicals,replace)
 twoway (scatter sd mean in 1781/2224, sort), ytitle(Uncertainty (Std. Dev.)) xscale(range(-5 5)) yscale(range(0 2.5) titlegap(1)) xtitle(Legislator's Ideal Point) title(Manufacturing Un ) name(manufacturing,replace)
 twoway (scatter sd mean in 4450/4889, sort), ytitle(Uncertainty (Std. Dev.)) xscale(range(-5 5)) yscale(range(0 2.5) titlegap(1)) xtitle(Legislator's Ideal Point) title(Commercial Banks) name(com_bank,replace)
