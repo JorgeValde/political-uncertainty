@@ -9,7 +9,7 @@ set more off
 
 /* Define the working directory 
 (Get current directory and use upper level dir as working dir, then use relative path in the following code;
-so run the script from their location in the directory) */
+then run the code from their location in the directory) */
 local curr_dir `c(pwd)'
 local work_dir "`curr_dir'\.."
 cd `work_dir'

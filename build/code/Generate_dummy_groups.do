@@ -46,7 +46,9 @@ joinby using "${ROOT}\kristy\raw_votes.dta"
 sort action_id politician_id OS_catcode
 order action_id politician_id OS_catcode
 
-/*Joinby command adds everything all together. This is good because we do not loose any observation, however it generates too many unrelevant duplicated rows. Here, I delete duplicated rows across interest action_id politician_id manuf banks dairy computer estate oil */
+/*Joinby command adds everything all together. This is good because we do not loose any observation,
+however it generates too many unrelevant duplicated rows. Here, I delete duplicated rows across interest
+action_id politician_id manuf banks dairy computer estate oil */
 duplicates drop ( action_id politician_id manuf dairy computer oil chem agr_chem stone cons_eq ind_eq com_banks), force
 
 /* I still have duplicated rows for those votes at least two interest groups take position on.
