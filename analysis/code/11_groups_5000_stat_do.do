@@ -3,7 +3,7 @@ PURPOSE OF THIS FILE:
 Get parameter from Bayesian result(rstan)
 ****************************************************************************************/
 /* A few initial settings of Stata */
-version 14
+version 15
 clear all
 set more off
 

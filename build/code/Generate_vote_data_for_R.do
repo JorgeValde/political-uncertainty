@@ -3,7 +3,7 @@ PURPOSE OF THIS FILE:
 Create vote data file to be used in Rstan model 
 ****************************************************************************************/
 /* A few initial settings of Stata */
-version 14
+version 15
 clear all
 set more off
 
@@ -21,6 +21,7 @@ Create local macro names for input and output directories and files
 local inputdir "`work_dir'\input"
 /* Use maplight data as input */
 local input_data "maplight_bill_position.dta"
+local vote_data "maplight_votes.dta"
 
 /* Directory for output */
 local outputdir "`work_dir'\output"
@@ -74,7 +75,7 @@ drop dup
 d,s
 
 /*Now we have a 1-to-many merge on action_id and won't need to drop duplicates */
-merge 1:m action_id using "maplight_votes.dta"
+merge 1:m action_id using `vote_data' 
 
 /*We DO need to drop all of the observations that are for Senate votes or House
 votes that took place outside of the 112th Congress; those will not have matched
@@ -106,11 +107,13 @@ replace action_id_numeric = . if missing( action_id )
 /* put those three important variables in the first three columns */
 order politician_id_numeric action_id_numeric vote, before(legislative_session)
 
-/*Generating the CSV data file for R. */
-cd `outputdir'
+/* save file for generating dummies later */
+cd `tempdir'
 save "`output'.dta", replace
+
+/*Generating the CSV data file for R. Since we add dummies into it later, only keep for comparision */
 export excel using "`output'.csv", first(variables) replace
-clear
 
 /* Close the log file */
 log close
+clear

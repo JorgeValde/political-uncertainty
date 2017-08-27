@@ -3,7 +3,7 @@ PURPOSE OF THIS FILE:
 Create graph for firstary analysis
 ****************************************************************************************/
 /* A few initial settings of Stata */
-version 14
+version 15
 clear all
 set more off
 
