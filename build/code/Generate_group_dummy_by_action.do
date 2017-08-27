@@ -125,11 +125,11 @@ save "`output_data'.dta", replace
 
 /*Generating the CSV data file for R. */
 cd `outputdir'
-export excel using "`output_data'.csv", first(variables) replace
+export delimited using "`output_data'.csv", replace
 
 /* output only group dummies for R, not keep variables name */
 drop `vars_in_order' action_id
-export excel using "`output_dummy'.csv", replace
+export delimited using "`output_dummy'.csv", replace
 
 /* Close the log file */
 log close

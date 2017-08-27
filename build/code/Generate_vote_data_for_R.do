@@ -112,7 +112,7 @@ cd `tempdir'
 save "`output'.dta", replace
 
 /*Generating the CSV data file for R. Since we add dummies into it later, only keep for comparision */
-export excel using "`output'.csv", first(variables) replace
+export delimited using "`output'.csv", replace
 
 /* Close the log file */
 log close
