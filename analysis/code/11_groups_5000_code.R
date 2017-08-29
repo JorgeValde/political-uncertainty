@@ -17,9 +17,9 @@ rstan_options(auto_write = TRUE)
 # set core number in case of parallel computing needed
 options(mc.cores = parallel::detectCores())
 
-#*****************************************************************************************
+                                        #*****************************************************************************************
 # Set working dirctory to the folder source file in
-#*****************************************************************************************
+                                        #*****************************************************************************************
 # get the dirctory of this source file in order to use relative paths
 source.dir <- dirname(sys.frame(1)$ofile)  # returns the path of the current script file
 setwd(paste(source.dir))  # set current dir as the working dir 
@@ -28,10 +28,9 @@ setwd(paste(source.dir))  # set current dir as the working dir
 # Prepare data and code for stan
 #*****************************************************************************************
 # read data files (use relative path for general use in any computer)
-votes<- read.csv("../../build/output/data_7_19.csv", header=TRUE)
+votes<- read.csv("../../build/output/data_for_rstan.csv", header=TRUE)
 attach(votes)
-groups<- read.csv("../../build/output/11_groups_dummy.csv", header=TRUE)
-attach(groups)
+groups<- read.csv("../../build/output/group_dummy_for_rstan.csv", header=TRUE)
 
 # MODEL WITH GROUP IND
 votes_code<- "
@@ -90,30 +89,29 @@ model {
 
 # assemble a list of data to fit the model, get all the values from the data
 votes_dat <- list(
- N = nrow(votes),                        # number of observations
- J = max(votes$politician_id_numeric),   # number of legislators
- K = max(votes$action_id_numeric),       # number of votes
- G = length(unique(groups$j)),           # number of groups ???
- jj = politician_id_numeric,             # legislator vector
- kk = action_id_numeric,                 # vote vector
- y = vote_1,                             # position vector
- x = matrix(group, nrow = nrow(votes))   # group indicators
+    N = nrow(votes),                        # number of observations
+    J = max(votes$politician_id_numeric),   # number of legislators
+    K = max(votes$action_id_numeric),       # number of votes
+    G = ncol(groups),                       # number of groups
+    jj = politician_id_numeric,             # legislator vector
+    kk = action_id_numeric,                 # vote vector
+    y = vote,                               # position vector
+    x = as.matrix(groups)                   # group indicators
 )
 
 # call the stan function to draw posterior samples
 fit6 <- stan(
- model_code = votes_code,                # Stan model
- data = votes_dat,                       # named list of data
- iter = 2000,                            # total number of iterations per chain
- warmup = 1000,                          # number of warmup iterations per chain
- chains = 4,                             # number of Markov chains
- seed = 1234,                            # set seed for replication
- verbose = TRUE                          # print intemediate output from stan
+    model_code = votes_code,                # Stan model
+    data = votes_dat,                       # named list of data
+    iter = 2000,                            # total number of iterations per chain
+    warmup = 1000,                          # number of warmup iterations per chain
+    chains = 4,                             # number of Markov chains
+    seed = 1234,                            # set seed for replication
+    verbose = TRUE                          # print intemediate output from stan
 )
 
-#*****************************************************************************************
-# GRAPHING & EXPORTING
-#*****************************************************************************************
+                                        #*****************************************************************************************
+# GRAPHING & EXPORTING                                        #*****************************************************************************************
 # ggmcmc requires Tidyr, which has a naming overlap with extract, so call rstan::extract explicitly
 s <- rstan::extract(fit6, inc_warmup = FALSE)  
 s <- mcmc.list(lapply(1:ncol(fit6), function(x) mcmc(as.array(fit6)[,x,])))

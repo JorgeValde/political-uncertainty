@@ -1,0 +1,136 @@
+/********************************************************************************
+PURPOSE OF THIS FILE:
+Create dummies for group by action id.
+****************************************************************************************/
+/* A few initial settings of Stata */
+version 15
+clear all
+set more off
+
+/* Define the working directory 
+(Get current directory and use upper level dir as working dir, then use relative path in the following code;
+then run the code from their location in the directory) */
+local curr_dir `c(pwd)'
+local work_dir "`curr_dir'\.."
+cd `work_dir'
+
+/****************************************************************************************************
+Create local macro names for input and output directories and files
+*****************************************************************************************************/
+/* Directory for inputs */
+local inputdir "`work_dir'\input"
+/* Use maplight data as input */
+local input_data "maplight_bill_position.dta"
+local intermediate_data "vote_data_rstan.dta"
+
+/* Directory for output */
+local outputdir "`work_dir'\output"
+/* Output file */
+local output "Generate_group_dummy_by_action"
+local output_data "data_for_rstan"
+local output_dummy "group_dummy_for_rstan"
+local output_log "`output'.log"
+
+/* Intermediate file */
+local tempdir "`work_dir'\temp"
+
+/****************************************************************************************************
+Clear the data
+*****************************************************************************************************/
+
+/* Open log file */
+capture log close
+cd `tempdir'
+log using `output_log', replace
+
+/* Read the output results of alpha parameter from mcmc simulation */
+cd `inputdir'
+use `input_data', clear
+
+/*Get rid of the observations for other sessions right away--it only
+eats up computation time to carry them around */
+keep if legislative_session==112
+
+/*This code works for the 112th Congress, but will need an extra line to get rid of
+""On the Conference Report - Senate" for whole sample */
+drop if strpos( bill_number , "S")!=0
+drop if strpos( motion , "Passed Senate")!=0
+drop if strpos( motion , "On Passage of the Bill")!=0
+drop if strpos( motion , "On the Conference Report H.R.")!=0
+drop if strpos( motion , "Received in the Senate")!=0
+
+/****************************************************************************************************
+Create group dummies by action_id; for each action, find out what interest groups take positions 
+*****************************************************************************************************/
+keep action_id OS_catcode
+/* store all catcodes to be used later */
+levelsof OS_catcode, local(all_catcode)
+
+/* count how many positions each interest group takes */
+bysort OS_catcode: gen howmany = _N
+/* store interest groups catcode that take at least 30 positions,
+30 is only an arbitrary number since we want to get more groups and can be changed */
+levelsof OS_catcode if howmany > 30, local(greater_than_30_catcode)
+/* drop it before merge */
+drop howmany 
+
+/* count how many groups take position for each action*/
+bysort action_id: gen group = _n
+/* reshape the data to see what are the groups take positions on each action*/
+reshape wide OS_catcode, i(action_id) j(group)
+/* get how many distinct OS_catcodes was generated: number of variables in memory - 1 (action_id) */
+local num_catcode = c(k) - 1 
+
+/* This part can generate dummies for all the groups, comment out since we don't want so many now */
+/* create dummies for each catcode first */
+/* foreach catcode of local all_catcode{ */
+/*    capture gen `catcode' = 0 */
+/*    } */
+/* then assign dummies for each action_id */
+/* foreach i of numlist 1/`num_catcode'{ */
+/*    foreach catcode of local all_catcode{ */
+/*       replace `catcode' = 1 if "`catcode'" == OS_catcode`i' */
+/*       } */
+/*    } */
+
+/* this part only generate dummies for groups take at least 30 posistions */
+/* create dummies for each catcode first */
+foreach catcode of local greater_than_30_catcode{
+   capture gen `catcode' = 0
+   }
+/* then assign dummies for each action_id */
+foreach i of numlist 1/`num_catcode'{
+   foreach catcode of local greater_than_30_catcode{
+      replace `catcode' = 1 if "`catcode'" == OS_catcode`i'
+      }
+   }
+/* drop OS_catcode series variables before merge */ 
+drop OS_catcode*
+
+cd `tempdir'
+merge 1:m action_id using `intermediate_data'
+/* keep matched observations only */
+keep if _merge == 3
+drop _merge
+
+/* keep variables in order */
+local vars_in_order politician_id_numeric action_id_numeric vote legislative_session bill_number ///
+  bill_topic bill_description motion vote_roll date position org_name sector industry business ///
+  OS_catcode maplight_url politician_id fullname party
+order `vars_in_order', after(action_id )
+
+/* keep data for record only, all data can be generated by raw data and code */
+cd `tempdir'
+save "`output_data'.dta", replace
+
+/*Generating the CSV data file for R. */
+cd `outputdir'
+export delimited using "`output_data'.csv", replace
+
+/* output only group dummies for R, not keep variables name */
+drop `vars_in_order' action_id
+export delimited using "`output_dummy'.csv", replace
+
+/* Close the log file */
+log close
+clear
