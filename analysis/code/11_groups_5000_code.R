@@ -113,8 +113,34 @@ fit6 <- stan(
                                         #*****************************************************************************************
 # GRAPHING & EXPORTING                                        #*****************************************************************************************
 # ggmcmc requires Tidyr, which has a naming overlap with extract, so call rstan::extract explicitly
-s <- rstan::extract(fit6, inc_warmup = FALSE)  
-s <- mcmc.list(lapply(1:ncol(fit6), function(x) mcmc(as.array(fit6)[,x,])))
+#s <- rstan::extract(fit6, inc_warmup = FALSE)  
+#s <- mcmc.list(lapply(1:ncol(fit6), function(x) mcmc(as.array(fit6)[,x,])))
 #S <- ggs(s)
 #library(foreign)
-#write.dta(S, file = "../output/output.dta")
+#write.dta(S, file = "../output/mcmc_output.dta")
+
+# save workplace for later analysis
+save.image("../temp/32groups_2chains_2000iters.RData")
+
+# exporting ideal points and match them with legislators
+# extract out ideal points(alpha)
+alpha_sum <- rstan::summary(fit6, pars = c("alpha"), probs = c(0.05, 0.95))$summary
+
+# factor out politician names with id from votes
+politician <- subset(votes, select = c("politician_id_numeric", "fullname"))
+# get all the values of politician names and id only once
+politician_unique <- unique(politician[,1:2])
+# sort this data by politician_id_numeric
+politician_sorted <- politician_unique[order(politician_unique$politician_id_numeric),]
+
+# add one column called groups to use expandRows() function
+politician_sorted$groups <- ncol(groups)
+# expand this data "number_of_groups" times to match alpha_sum
+library(splitstackshape)
+politician_expanded <- expandRows(politician_sorted, count = "groups")
+
+# combine alpha_sum with politician names and ids
+alpha_sum_names <- cbind(alpha_sum, politician_expanded[,1:2])
+# export it to a csv file
+write.csv(alpha_sum_names, file = "../output/alpha_with_names.csv", row.names = TRUE)
+
