@@ -114,3 +114,4 @@ sympy-plots-for-*.tex/
 
 # R histroy
 .rhistory
+.rData
