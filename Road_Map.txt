@@ -1,0 +1,19 @@
+Road Map for the Political Uncertainty Project
+
+July 1 
+I worked on installing Git and learning the basic commands to submit the Literature Review (pdf and tex) files to github 
+I moved the first version of the Literature review from .doc to .tex
+I now have 3 versions of the literature review in my backup files, I need to send them to the github repository. 
+I got stuck when I was trying to "push" the files to the repository 
+
+July 2 
+I worked on understanding the request pull command and how it is different in git and github. 
+I tried to install and use the command "hub" pull request, but I wasn't able to do this. 
+This command works as a pull request for git and it would have solved my problems, but I couldn't install it. 
+I solved the problem! the procedure was on the following link 
+
+https://kbroman.org/github_tutorial/pages/fork.html
+
+I was able to send the 3 versions of the Literature review files to the repository and they were able to merge. 
+I'm also sending this .text to the repository to give regular updates on the progress. 
+
