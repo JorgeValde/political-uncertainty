@@ -1,12 +1,14 @@
 Road Map for the Political Uncertainty Project
 
-July 1 
+Author: Jorge Valdebenito
+
+July 1 2020
 I worked on installing Git and learning the basic commands to submit the Literature Review (pdf and tex) files to github 
 I moved the first version of the Literature review from .doc to .tex
 I now have 3 versions of the literature review in my backup files, I need to send them to the github repository. 
 I got stuck when I was trying to "push" the files to the repository 
 
-July 2 
+July 2 2020
 I worked on understanding the request pull command and how it is different in git and github. 
 I tried to install and use the command "hub" pull request, but I wasn't able to do this. 
 This command works as a pull request for git and it would have solved my problems, but I couldn't install it. 
@@ -16,4 +18,33 @@ https://kbroman.org/github_tutorial/pages/fork.html
 
 I was able to send the 3 versions of the Literature review files to the repository and they were able to merge. 
 I'm also sending this .text to the repository to give regular updates on the progress. 
+
+
+July 3 2020
+Updated the comments on this file (txt) 
+Working on the code:
+I created the "Comments.txt" file, which is the "diary" on the work I'll be doing with the code.
+I also made some similar comments on the .do file, but I'm assuming those comments will get erase when we fix the issues. 
+
+
+Worked on the folder political-uncertainty/build/code/vote_numbers_maplight_do.do
+I fixed the problem with destring, it should be clear in the pull request 
+I have a problem with the code, in line 64, 72 and 73 the code is sending the output to the E disk. 
+There is not E disk. 
+The excel file is already constructed and has the output of the code. It is located in:
+G:\MAX-Filer\Collab\SOP-kbuzard-S13\Admin\Combined files\vote_numbers_maplight.xlsx
+The problem is that, I can't reproduce it if its on the E disk.
+The code runs, because the excel file is already in the G folder with the old information. 
+This means that the output it has it's from Jack's work. Does NOT get updated when we run the code now. 
+Lines 86 and 94 update the excel file in the G disk, this happens because in those lines we are not making any reference 
+to the E disk. 
+I need to be completely sure that the code in line 64, 72 and 73 is creating the excel file. 
+export excel x1 using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(C1) firstrow(variables)
+
+If the excel file already exists I need to find it, if its creating it, then I guess we can just create it in the G disk. 
+Need to spend some time rechecking this. 
+
+
+
+
 
