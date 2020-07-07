@@ -27,6 +27,31 @@ I created the "Comments.txt" file, which is the "diary" on the work I'll be doin
 I also made some similar comments on the .do file, but I'm assuming those comments will get erase when we fix the issues. 
 
 
+July 7 2020
+
+I'm reviwing the files in the repository, following the word document "Order of the files.docx"
+In the chapter "Generating Vote Data for R" 
+There is no "data_7_19_do.do" file on the repository.
+There is only the "data_7_19.cvs" file in output.
+
+Then, in the section of the word document 
+"Simple Model without Group Indicators"
+
+I open the file "simple_without_group_5000_2ch_code.R" on the repository. This file is in the analysis folder. 
+I encounter a problem with the code. It's not a big deal, we would just need to change the disk to the G file. 
+I think this is a test. We created "data_7_19.csv" before. 
+Line 6 and 8 uses the following direction "C:/Users/yusuf/Desktop/kristy/data_7_19.csv"
+
+Then the file "simple_without_group_5000_2ch_workspace" This is the raw R output file (according to the word doc)
+I couldn't find this file in the repository. And it is not been created in the "simple_without_group_5000_2ch_code.R" file. 
+
+
+
+Section "Generating Group Indicators'
+"11_groups_dummy_do.do" This file is on the build/code folder. 
+The code is using "global ROOT "\\stu05-fsrv.ad.syr.edu\ykbagir$\Downloads""
+I would have to check the folder and possible replace this line with the G disk address. 
+
 Worked on the folder political-uncertainty/build/code/vote_numbers_maplight_do.do
 I fixed the problem with destring, it should be clear in the pull request 
 I have a problem with the code, in line 64, 72 and 73 the code is sending the output to the E disk. 
