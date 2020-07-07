@@ -20,8 +20,9 @@ by bill_number OS_catcode : drop if _n > 1
 
 /*FIRST, I destring bill numbers to have an ordered and comparible bill number across two data sets */
 sort bill_number
-*destring bill_number , ignore("H ", "HC ", "HJ ", "HR ") replace (this is the old code)
-*I replaced this code because the previous one is from an old version of Stata
+*destring bill_number , ignore("H ", "HC ", "HJ ", "HR ") replace 
+*(old Stata version)
+*New syntax from Stata 14 and after
 destring bill_number, replace force ignore("H HC HJ HR ")
 save "${ROOT}\112_bill_positions_destring.dta"
 
@@ -31,7 +32,8 @@ clear
 use "${ROOT}\hou112kh_merged.dta"
 sort bill
 /*destring bill, ignore("S CON RES ", "S ", "MOTION", "JOURNAL", "H RES ", "H R ", "H J RES ", "H CON RES ", "ADJOURN") replace*/
-*I replaced this code because the previous one is from an old version of Stata
+*(old Stata version)
+*New syntax from Stata 14 and after
 destring bill, replace force ignore("S CON RES S MOTION JOURNAL H RES H R H J RES H CON RES ADJOURN")
 sort bill
 rename bill bill_number
@@ -62,10 +64,9 @@ clear
 use "${ROOT}\112_bill_positions_destring.dta"
 sort OS_catcode action_id
 
-*WARNING HERE, I do not know what is this drop doing here, the code quietly... runs with 
-*no problem.
-*The command quietly suppresses all terminal output for the duration of command. It is *useful both interactively and in programs
+*Removed the "("
 *duplicates drop (
+duplicates drop 
 quietly by OS_catcode action_id:  gen dup = cond(_N==1,0,_n)
 drop if dup>1
 tab OS_catcode , matcell(x)
@@ -78,8 +79,6 @@ drop if x1==.
 *PROBLEM. There is no disk E.
 *The excel file is on the G folder has all the output of this code
 export excel x1 using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(C1) firstrow(variables)
-
-
 
 
 /*Labeling cat-codes */
