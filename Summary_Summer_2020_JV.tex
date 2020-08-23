@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+
+\begin{document}
+\title{\vspace{-1.5 cm}Summary of the work during Summer 2020}
+\author{Jorge Valdebenito}
+\maketitle
+
+This document presents the summary for the summer of 2020 work on the political uncertainty project. 
+\begin{enumerate}
+\item Literature review:
+I updated the literature of the 2016 paper “Lobbying and Legislative Uncertainty” by Buzard and Saiegh (2016). This review contained the latest literature on ideal point models estimators and recent work on political uncertainty models using roll call data. An important filter for ideal point models was to focus on research that employs a multidimensional approach. Most of the papers that take a unidimensional approach were discarded, unless they specifically focus on uncertainty or efficiency of the unidimensional model.
+The Literature review was based on:
+
+\begin{itemize}
+\item Bafumi, Gelman, Park, Kaplan (2005) 
+\item Clinton, Jackman, Rivers (2004)
+\item Crespin and Rohde (2010)
+\end{itemize}
+The document it’s called “Literature review” and it’s on the Github repository.
+
+
+
+\item The code:
+There are 2 codes mixed in the G drive and in the Github repository. The first code is from the early stages of the project and the developer is Yusuf, his work is very well detailed and documented in the “order of the files” word document. This word document explains the steps, data sets and order of how the program should be run. We discovered a problem with the code when we were running these models. This code uses the command “destring” to merge the data sets, the problem was that it is ignoring the suffix on each law, therefore if 2 laws have the same number, but different suffix, the code will consider them as the same. 
+For example, let’s take the laws H 2 and HR 2. These are different laws/actions, but the “destring” command removes the suffix and both laws are now called 2. This is the problem. 
+Another problem with this code is that, some of the programs are calling datasets and other pieces of code that were on Yusuf’s computer, not on the G drive. It is important to consider also, that this work generates several output files that are called by different programs, therefore there are difficult to track and are located in different folders. 
+
+The second code is an update of Yusuf’s work and the developer is Yimin. This code is documented in the “Replication” file located in the Github repository. This code consists in running only 3 different pieces of code. We encountered a problem with the third of these files called \texttt{“RStan\_model.R”}. This program presents some errors when we are running the rstan command in R.  This code avoids using the “destring” command and it should perform faster than Yusuf’s code. 
+
+At the time of writing this document, I am still working of running the rstan model, troubleshooting the errors. 
+
+The other 2 codes \texttt{Generate\_vote\_data\_for\_R.do} and \texttt{Generate\_group\_dummy\_by\_action.do} runs perfectly and their output is located in the Combined files folder in the G drive. 
+
+One detail that brings confusion is that the codes of both programs (Yusuf’s and Yimin’s) are all located in the same folders. Therefore, future work will be to put them in different folders, which will entail changing the output locations in all the individual R and Stata programs. 
+
+
+
+\item Data
+In Yusuf’s code, he is using the 3 different data sets, 2 from Maplight and one from Poole’s (Voteview.com). Bill Position Maplight, can be downloaded from their website using a key (need to request one for free) and Votes Maplight was emailed to professor Buzard. Poole’s data set can be downloaded from Voteview.com.
+Yimin’s code only uses the two Maplight data sets, previously mentioned.
+
+I requested a key from Maplight to update the dataset, but, as of the writing of this summary, haven’t received a link to download the dataset. 
+
+
+\end{enumerate}
+
+\end{document}
