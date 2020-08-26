@@ -1,4 +1,5 @@
 Road Map for the Political Uncertainty Project
+File contains Summer 2020 RA work
 
 Author: Jorge Valdebenito
 
@@ -18,6 +19,10 @@ https://kbroman.org/github_tutorial/pages/fork.html
 
 I was able to send the 3 versions of the Literature review files to the repository and they were able to merge. 
 I'm also sending this .text to the repository to give regular updates on the progress. 
+
+I can only have 1 pull request open on Github, If I try to submit different files to the Github repository, they will enter as commits. 
+The professor would have to accept/close the pull request to be able to send a different one. 
+There is no problem in submitting different files as commits on an open pull request. 
 
 
 July 3 2020
@@ -50,6 +55,7 @@ I couldn't find this file in the repository. And it is not been created in the "
 Section "Generating Group Indicators'
 "11_groups_dummy_do.do" This file is on the build/code folder. 
 The code is using "global ROOT "\\stu05-fsrv.ad.syr.edu\ykbagir$\Downloads""
+This is Yusuf's work and we can't access the files on his computer.
 I would have to check the folder and possible replace this line with the G disk address. 
 
 Worked on the folder political-uncertainty/build/code/vote_numbers_maplight_do.do
@@ -116,13 +122,25 @@ members of the selected congresses."
 
 We have determined that the most updated work comes from the file "REPLICATION", instead of the word document 
 "Order of the Files". "Order of the Files" details the initial steps of the proccess, while 'REPLICATION" uses the RSTAN command
-to increase efficiency. It also solves the problem with the "destring command" in the previuos version. 
+to increase efficiency. It also solves the problem with the "destring" command in the previuos version. 
 The "destring" command made the mistake of deleting the prefix of bills (H, HR, ...) therefore, it was treating different bills as 
 if they were one. Example, bill numbers H2 and HR2. The "destring" command called both bills as 2, treating them as the same for merging
 with the votes.dta data set. 
-The previous problem is fixed with RSTAN, it is not using "destring".
+The previous problem is fixed with RSTAN, given that it is not using "destring".
 
 I run the first two programs correctly. 
+
+The names and locations of these programs are:
+
+Generate_vote_data_for_R.do
+Generate_group_dummy_by_action.do
+Both are in the github rep and the G disk inside the folder:
+political-uncertainty/build/code/
+
+The RStan_model.R is located also in the github rep and the G disk in the folder:
+political-uncertainty/analysis/code/
+
+
 I keep encountering the same problem when I run line 104, in the RStan_model.R file. 
 
 "Error in file(con, "w") : cannot open the connection
@@ -137,5 +155,10 @@ Everything up to that part works perfectly.
 I checked the documentation for the STAN command, and I think the code is well written in line 37 (I meant it is not commented out, its just the syntax)
 and its generating a vector of values that it is called back in line 105. Which is where I get the error described before. 
 
+
+I received a key to update the data set from Maplight, but after following the link given by the person sending me the key, 
+I wasn't able to correctly download the information. The website is difficult to navigate. 
+The API key is: 8d6d8a79f2f3df97ef128dbfea969a82
+and the link is:  https://maplight.org/data_guide/bulk-data-sets-and-apis/
 
 

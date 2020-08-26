@@ -76,8 +76,8 @@ drop if x1==.
 
 *The following line doesn't work. I get the error
 *file E:\work order\vote_numbers_maplight.xlsx could not be loaded
-*PROBLEM. There is no disk E.
-*The excel file is on the G folder has all the output of this code
+*PROBLEM. There is no disk E. We assumed this file was on Yusuf's hard drive
+*The excel file is on the G folder, which has all the output of this code
 export excel x1 using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(C1) firstrow(variables)
 
 
