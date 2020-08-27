@@ -20,20 +20,29 @@ by bill_number OS_catcode : drop if _n > 1
 
 /*FIRST, I destring bill numbers to have an ordered and comparible bill number across two data sets */
 sort bill_number
-destring bill_number , ignore("H ", "HC ", "HJ ", "HR ") replace
+*destring bill_number , ignore("H ", "HC ", "HJ ", "HR ") replace 
+*(old Stata version)
+*New syntax from Stata 14 and after
+destring bill_number, replace force ignore("H HC HJ HR ")
 save "${ROOT}\112_bill_positions_destring.dta"
 
-/* Destring bill numbers in other */
+
+
 clear
 use "${ROOT}\hou112kh_merged.dta"
 sort bill
-destring bill, ignore("S CON RES ", "S ", "MOTION", "JOURNAL", "H RES ", "H R ", "H J RES ", "H CON RES ", "ADJOURN") replace
+/*destring bill, ignore("S CON RES ", "S ", "MOTION", "JOURNAL", "H RES ", "H R ", "H J RES ", "H CON RES ", "ADJOURN") replace*/
+*(old Stata version)
+*New syntax from Stata 14 and after
+destring bill, replace force ignore("S CON RES S MOTION JOURNAL H RES H R H J RES H CON RES ADJOURN")
 sort bill
 rename bill bill_number
 keep bill_number number session
 sort bill_number
 save "${ROOT}\hou112kh_merged_destring.dta", replace
 clear
+
+
 
 /* JOINBY two data sets. keeps the data set with higher number of bills and assigns the each catcode for those bill numbers. 
 We assume that whenever an organization takes position on a bill, it takes position on all of the related actions as well. 
@@ -54,14 +63,23 @@ clear
 clear
 use "${ROOT}\112_bill_positions_destring.dta"
 sort OS_catcode action_id
-duplicates drop (
+
+*Removed the "("
+*duplicates drop (
+duplicates drop 
 quietly by OS_catcode action_id:  gen dup = cond(_N==1,0,_n)
 drop if dup>1
 tab OS_catcode , matcell(x)
 matrix list x
 svmat x
 drop if x1==.
+
+*The following line doesn't work. I get the error
+*file E:\work order\vote_numbers_maplight.xlsx could not be loaded
+*PROBLEM. There is no disk E. We assumed this file was on Yusuf's hard drive
+*The excel file is on the G folder, which has all the output of this code
 export excel x1 using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(C1) firstrow(variables)
+
 
 /*Labeling cat-codes */
 clear
@@ -69,9 +87,13 @@ use "${ROOT}\112_bill_positions_destring.dta"
 duplicates drop (OS_catcode), force
 keep OS_catcode business
 sort OS_catcode
+*PROBLEM. There is no disk E
 export excel OS_catcode using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(A1) firstrow(variables)
 export excel business using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(B1) firstrow(variables)
+
 clear
+
+
 
 ********Calculating the total number of votes for each interest group in COMBINED data*************
 clear
@@ -84,6 +106,8 @@ matrix list x
 svmat x
 drop if x1==.
 export excel x1 using "${ROOT}\vote_numbers_maplight.xlsx", sheet("sheet2") sheetmodify cell(B1) firstrow(variables)
+
+
 
 /*Labeling cat-codes */
 clear

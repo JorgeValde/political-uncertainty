@@ -1,0 +1,164 @@
+Road Map for the Political Uncertainty Project
+File contains Summer 2020 RA work
+
+Author: Jorge Valdebenito
+
+July 1 2020
+I worked on installing Git and learning the basic commands to submit the Literature Review (pdf and tex) files to github 
+I moved the first version of the Literature review from .doc to .tex
+I now have 3 versions of the literature review in my backup files, I need to send them to the github repository. 
+I got stuck when I was trying to "push" the files to the repository 
+
+July 2 2020
+I worked on understanding the request pull command and how it is different in git and github. 
+I tried to install and use the command "hub" pull request, but I wasn't able to do this. 
+This command works as a pull request for git and it would have solved my problems, but I couldn't install it. 
+I solved the problem! the procedure was on the following link 
+
+https://kbroman.org/github_tutorial/pages/fork.html
+
+I was able to send the 3 versions of the Literature review files to the repository and they were able to merge. 
+I'm also sending this .text to the repository to give regular updates on the progress. 
+
+I can only have 1 pull request open on Github, If I try to submit different files to the Github repository, they will enter as commits. 
+The professor would have to accept/close the pull request to be able to send a different one. 
+There is no problem in submitting different files as commits on an open pull request. 
+
+
+July 3 2020
+Updated the comments on this file (txt) 
+Working on the code:
+I created the "Comments.txt" file, which is the "diary" on the work I'll be doing with the code.
+I also made some similar comments on the .do file, but I'm assuming those comments will get erase when we fix the issues. 
+
+
+July 7 2020
+
+I'm reviwing the files in the repository, following the word document "Order of the files.docx"
+In the chapter "Generating Vote Data for R" 
+There is no "data_7_19_do.do" file on the repository.
+There is only the "data_7_19.cvs" file in output.
+
+Then, in the section of the word document 
+"Simple Model without Group Indicators"
+
+I open the file "simple_without_group_5000_2ch_code.R" on the repository. This file is in the analysis folder. 
+I encounter a problem with the code. It's not a big deal, we would just need to change the disk to the G file. 
+I think this is a test. We created "data_7_19.csv" before. 
+Line 6 and 8 uses the following direction "C:/Users/yusuf/Desktop/kristy/data_7_19.csv"
+
+Then the file "simple_without_group_5000_2ch_workspace" This is the raw R output file (according to the word doc)
+I couldn't find this file in the repository. And it is not been created in the "simple_without_group_5000_2ch_code.R" file. 
+
+
+
+Section "Generating Group Indicators'
+"11_groups_dummy_do.do" This file is on the build/code folder. 
+The code is using "global ROOT "\\stu05-fsrv.ad.syr.edu\ykbagir$\Downloads""
+This is Yusuf's work and we can't access the files on his computer.
+I would have to check the folder and possible replace this line with the G disk address. 
+
+Worked on the folder political-uncertainty/build/code/vote_numbers_maplight_do.do
+I fixed the problem with destring, it should be clear in the pull request 
+I have a problem with the code, in line 64, 72 and 73 the code is sending the output to the E disk. 
+There is not E disk. 
+The excel file is already constructed and has the output of the code. It is located in:
+G:\MAX-Filer\Collab\SOP-kbuzard-S13\Admin\Combined files\vote_numbers_maplight.xlsx
+The problem is that, I can't reproduce it if its on the E disk.
+The code runs, because the excel file is already in the G folder with the old information. 
+This means that the output it has it's from Jack's work. Does NOT get updated when we run the code now. 
+Lines 86 and 94 update the excel file in the G disk, this happens because in those lines we are not making any reference 
+to the E disk. 
+I need to be completely sure that the code in line 64, 72 and 73 is creating the excel file. 
+export excel x1 using "E:\work order\vote_numbers_maplight.xlsx", sheet("sheet1") sheetmodify cell(C1) firstrow(variables)
+
+If the excel file already exists I need to find it, if its creating it, then I guess we can just create it in the G disk. 
+Need to spend some time rechecking this. 
+
+
+
+
+August 17, 2020
+
+We are looking to track the data and see if we are able to update it to current times.
+ 
+maplight_bill_position.dta 
+This data set is download from https://maplight.org/data_guide but I need a key to access it. 
+The most updated data (according to the webpage) is the 114th session of the United States Congress (2015-2016).
+
+The parameters on this data set are:
+legislative_session, bill_number, bill_topic, bill_description, motion, action_id, vote_roll, date, position, org_name, sector, 
+industry, business, OS_catcode, maplight_url
+
+maplight_votes.dta
+It was email to professor Buzard according to one of the earlier doc files on Onedrive. 
+
+The parameters are: 
+action_id, politician_id, fullname, party, vote
+
+Both are merged by action_id.
+
+
+Poole's data set (it is not been used in Yimin's program)
+Can be downloaded from https://voteview.com/data
+
+There is a clear description of the data in the help link. The most updates congress data is for 116th (2019 to 2021)
+"This data includes every vote taken by every member in the selected congresses and chambers along with the probability 
+we assign to the member taking the position they did. Members are indexed by their ICPSR ID number."
+
+The parameters are:
+congress, chamber, rollnumber, icpsr, cast_code, prob
+
+
+This website also have the following datasets
+*Congressional Votes: "This data includes the result and ideological parameters of every vote taken in the selected congresses and chambers. 
+This is information about the vote itself, not individual members positions." 
+*Members Ideology: "This data includes basic biographical information (state, district, party, name) and ideological scores for 
+members of the selected congresses."
+*Congressional parties: "This data includes ideological mean and median scores for congressional parties in the selected congresses and chambers."
+
+
+
+
+We have determined that the most updated work comes from the file "REPLICATION", instead of the word document 
+"Order of the Files". "Order of the Files" details the initial steps of the proccess, while 'REPLICATION" uses the RSTAN command
+to increase efficiency. It also solves the problem with the "destring" command in the previuos version. 
+The "destring" command made the mistake of deleting the prefix of bills (H, HR, ...) therefore, it was treating different bills as 
+if they were one. Example, bill numbers H2 and HR2. The "destring" command called both bills as 2, treating them as the same for merging
+with the votes.dta data set. 
+The previous problem is fixed with RSTAN, given that it is not using "destring".
+
+I run the first two programs correctly. 
+
+The names and locations of these programs are:
+
+Generate_vote_data_for_R.do
+Generate_group_dummy_by_action.do
+Both are in the github rep and the G disk inside the folder:
+political-uncertainty/build/code/
+
+The RStan_model.R is located also in the github rep and the G disk in the folder:
+political-uncertainty/analysis/code/
+
+
+I keep encountering the same problem when I run line 104, in the RStan_model.R file. 
+
+"Error in file(con, "w") : cannot open the connection
+In addition: Warning message:
+In file(con, "w") :
+  cannot open file 'C:\Users\javaldeb\AppData\Local\Temp\Rtmp2veS6l\file4dbc4163331': No such file or directory"
+
+Troubleshooting this I found different solutions, but non have worked yet. The most possible one is that I do not have writting access, 
+but I think I have. I've set the working directory again, as someone mentioned, but no luck. Restarted RStudioand, reinstalled the packages.
+Everything up to that part works perfectly. 
+
+I checked the documentation for the STAN command, and I think the code is well written in line 37 (I meant it is not commented out, its just the syntax)
+and its generating a vector of values that it is called back in line 105. Which is where I get the error described before. 
+
+
+I received a key to update the data set from Maplight, but after following the link given by the person sending me the key, 
+I wasn't able to correctly download the information. The website is difficult to navigate. 
+The API key is: 8d6d8a79f2f3df97ef128dbfea969a82
+and the link is:  https://maplight.org/data_guide/bulk-data-sets-and-apis/
+
+

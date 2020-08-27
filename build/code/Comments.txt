@@ -1,0 +1,33 @@
+Comments on the Political Uncertainty code 
+Jorge Valdebenito
+
+July 3 2020
+
+File:
+political-uncertainty/build/code/vote_numbers_maplight_do.do
+Line 23
+>destring bill_number , ignore("H ", "HC ", "HJ ", "HR ") replace
+
+The destring command is outdated in Stata 14, therefore we need to replace the argument. 
+The syntax of destring changed in Stata 14 so that it could work better with Unicode. 
+The new syntax allows an option within the ignore() option, so the second comma causes the error.
+The correct code is:
+>destring bill_number, replace force ignore("H HC HJ HR ")
+
+This will produce the right result.
+
+We do the same for line 30. The correct code is:
+>destring bill, replace force ignore("S CON RES S MOTION JOURNAL H RES H R H J RES H CON RES ADJOURN")
+
+
+Line 57
+>duplicates drop (
+This has an open bracket that never close. Do not affect the next line. I think we should remove it. 
+
+Line 64, 72 and 73 
+There is no E disk, therefore I can't export to the excel file. 
+The excel that we are using is on the G disk and the output from lines 86 and 94 is been save there.
+G:\MAX-Filer\Collab\SOP-kbuzard-S13\Admin\Combined files\vote_numbers_maplight.xlsx
+
+The code runs with no problem if we do the previos changes. The problem remains to figure it the E disk.  
+
